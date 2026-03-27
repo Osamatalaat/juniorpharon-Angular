@@ -1,0 +1,54 @@
+<div class="min-h-screen grid md:grid-cols-2 bg-white">
+  <!-- Video Section -->
+  <div class="relative h-screen">
+    <video #bgVideo autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="assets/videos/video.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- Form Section -->
+  <div class="flex items-center justify-center px-6">
+    <div class="w-full p-8">
+          <!-- <button (click)="enableSound()" class="cursor-pointer bg-amber-500 rounded-full">Enable Sound</button>
+          <button (click)="MuteSound()" class="cursor-pointer bg-amber-500 rounded-full">Mute Sound</button> -->
+          <button
+  (click)="toggleSound()"
+  class=" cursor-pointer bg-burnt-orange w-12 h-12 hover:bg-gold-highlight  rounded-full"
+>
+
+  <!-- Muted -->
+  <i *ngIf="isMuted" class="fa-solid fa-volume-xmark text-xl"></i>
+
+  <!-- Unmuted -->
+  <i *ngIf="!isMuted" class="fa-solid fa-volume-high text-xl"></i>
+
+</button>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="relative min-h-screen flex items-center justify-center">
+
+  <!-- Video Background --
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute top-0 left-0 w-full h-full object-cover"
+  >
+    <source src="assets/videos/video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay --
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Form --
+  <div class="relative z-10 rounded-2xl w-full  px-6">
+    <router-outlet></router-outlet>
+  </div>
+
+</div> -->

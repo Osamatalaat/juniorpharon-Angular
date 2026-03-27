@@ -1,0 +1,29 @@
+{
+  "REGISTER": {
+    "TITLE": "أنشئ حسابك للسفر",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "الاسم الأخير",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+    "EMAIL": "البريد الإلكتروني",
+    "PHONE_NUMBER": "رقم الهاتف",
+    "GENDER": "النوع",
+    "ROLE": "الدور",
+    "TOURIST": "سائح",
+    "GUIDE": "مرشد سياحي",
+    "REGISTER_BUTTON": "تسجيل",
+    "ALREADY_ACCOUNT": "لديك حساب بالفعل؟",
+    "LOGIN": "تسجيل الدخول",
+    "SELECT_GENDER": "اختر النوع",
+    "SELECT_CODE": " رمز الدولة",
+    "PHONE_PLACEHOLDER": "أدخل رقم هاتفك"
+  },
+  "LOGIN": {
+    "TITLE": "تسجيل الدخول إلى حسابك",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "FORGOT_PASSWORD": "نسيت كلمة المرور؟",
+    "LOGIN_BUTTON": "تسجيل الدخول"
+  }
+}

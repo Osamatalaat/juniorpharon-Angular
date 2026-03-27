@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@theme {
+  /* Primary Backgrounds */
+--color-beige: #FFF6EC;
+--color-creamy-gray: #F2E8D5;
+/* Accent Colors */
+--color-white: #ffffff;
+--color-burnt-orange: #d07743;
+--color-dark-teal: #008185;
+--color-light-gold: #E2C49A;
+--color-sand-brown: #6b4532;
+--color-gold-highlight: #C9A86B;
+--color-olive-green: #7F8B52;
+/* Text & Utility */
+--color-white: #FFFFFF;
+--color-dark-gray: #4A4A4A;
+}
+
+body[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+body[dir="ltr"] {
+  text-align: left;
+  direction: ltr;
+}

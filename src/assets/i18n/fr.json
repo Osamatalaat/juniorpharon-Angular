@@ -1,0 +1,29 @@
+{
+  "REGISTER": {
+    "TITLE": "Créez votre compte de voyage",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom de famille",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "CONFIRM_PASSWORD": "Confirmer le mot de passe",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Numéro de téléphone",
+    "GENDER": "Sexe",
+    "ROLE": "Rôle",
+    "TOURIST": "Touriste",
+    "GUIDE": "Guide touristique",
+    "REGISTER_BUTTON": "S'inscrire",
+    "ALREADY_ACCOUNT": "Vous avez déjà un compte ?",
+    "LOGIN": "Connexion",
+    "SELECT_GENDER": "Sélectionnez le sexe",
+    "SELECT_CODE": "Sélectionnez le code du pays",
+    "PHONE_PLACEHOLDER": "Entrez votre numéro de téléphone"
+  },
+  "LOGIN": {
+    "TITLE": "Connectez-vous à votre compte",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "FORGOT_PASSWORD": "Mot de passe oublié ?",
+    "LOGIN_BUTTON": "Connexion"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "REGISTER": {
+    "TITLE": "Create Your Travel Account",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Phone Number",
+    "GENDER": "Gender",
+    "ROLE": "Role",
+    "TOURIST": "Tourist",
+    "GUIDE": "Tour Guide",
+    "REGISTER_BUTTON": "Register",
+    "ALREADY_ACCOUNT": "Already have an account?",
+    "LOGIN": "Login",
+    "SELECT_GENDER": "Select Gender",
+    "SELECT_CODE": "Select Country Code",
+    "PHONE_PLACEHOLDER": "Enter your phone number"
+  },
+  "LOGIN": {
+    "TITLE": "Login to Your Account",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "FORGOT_PASSWORD": "Forgot Password?",
+    "LOGIN_BUTTON": "Login"
+  }
+}
