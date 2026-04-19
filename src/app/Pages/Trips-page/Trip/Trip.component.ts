@@ -21,8 +21,8 @@ export interface Trip {
 export class TripComponent implements OnInit {
 
 
-
-  trips = [
+trips: Trip[] = [];
+  tripss = [
   {
     id: 1,
     title: 'Luxor Historical Tour',
@@ -111,7 +111,7 @@ export class TripComponent implements OnInit {
 
 
 
-  
+
   loading = false;
 
   constructor(private tripsService: TripsService) {}
@@ -124,8 +124,9 @@ export class TripComponent implements OnInit {
     this.loading = true;
     this.tripsService.searchTrips(filter).subscribe({
       next: (res: any) => {
-        this.trips = res.data; // assuming backend returns { data: [...] }
+        this.trips = res.data.data; // assuming backend returns { data: [...] }
         this.loading = false;
+        console.log("Trips:", this.trips);
       },
       error: () => this.loading = false
     });

@@ -13,6 +13,8 @@ import { NewsletterSubscribeComponent } from './Home-Page/newsletter-subscribe/n
 import { TripComponent } from './Trips-page/Trip/Trip.component';
 import { TripCardComponent } from './Trips-page/trip-card/trip-card.component';
 import { FilterSidebarComponent } from './Trips-page/filter-sidebar/filter-sidebar.component';
+import { TripDetailsComponent } from './Trips-page/trip-details/trip-details.component';
+import { UserReviewCardComponent } from './Trips-page/user-review-card/user-review-card.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,10 @@ const routes: Routes = [
     path: 'trips',
     component: TripComponent,
   },
+    {
+    path: 'trips/:id',
+    component: TripDetailsComponent,
+  }
 ];
 
 @NgModule({
@@ -36,7 +42,9 @@ const routes: Routes = [
     NewsletterSubscribeComponent,
     TripComponent,
     FilterSidebarComponent,
-    TripCardComponent
+    TripCardComponent,
+    TripDetailsComponent,
+    UserReviewCardComponent
   ],
   exports: [RouterModule],
 })

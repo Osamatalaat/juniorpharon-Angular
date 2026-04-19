@@ -13,8 +13,10 @@ import { AccountLayoutComponent } from './Account/account-layout/account-layout.
 // ngx-translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CustomTranslateLoader } from './custom-translate-loader';
-import { NavbarComponent } from './Navbar/Navbar.component';
+
 import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './Navbar-section/Navbar/Navbar.component';
+import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
 
 @NgModule({
   imports: [
@@ -39,7 +41,8 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     LoginComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DayTourComponent
   ],
 
   exports: [

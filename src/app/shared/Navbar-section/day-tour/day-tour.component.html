@@ -1,0 +1,42 @@
+<li class="relative group">
+
+  <!-- Trigger -->
+  <div class="cursor-pointer flex items-center gap-1 hover:text-burnt-orange transition">
+    Day Tours
+    <i class="bx bx-chevron-down text-sm"></i>
+  </div>
+
+  <!-- 🔥 Hover Bridge (fix disappearing) -->
+  <div class="absolute left-0 top-full h-3 w-full"></div>
+
+  <!-- Dropdown -->
+  <div
+    class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[520px]
+           bg-white shadow-xl rounded-xl p-6
+           opacity-0 invisible group-hover:opacity-100 group-hover:visible
+           transition duration-300 z-50"
+  >
+
+    <h3 class="text-dark-teal font-semibold mb-4">
+      Explore by City
+    </h3>
+
+    <div class="grid grid-cols-2 gap-4">
+
+      <a
+        *ngFor="let city of cities"
+        [routerLink]="['/trips']"
+        [queryParams]="{ city: city.slug }"
+        class="flex items-center gap-3 p-2 rounded-lg hover:bg-beige transition"
+      >
+        <i class="bx bx-map text-burnt-orange text-lg"></i>
+        <span class="text-dark-gray font-medium">
+          {{ city.name }}
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+</li>
