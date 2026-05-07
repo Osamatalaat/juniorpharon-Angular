@@ -15,6 +15,9 @@ import { TripCardComponent } from './Trips-page/trip-card/trip-card.component';
 import { FilterSidebarComponent } from './Trips-page/filter-sidebar/filter-sidebar.component';
 import { TripDetailsComponent } from './Trips-page/trip-details/trip-details.component';
 import { UserReviewCardComponent } from './Trips-page/user-review-card/user-review-card.component';
+import { PackageLayoutComponent } from './Packages-page/package-layout/package-layout.component';
+import { PackageCardComponent } from './Packages-page/package-card/package-card.component';
+import { PackageFilterComponent } from './Packages-page/package-filter/package-filter.component';
 
 const routes: Routes = [
   {
@@ -28,6 +31,10 @@ const routes: Routes = [
     {
     path: 'trips/:id',
     component: TripDetailsComponent,
+  },
+  {
+    path: 'packages',
+    component: PackageLayoutComponent,
   }
 ];
 
@@ -44,6 +51,9 @@ const routes: Routes = [
     FilterSidebarComponent,
     TripCardComponent,
     TripDetailsComponent,
+    PackageLayoutComponent,
+    PackageCardComponent,
+    PackageFilterComponent,
     UserReviewCardComponent
   ],
   exports: [RouterModule],

@@ -1,0 +1,175 @@
+<div
+  class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300
+         border border-creamy-gray hover:border-dark-teal
+         overflow-hidden group cursor-pointer">
+
+  <!-- 🖼️ Cover -->
+  <div class="relative overflow-hidden">
+
+    <img
+      [src]="package?.coverImage || 'https://via.placeholder.com/500x300'"
+      alt="package"
+      class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
+
+    <!-- 🔥 Discount -->
+    <div
+      *ngIf="package?.discountPercentage"
+      class="absolute top-3 right-3 bg-burnt-orange text-white
+             text-xs px-3 py-1 rounded-full font-bold shadow">
+
+      -{{ package.discountPercentage }}%
+    </div>
+
+    <!-- 🟢 Active Badge -->
+    <div
+      *ngIf="package?.isActive"
+      class="absolute top-3 left-3 bg-olive-green text-white
+             text-xs px-3 py-1 rounded-full font-semibold shadow">
+
+      Available
+    </div>
+
+  </div>
+
+  <!-- 📄 Content -->
+  <div class="p-5">
+
+    <!-- 🏷️ Title -->
+    <h3
+      class="text-dark-gray font-bold text-xl mb-2
+             group-hover:text-dark-teal transition">
+
+      {{ package?.name }}
+    </h3>
+
+    <!-- 📝 Description -->
+    <p
+      class="text-gray-500 text-sm leading-6 mb-4 line-clamp-2">
+
+      {{ package?.description }}
+    </p>
+
+    <!-- 📊 Info -->
+    <div
+      class="grid grid-cols-3 gap-3 text-sm mb-5">
+
+      <!-- Duration -->
+      <div
+        class="flex flex-col items-center justify-center
+               bg-light-gold/20 rounded-xl py-2">
+
+        <i class="far fa-clock text-burnt-orange mb-1"></i>
+
+        <span class="font-semibold text-dark-gray">
+          {{ package?.durationInDays }}
+        </span>
+
+        <span class="text-gray-500 text-xs">
+          Days
+        </span>
+      </div>
+
+      <!-- Trips -->
+      <div
+        class="flex flex-col items-center justify-center
+               bg-light-gold/20 rounded-xl py-2">
+
+        <i class="fas fa-route text-dark-teal mb-1"></i>
+
+        <span class="font-semibold text-dark-gray">
+          {{ package?.tripsCount }}
+        </span>
+
+        <span class="text-gray-500 text-xs">
+          Trips
+        </span>
+      </div>
+
+      <!-- Rating -->
+      <div
+        class="flex flex-col items-center justify-center
+               bg-light-gold/20 rounded-xl py-2">
+
+        <i class="fas fa-star text-gold-highlight mb-1"></i>
+
+        <span class="font-semibold text-dark-gray">
+          {{ package?.rating || 4.8 }}
+        </span>
+
+        <span class="text-gray-500 text-xs">
+          Rating
+        </span>
+      </div>
+
+    </div>
+
+    <!-- 💰 Price -->
+    <div class="flex items-center gap-3 mb-5">
+
+      <!-- New Price -->
+      <span class="text-dark-teal font-extrabold text-2xl">
+
+        {{ package?.pricePerPerson }} EGP
+      </span>
+
+      <!-- Old Price -->
+      <span
+        *ngIf="package?.oldPricePerPerson"
+        class="text-gray-400 line-through text-sm">
+
+        {{ package?.oldPricePerPerson }} EGP
+      </span>
+
+    </div>
+
+    <!-- 📅 Dates -->
+    <!-- <div
+      class="flex items-center justify-between
+             text-xs text-gray-500 mb-5 border-t pt-3">
+
+      <span>
+        Start:
+        {{ package?.startDate | date:'dd MMM' }}
+      </span>
+
+      <span>
+        End:
+        {{ package?.endDate | date:'dd MMM' }}
+      </span>
+    </div> -->
+
+    <!-- 🔘 Buttons -->
+    <div class="flex gap-3">
+
+      <!-- Book -->
+      <button
+        class="flex-1 bg-light-gold hover:bg-burnt-orange
+               hover:text-white text-burnt-orange
+               py-2.5 rounded-xl font-semibold
+               transition-all duration-300
+               cursor-pointer flex items-center justify-center gap-2
+               hover:scale-105 hover:shadow-lg">
+
+        <i class="fas fa-calendar-check"></i>
+
+        Book Now
+      </button>
+
+      <!-- Details -->
+      <button
+        (click)="goToDetails()"
+        class="flex-1 border border-dark-teal text-dark-teal
+               py-2.5 rounded-xl font-semibold
+               hover:bg-dark-teal hover:text-white
+               transition-all duration-300
+               cursor-pointer flex items-center justify-center gap-2">
+
+        <i class="fas fa-info-circle"></i>
+
+        Details
+      </button>
+
+    </div>
+
+  </div>
+</div>

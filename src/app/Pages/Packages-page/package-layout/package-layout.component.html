@@ -1,0 +1,22 @@
+
+
+
+
+<div class=" mb-8 max-w-7xl mx-auto">
+
+  <!-- Sidebar -->
+  <!-- <div class="w-full md:w-1/4">
+    <app-filter-sidebar (filterApplied)="loadTrips($event)"></app-filter-sidebar>
+  </div> -->
+
+  <!-- Trips Grid -->
+  <app-package-filter (filterChanged)="loadPackages($event)"></app-package-filter>
+  <div class="flex-1 mt-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+      <app-package-card *ngFor="let package of packages" [package]="package"></app-package-card>
+    </div>
+  </div>
+
+</div>

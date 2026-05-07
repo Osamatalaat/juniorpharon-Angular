@@ -1,22 +1,62 @@
 <!-- Top Bar  -->
 <div class="bg-sand-brown text-white text-lg relative h-16 text-center">
-  <div
-    class="max-w-7xl mx-auto flex justify-between items-center gap-8 h-full px-4"
-  >
-    <span>
+  <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-4">
+    <!-- 📱 Mobile -->
+    <div class="flex md:hidden w-full justify-between items-center text-xl">
+      <!-- Home -->
+      <a routerLink="/" class="flex items-center justify-center h-8 w-8">
+        <i class="fa-solid fa-house"></i>
+      </a>
+
+      <!-- WhatsApp -->
       <a
         href="https://wa.me/201113306601"
         target="_blank"
-        class="hover:underline flex items-center gap-2"
+        class="flex items-center justify-center h-8 w-8"
       >
-        <i class="fa-brands fa-whatsapp"></i> +20 111 330 6601
+        <i class="fa-brands fa-whatsapp"></i>
       </a>
-    </span>
-    <span>Book Resort Credit Offer</span>
-    <span><i class="fa-solid fa-envelope"></i> juniorpharon&#64;gmail.com</span>
-    <a routerLink="/auth/register" class="cursor-pointer hover:underline">
-      Register For Free
-    </a>
+
+   <!-- Email -->
+<a
+  href="mailto:juniorpharon&#64;gmail.com"
+  class="flex items-center justify-center h-8 w-8"
+>
+  <i class="fa-solid fa-envelope"></i>
+</a>
+
+      <!-- Register -->
+      <a
+        routerLink="/auth/register"
+        class="flex items-center justify-center h-8 w-8"
+      >
+        <i class="fa-solid fa-user-plus"></i>
+      </a>
+    </div>
+
+    <!-- 💻 Desktop (كودك زي ما هو بدون تغيير) -->
+    <div class="hidden md:flex justify-between items-center gap-8 w-full">
+      <span>
+        <a
+          href="https://wa.me/201113306601"
+          target="_blank"
+          class="hover:underline flex items-center gap-2"
+        >
+          <i class="fa-brands fa-whatsapp"></i> +20 111 330 6601
+        </a>
+      </span>
+
+      <span>Book Resort Credit Offer</span>
+
+      <span>
+        <i class="fa-solid fa-envelope"></i>
+        juniorpharon&#64;gmail.com
+      </span>
+
+      <a routerLink="/auth/register" class="cursor-pointer hover:underline">
+        Register For Free
+      </a>
+    </div>
   </div>
   <div class="absolute bottom-0 left-0 w-full overflow-hidden z-10">
     <div class="flex w-full">
@@ -27,132 +67,205 @@
     </div>
   </div>
 </div>
+
 <!-- Main Navbar -->
 <nav class="bg-creamy-gray shadow-sm">
-  <div class="w-full flex items-center justify-between px-6 py-4">
-    <!-- Logo -->
-    <div class="text-xl font-semibold text-sand-brown">As-salaam</div>
-    <!-- Links -->
-    <ul class="hidden md:flex space-x-8 text-dark-gray font-medium relative">
-      <!-- Home -->
-      <li class="relative group">
-        <a
-          routerLink="/"
-          routerLinkActive="active-link text-burnt-orange"
-          [routerLinkActiveOptions]="{ exact: true }"
-          class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
-        >
-          Home
-        </a>
-        <svg
-          class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
-          viewBox="0 0 100 10"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 10 Q50 0 100 10"
-            stroke="#D66A2E"
-            stroke-width="3"
-            fill="transparent"
-          />
-        </svg>
-      </li>
-      <!-- Trips -->
-      <li class="relative group">
-        <a
-          routerLink="/trips"
-          routerLinkActive="active-link text-burnt-orange"
-          class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
-        >
-          Trips
-        </a>
-        <svg
-          class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
-          viewBox="0 0 100 10"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 10 Q50 0 100 10"
-            stroke="#D66A2E"
-            stroke-width="3"
-            fill="transparent"
-          />
-        </svg>
-      </li>
-      <app-day-tour></app-day-tour>
 
-      <!-- Offers -->
-      <li class="relative group">
-        <a
-          routerLink="/offers"
-          routerLinkActive="active-link text-burnt-orange"
-          class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
-        >
-          Offers
-        </a>
-        <svg
-          class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
-          viewBox="0 0 100 10"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 10 Q50 0 100 10"
-            stroke="#D66A2E"
-            stroke-width="3"
-            fill="transparent"
-          />
-        </svg>
-      </li>
-      <!-- Meetings & Events -->
-      <li class="relative group">
-        <a
-          routerLink="/meetings"
-          routerLinkActive="active-link text-burnt-orange"
-          class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
-        >
-          Meetings & Events
-        </a>
-        <svg
-          class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
-          viewBox="0 0 100 10"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 10 Q50 0 100 10"
-            stroke="#D66A2E"
-            stroke-width="3"
-            fill="transparent"
-          />
-        </svg>
-      </li>
-      <!-- Credit Cards -->
-      <li class="relative group">
-        <a
-          routerLink="/credit-cards"
-          routerLinkActive="active-link text-burnt-orange"
-          class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
-        >
-          Credit Cards
-        </a>
-        <svg
-          class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
-          viewBox="0 0 100 10"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 10 Q50 0 100 10"
-            stroke="#D66A2E"
-            stroke-width="3"
-            fill="transparent"
-          />
-        </svg>
-      </li>
-    </ul>
-    <!-- Button -->
-    <button
-      class="border border-dark-teal cursor-pointer text-dark-teal px-5 py-2 rounded-md hover:bg-burnt-orange hover:text-white transition"
-    >
-      Book Now
+  <!-- 📱 MOBILE HEADER (إضافة فقط) -->
+  <div class="flex md:hidden items-center justify-between px-6 py-4">
+
+    <!-- Logo -->
+    <div class="text-xl font-semibold text-sand-brown">
+      As-salaam
+    </div>
+
+    <!-- Hamburger -->
+    <button (click)="toggleMenu()" class="text-2xl">
+      <i class="fa-solid fa-bars"></i>
     </button>
+
   </div>
+
+  <!-- 💻 DESKTOP (كما هو 100% بدون أي تعديل) -->
+  <div class="hidden md:block">
+    <div class="w-full flex items-center justify-between px-6 py-4">
+
+      <!-- Logo -->
+      <div class="text-xl font-semibold text-sand-brown">
+        As-salaam
+      </div>
+
+      <!-- Links (زي ما هو حرفيًا) -->
+      <ul class="hidden md:flex space-x-8 text-dark-gray font-medium relative">
+
+        <!-- Home -->
+        <li class="relative group">
+          <a
+            routerLink="/"
+            routerLinkActive="active-link text-burnt-orange"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
+          >
+            Home
+          </a>
+          <svg
+            class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q50 0 100 10"
+              stroke="#D66A2E"
+              stroke-width="3"
+              fill="transparent"
+            />
+          </svg>
+        </li>
+
+        <!-- Trips -->
+        <li class="relative group">
+          <a
+            routerLink="/trips"
+            routerLinkActive="active-link text-burnt-orange"
+            class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
+          >
+            Trips
+          </a>
+          <svg
+            class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q50 0 100 10"
+              stroke="#D66A2E"
+              stroke-width="3"
+              fill="transparent"
+            />
+          </svg>
+        </li>
+
+        <app-day-tour></app-day-tour>
+
+        <!-- Offers -->
+        <li class="relative group">
+          <a
+            routerLink="/offers"
+            routerLinkActive="active-link text-burnt-orange"
+            class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
+          >
+            Offers
+          </a>
+          <svg
+            class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q50 0 100 10"
+              stroke="#D66A2E"
+              stroke-width="3"
+              fill="transparent"
+            />
+          </svg>
+        </li>
+
+        <!-- Packages -->
+        <li class="relative group">
+          <a
+            routerLink="/packages"
+            routerLinkActive="active-link text-burnt-orange"
+            class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
+          >
+            Packages
+          </a>
+          <svg
+            class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q50 0 100 10"
+              stroke="#D66A2E"
+              stroke-width="3"
+              fill="transparent"
+            />
+          </svg>
+        </li>
+
+        <!-- Meetings -->
+        <li class="relative group">
+          <a
+            routerLink="/meetings"
+            routerLinkActive="active-link text-burnt-orange"
+            class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
+          >
+            Meetings & Events
+          </a>
+          <svg
+            class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q50 0 100 10"
+              stroke="#D66A2E"
+              stroke-width="3"
+              fill="transparent"
+            />
+          </svg>
+        </li>
+
+        <!-- Credit -->
+        <li class="relative group">
+          <a
+            routerLink="/credit-cards"
+            routerLinkActive="active-link text-burnt-orange"
+            class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
+          >
+            Credit Cards
+          </a>
+          <svg
+            class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q50 0 100 10"
+              stroke="#D66A2E"
+              stroke-width="3"
+              fill="transparent"
+            />
+          </svg>
+        </li>
+
+      </ul>
+
+      <!-- Button -->
+      <button
+        class="border border-dark-teal cursor-pointer text-dark-teal px-5 py-2 rounded-md hover:bg-burnt-orange hover:text-white transition"
+      >
+        Book Now
+      </button>
+
+    </div>
+  </div>
+
+  <!-- 📱 MOBILE MENU -->
+  <div *ngIf="menuOpen" class="md:hidden bg-white shadow-lg">
+
+    <ul class="flex flex-col text-center divide-y">
+
+      <li class="py-3"><a routerLink="/" (click)="closeMenu()">Home</a></li>
+      <li class="py-3"><a routerLink="/trips" (click)="closeMenu()">Trips</a></li>
+      <li class="py-3"><a routerLink="/offers" (click)="closeMenu()">Offers</a></li>
+      <li class="py-3"><a routerLink="/packages" (click)="closeMenu()">Packages</a></li>
+       <li class="py-3"><a routerLink="/day-tours" (click)="closeMenu()">Day Tours</a></li>
+      <li class="py-3"><a routerLink="/meetings" (click)="closeMenu()">Meetings & Events</a></li>
+      <li class="py-3"><a routerLink="/credit-cards" (click)="closeMenu()">Credit Cards</a></li>
+
+    </ul>
+
+  </div>
+
 </nav>
