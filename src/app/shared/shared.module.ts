@@ -17,11 +17,19 @@ import { CustomTranslateLoader } from './custom-translate-loader';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './Navbar-section/Navbar/Navbar.component';
 import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
+// PrimeNG Modules
+// import { MenuModule } from 'primeng/menu';
+// import { ButtonModule } from 'primeng/button';
+
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+
+
+    // BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
@@ -52,8 +60,13 @@ import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
     RouterModule,
     AccountLayoutComponent,
     TranslateModule,
+    // MenuModule,
+    // ButtonModule,
+
+    // BrowserAnimationsModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DayTourComponent
 
   ]
 })

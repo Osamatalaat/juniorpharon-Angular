@@ -26,7 +26,7 @@
       class="absolute top-3 left-3 bg-olive-green text-white
              text-xs px-3 py-1 rounded-full font-semibold shadow">
 
-      Available
+      {{ 'PACKAGES.ACTIVE' | translate }}
     </div>
 
   </div>
@@ -65,7 +65,7 @@
         </span>
 
         <span class="text-gray-500 text-xs">
-          Days
+          {{ 'PACKAGES.DAYS' | translate }}
         </span>
       </div>
 
@@ -81,7 +81,7 @@
         </span>
 
         <span class="text-gray-500 text-xs">
-          Trips
+         {{ 'PACKAGES.TRIPS_INCLUDED' | translate }}
         </span>
       </div>
 
@@ -97,7 +97,7 @@
         </span>
 
         <span class="text-gray-500 text-xs">
-          Rating
+          {{ 'PACKAGES.RATING' | translate }}
         </span>
       </div>
 
@@ -122,21 +122,6 @@
 
     </div>
 
-    <!-- 📅 Dates -->
-    <!-- <div
-      class="flex items-center justify-between
-             text-xs text-gray-500 mb-5 border-t pt-3">
-
-      <span>
-        Start:
-        {{ package?.startDate | date:'dd MMM' }}
-      </span>
-
-      <span>
-        End:
-        {{ package?.endDate | date:'dd MMM' }}
-      </span>
-    </div> -->
 
     <!-- 🔘 Buttons -->
     <div class="flex gap-3">
@@ -152,7 +137,7 @@
 
         <i class="fas fa-calendar-check"></i>
 
-        Book Now
+        {{ 'PACKAGES.BOOK_NOW' | translate }}
       </button>
 
       <!-- Details -->
@@ -166,7 +151,7 @@
 
         <i class="fas fa-info-circle"></i>
 
-        Details
+        {{ 'PACKAGES.DETAILS' | translate }}
       </button>
 
     </div>

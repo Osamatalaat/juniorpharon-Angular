@@ -25,5 +25,61 @@
     "PASSWORD": "Mot de passe",
     "FORGOT_PASSWORD": "Mot de passe oublié ?",
     "LOGIN_BUTTON": "Connexion"
+  },
+  "NAVBAR": {
+    "HOME": "Accueil",
+    "TRIPS": "Voyages",
+    "OFFERS": "Offres",
+    "PACKAGES": "Forfaits",
+    "DAY_TOURS": "Excursions d'une journée",
+    "MEETINGS": "Réunions et événements",
+    "CREDIT_CARDS": "Cartes de crédit",
+    "BOOK_NOW": "Réservez maintenant",
+    "REGISTER_FREE": "Inscrivez-vous gratuitement",
+    "LANGUAGE": "Langue",
+    "EXPLORE_BY_CITY": "Explorer par ville"
+  },
+  "CITIES": {
+    "CAIRO": "Le Caire",
+    "LUXOR": "Louxor",
+    "ASWAN": "Assouan",
+    "HURGHADA": "Hurghada",
+    "SHARM_EL_SHEIKH": "Sharm El Sheikh",
+    "ALEXANDRIA": "Alexandrie",
+    "MARSA_ALAM": "Marsa Alam",
+    "DAHAB": "Dahab"
+  },
+  "TRIP_LIST": {
+    "TITLE": "Voyages Disponibles",
+    "FILTER": "Filtrer",
+    "PRICE": "Prix",
+    "DURATION": "Jours",
+    "RATING": "Note",
+    "NIGHTS": "Nuits",
+    "BOOK_NOW": "Réserver maintenant",
+    "DETAILS": "Détails"
+  },
+  "TRIP_DETAILS": {
+    "OVERVIEW": "Aperçu",
+    "INCLUDED": "Inclus",
+    "EXCLUDED": "Exclu",
+    "BOOK_NOW": "Réserver maintenant",
+    "PRICE_FROM": "Prix à partir de"
+  },
+  "PACKAGES": {
+    "TITLE": "Forfaits de Voyage",
+    "DESCRIPTION": "Découvrez nos forfaits de voyage exclusifs à travers l'Égypte",
+    "PRICE_PER_PERSON": "Prix par personne",
+    "OLD_PRICE": "Ancien prix",
+    "DISCOUNT": "Remise",
+    "DURATION": "Durée",
+    "DAYS": "jours",
+    "TRIPS_INCLUDED": "Voyages inclus",
+    "RATING": "Note",
+    "BOOK_NOW": "Réserver maintenant",
+    "DETAILS": "Détails",
+    "START_DATE": "Date de début",
+    "END_DATE": "Date de fin",
+    "ACTIVE": "Actif"
   }
 }

@@ -2,7 +2,7 @@
 
   <!-- Trigger -->
   <div class="cursor-pointer flex items-center gap-1 hover:text-burnt-orange transition">
-    Day Tours
+    {{ 'NAVBAR.DAY_TOURS' | translate }}
     <i class="bx bx-chevron-down text-sm"></i>
   </div>
 
@@ -18,7 +18,7 @@
   >
 
     <h3 class="text-dark-teal font-semibold mb-4">
-      Explore by City
+      {{ 'NAVBAR.EXPLORE_BY_CITY' | translate }}
     </h3>
 
     <div class="grid grid-cols-2 gap-4">
@@ -31,7 +31,7 @@
       >
         <i class="bx bx-map text-burnt-orange text-lg"></i>
         <span class="text-dark-gray font-medium">
-          {{ city.name }}
+          {{ city.key | translate }}
         </span>
       </a>
 

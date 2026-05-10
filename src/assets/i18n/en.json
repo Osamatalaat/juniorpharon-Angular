@@ -25,5 +25,63 @@
     "PASSWORD": "Password",
     "FORGOT_PASSWORD": "Forgot Password?",
     "LOGIN_BUTTON": "Login"
+  },
+  "NAVBAR": {
+    "HOME": "Home",
+    "TRIPS": "Trips",
+    "OFFERS": "Offers",
+    "PACKAGES": "Packages",
+    "DAY_TOURS": "Day Tours",
+    "MEETINGS": "Meetings & Events",
+    "CREDIT_CARDS": "Credit Cards",
+    "BOOK_NOW": "Book Now",
+    "REGISTER_FREE": "Register Free",
+    "LANGUAGE": "Language",
+    "EXPLORE_BY_CITY": "Explore by City"
+  },
+  "CITIES": {
+    "CAIRO": "Cairo",
+    "LUXOR": "Luxor",
+    "ASWAN": "Aswan",
+    "HURGHADA": "Hurghada",
+    "SHARM_EL_SHEIKH": "Sharm El Sheikh",
+    "ALEXANDRIA": "Alexandria",
+    "MARSA_ALAM": "Marsa Alam",
+    "DAHAB": "Dahab"
+  },
+  "TRIP_LIST": {
+    "TITLE": "Available Trips",
+    "FILTER": "Filter",
+    "PRICE": "Price",
+    "DURATION": "Days",
+    "RATING": "Rating",
+    "NIGHTS": "Nights",
+    "BOOK_NOW": "Book Now",
+    "DETAILS": "Details"
+  },
+  "TRIP_DETAILS": {
+    "OVERVIEW": "Overview",
+    "INCLUDED": "Included",
+    "EXCLUDED": "Excluded",
+    "BOOK_NOW": "Book Now",
+    "PRICE_FROM": "Price from"
+  },
+
+  "PACKAGES": {
+    "TITLE": "Travel Packages",
+    "DESCRIPTION": "Discover our exclusive travel packages across Egypt",
+    "PRICE_PER_PERSON": "Price per person",
+    "OLD_PRICE": "Old price",
+    "DISCOUNT": "Discount",
+    "DURATION": "Duration",
+    "DAYS": "days",
+    "TRIPS_INCLUDED": "Trips included",
+    "RATING": "Rating",
+    "BOOK_NOW": "Book now",
+    "DETAILS": "Details",
+    "START_DATE": "Start date",
+    "END_DATE": "End date",
+    "ACTIVE": "Active"
   }
+
 }

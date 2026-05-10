@@ -22,7 +22,7 @@
 
     <!-- Title -->
     <h3 class="text-dark-gray font-bold text-lg mb-3">
-      {{ trip?.title }}
+      {{ trip?.title || 'Trip Title' }}
     </h3>
 
     <!-- 📊 Info Row -->
@@ -37,7 +37,7 @@
       <!-- Duration -->
       <div class="flex items-center gap-1 text-sand-brown">
         <i class="far fa-clock"></i>
-        <span>{{ trip?.durationInDays }} Days</span>
+        <span>{{ trip?.durationInDays }} {{ 'TRIP_LIST.DURATION' | translate }}</span>
       </div>
 
       <!-- Rating -->
@@ -75,7 +75,7 @@
          hover:scale-105 hover:shadow-lg hover:bg-opacity-90">
 
   <i class="fas fa-calendar-check transition-transform duration-300 hover:translate-x-1"></i>
-  Book
+  {{ 'TRIP_LIST.BOOK_NOW' | translate }}
 </button>
 
       <!-- Details -->
@@ -84,7 +84,7 @@
         class="flex-1 border border-dark-teal text-dark-teal py-2 rounded-lg font-semibold
                hover:bg-dark-teal hover:text-white transition cursor-pointer flex items-center justify-center gap-2">
         <i class="fas fa-info-circle"></i>
-        Details
+        {{ 'TRIP_LIST.DETAILS' | translate }}
       </button>
 
     </div>

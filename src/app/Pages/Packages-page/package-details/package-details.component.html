@@ -1,0 +1,267 @@
+<div class="bg-beige min-h-screen py-10 px-6">
+
+  <!-- 🖼️ Gallery -->
+  <div class="mb-8 max-w-7xl mx-auto">
+
+    <!-- Main Image -->
+    <div class="mb-4">
+      <img
+        [src]="packageDetails?.images[0]"
+        (click)="openViewer(0)"
+        class="w-full h-[500px] object-cover rounded-xl cursor-pointer"
+      />
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+
+      <ng-container
+        *ngFor="let img of packageDetails?.images.slice(1,4); let i = index">
+
+        <img
+          [src]="img"
+          (click)="openViewer(i + 1)"
+          class="w-full h-40 object-cover rounded-lg cursor-pointer hover:scale-[1.02] transition"
+        />
+
+      </ng-container>
+
+      <!-- More -->
+      <div
+        *ngIf="packageDetails?.images.length > 4"
+        (click)="openViewer(3)"
+        class="relative w-full h-40 rounded-lg cursor-pointer bg-black/70 flex items-center justify-center"
+      >
+        <span class="text-white text-2xl font-bold">
+          +{{ packageDetails?.images.length - 4 }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto space-y-8">
+
+    <!-- 📦 Package Info -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+      <div class="flex justify-between items-start gap-6 flex-wrap">
+
+        <div>
+          <h1 class="text-3xl font-bold text-dark-gray mb-3">
+            {{ packageDetails?.name }}
+          </h1>
+
+          <p class="text-dark-gray leading-relaxed">
+            {{ packageDetails?.description }}
+          </p>
+        </div>
+
+        <!-- Price Card -->
+        <div
+          class="bg-light-gold rounded-xl p-5 min-w-[260px] shadow-sm"
+        >
+
+          <div class="text-sm text-dark-gray mb-1">
+            Starting From
+          </div>
+
+          <div class="flex items-center gap-3 mb-2">
+
+            <span class="text-3xl font-bold text-burnt-orange">
+              {{ packageDetails?.pricePerPerson }} EGP
+            </span>
+
+            <span
+              *ngIf="packageDetails?.oldPricePerPerson"
+              class="line-through text-gray-400"
+            >
+              {{ packageDetails?.oldPricePerPerson }}
+            </span>
+
+          </div>
+
+          <div class="text-sm text-olive-green font-medium mb-4">
+            {{ packageDetails?.discountPercentage }}% OFF
+          </div>
+
+          <button
+            class="w-full bg-burnt-orange hover:bg-dark-teal text-white py-3 rounded-lg font-semibold transition"
+          >
+            Book Package
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+
+        <!-- Duration -->
+        <div class="bg-beige/40 rounded-xl p-4 text-center">
+          <i class="bx bx-time text-3xl text-sand-brown"></i>
+
+          <div class="mt-2 text-sm text-dark-gray">
+            Duration
+          </div>
+
+          <div class="font-bold text-sand-brown">
+            {{ packageDetails?.durationInDays }} Days
+          </div>
+        </div>
+
+        <!-- Trips -->
+        <div class="bg-beige/40 rounded-xl p-4 text-center">
+          <i class="bx bx-map text-3xl text-dark-teal"></i>
+
+          <div class="mt-2 text-sm text-dark-gray">
+            Trips
+          </div>
+
+          <div class="font-bold text-dark-teal">
+            {{ packageDetails?.trips.length }}
+          </div>
+        </div>
+
+        <!-- Max People -->
+        <div class="bg-beige/40 rounded-xl p-4 text-center">
+          <i class="bx bx-user text-3xl text-olive-green"></i>
+
+          <div class="mt-2 text-sm text-dark-gray">
+            Max People
+          </div>
+
+          <div class="font-bold text-olive-green">
+            {{ packageDetails?.maxPeople }}
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="bg-beige/40 rounded-xl p-4 text-center">
+          <i class="bx bxs-star text-3xl text-gold-highlight"></i>
+
+          <div class="mt-2 text-sm text-dark-gray">
+            Rating
+          </div>
+
+          <div class="font-bold text-gold-highlight">
+            {{ packageDetails?.rating }}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 🧳 Included Trips -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+      <h2 class="text-2xl font-bold text-dark-gray mb-6">
+        Included Trips
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div
+          *ngFor="let trip of packageDetails?.trips"
+          class="border border-creamy-gray rounded-xl overflow-hidden hover:shadow-md transition"
+        >
+
+          <img
+            [src]="trip.coverImage"
+            class="w-full h-52 object-cover"
+          />
+
+          <div class="p-4">
+
+            <div class="flex justify-between items-center mb-2">
+
+              <h3 class="font-bold text-lg text-dark-gray">
+                {{ trip.title }}
+              </h3>
+
+              <span class="text-sm text-dark-teal font-semibold">
+                Day {{ trip.dayOrder }}
+              </span>
+
+            </div>
+
+            <p class="text-sm text-dark-gray mb-3">
+              {{ trip.location }}
+            </p>
+
+            <div class="flex items-center gap-2 text-gold-highlight">
+              <i class="bx bxs-star"></i>
+              {{ trip.rating }}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ⭐ Reviews -->
+    <app-user-review-card
+      [reviews]="reviews">
+    </app-user-review-card>
+
+    <!-- 📦 Related Packages -->
+    <div class="mt-12">
+
+      <h2 class="text-2xl font-bold text-dark-gray mb-6">
+        Related Packages
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        <app-package-card
+          *ngFor="let pkg of relatedPackages"
+          [package]="pkg">
+        </app-package-card>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 🖼️ Viewer -->
+<div
+  *ngIf="isViewerOpen"
+  class="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+>
+
+  <!-- Close -->
+  <button
+    (click)="closeViewer()"
+    class="absolute top-5 right-5 text-white text-4xl"
+  >
+    ✕
+  </button>
+
+  <!-- Prev -->
+  <button
+    (click)="prevImage()"
+    class="absolute left-5 text-white text-5xl"
+  >
+    ❮
+  </button>
+
+  <!-- Image -->
+  <img
+    [src]="packageDetails?.images[selectedImageIndex]"
+    class="max-h-[85vh] max-w-[90vw] rounded-xl"
+  />
+
+  <!-- Next -->
+  <button
+    (click)="nextImage()"
+    class="absolute right-5 text-white text-5xl"
+  >
+    ❯
+  </button>
+
+</div>

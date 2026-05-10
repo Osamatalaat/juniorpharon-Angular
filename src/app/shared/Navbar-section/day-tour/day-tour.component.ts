@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayTourComponent {
 
-  cities = [
-    { name: 'Cairo', slug: 'cairo' },
-    { name: 'Luxor', slug: 'luxor' },
-    { name: 'Aswan', slug: 'aswan' },
-    { name: 'Hurghada', slug: 'hurghada' },
-    { name: 'Sharm El Sheikh', slug: 'sharm' },
-    { name: 'Alexandria', slug: 'alexandria' },
-    { name: 'Marsa Alam', slug: 'marsa-alam' },
-    { name: 'Dahab', slug: 'dahab' }
-  ];
+ cities = [
+  { slug: 'cairo', key: 'CITIES.CAIRO' },
+  { slug: 'luxor', key: 'CITIES.LUXOR' },
+  { slug: 'aswan', key: 'CITIES.ASWAN' },
+  { slug: 'hurghada', key: 'CITIES.HURGHADA' },
+  { slug: 'sharm', key: 'CITIES.SHARM_EL_SHEIKH' },
+  { slug: 'alexandria', key: 'CITIES.ALEXANDRIA' },
+  { slug: 'marsa-alam', key: 'CITIES.MARSA_ALAM' },
+  { slug: 'dahab', key: 'CITIES.DAHAB' }
+];
 
 }

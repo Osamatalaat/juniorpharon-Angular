@@ -18,6 +18,7 @@ import { UserReviewCardComponent } from './Trips-page/user-review-card/user-revi
 import { PackageLayoutComponent } from './Packages-page/package-layout/package-layout.component';
 import { PackageCardComponent } from './Packages-page/package-card/package-card.component';
 import { PackageFilterComponent } from './Packages-page/package-filter/package-filter.component';
+import { PackageDetailsComponent } from './Packages-page/package-details/package-details.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'packages',
     component: PackageLayoutComponent,
+  },
+  {
+    path: 'packages/:id',
+    component: PackageDetailsComponent,
   }
 ];
 
@@ -54,6 +59,7 @@ const routes: Routes = [
     PackageLayoutComponent,
     PackageCardComponent,
     PackageFilterComponent,
+    PackageDetailsComponent,
     UserReviewCardComponent
   ],
   exports: [RouterModule],

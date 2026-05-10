@@ -4,13 +4,13 @@
 
   <!-- Sidebar -->
   <div class="w-full md:w-1/4">
-    <app-filter-sidebar (filterApplied)="loadTrips($event)"></app-filter-sidebar>
+    <app-filter-sidebar (filterApplied)="applyFilter($event)"></app-filter-sidebar>
   </div>
 
   <!-- Trips Grid -->
   <div class="flex-1">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <app-trip-card *ngFor="let trip of tripss" [trip]="trip"></app-trip-card>
+      <app-trip-card *ngFor="let trip of trips" [trip]="trip"></app-trip-card>
     </div>
   </div>
 

@@ -25,5 +25,61 @@
     "PASSWORD": "Contraseña",
     "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
     "LOGIN_BUTTON": "Iniciar sesión"
+  },
+  "NAVBAR": {
+    "HOME": "Inicio",
+    "TRIPS": "Viajes",
+    "OFFERS": "Ofertas",
+    "PACKAGES": "Paquetes",
+    "DAY_TOURS": "Tours de un día",
+    "MEETINGS": "Reuniones y eventos",
+    "CREDIT_CARDS": "Tarjetas de crédito",
+    "BOOK_NOW": "Reserva ahora",
+    "REGISTER_FREE": "Regístrate gratis",
+    "LANGUAGE": "Idioma",
+    "EXPLORE_BY_CITY": "Explorar por ciudad"
+  },
+  "CITIES": {
+    "CAIRO": "El Cairo",
+    "LUXOR": "Luxor",
+    "ASWAN": "Asuán",
+    "HURGHADA": "Hurghada",
+    "SHARM_EL_SHEIKH": "Sharm El Sheikh",
+    "ALEXANDRIA": "Alejandría",
+    "MARSA_ALAM": "Marsa Alam",
+    "DAHAB": "Dahab"
+  },
+  "TRIP_LIST": {
+    "TITLE": "Viajes Disponibles",
+    "FILTER": "Filtrar",
+    "PRICE": "Precio",
+    "DURATION": "Días",
+    "RATING": "Calificación",
+    "NIGHTS": "Noches",
+    "BOOK_NOW": "Reserva ahora",
+    "DETAILS": "Detalles"
+  },
+  "TRIP_DETAILS": {
+    "OVERVIEW": "Resumen",
+    "INCLUDED": "Incluye",
+    "EXCLUDED": "No incluye",
+    "BOOK_NOW": "Reserva ahora",
+    "PRICE_FROM": "Precio desde"
+  },
+  "PACKAGES": {
+    "TITLE": "Paquetes de Viaje",
+    "DESCRIPTION": "Descubre nuestros paquetes de viaje exclusivos por todo Egipto",
+    "PRICE_PER_PERSON": "Precio por persona",
+    "OLD_PRICE": "Precio antiguo",
+    "DISCOUNT": "Descuento",
+    "DURATION": "Duración",
+    "DAYS": "días",
+    "TRIPS_INCLUDED": "Viajes incluidos",
+    "RATING": "Calificación",
+    "BOOK_NOW": "Reserva ahora",
+    "DETAILS": "Detalles",
+    "START_DATE": "Fecha de inicio",
+    "END_DATE": "Fecha de finalización",
+    "ACTIVE": "Activo"
   }
 }

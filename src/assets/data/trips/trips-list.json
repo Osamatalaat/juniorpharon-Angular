@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "title": "Luxor Historical Tour",
+    "city": "Luxor",
+    "location": "Karnak & Valley of the Kings",
+    "price": 1500,
+    "oldPrice": 2000,
+    "durationInDays": 3,
+    "coverImage": "https://images.unsplash.com/photo-1587135941948-670b381f08ce",
+    "rating": 4.7
+  } ,
+  {
+    "id": 2,
+    "title": "Aswan Nile Cruise",
+    "city": "Aswan",
+    "location": "Nile River & Philae Temple",
+    "price": 2500,
+    "oldPrice": 3000,
+    "durationInDays": 5,
+    "coverImage": "https://images.unsplash.com/photo-1568322445389-f64ac2515020",
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "title": "Cairo Pyramids Adventure",
+    "city": "Cairo",
+    "location": "Giza Pyramids & Sphinx",
+    "price": 1200,
+    "oldPrice": 1500,
+    "durationInDays": 2,
+    "coverImage": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a",
+    "rating": 4.6
+  },
+  {
+    "id": 4,
+    "title": "Alexandria Coastal Escape",
+    "city": "Alexandria",
+    "location": "Mediterranean Coast & Ancient Sites",
+    "price": 1800,
+    "oldPrice": 2200,
+    "durationInDays": 4,
+    "coverImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    "rating": 4.5
+  }
+]

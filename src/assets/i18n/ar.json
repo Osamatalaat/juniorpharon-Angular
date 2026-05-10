@@ -25,5 +25,64 @@
     "PASSWORD": "كلمة المرور",
     "FORGOT_PASSWORD": "نسيت كلمة المرور؟",
     "LOGIN_BUTTON": "تسجيل الدخول"
+  },
+    "NAVBAR": {
+    "HOME": "الرئيسية",
+    "TRIPS": "الرحلات",
+    "OFFERS": "العروض",
+    "PACKAGES": "الباقات",
+    "DAY_TOURS": "الرحلات اليومية",
+    "MEETINGS": "الاجتماعات والفعاليات",
+    "CREDIT_CARDS": "البطاقات الائتمانية",
+    "BOOK_NOW": "احجز الآن",
+    "REGISTER_FREE": "سجل مجانًا",
+    "LANGUAGE": "اللغة",
+    "EXPLORE_BY_CITY": "استكشف حسب المدينة"
+  },
+  "CITIES": {
+    "CAIRO": "القاهرة",
+    "LUXOR": "الأقصر",
+    "ASWAN": "أسوان",
+    "HURGHADA": "الغردقة",
+    "SHARM_EL_SHEIKH": "شرم الشيخ",
+    "ALEXANDRIA": "الإسكندرية",
+    "MARSA_ALAM": "مرسى علم",
+    "DAHAB": "دهب"
+  },
+
+  "TRIP_LIST": {
+    "TITLE": "الرحلات المتاحة",
+    "FILTER": "فلترة",
+    "PRICE": "السعر",
+    "DURATION": "ايام",
+    "RATING": "التقييم",
+    "NIGHTS": "ليالي",
+    "BOOK_NOW": "احجز الآن",
+    "DETAILS": "التفاصيل"
+  },
+
+  "TRIP_DETAILS": {
+    "OVERVIEW": "نظرة عامة",
+    "INCLUDED": "يشمل",
+    "EXCLUDED": "لا يشمل",
+    "BOOK_NOW": "احجز الآن",
+    "PRICE_FROM": "السعر يبدأ من"
+  },
+  "PACKAGES": {
+    "TITLE": "الباقات",
+    "DESCRIPTION": "اكتشف باقات السفر الاستثنائية في مصر",
+    "PRICE_PER_PERSON": "السعر لكل شخص",
+    "OLD_PRICE": "السعر القديم",
+    "DISCOUNT": "الخصم",
+    "DURATION": "المدة",
+    "DAYS": "أيام",
+    "TRIPS_INCLUDED": "الرحلات المدرجة",
+    "RATING": "التقييم",
+    "BOOK_NOW": "احجز الآن",
+    "DETAILS": "التفاصيل",
+    "START_DATE": "تاريخ البدء",
+    "END_DATE": "تاريخ الانتهاء",
+    "ACTIVE": "نشط"
   }
 }
+

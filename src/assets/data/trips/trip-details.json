@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Luxor Historical Tour",
+    "city": "Luxor",
+    "location": "Karnak",
+    "price": 1500,
+    "rating": 4.7,
+    "durationInDays": 3,
+
+    "images": [
+      "https://images.unsplash.com/photo-1",
+      "https://images.unsplash.com/photo-2",
+      "https://images.unsplash.com/photo-3"
+    ],
+
+    "description": "Amazing trip to Luxor",
+
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "title": "Arrival",
+        "description": "Check in hotel",
+        "image": "https://images.unsplash.com/photo-4",
+        "activities": [
+          "Hotel Check-in",
+          "Dinner"
+        ]
+      }
+    ]
+  }
+]

@@ -1,6 +1,7 @@
 export interface PackageFilter {
 
   search?: string;
+  name?: string;
 
   minPrice?: number;
 

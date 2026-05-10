@@ -17,13 +17,13 @@
         <i class="fa-brands fa-whatsapp"></i>
       </a>
 
-   <!-- Email -->
-<a
-  href="mailto:juniorpharon&#64;gmail.com"
-  class="flex items-center justify-center h-8 w-8"
->
-  <i class="fa-solid fa-envelope"></i>
-</a>
+      <!-- Email -->
+      <a
+        href="mailto:juniorpharon&#64;gmail.com"
+        class="flex items-center justify-center h-8 w-8"
+      >
+        <i class="fa-solid fa-envelope"></i>
+      </a>
 
       <!-- Register -->
       <a
@@ -58,6 +58,7 @@
       </a>
     </div>
   </div>
+
   <div class="absolute bottom-0 left-0 w-full overflow-hidden z-10">
     <div class="flex w-full">
       <div
@@ -70,34 +71,37 @@
 
 <!-- Main Navbar -->
 <nav class="bg-creamy-gray shadow-sm">
-
   <!-- 📱 MOBILE HEADER (إضافة فقط) -->
   <div class="flex md:hidden items-center justify-between px-6 py-4">
-
     <!-- Logo -->
-    <div class="text-xl font-semibold text-sand-brown">
-      As-salaam
-    </div>
+  <div class="flex items-center">
+    <img
+      src="assets/images/logo.png"
+      alt="Logo"
+      class="h-10 w-auto object-contain"
+    />
+  </div>
 
     <!-- Hamburger -->
     <button (click)="toggleMenu()" class="text-2xl">
       <i class="fa-solid fa-bars"></i>
     </button>
-
   </div>
 
   <!-- 💻 DESKTOP (كما هو 100% بدون أي تعديل) -->
   <div class="hidden md:block">
     <div class="w-full flex items-center justify-between px-6 py-4">
-
-      <!-- Logo -->
-      <div class="text-xl font-semibold text-sand-brown">
-        As-salaam
-      </div>
+       <!-- Logo -->
+  <div class="flex items-center">
+    <img
+      src="assets/images/logo.png"
+      alt="Logo"
+      class="h-20 w-auto object-contain"
+    />
+  </div>
 
       <!-- Links (زي ما هو حرفيًا) -->
       <ul class="hidden md:flex space-x-8 text-dark-gray font-medium relative">
-
         <!-- Home -->
         <li class="relative group">
           <a
@@ -106,7 +110,7 @@
             [routerLinkActiveOptions]="{ exact: true }"
             class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
           >
-            Home
+            {{ 'NAVBAR.HOME' | translate }}
           </a>
           <svg
             class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
@@ -129,7 +133,7 @@
             routerLinkActive="active-link text-burnt-orange"
             class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
           >
-            Trips
+            {{ 'NAVBAR.TRIPS' | translate }}
           </a>
           <svg
             class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
@@ -154,7 +158,7 @@
             routerLinkActive="active-link text-burnt-orange"
             class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
           >
-            Offers
+            {{ 'NAVBAR.OFFERS' | translate }}
           </a>
           <svg
             class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
@@ -177,7 +181,7 @@
             routerLinkActive="active-link text-burnt-orange"
             class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
           >
-            Packages
+            {{ 'NAVBAR.PACKAGES' | translate }}
           </a>
           <svg
             class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
@@ -200,7 +204,7 @@
             routerLinkActive="active-link text-burnt-orange"
             class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
           >
-            Meetings & Events
+            {{ 'NAVBAR.MEETINGS' | translate }}
           </a>
           <svg
             class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
@@ -223,7 +227,7 @@
             routerLinkActive="active-link text-burnt-orange"
             class="cursor-pointer hover:text-burnt-orange transition-colors duration-300"
           >
-            Credit Cards
+            {{ 'NAVBAR.CREDIT_CARDS' | translate }}
           </a>
           <svg
             class="absolute left-0 bottom-[-6px] w-full h-2 opacity-0 transition-opacity duration-300"
@@ -238,34 +242,89 @@
             />
           </svg>
         </li>
-
       </ul>
 
-      <!-- Button -->
-      <button
-        class="border border-dark-teal cursor-pointer text-dark-teal px-5 py-2 rounded-md hover:bg-burnt-orange hover:text-white transition"
-      >
-        Book Now
-      </button>
+      <!-- Right Side -->
+      <div class="flex items-center gap-4">
+        <!-- 🌐 Language Dropdown -->
+        <!-- Language Dropdown -->
+<div class="relative">
 
+  <!-- Toggle Button -->
+  <button
+    (click)="toggleLanguageMenu()"
+    class="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 hover:border-burnt-orange hover:text-burnt-orange transition-all duration-300"
+  >
+    <i class="fa-solid fa-globe text-lg"></i>
+
+    <span class="hidden md:block">
+      {{ selectedLanguage.name }}
+    </span>
+
+    <i
+      class="fa-solid fa-chevron-down text-xs transition-transform duration-300"
+      [class.rotate-180]="isLangOpen"
+    ></i>
+  </button>
+
+  <!-- Dropdown -->
+  <div
+    *ngIf="isLangOpen"
+    class="absolute right-0 mt-3 w-44 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50"
+  >
+
+    <button
+      *ngFor="let lang of languages"
+      (click)="changeLanguage(lang)"
+      class="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition"
+    >
+
+      <span class="text-xl">
+        {{ lang.flag }}
+      </span>
+
+      <span>
+        {{ lang.name }}
+      </span>
+
+    </button>
+
+  </div>
+
+</div>
+
+        <!-- Book Button -->
+        <button
+          class="border border-dark-teal cursor-pointer text-dark-teal px-5 py-2 rounded-md hover:bg-burnt-orange hover:text-white transition"
+        >
+          {{ 'NAVBAR.BOOK_NOW' | translate }}
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- 📱 MOBILE MENU -->
   <div *ngIf="menuOpen" class="md:hidden bg-white shadow-lg">
-
     <ul class="flex flex-col text-center divide-y">
-
-      <li class="py-3"><a routerLink="/" (click)="closeMenu()">Home</a></li>
-      <li class="py-3"><a routerLink="/trips" (click)="closeMenu()">Trips</a></li>
-      <li class="py-3"><a routerLink="/offers" (click)="closeMenu()">Offers</a></li>
-      <li class="py-3"><a routerLink="/packages" (click)="closeMenu()">Packages</a></li>
-       <li class="py-3"><a routerLink="/day-tours" (click)="closeMenu()">Day Tours</a></li>
-      <li class="py-3"><a routerLink="/meetings" (click)="closeMenu()">Meetings & Events</a></li>
-      <li class="py-3"><a routerLink="/credit-cards" (click)="closeMenu()">Credit Cards</a></li>
-
+      <li class="py-3"><a routerLink="/" (click)="closeMenu()">{{ 'NAVBAR.HOME' | translate }}</a></li>
+      <li class="py-3">
+        <a routerLink="/trips" (click)="closeMenu()">{{ 'NAVBAR.TRIPS' | translate }}</a>
+      </li>
+      <li class="py-3">
+        <a routerLink="/offers" (click)="closeMenu()">{{ 'NAVBAR.OFFERS' | translate }}</a>
+      </li>
+      <li class="py-3">
+        <a routerLink="/packages" (click)="closeMenu()">{{ 'NAVBAR.PACKAGES' | translate }}</a>
+      </li>
+      <li class="py-3">
+        <a routerLink="/day-tours" (click)="closeMenu()">{{ 'NAVBAR.DAY_TOURS' | translate }}</a>
+      </li>
+      <li class="py-3">
+        <a routerLink="/meetings" (click)="closeMenu()">{{ 'NAVBAR.MEETINGS' | translate }}</a>
+      </li>
+      <li class="py-3">
+        <a routerLink="/credit-cards" (click)="closeMenu()">{{ 'NAVBAR.CREDIT_CARDS' | translate }}</a>
+      </li>
     </ul>
-
   </div>
-
 </nav>

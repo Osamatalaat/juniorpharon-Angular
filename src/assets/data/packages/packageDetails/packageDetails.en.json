@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+
+    "name": "Cairo & Luxor Adventure",
+
+    "description":
+      "Discover the wonders of ancient Egypt.",
+
+    "durationInDays": 7,
+
+    "maxPeople": 20,
+
+    "rating": 4.8,
+
+    "pricePerPerson": 12500,
+
+    "oldPricePerPerson": 15000,
+
+    "discountPercentage": 15,
+
+    "images": [
+      "https://images.unsplash.com/photo-1572252009286-268acec5ca0a",
+      "https://images.unsplash.com/photo-1568322445389-f64ac2515020"
+    ],
+
+    "trips": [
+      {
+        "id": 1,
+        "dayOrder": 1,
+        "title": "Cairo Pyramids Adventure",
+        "location": "Giza Pyramids",
+        "rating": 4.8,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1568322445389-f64ac2515020"
+      },
+      {
+        "id": 2,
+        "dayOrder": 2,
+        "title": "Luxor Temple Exploration",
+        "location": "Luxor Temple",
+        "rating": 4.7,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1572252009286-268acec5ca0a"
+      },
+      {
+        "id": 3,
+        "dayOrder": 3,
+        "title": "Valley of the Kings Tour",
+        "location": "Valley of the Kings",
+        "rating": 4.9,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1568322445389-f64ac2515020"
+      }
+    ]
+  },
+  {
+    "id": 2,
+
+    "name": "Aswan & Abu Simbel Experience",
+
+    "description":
+      "Experience the magic of southern Egypt.",
+
+    "durationInDays": 5,
+
+    "maxPeople": 15,
+
+    "rating": 4.7,
+
+    "pricePerPerson": 9000,
+
+    "oldPricePerPerson": 11000,
+
+    "discountPercentage": 18,
+
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      "https://images.unsplash.com/photo-1494526585095-c41746248156"
+    ],
+
+    "trips": [
+      {
+        "id": 1,
+        "dayOrder": 1,
+        "title": "Aswan Nile Cruise",
+        "location": "Aswan",
+        "rating": 4.7,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+      },
+      {
+        "id": 2,
+        "dayOrder": 2,
+        "title": "Abu Simbel Temples",
+        "location": "Abu Simbel",
+        "rating": 4.8,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1494526585095-c41746248156"
+      }
+    ]
+  },
+  {
+    "id": 3,
+
+    "name": "Alexandria & Mediterranean Escape",
+
+    "description":
+      "Explore the coastal beauty of Alexandria.",
+
+    "durationInDays": 4,
+
+    "maxPeople": 25,
+
+    "rating": 4.6,
+
+    "pricePerPerson": 7000,
+
+    "oldPricePerPerson": 8500,
+
+    "discountPercentage": 18,
+
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      "https://images.unsplash.com/photo-1494526585095-c41746248156"
+    ],
+
+    "trips": [
+      {
+        "id": 1,
+        "dayOrder": 1,
+        "title": "Alexandria City Tour",
+        "location": "Alexandria",
+        "rating": 4.6,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+      },
+      {
+        "id": 2,
+        "dayOrder": 2,
+        "title": "Mediterranean Beach Day",
+        "location": "Mediterranean Coast",
+        "rating": 4.7,
+
+        "coverImage":
+          "https://images.unsplash.com/photo-1494526585095-c41746248156"
+      }
+    ]
+  }
+]
