@@ -17,5 +17,15 @@ export class PackageCardComponent  {
   goToDetails() {
     this.router.navigate(['/packages', this.package.id]);
   }
+showBookingModal = false;
 
+openBooking(): void {
+
+  this.showBookingModal = true;
+}
+
+closeBooking(): void {
+
+  this.showBookingModal = false;
+}
 }

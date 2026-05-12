@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "name": "Cairo & Luxor Adventure",
+    "description": "Discover ancient Egypt with Cairo museums, pyramids, Luxor temples, and Nile experiences.",
+    "durationInDays": 7,
+    "pricePerPerson": 12500,
+    "oldPricePerPerson": 15000,
+    "discountPercentage": 15,
+    "rating": 4.8,
+    "tripCount": 3,
+    "coverImage": "https://images.unsplash.com/photo-1568322445389-f64ac2515020"
+  },
+
+  {
+    "id": 2,
+    "name": "Red Sea Relax Package",
+    "description": "Luxury beaches, snorkeling, diving adventures, and premium resorts in Hurghada.",
+    "durationInDays": 5,
+    "pricePerPerson": 8900,
+    "oldPricePerPerson": 10200,
+    "discountPercentage": 10,
+    "rating": 4.6,
+    "tripCount": 2,
+    "coverImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+  },
+
+  {
+    "id": 3,
+    "name": "Siwa Desert Escape",
+    "description": "Magical desert safari, oasis exploration, camping, and cultural experiences in Siwa.",
+    "durationInDays": 4,
+    "pricePerPerson": 6400,
+    "oldPricePerPerson": 7800,
+    "discountPercentage": 18,
+    "rating": 4.9,
+    "tripCount": 2,
+    "coverImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+  },
+
+  {
+    "id": 4,
+    "name": "Aswan & Abu Simbel Tour",
+    "description": "Explore Upper Egypt with Nile cruises, Philae Temple, and Abu Simbel temples.",
+    "durationInDays": 6,
+    "pricePerPerson": 11200,
+    "oldPricePerPerson": 13000,
+    "discountPercentage": 12,
+    "rating": 4.7,
+    "tripCount": 3,
+    "coverImage": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
+  }
+]

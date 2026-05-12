@@ -1,0 +1,208 @@
+[
+  {
+    "id": 1,
+    "name": "Cairo & Luxor Adventure",
+    "description": "Discover the wonders of ancient Egypt with an unforgettable journey through Cairo, Luxor, temples, museums, Nile cruises, and historical landmarks.",
+    "durationInDays": 7,
+    "maxPeople": 20,
+    "rating": 4.8,
+    "pricePerPerson": 12500,
+    "oldPricePerPerson": 15000,
+    "discountPercentage": 15,
+    "images": [
+      "https://images.unsplash.com/photo-1572252009286-268acec5ca0a",
+      "https://images.unsplash.com/photo-1568322445389-f64ac2515020",
+      "https://images.unsplash.com/photo-1587135941948-670b381f08ce",
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    ],
+    "trips": [
+      {
+        "id": 1,
+        "dayOrder": 1,
+        "title": "Cairo Pyramids Adventure",
+        "city": "Cairo",
+        "location": "Giza Pyramids & Egyptian Museum",
+        "durationInDays": 2,
+        "rating": 4.8,
+        "coverImage": "https://images.unsplash.com/photo-1568322445389-f64ac2515020"
+      },
+      {
+        "id": 2,
+        "dayOrder": 3,
+        "title": "Luxor Historical Tour",
+        "city": "Luxor",
+        "location": "Karnak & Valley of the Kings",
+        "durationInDays": 3,
+        "rating": 4.7,
+        "coverImage": "https://images.unsplash.com/photo-1587135941948-670b381f08ce"
+      },
+      {
+        "id": 3,
+        "dayOrder": 6,
+        "title": "Nile Cruise Experience",
+        "city": "Aswan",
+        "location": "Philae Temple & Nile Cruise",
+        "durationInDays": 2,
+        "rating": 4.9,
+        "coverImage": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
+      }
+    ],
+    "mediaReviews": [
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "title": "Luxury Resort"
+      },
+      {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "title": "Package Highlights"
+      }
+    ],
+    "relatedPackagesIds": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Red Sea Relax Package",
+    "description": "Luxury beaches and diving adventures in Hurghada with premium resort accommodations.",
+    "durationInDays": 5,
+    "maxPeople": 15,
+    "rating": 4.6,
+    "pricePerPerson": 8900,
+    "oldPricePerPerson": 10200,
+    "discountPercentage": 10,
+    "images": [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+      "https://images.unsplash.com/photo-1493558103817-58b2924bce98",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    ],
+    "trips": [
+      {
+        "id": 4,
+        "dayOrder": 1,
+        "title": "Hurghada Beach Escape",
+        "city": "Hurghada",
+        "location": "Red Sea Resorts",
+        "durationInDays": 3,
+        "rating": 4.7,
+        "coverImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+      },
+      {
+        "id": 5,
+        "dayOrder": 4,
+        "title": "Snorkeling Adventure",
+        "city": "Hurghada",
+        "location": "Giftun Island",
+        "durationInDays": 2,
+        "rating": 4.8,
+        "coverImage": "https://images.unsplash.com/photo-1493558103817-58b2924bce98"
+      }
+    ],
+    "mediaReviews": [
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "title": "Luxury Resort"
+      },
+      {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "title": "Package Highlights"
+      }
+    ],
+    "relatedPackagesIds": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Siwa Desert Escape",
+    "description": "Explore the magical Siwa Oasis with desert safari, lakes, and traditional Bedouin culture.",
+    "durationInDays": 4,
+    "maxPeople": 12,
+    "rating": 4.9,
+    "pricePerPerson": 6400,
+    "oldPricePerPerson": 7800,
+    "discountPercentage": 18,
+    "images": [
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    ],
+    "trips": [
+      {
+        "id": 6,
+        "dayOrder": 1,
+        "title": "Siwa Oasis Tour",
+        "city": "Siwa",
+        "location": "Siwa Oasis",
+        "durationInDays": 2,
+        "rating": 4.9,
+        "coverImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+      }
+    ],
+    "mediaReviews": [
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "title": "Luxury Resort"
+      },
+      {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "title": "Package Highlights"
+      }
+    ],
+    "relatedPackagesIds": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Aswan & Abu Simbel Tour",
+    "description": "Explore Upper Egypt with Nile cruises, Philae Temple, and Abu Simbel historical wonders.",
+    "durationInDays": 6,
+    "maxPeople": 18,
+    "rating": 4.7,
+    "pricePerPerson": 11200,
+    "oldPricePerPerson": 13000,
+    "discountPercentage": 12,
+    "images": [
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+    ],
+    "trips": [
+      {
+        "id": 7,
+        "dayOrder": 1,
+        "title": "Aswan Nile Experience",
+        "city": "Aswan",
+        "location": "Philae Temple & Nile Cruise",
+        "durationInDays": 3,
+        "rating": 4.8,
+        "coverImage": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
+      }
+    ],
+    "mediaReviews": [
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "title": "Luxury Resort"
+      },
+      {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "title": "Package Highlights"
+      }
+    ],
+    "relatedPackagesIds": [
+      1,
+      2
+    ]
+  }
+]

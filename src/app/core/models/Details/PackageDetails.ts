@@ -1,12 +1,31 @@
-import { Package } from "./package";
-import { PackageTrip } from "./PackageTrip";
-import { PricingTier } from "./PricingTier";
-import { Review } from "./Review";
-import { PackageContent } from "./PackageContent";
+import { PackageIncludedTrip } from "./PackageIncludedTrip";
+import { ReviewMedia } from "./ReviewMedia";
 
-export interface PackageDetails extends Package {
-  packageTrips: PackageTrip[];
-  pricingTiers: PricingTier[];
-  reviews: Review[];
-  contents: PackageContent[];
+export interface PackageDetails {
+
+  id: number;
+
+  name: string;
+
+  description: string;
+
+  durationInDays: number;
+
+  maxPeople: number;
+
+  rating: number;
+
+  pricePerPerson: number;
+
+  oldPricePerPerson?: number;
+
+  discountPercentage?: number;
+
+  images: string[];
+
+  trips: PackageIncludedTrip[];
+
+  mediaReviews?: ReviewMedia[];
+
+  relatedPackagesIds?: number[];
 }

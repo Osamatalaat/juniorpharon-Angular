@@ -18,12 +18,12 @@ export class PackagesService {
     );
   }
 
-  getPackageDetails(): Observable<any> {
+  getPackageDetails(): Observable<any[]> {
 
-    return this.http.get(
-      'assets/data/packages/package-details.json'
-    );
-  }
+  return this.http.get<any[]>(
+    'assets/data/packages/package-details.json'
+  );
+}
 
   searchPackages(filter: PackageFilter): Observable<any[]> {
 

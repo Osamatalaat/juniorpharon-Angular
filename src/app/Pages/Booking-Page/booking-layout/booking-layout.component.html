@@ -1,0 +1,39 @@
+<!-- زر الحجز -->
+<button
+  (click)="openModal()"
+  class="w-full bg-burnt-orange hover:bg-dark-teal
+         text-white py-3 rounded-xl font-semibold transition"
+>
+  Book Now
+</button>
+
+<!-- Overlay -->
+<div
+  *ngIf="isOpen"
+  class="fixed inset-0 bg-black/70 z-50
+         flex items-center justify-center p-4"
+>
+
+  <!-- Modal -->
+  <div
+    class="bg-white w-full max-w-2xl rounded-2xl
+           shadow-2xl overflow-hidden relative"
+  >
+
+    <!-- Close -->
+    <button
+      (click)="closeModal()"
+      class="absolute top-4 right-4 text-3xl text-gray-500"
+    >
+      ✕
+    </button>
+
+    <!-- الفورم -->
+    <app-booking-form
+      [item]="item"
+      (close)="closeModal()">
+    </app-booking-form>
+
+  </div>
+
+</div>

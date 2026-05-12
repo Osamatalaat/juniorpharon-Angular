@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { PackagesService } from '../../../core/Services/Packages.service';
+
+import { PackageDetails } from '../../../core/models/Details/PackageDetails';
+import { PackageTrip } from '../../../core/models/Details/PackageTrip';
+import { ReviewMedia } from '../../../core/models/Details/ReviewMedia';
+import { Package } from '../../../core/models/Details/Package';
+
 
 @Component({
   selector: 'app-package-details',
@@ -8,191 +17,167 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PackageDetailsComponent implements OnInit {
 
-  // 🖼️ Image Viewer
+  packageDetails?: PackageDetails;
+
+  relatedPackages: Package[] = [];
+
+ mediaReviews: ReviewMedia[] = [];
+
+  loading = false;
+
+  // 🖼️ Viewer
   isViewerOpen = false;
   selectedImageIndex = 0;
 
-  // 📦 Package Details
-  packageDetails: any = {
-    id: 1,
+  constructor(
+    private route: ActivatedRoute,
+    private packagesService: PackagesService
+  ) {}
 
-    name: 'Cairo & Luxor Adventure',
+  ngOnInit(): void {
 
-    description:
-      'Discover the wonders of ancient Egypt with an unforgettable journey through Cairo, Luxor, temples, museums, Nile cruises, and historical landmarks.',
+    this.route.paramMap.subscribe(params => {
 
-    durationInDays: 7,
+      const id = Number(params.get('id'));
 
-    maxPeople: 20,
+      this.getPackageById(id);
 
-    rating: 4.8,
+    });
+  }
 
-    pricePerPerson: 12500,
+  getPackageById(id: number): void {
 
-    oldPricePerPerson: 15000,
+    this.loading = true;
 
-    discountPercentage: 15,
+    this.packagesService.getPackageDetails().subscribe({
 
-    images: [
-      'https://images.unsplash.com/photo-1572252009286-268acec5ca0a',
-      'https://images.unsplash.com/photo-1568322445389-f64ac2515020',
-      'https://images.unsplash.com/photo-1587135941948-670b381f08ce',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff',
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee'
-    ],
+      next: (res: PackageDetails[]) => {
 
-    // 🧳 Included Trips
-    trips: [
+        // 📦 Current Package
+        this.packageDetails =
+          res.find(p => p.id === id);
 
-      {
-        id: 1,
-        dayOrder: 1,
-        title: 'Cairo Pyramids Adventure',
-        city: 'Cairo',
-        location: 'Giza Pyramids & Egyptian Museum',
-        durationInDays: 2,
-        rating: 4.8,
-        coverImage:
-          'https://images.unsplash.com/photo-1568322445389-f64ac2515020'
+        // ⭐ Media Reviews
+        this.mediaReviews =
+          this.packageDetails?.mediaReviews || [];
+
+        // 📦 Related Packages
+        this.loadRelatedPackages();
+
+        console.log('Package Details:', this.packageDetails);
+
       },
 
-      {
-        id: 2,
-        dayOrder: 3,
-        title: 'Luxor Historical Tour',
-        city: 'Luxor',
-        location: 'Karnak & Valley of the Kings',
-        durationInDays: 3,
-        rating: 4.7,
-        coverImage:
-          'https://images.unsplash.com/photo-1587135941948-670b381f08ce'
+      error: (err) => {
+
+        console.error(
+          'Error fetching package details:',
+          err
+        );
+
+        this.loading = false;
+      }
+    });
+  }
+
+  // ====================================
+  // 📦 Load Related Packages
+  // ====================================
+
+  loadRelatedPackages(): void {
+
+    if (!this.packageDetails?.relatedPackagesIds?.length) {
+
+      this.loading = false;
+
+      return;
+    }
+
+    this.packagesService.getPackages().subscribe({
+
+      next: (res: Package[]) => {
+
+        this.relatedPackages = res.filter(pkg =>
+
+          this.packageDetails
+            ?.relatedPackagesIds
+            ?.includes(pkg.id)
+
+        );
+
+        this.loading = false;
+
+        console.log(
+          'Related Packages:',
+          this.relatedPackages
+        );
       },
 
-      {
-        id: 3,
-        dayOrder: 6,
-        title: 'Nile Cruise Experience',
-        city: 'Aswan',
-        location: 'Philae Temple & Nile Cruise',
-        durationInDays: 2,
-        rating: 4.9,
-        coverImage:
-          'https://images.unsplash.com/photo-1526772662000-3f88f10405ff'
+      error: (err) => {
+
+        console.error(
+          'Error fetching related packages:',
+          err
+        );
+
+        this.loading = false;
       }
 
-    ]
-  };
+    });
+  }
 
-  // ⭐ Reviews
-  reviews = [
-    {
-      user: 'Ahmed Ali',
-      rating: 5,
-      comment:
-        'Amazing experience! Everything was perfectly organized.'
-    },
+  // ====================================
+  // 🖼️ Viewer Functions
+  // ====================================
 
-    {
-      user: 'Sarah Johnson',
-      rating: 4.5,
-      comment:
-        'The Nile cruise and Luxor temples were unforgettable.'
-    },
+  openViewer(index: number): void {
 
-    {
-      user: 'Mohamed Hassan',
-      rating: 5,
-      comment:
-        'Highly recommended package for anyone visiting Egypt.'
-    }
-  ];
-
-  // 📦 Related Packages
-  relatedPackages = [
-
-    {
-      id: 2,
-      name: 'Red Sea Relax Package',
-      description:
-        'Luxury beaches and diving adventures in Hurghada.',
-      durationInDays: 5,
-      pricePerPerson: 8900,
-      rating: 4.6,
-      coverImage:
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'
-    },
-
-    {
-      id: 3,
-      name: 'Siwa Desert Escape',
-      description:
-        'Desert safari and magical oasis adventure.',
-      durationInDays: 4,
-      pricePerPerson: 6400,
-      rating: 4.9,
-      coverImage:
-        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee'
-    },
-
-    {
-      id: 4,
-      name: 'Aswan & Abu Simbel Tour',
-      description:
-        'Explore the beauty of Upper Egypt.',
-      durationInDays: 6,
-      pricePerPerson: 11200,
-      rating: 4.7,
-      coverImage:
-        'https://images.unsplash.com/photo-1526772662000-3f88f10405ff'
-    }
-
-  ];
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  // ===============================
-  // 🖼️ Image Viewer Functions
-  // ===============================
-
-  openViewer(index: number) {
     this.selectedImageIndex = index;
+
     this.isViewerOpen = true;
   }
 
-  closeViewer() {
+  closeViewer(): void {
+
     this.isViewerOpen = false;
   }
 
-  nextImage() {
+  nextImage(): void {
 
     if (
-      this.selectedImageIndex <
-      this.packageDetails.images.length - 1
-    ) {
+      !this.packageDetails ||
+      !this.packageDetails.images?.length
+    ) return;
 
-      this.selectedImageIndex++;
-
-    } else {
-
-      this.selectedImageIndex = 0;
-
-    }
+    this.selectedImageIndex =
+      (this.selectedImageIndex + 1) %
+      this.packageDetails.images.length;
   }
 
-  prevImage() {
+  prevImage(): void {
 
-    if (this.selectedImageIndex > 0) {
+    if (
+      !this.packageDetails ||
+      !this.packageDetails.images?.length
+    ) return;
 
-      this.selectedImageIndex--;
-
-    } else {
-
-      this.selectedImageIndex =
-        this.packageDetails.images.length - 1;
-
-    }
+    this.selectedImageIndex =
+      (
+        this.selectedImageIndex - 1 +
+        this.packageDetails.images.length
+      ) %
+      this.packageDetails.images.length;
   }
 
+  showBookingModal = false;
+
+openBooking(): void {
+
+  this.showBookingModal = true;
+}
+
+closeBooking(): void {
+
+  this.showBookingModal = false;
+}
 }

@@ -19,6 +19,8 @@ import { PackageLayoutComponent } from './Packages-page/package-layout/package-l
 import { PackageCardComponent } from './Packages-page/package-card/package-card.component';
 import { PackageFilterComponent } from './Packages-page/package-filter/package-filter.component';
 import { PackageDetailsComponent } from './Packages-page/package-details/package-details.component';
+import { BookingFormComponent } from './Booking-Page/booking-form/booking-form.component';
+import { BookingLayoutComponent } from './Booking-Page/booking-layout/booking-layout.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,10 @@ const routes: Routes = [
   {
     path: 'packages/:id',
     component: PackageDetailsComponent,
+  },
+  {
+    path: 'booking',
+    component: BookingLayoutComponent,
   }
 ];
 
@@ -60,6 +66,8 @@ const routes: Routes = [
     PackageCardComponent,
     PackageFilterComponent,
     PackageDetailsComponent,
+    BookingFormComponent,
+    BookingLayoutComponent,
     UserReviewCardComponent
   ],
   exports: [RouterModule],

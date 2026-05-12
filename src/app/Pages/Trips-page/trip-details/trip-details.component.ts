@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { TripsService } from '../../../core/Services/Trips.service';
 import { TripDetails } from '../../../core/models/Details/TripDetails';
+import { Trip } from '../../../core/models/Details/Trip';
 
 @Component({
   selector: 'app-trip-details',
@@ -13,6 +14,8 @@ import { TripDetails } from '../../../core/models/Details/TripDetails';
 export class TripDetailsComponent implements OnInit {
 
   trip?: TripDetails;
+
+  relatedTrips: Trip[] = [];
 
   loading = false;
 
@@ -27,13 +30,12 @@ export class TripDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
 
-  const id = Number(params.get('id'));
+      const id = Number(params.get('id'));
 
-  this.getTripById(id);
-});
-
+      this.getTripById(id);
+    });
   }
 
   getTripById(id: number) {
@@ -44,21 +46,56 @@ export class TripDetailsComponent implements OnInit {
 
       next: (res: TripDetails[]) => {
 
+        // current trip
         this.trip = res.find(t => t.id === id);
 
-        this.loading = false;
+       this.loadRelatedTrips();
+
+        // this.loading = false;
 
         console.log('Trip Details:', this.trip);
+
+        console.log('Related Trips:', this.relatedTrips);
       },
 
       error: (err) => {
 
-        console.error(err);
+        console.error('Error fetching trip details:', err);
 
-        this.loading = false;
+        // this.loading = false;
       }
     });
   }
+
+  loadRelatedTrips() {
+
+  if (!this.trip?.relatedTripsIds?.length){
+      this.loading = false;
+      return;
+  }
+
+    
+
+  this.tripsService.getTrips().subscribe({
+
+    next: (res: Trip[]) => {
+
+      this.relatedTrips = res.filter(t =>
+        this.trip?.relatedTripsIds?.includes(t.id)
+      );
+              this.loading = false;
+
+    },
+
+    error: (err) => {
+
+      console.error('Error fetching related trips:', err);
+              this.loading = false;
+
+    }
+
+  });
+}
 
   // ===== Image Viewer =====
 
@@ -76,7 +113,7 @@ export class TripDetailsComponent implements OnInit {
 
   nextImage() {
 
-    if (!this.trip) return;
+    if (!this.trip || !this.trip.images?.length) return;
 
     this.selectedImageIndex =
       (this.selectedImageIndex + 1) %
@@ -85,7 +122,7 @@ export class TripDetailsComponent implements OnInit {
 
   prevImage() {
 
-    if (!this.trip) return;
+    if (!this.trip || !this.trip.images?.length) return;
 
     this.selectedImageIndex =
       (this.selectedImageIndex - 1 + this.trip.images.length) %

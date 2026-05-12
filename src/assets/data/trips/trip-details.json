@@ -1,32 +1,259 @@
 [
   {
     "id": 1,
-    "title": "Luxor Historical Tour",
+    "title": "Luxor Historical Journey",
+    "description": "Explore ancient temples and tombs in Luxor with a guided historical experience.",
+    "location": "Karnak & Valley of the Kings",
     "city": "Luxor",
-    "location": "Karnak",
-    "price": 1500,
-    "rating": 4.7,
     "durationInDays": 3,
+    "createdBy": "admin",
+    "createdAt": "2026-01-01",
+
+    "price": 1500,
+    "oldPrice": 2000,
+    "rating": 4.7,
+    "coverImage": "https://images.unsplash.com/photo-1587135941948-670b381f08ce",
 
     "images": [
-      "https://images.unsplash.com/photo-1",
-      "https://images.unsplash.com/photo-2",
-      "https://images.unsplash.com/photo-3"
+      "https://images.unsplash.com/photo-1587135941948-670b381f08ce",
+      "https://images.unsplash.com/photo-1568322445389-f64ac2515020",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
     ],
 
-    "description": "Amazing trip to Luxor",
-
-    "itinerary": [
+    "itineraries": [
       {
+        "id": 1,
         "dayNumber": 1,
-        "title": "Arrival",
-        "description": "Check in hotel",
-        "image": "https://images.unsplash.com/photo-4",
+        "title": "Arrival in Luxor",
+        "description": "Pickup from airport and hotel check-in.",
+        "tripId": 1,
         "activities": [
-          "Hotel Check-in",
-          "Dinner"
-        ]
+          "Airport pickup",
+          "Hotel check-in",
+          "Welcome dinner"
+        ],
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "open": false
+      },
+      {
+        "id": 2,
+        "dayNumber": 2,
+        "title": "Karnak Temple Tour",
+        "description": "Visit Karnak and Luxor temples with a guide.",
+        "tripId": 1,
+        "activities": [
+          "Karnak Temple visit",
+          "Luxor Temple visit",
+          "Nile walk"
+        ],
+        "image": "https://images.unsplash.com/photo-1568322445389-f64ac2515020",
+        "open": false
       }
-    ]
+    ],
+
+    "contents": [
+      {
+        "id": 1,
+        "title": "Overview",
+        "description": "A deep historical journey through ancient Egypt.",
+        "languageCode": "en",
+        "tripId": 1
+      }
+    ],
+
+    "mediaReviews": [
+      {
+        "id": 1,
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "title": "Amazing Nile View"
+      },
+      {
+        "id": 2,
+        "type": "video",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "title": "Trip Highlights"
+      }
+    ],
+
+    "relatedTripsIds": [1, 3, 4]
+  },
+
+  {
+    "id": 2,
+    "title": "Aswan Nile Experience",
+    "description": "Relax in Aswan with a magical Nile cruise and temples visit.",
+    "location": "Philae Temple & Nile Cruise",
+    "city": "Aswan",
+    "durationInDays": 2,
+
+
+    "price": 1200,
+    "oldPrice": 1500,
+    "rating": 4.5,
+    "coverImage": "https://4kwallpapers.com/images/walls/thumbs_3t/26261.jpg",
+
+    "images": [
+      "https://4kwallpapers.com/images/walls/thumbs_3t/26261.jpg",
+    "https://images.unsplash.com/photo-1590080875515-8c9c4c6b2f5d",
+    "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+  ],
+
+    "itineraries": [
+      {
+
+        "dayNumber": 1,
+        "title": "Nile Cruise",
+        "description": "Enjoy a relaxing cruise on the Nile.",
+
+        "activities": [
+          "Boat ride",
+          "Sunset view"
+        ],
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        "open": false
+      }
+    ],
+
+    "contents": [
+      {
+
+        "title": "Overview",
+        "description": "Peaceful experience in Upper Egypt.",
+        "languageCode": "en"
+
+      }
+    ],
+
+    "mediaReviews": [
+      {
+
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "title": "Nile Sunset"
+      }
+    ],
+
+    "relatedTripsIds": [ 4]
+  },
+  {
+    "id": 3,
+    "title": "Cairo Cultural Highlights",
+    "description": "Discover Cairo's rich culture with visits to the Egyptian Museum and Khan El Khalili.",
+    "location": "Egyptian Museum & Khan El Khalili",
+    "city": "Cairo",
+    "durationInDays": 1,
+    "createdBy": "admin",
+    "createdAt": "2026-01-03",
+
+    "price": 800,
+    "oldPrice": 1000,
+    "rating": 4.3,
+    "coverImage": "https://images.unsplash.com/photo-1549924231-f129b911e442",
+
+    "images": [
+      "https://images.unsplash.com/photo-1549924231-f129b911e442",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    ],
+    "itineraries": [
+      {
+        "id": 1,
+        "dayNumber": 1,
+        "title": "Cultural Tour",
+        "description": "Visit the Egyptian Museum and explore Khan El Khalili market.",
+        "tripId": 3,
+        "activities": [
+          "Egyptian Museum visit",
+          "Khan El Khalili shopping"
+        ],
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "open": false
+      }
+    ],
+
+    "contents": [
+      {
+        "id": 1,
+        "title": "Overview",
+        "description": "Experience the vibrant culture of Cairo.",
+        "languageCode": "en",
+        "tripId": 3
+      }
+    ],
+
+    "mediaReviews": [
+      {
+        "id": 1,
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "title": "Cairo Market"
+      }
+    ],
+
+    "relatedTripsIds": [1, 2]
+  },
+  {
+    "id": 4,
+    "title": "Alexandria Coastal Escape",
+    "description": "Relax in Alexandria with a coastal escape to Mediterranean beaches and ancient sites.",
+    "location": "Mediterranean Coast & Ancient Sites",
+    "city": "Alexandria",
+    "durationInDays": 2,
+    "createdBy": "admin",
+    "createdAt": "2026-01-04",
+
+    "price": 900,
+    "oldPrice": 1200,
+    "rating": 4.4,
+    "coverImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+      "assets/images/horgada.jpg"
+    ],
+
+    "itineraries": [
+      {
+        "id": 1,
+        "dayNumber": 1,
+        "title": "Coastal Relaxation",
+        "description": "Enjoy the Mediterranean coast and visit ancient sites.",
+        "tripId": 4,
+        "activities": [
+          "Beach time",
+          "Ancient site visit"
+        ],
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "open": false
+      }
+
+],
+
+    "contents": [
+      {
+        "id": 1,
+        "title": "Overview",
+        "description": "A refreshing coastal escape in Alexandria.",
+        "languageCode": "en",
+        "tripId": 4
+      }
+    ],
+
+    "mediaReviews": [
+      {
+        "id": 1,
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "title": "Alexandria Coast"
+      }
+    ],
+
+    "relatedTripsIds": [1, 2, 3]
   }
 ]

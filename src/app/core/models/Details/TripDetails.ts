@@ -10,5 +10,5 @@ export interface TripDetails extends Trip {
   contents: TripContent[];
 
   mediaReviews?: ReviewMedia[];
-  relatedTrips?: Trip[];
+  relatedTripsIds?: number[];
 }
