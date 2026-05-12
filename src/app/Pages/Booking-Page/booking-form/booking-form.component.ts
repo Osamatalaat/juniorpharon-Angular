@@ -66,7 +66,7 @@ export class BookingFormComponent {
     const encodedMessage =
       encodeURIComponent(message);
 
-    const phoneNumber = '201111048402';
+    const phoneNumber = '201113306601';
 
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
