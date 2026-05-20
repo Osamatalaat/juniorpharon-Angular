@@ -255,5 +255,65 @@
     ],
 
     "relatedTripsIds": [1, 2, 3]
+  },
+    {
+    "id": 5,
+    "title": "Alexandria Coastal Escape",
+    "description": "Relax in Alexandria with a coastal escape to Mediterranean beaches and ancient sites.",
+    "location": "Mediterranean Coast & Ancient Sites",
+    "city": "Alexandria",
+    "durationInDays": 2,
+    "createdBy": "admin",
+    "createdAt": "2026-01-04",
+
+    "price": 900,
+    "oldPrice": 1200,
+    "rating": 4.4,
+    "coverImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+      "assets/images/horgada.jpg"
+    ],
+
+    "itineraries": [
+      {
+        "id": 1,
+        "dayNumber": 1,
+        "title": "Coastal Relaxation",
+        "description": "Enjoy the Mediterranean coast and visit ancient sites.",
+        "tripId": 4,
+        "activities": [
+          "Beach time",
+          "Ancient site visit"
+        ],
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "open": false
+      }
+
+],
+
+    "contents": [
+      {
+        "id": 1,
+        "title": "Overview",
+        "description": "A refreshing coastal escape in Alexandria.",
+        "languageCode": "en",
+        "tripId": 4
+      }
+    ],
+
+    "mediaReviews": [
+      {
+        "id": 1,
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "title": "Alexandria Coast"
+      }
+    ],
+
+    "relatedTripsIds": [1, 2, 3]
   }
 ]
