@@ -49,5 +49,17 @@
     "rating": 4.7,
     "tripCount": 3,
     "coverImage": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
-  }
+  },
+    {
+      "id": 5,
+      "name": "Alexandria & Mediterranean Gems",
+      "description": "Discover Alexandria's history, Mediterranean beaches, and coastal culture.",
+      "durationInDays": 5,
+      "pricePerPerson": 7800,
+      "oldPricePerPerson": 9000,
+      "discountPercentage": 13,
+      "rating": 4.5,
+      "tripCount": 2,
+      "coverImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    }
 ]
