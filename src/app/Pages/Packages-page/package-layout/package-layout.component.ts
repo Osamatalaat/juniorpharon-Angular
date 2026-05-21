@@ -104,10 +104,33 @@ export class PackageLayoutComponent implements OnInit {
     startDate: new Date('2026-09-12'),
     endDate: new Date('2026-09-18'),
 
-    isActive: true,
+      isActive: true,
 
-    coverImage:
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff'
+      coverImage:
+        'https://images.unsplash.com/photo-1526772662000-3f88f10405ff'
+    },
+    {
+      id: 5,
+      name: 'Alexandria & Mediterranean Cruise',
+      description:
+        'Discover the charm of Alexandria and enjoy a luxurious cruise along the Mediterranean coast.',
+
+      durationInDays: 8,
+      tripsCount: 6,
+      pricePerPerson: 13500,
+      oldPricePerPerson: 16000,
+      discountPercentage: 15,
+
+      rating: 4.8,
+
+      startDate: new Date('2026-10-05'),
+      endDate: new Date('2026-10-13'),
+
+      isActive: true,
+
+      coverImage:
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb'
+        
   }
 ];
 
