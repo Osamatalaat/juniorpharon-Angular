@@ -21,6 +21,7 @@ import { PackageFilterComponent } from './Packages-page/package-filter/package-f
 import { PackageDetailsComponent } from './Packages-page/package-details/package-details.component';
 import { BookingFormComponent } from './Booking-Page/booking-form/booking-form.component';
 import { BookingLayoutComponent } from './Booking-Page/booking-layout/booking-layout.component';
+import { HerooSectionComponent } from './Home-Page/heroo-section/heroo-section/heroo-section.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,7 @@ const routes: Routes = [
   declarations: [
     HomeComponent,
     HeroSectionComponent,
+    HerooSectionComponent,
     ExploreResortsComponent,
     ResortGuideSectionComponent,
     SpecialOffersComponent,
