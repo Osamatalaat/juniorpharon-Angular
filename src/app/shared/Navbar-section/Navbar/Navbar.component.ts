@@ -24,6 +24,22 @@ export class NavbarComponent implements OnInit {
   // Language Dropdown
   // =========================
   isLangOpen = false;
+  dayToursOpen = false;
+cities = [
+  { slug: 'cairo', key: 'CITIES.CAIRO' },
+  { slug: 'luxor', key: 'CITIES.LUXOR' },
+  { slug: 'aswan', key: 'CITIES.ASWAN' },
+  { slug: 'hurghada', key: 'CITIES.HURGHADA' },
+  { slug: 'sharm', key: 'CITIES.SHARM_EL_SHEIKH' },
+  { slug: 'alexandria', key: 'CITIES.ALEXANDRIA' },
+  { slug: 'marsa-alam', key: 'CITIES.MARSA_ALAM' },
+  { slug: 'dahab', key: 'CITIES.DAHAB' }
+];
+toggleDayTours() {
+
+  this.dayToursOpen = !this.dayToursOpen;
+
+}
 
   languages: Language[] = [
     {
