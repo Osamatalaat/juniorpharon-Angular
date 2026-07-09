@@ -1,0 +1,33 @@
+<nav
+  class="container mx-auto mt-6 mb-6 flex items-center gap-2 text-sm text-text-secondary"
+>
+
+  <a
+    routerLink="/"
+    class="hover:text-blue transition"
+  >
+    Home
+  </a>
+
+  <i class="fa-solid fa-chevron-right text-xs"></i>
+
+  <a
+    routerLink="/trips"
+    class="hover:text-blue transition"
+  >
+    Trips
+  </a>
+
+  <ng-container *ngIf="pageTitle">
+
+    <i class="fa-solid fa-chevron-right text-xs"></i>
+
+    <span class="font-semibold text-blue">
+
+      {{ pageTitle }}
+
+    </span>
+
+  </ng-container>
+
+</nav>

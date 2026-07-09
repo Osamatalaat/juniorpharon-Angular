@@ -1,0 +1,76 @@
+<div
+  class="container mx-auto bg-white border border-border rounded-2xl shadow-sm p-5 mb-8
+         flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+
+  <!-- Left -->
+  <div class="flex flex-col lg:flex-row lg:items-center gap-6 flex-1">
+
+    <!-- Results -->
+    <div class="shrink-0">
+      <h2 class="text-2xl font-bold text-text-primary">
+        {{ totalTrips }} Trips Found
+      </h2>
+
+      <p class="text-text-secondary text-sm">
+        Explore the best destinations across Egypt
+      </p>
+    </div>
+
+    <!-- Divider -->
+    <div class="hidden lg:block h-12 w-px bg-border"></div>
+
+    <!-- Search -->
+    <div class="relative flex-1">
+
+      <i
+        class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
+      </i>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        (input)="onSearchChange()"
+        placeholder="Search by title, city or destination..."
+        class="w-full
+               pl-12 pr-4 py-3
+               rounded-xl
+               border border-border
+               focus:outline-none
+               focus:ring-2
+               focus:ring-blue
+               focus:border-blue
+               transition" />
+
+    </div>
+
+  </div>
+
+  <!-- Right -->
+  <div class="flex items-center gap-3">
+
+    <span class="text-sm font-medium text-text-secondary whitespace-nowrap">
+      Sort By
+    </span>
+
+    <select
+      [(ngModel)]="sortBy"
+      (change)="onSortChange()"
+      class="min-w-[220px]
+             border border-border
+             rounded-xl
+             px-4 py-3
+             focus:outline-none
+             focus:ring-2
+             focus:ring-blue">
+
+      <option value="popular">Most Popular</option>
+      <option value="lowPrice">Price: Low to High</option>
+      <option value="highPrice">Price: High to Low</option>
+      <option value="rating">Highest Rated</option>
+      <option value="newest">Newest</option>
+
+    </select>
+
+  </div>
+
+</div>

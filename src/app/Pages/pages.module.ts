@@ -22,6 +22,9 @@ import { PackageDetailsComponent } from './Packages-page/package-details/package
 import { BookingFormComponent } from './Booking-Page/booking-form/booking-form.component';
 import { BookingLayoutComponent } from './Booking-Page/booking-layout/booking-layout.component';
 import { HerooSectionComponent } from './Home-Page/heroo-section/heroo-section/heroo-section.component';
+import { TripsHeroComponent } from './Trips-page/trips-hero/trips-hero.component';
+import { TripsToolbarComponent } from './Trips-page/trips-toolbar/trips-toolbar.component';
+import { TripsBreadcrumbComponent } from './Trips-page/trips-breadcrumb/trips-breadcrumb.component';
 
 const routes: Routes = [
   {
@@ -64,6 +67,9 @@ const routes: Routes = [
     FilterSidebarComponent,
     TripCardComponent,
     TripDetailsComponent,
+    TripsHeroComponent,
+    TripsBreadcrumbComponent,
+    TripsToolbarComponent,
     PackageLayoutComponent,
     PackageCardComponent,
     PackageFilterComponent,

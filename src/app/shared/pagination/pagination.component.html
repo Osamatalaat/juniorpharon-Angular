@@ -1,0 +1,78 @@
+<div class="mt-12">
+
+  <!-- Showing Results -->
+  <div class="flex justify-center mb-5">
+    <p class="text-sm text-text-secondary">
+      Page
+      <span class="font-semibold text-blue">{{ currentPage }}</span>
+      of
+      <span class="font-semibold">{{ totalPages }}</span>
+    </p>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center">
+
+    <div
+      class="inline-flex items-center bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
+
+      <!-- Previous -->
+
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="isFirstPage"
+        class="cursor-pointer flex items-center gap-2 px-5 py-3 border-r border-border
+               text-text-secondary
+               hover:bg-blue hover:text-white
+               disabled:opacity-40 disabled:cursor-not-allowed
+               transition">
+
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+
+        <span class="hidden sm:block">
+          Previous
+        </span>
+
+      </button>
+
+      <!-- Page Numbers -->
+
+      <button
+        *ngFor="let page of pages"
+        (click)="changePage(page)"
+        class="cursor-pointer w-12 h-12 text-sm font-semibold transition-all duration-300"
+
+        [ngClass]="
+        currentPage === page
+        ? 'bg-blue text-white shadow-inner'
+        : 'text-text-primary hover:bg-blue-light hover:text-blue'
+      ">
+
+        {{ page }}
+
+      </button>
+
+      <!-- Next -->
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="isLastPage"
+        class="cursor-pointer flex items-center gap-2 px-5 py-3 border-l border-border
+               text-text-secondary
+               hover:bg-blue hover:text-white
+               disabled:opacity-40 disabled:cursor-not-allowed
+               transition">
+
+        <span class="hidden sm:block">
+          Next
+        </span>
+
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

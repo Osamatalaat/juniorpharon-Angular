@@ -1,55 +1,110 @@
-<!-- Button to toggle filter on mobile -->
+<!-- Mobile Filter Button -->
 <div class="md:hidden mb-4">
   <button
     (click)="toggleFilter()"
-    class="w-full bg-dark-teal text-white font-semibold p-3 rounded-lg hover:bg-burnt-orange transition-all duration-300"
+    class="w-full bg-blue text-white font-semibold py-3 rounded-xl hover:bg-blue-hover transition-all duration-300 shadow-md"
   >
+    <i class="fa-solid fa-filter mr-2"></i>
     {{ showFilter ? "Hide Filters" : "Show Filters" }}
   </button>
 </div>
 
-<!-- Sidebar content -->
+<!-- Sidebar -->
 <div
   *ngIf="showFilter || isDesktop"
-  class="p-6 bg-white shadow-lg rounded-xl space-y-4 sticky top-6 self-start"
+  class="sticky top-24 self-start bg-white border border-border rounded-2xl shadow-lg p-6 space-y-6"
 >
-  <h3 class="font-bold text-xl text-dark-teal mb-4 border-b pb-2">
-    Filter Trips
-  </h3>
+  <!-- Header -->
+  <div class="flex items-center gap-3 border-b border-border pb-5">
+    <div
+      class="w-12 h-12 rounded-xl bg-blue-light flex items-center justify-center"
+    >
+      <i class="fa-solid fa-sliders text-blue text-xl"></i>
+    </div>
 
-  <input
-    type="text"
-    placeholder="Location"
-    [(ngModel)]="location"
-    class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-teal placeholder-gray-400"
-  />
+    <div>
+      <h3 class="text-xl font-bold text-text-primary">Filter Trips</h3>
 
-  <input
-    type="text"
-    placeholder="City"
-    [(ngModel)]="city"
-    class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-teal placeholder-gray-400"
-  />
-  <div class="flex flex-col gap-2">
+      <p class="text-sm text-text-secondary">Find your perfect tour</p>
+    </div>
+  </div>
 
+  <!-- ================= LOCATION ================= -->
 
-    <div class="w-full">
-      <label class="text-gray-700 font-medium mb-2 block ">
-        Price Range: {{ minPrice }} - {{ maxPrice }}
+  <div class="border-b border-border pb-6">
+    <h4 class="flex items-center gap-2 text-text-primary font-semibold mb-4">
+      <i class="fa-solid fa-location-dot text-blue"></i>
+
+      Location
+    </h4>
+
+    <select
+      [(ngModel)]="selectedCountry"
+      (change)="onCountryChange()"
+      class="w-full border border-border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue"
+    >
+      <option value="">Select Country</option>
+
+      <option *ngFor="let country of countries" [value]="country.value">
+        {{ country.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- ================= CITIES ================= -->
+
+  <div class="border-b border-border pb-6">
+    <h4 class="flex items-center gap-2 text-text-primary font-semibold mb-4">
+      <i class="fa-solid fa-city text-blue"></i>
+
+      Cities
+    </h4>
+
+    <div class="space-y-2 max-h-52 overflow-auto pr-2">
+      <label
+        *ngFor="let city of cities"
+        [for]="city"
+        class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-light transition cursor-pointer"
+      >
+        <input
+          type="checkbox"
+          [id]="city"
+          (change)="toggleCity(city, $event)"
+          class="accent-light-orange w-4 h-4"
+        />
+
+        <span class="text-text-primary">
+          {{ city }}
+        </span>
       </label>
+    </div>
+  </div>
 
-      <div class="relative h-2 my-4">
-        <!-- Base Track -->
+  <!-- ================= PRICE ================= -->
+
+  <div class="border-b border-border pb-6">
+    <h4 class="flex items-center justify-between mb-5">
+      <span class="flex items-center gap-2 font-semibold text-text-primary">
+        <i class="fa-solid fa-money-bill-wave text-blue"></i>
+
+        Price Range
+      </span>
+
+      <span class="text-blue font-semibold">
+        {{ minPrice }} - {{ maxPrice }}
+      </span>
+    </h4>
+
+    <div class="bg-surface border border-border rounded-xl p-5">
+      <div class="relative h-2">
         <div class="absolute w-full h-2 bg-gray-300 rounded"></div>
 
-        <!-- Selected Range -->
         <div
-          class="absolute h-2 bg-burnt-orange rounded"
+          class="absolute h-2 bg-blue rounded"
           [style.left.%]="(minPrice / 1000) * 100"
           [style.width.%]="((maxPrice - minPrice) / 1000) * 100"
         ></div>
 
-        <!-- Min Slider -->
         <input
           type="range"
           [min]="0"
@@ -59,7 +114,6 @@
           class="range-slider"
         />
 
-        <!-- Max Slider -->
         <input
           type="range"
           [min]="0"
@@ -72,36 +126,145 @@
     </div>
   </div>
 
-  <input
-    type="number"
-    placeholder="Duration in Days"
-    [(ngModel)]="durationInDays"
-    class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-teal placeholder-gray-400"
-  />
+  <!-- ================= Duration ================= -->
 
-  <input
-    type="number"
-    placeholder="Rating"
-    [(ngModel)]="rating"
-    class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-teal placeholder-gray-400"
-  />
+  <div class="border-b border-border py-6">
+    <h4 class="font-semibold text-text-primary mb-4 flex items-center gap-2">
+      <i class="fa-regular fa-clock text-blue"></i>
+      Duration
+    </h4>
 
-  <div class="flex items-center gap-2 mt-2">
-    <input
-      type="checkbox"
-      [(ngModel)]="descending"
-      id="descending"
-      class="w-4 h-4 text-dark-teal border-gray-300 rounded focus:ring-2 focus:ring-dark-teal"
-    />
-    <label for="descending" class="text-gray-700 font-medium"
-      >Descending Order</label
-    >
+    <div class="space-y-3">
+      <label
+        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
+      >
+        <input type="checkbox" id="1" class="accent-blue w-4 h-4" />
+
+        <span class="text-text-primary">1 Day</span>
+      </label>
+
+      <label
+        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
+      >
+        <input type="checkbox" id="2" class="accent-blue w-4 h-4" />
+
+        <span class="text-text-primary">2 - 3 Days</span>
+      </label>
+
+      <label
+        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
+      >
+        <input type="checkbox" id="4" class="accent-blue w-4 h-4" />
+
+        <span class="text-text-primary">4 - 7 Days</span>
+      </label>
+
+      <label
+        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
+      >
+        <input type="checkbox" id="8" class="accent-blue w-4 h-4" />
+
+        <span class="text-text-primary">More than 7 Days</span>
+      </label>
+    </div>
   </div>
 
-  <button
-    (click)="applyFilter()"
-    class="cursor-pointer w-full bg-dark-teal text-white font-semibold p-3 rounded-lg hover:bg-burnt-orange transition-all duration-300 shadow-md hover:shadow-lg"
-  >
-    Apply Filters
-  </button>
+  <!-- ================= Rating ================= -->
+
+  <div class="border-b border-border py-6">
+    <h4 class="font-semibold text-text-primary mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-star text-star"></i>
+
+      Rating
+    </h4>
+
+    <div class="space-y-2">
+      <label
+        class="flex justify-between items-center hover:bg-blue-light rounded-lg px-3 py-2 cursor-pointer transition"
+      >
+        <div class="flex items-center gap-3">
+          <input type="checkbox" class="accent-blue w-4 h-4" />
+
+          <div class="flex text-star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+
+        <span class="text-text-secondary text-sm"> 5.0 </span>
+      </label>
+
+      <label
+        class="flex justify-between items-center hover:bg-blue-light rounded-lg px-3 py-2 cursor-pointer transition"
+      >
+        <div class="flex items-center gap-3">
+          <input type="checkbox" class="accent-blue w-4 h-4" />
+
+          <div class="flex text-star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+        </div>
+        <span class="text-text-secondary text-sm"> 4.0 & Up </span>
+      </label>
+
+      <label
+        class="flex justify-between items-center hover:bg-blue-light rounded-lg px-3 py-2 cursor-pointer transition"
+      >
+        <div class="flex items-center gap-3">
+          <input type="checkbox" class="accent-blue w-4 h-4" />
+
+          <div class="flex text-star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+        </div>
+        <span class="text-text-secondary"> 3.0 & Up </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ================= Sort ================= -->
+
+  <div class="py-6 border-b border-border">
+    <label class="flex items-center gap-3 cursor-pointer">
+      <input
+        type="checkbox"
+        [(ngModel)]="descending"
+        id="descending"
+        class="accent-blue w-5 h-5"
+      />
+
+      <span class="font-medium text-text-primary"> Descending Order </span>
+    </label>
+  </div>
+
+  <!-- ================= Buttons ================= -->
+
+  <div class="pt-6 space-y-3">
+    <button
+      (click)="applyFilter()"
+      class="w-full bg-blue hover:bg-blue-hover text-white py-3 rounded-xl font-semibold shadow-md hover:shadow-xl transition"
+    >
+      <i class="fa-solid fa-magnifying-glass mr-2"></i>
+
+      Apply Filters
+    </button>
+
+    <button
+      class="w-full border border-border hover:border-blue hover:bg-blue-light text-text-primary py-3 rounded-xl font-medium transition"
+    >
+      <i class="fa-solid fa-rotate-left mr-2"></i>
+
+      Reset Filters
+    </button>
+  </div>
 </div>

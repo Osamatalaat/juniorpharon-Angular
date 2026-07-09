@@ -12,18 +12,33 @@
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background: #D66A2E;
+  background: #0160c8;
   cursor: pointer;
   pointer-events: auto;
   border: 2px solid white;
-  box-shadow: 0 0 0 2px #D66A2E;
+  box-shadow: 0 0 0 2px #0160c8;
 }
 
 .range-slider::-moz-range-thumb {
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background: #D66A2E;
+  background: #0160c8;
   cursor: pointer;
   pointer-events: auto;
+}
+.range-slider:focus {
+  outline: none;
+}
+
+.range-slider:focus::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 2px #F59E0B,
+    0 0 0 6px rgba(245, 158, 11, 0.25);
+}
+
+.range-slider:focus::-moz-range-thumb {
+  box-shadow:
+    0 0 0 2px #F59E0B,
+    0 0 0 6px rgba(245, 158, 11, 0.25);
 }

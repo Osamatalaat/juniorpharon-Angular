@@ -17,6 +17,8 @@ import { CustomTranslateLoader } from './custom-translate-loader';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './Navbar-section/Navbar/Navbar.component';
 import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { PaginationComponent } from './pagination/pagination.component';
 // PrimeNG Modules
 // import { MenuModule } from 'primeng/menu';
 // import { ButtonModule } from 'primeng/button';
@@ -50,7 +52,9 @@ import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    DayTourComponent
+    DayTourComponent,
+    PaginationComponent,
+    BreadcrumbComponent
   ],
 
   exports: [
@@ -60,13 +64,14 @@ import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
     RouterModule,
     AccountLayoutComponent,
     TranslateModule,
+    PaginationComponent,
     // MenuModule,
     // ButtonModule,
 
     // BrowserAnimationsModule,
     NavbarComponent,
     FooterComponent,
-    DayTourComponent
+
 
   ]
 })

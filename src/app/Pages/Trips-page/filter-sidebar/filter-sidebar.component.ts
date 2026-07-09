@@ -21,10 +21,79 @@ export class FilterSidebarComponent implements OnInit {
   durationInDays?: number;
   rating?: number;
   descending: boolean = false;
+  countries = [
+  {
+    name: 'Egypt',
+    value: 'egypt',
+    cities: [
+      'Cairo',
+      'Giza',
+      'Luxor',
+      'Aswan',
+      'Alexandria',
+      'Hurghada',
+      'Sharm El Sheikh'
+    ]
+  },
+
+  {
+    name: 'Saudi Arabia',
+    value: 'saudi',
+    cities: [
+      'Riyadh',
+      'Jeddah',
+      'Makkah',
+      'Madinah'
+    ]
+  },
+
+  {
+    name: 'UAE',
+    value: 'uae',
+    cities: [
+      'Dubai',
+      'Abu Dhabi',
+      'Sharjah'
+    ]
+  }
+];
 
   ngOnInit(): void {
     this.checkScreenWidth();
   }
+
+  selectedCountry = '';
+
+cities: string[] = [];
+
+selectedCities: string[] = [];
+
+onCountryChange() {
+
+  const country = this.countries.find(
+      x => x.value === this.selectedCountry
+  );
+
+  this.cities = country?.cities || [];
+
+  this.selectedCities = [];
+
+}
+
+toggleCity(city: string, event: any) {
+
+  if(event.target.checked){
+
+      this.selectedCities.push(city);
+
+  }else{
+
+      this.selectedCities =
+          this.selectedCities.filter(x=>x!==city);
+
+  }
+
+}
 
   checkScreenWidth() {
     // Angular SSR safety

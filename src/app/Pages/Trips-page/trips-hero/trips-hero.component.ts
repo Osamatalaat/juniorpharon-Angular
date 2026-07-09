@@ -1,13 +1,13 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hero-section',
-  templateUrl: './hero-section.component.html',
-  styleUrls: ['./hero-section.component.css'],
-  standalone: false
+  selector: 'app-trips-hero',
+  templateUrl: './trips-hero.component.html',
+  styleUrls: ['./trips-hero.component.css'],
+  standalone: false,
 })
-export class HeroSectionComponent implements OnInit , OnDestroy {
+export class TripsHeroComponent implements OnInit, OnDestroy {
+
   currentSlide = 0;
 
   isFading = false;
@@ -109,5 +109,3 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
   }
 
 }
-
-

@@ -9,10 +9,9 @@ import { Trip } from '../../../core/models/Details/Trip';
   selector: 'app-trip-details',
   templateUrl: './trip-details.component.html',
   styleUrls: ['./trip-details.component.css'],
-  standalone: false
+  standalone: false,
 })
 export class TripDetailsComponent implements OnInit {
-
   trip?: TripDetails;
 
   relatedTrips: Trip[] = [];
@@ -25,13 +24,11 @@ export class TripDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private tripsService: TripsService
+    private tripsService: TripsService,
   ) {}
 
   ngOnInit(): void {
-
-    this.route.paramMap.subscribe(params => {
-
+    this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
 
       this.getTripById(id);
@@ -39,17 +36,21 @@ export class TripDetailsComponent implements OnInit {
   }
 
   getTripById(id: number) {
-
     this.loading = true;
 
     this.tripsService.getTripDetails().subscribe({
-
       next: (res: TripDetails[]) => {
-
         // current trip
-        this.trip = res.find(t => t.id === id);
+        this.trip = res.find((t) => t.id === id);
 
-       this.loadRelatedTrips();
+        if (!this.trip) {
+          this.loading = false;
+          return;
+        }
+
+        // this.loadRelatedTrips();
+
+        this.loadRelatedTrips();
 
         // this.loading = false;
 
@@ -59,69 +60,54 @@ export class TripDetailsComponent implements OnInit {
       },
 
       error: (err) => {
-
         console.error('Error fetching trip details:', err);
 
         // this.loading = false;
-      }
+      },
     });
   }
 
   loadRelatedTrips() {
-
-  if (!this.trip?.relatedTripsIds?.length){
+    if (!this.trip?.relatedTripsIds?.length) {
       this.loading = false;
       return;
-  }
-
-    
-
-  this.tripsService.getTrips().subscribe({
-
-    next: (res: Trip[]) => {
-
-      this.relatedTrips = res.filter(t =>
-        this.trip?.relatedTripsIds?.includes(t.id)
-      );
-              this.loading = false;
-
-    },
-
-    error: (err) => {
-
-      console.error('Error fetching related trips:', err);
-              this.loading = false;
-
     }
 
-  });
-}
+    this.tripsService.getTrips().subscribe({
+      next: (res: Trip[]) => {
+        this.relatedTrips = res.filter((t) =>
+          this.trip?.relatedTripsIds?.includes(t.id),
+        );
+        this.loading = false;
+      },
+
+      error: (err) => {
+        console.error('Error fetching related trips:', err);
+        this.loading = false;
+      },
+    });
+  }
 
   // ===== Image Viewer =====
 
   openViewer(index: number) {
-
     this.selectedImageIndex = index;
 
     this.isViewerOpen = true;
   }
 
   closeViewer() {
-
     this.isViewerOpen = false;
   }
 
   nextImage() {
-
     if (!this.trip || !this.trip.images?.length) return;
 
     this.selectedImageIndex =
-      (this.selectedImageIndex + 1) %
-      this.trip.images.length;
+      (this.selectedImageIndex + 1) % this.trip.images.length;
   }
 
   prevImage() {
-
     if (!this.trip || !this.trip.images?.length) return;
 
     this.selectedImageIndex =

@@ -1,93 +1,120 @@
 <div
-  class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300
-         border border-creamy-gray hover:border-dark-teal
-         overflow-hidden group cursor-pointer">
-
+  (click)="goToDetails()"
+  class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300
+         border border-border hover:border-blue
+         overflow-hidden group cursor-pointer"
+>
   <!-- 🖼️ Image -->
   <div class="relative overflow-hidden">
+
     <img
       [src]="trip?.coverImage || 'https://via.placeholder.com/400'"
       alt="trip"
-      class="w-full h-52 object-cover transition duration-300 group-hover:scale-105">
+      class="w-full h-52 object-cover transition duration-500 group-hover:scale-105"
+    />
+
+    <!-- Overlay -->
+    <div
+      class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300">
+    </div>
 
     <!-- Discount -->
-    <div *ngIf="trip?.discount"
-         class="absolute top-3 right-3 bg-burnt-orange text-white text-xs px-3 py-1 rounded-full font-bold">
+    <div
+      *ngIf="trip?.discount"
+      class="absolute top-3 right-3 bg-light-orange text-white text-xs px-3 py-1 rounded-full font-bold shadow">
+
       -{{ trip.discount }}%
+
     </div>
+
   </div>
 
   <!-- 📄 Content -->
-  <div class="p-4">
+  <div class="p-5">
 
     <!-- Title -->
-    <h3 class="text-dark-gray font-bold text-lg mb-3">
+    <h3
+      class="text-text-primary font-bold text-lg mb-3 line-clamp-2 group-hover:text-blue transition-colors duration-300">
+
       {{ trip?.title || 'Trip Title' }}
+
     </h3>
 
-    <!-- 📊 Info Row -->
-    <div class="flex items-center justify-between text-sm mb-4">
+    <!-- Info -->
+    <div class="flex items-center justify-between text-sm mb-5">
 
       <!-- City -->
-      <div class="flex items-center gap-1 text-olive-green">
+      <div class="flex items-center gap-1 text-blue">
+
         <i class="fas fa-map-marker-alt"></i>
+
         <span>{{ trip?.city }}</span>
+
       </div>
 
       <!-- Duration -->
-      <div class="flex items-center gap-1 text-sand-brown">
+      <div class="flex items-center gap-1 text-text-secondary">
+
         <i class="far fa-clock"></i>
-        <span>{{ trip?.durationInDays }} {{ 'TRIP_LIST.DURATION' | translate }}</span>
+
+        <span>
+          {{ trip?.durationInDays }}
+          {{ 'TRIP_LIST.DURATION' | translate }}
+        </span>
+
       </div>
 
       <!-- Rating -->
-      <div class="flex items-center gap-1 text-gold-highlight">
-        <i class="fas fa-star"></i>
-        <span>{{ trip?.rating || 4.5 }}</span>
+      <div class="flex items-center gap-1">
+
+        <i class="fas fa-star text-star"></i>
+
+        <span class="text-text-primary font-semibold">
+
+          {{ trip?.rating || 4.5 }}
+
+        </span>
+
       </div>
 
     </div>
 
-    <!-- 💰 Price -->
-    <div class="flex items-center gap-3 mb-4">
+    <!-- Price -->
+    <div class="flex items-center gap-3 mb-5">
 
-      <!-- New Price -->
-      <span class="text-dark-teal font-bold text-xl">
+      <span class="text-blue font-bold text-2xl">
+
         {{ trip?.price }} EGP
+
       </span>
 
-      <!-- Old Price -->
-      <span *ngIf="trip?.oldPrice"
-            class="text-gray-400 line-through text-sm">
+      <span
+        *ngIf="trip?.oldPrice"
+        class="text-text-muted line-through">
+
         {{ trip.oldPrice }} EGP
+
       </span>
 
     </div>
 
-    <!-- 🔘 Buttons -->
-    <div class="flex gap-3">
+    <!-- Bottom Link -->
+    <div
+      class="pt-4 border-t border-border flex items-center justify-between">
 
-      <!-- Book -->
- <button
-  class="flex-1  bg-light-gold hover:bg-burnt-orange hover:text-white text-burnt-orange border-burnt-orange py-2 rounded-lg font-semibold
-         transition-shadow duration-300
-         cursor-pointer flex items-center justify-center gap-2
-         hover:scale-105 hover:shadow-lg hover:bg-opacity-90">
+      <span
+        class="text-blue font-semibold transition-colors duration-300 group-hover:text-blue-hover">
 
-  <i class="fas fa-calendar-check transition-transform duration-300 hover:translate-x-1"></i>
-  {{ 'TRIP_LIST.BOOK_NOW' | translate }}
-</button>
-
-      <!-- Details -->
-      <button
-        (click)="goToDetails()"
-        class="flex-1 border border-dark-teal text-dark-teal py-2 rounded-lg font-semibold
-               hover:bg-dark-teal hover:text-white transition cursor-pointer flex items-center justify-center gap-2">
-        <i class="fas fa-info-circle"></i>
         {{ 'TRIP_LIST.DETAILS' | translate }}
-      </button>
+
+      </span>
+
+      <i
+        class="fas fa-arrow-right text-blue transition-all duration-300 group-hover:translate-x-2 group-hover:text-blue-hover">
+      </i>
 
     </div>
 
   </div>
+
 </div>

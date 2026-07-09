@@ -1,0 +1,47 @@
+<nav
+  class="container mx-auto mt-8 mb-6 text-sm text-text-secondary"
+  aria-label="Breadcrumb"
+>
+  <ol class="flex items-center gap-2 flex-wrap">
+
+    <!-- Home -->
+    <li>
+      <a
+        routerLink="/"
+        class="hover:text-blue transition"
+      >
+        Home
+      </a>
+    </li>
+
+    <li>
+      <i class="fa-solid fa-chevron-right text-xs text-text-muted"></i>
+    </li>
+
+    <!-- Trips -->
+    <li>
+      <a
+        routerLink="/trips"
+        class="hover:text-blue transition"
+      >
+        Trips
+      </a>
+    </li>
+
+    <!-- Current Page -->
+    <ng-container *ngIf="pageTitle">
+
+      <li>
+        <i class="fa-solid fa-chevron-right text-xs text-text-muted"></i>
+      </li>
+
+      <li
+        class="text-blue font-semibold"
+      >
+        {{ pageTitle }}
+      </li>
+
+    </ng-container>
+
+  </ol>
+</nav>

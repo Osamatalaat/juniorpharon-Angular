@@ -1,19 +1,46 @@
-<!-- <app-Navbar></app-Navbar> -->
+<app-trips-hero></app-trips-hero>
 
-<div class="flex flex-col md:flex-row p-6 gap-6">
+<app-trips-breadcrumb
+  pageTitle="All Trips">
+</app-trips-breadcrumb>
+
+<app-trips-toolbar
+    [totalTrips]="trips.length"
+    [(searchText)]="searchText"
+    [(sortBy)]="sortBy"
+    (searchChanged)="onSearchChange()"
+    (sortChanged)="onSortChange()">
+</app-trips-toolbar>
+
+<div class="flex flex-col md:flex-row p-6 gap-6 container mx-auto">
 
   <!-- Sidebar -->
   <div class="w-full md:w-1/4">
-    <app-filter-sidebar (filterApplied)="applyFilter($event)"></app-filter-sidebar>
+    <app-filter-sidebar
+      (filterApplied)="applyFilter($event)">
+    </app-filter-sidebar>
   </div>
 
-  <!-- Trips Grid -->
+  <!-- Trips -->
   <div class="flex-1">
+
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <app-trip-card *ngFor="let trip of trips" [trip]="trip"></app-trip-card>
+
+      <app-trip-card
+        *ngFor="let trip of paginatedTrips"
+        [trip]="trip">
+      </app-trip-card>
+
     </div>
+
+    <!-- Pagination -->
+    <app-pagination
+      class="mt-10 block"
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChanged)="onPageChanged($event)">
+    </app-pagination>
+
   </div>
 
 </div>
-
-<!-- <app-footer></app-footer> -->
