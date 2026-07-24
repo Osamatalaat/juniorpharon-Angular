@@ -1,0 +1,169 @@
+<!-- Mobile backdrop -->
+<div
+  *ngIf="isOpen"
+  (click)="closeSidebar()"
+  class="fixed inset-0 z-30 bg-slate-900/40 backdrop-blur-[2px] lg:hidden transition-opacity duration-300"
+></div>
+
+<!-- Sidebar -->
+<aside
+  class="fixed top-0 left-0 z-40 h-full w-64 bg-white border-r border-border flex flex-col transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:h-screen lg:transition-[width] lg:duration-300 lg:translate-x-0"
+  [class.-translate-x-full]="!isOpen"
+  [class.translate-x-0]="isOpen"
+  [class.lg:w-64]="isOpen"
+  [class.lg:w-0]="!isOpen"
+  [class.lg:border-r-0]="!isOpen"
+  [class.lg:overflow-hidden]="!isOpen"
+>
+  <div class="flex flex-col h-full w-64">
+    <!-- Brand -->
+    <div
+      class="flex items-center gap-3 h-16 px-5 border-b border-border shrink-0"
+    >
+      <div
+        class="flex items-center justify-center w-9 h-9 rounded-lg bg-blue text-white font-display font-semibold text-sm shrink-0"
+      >
+        A
+      </div>
+      <span
+        class="font-display text-base font-semibold text-text-primary tracking-tight"
+      >
+        AdminHub
+      </span>
+    </div>
+
+    <!-- Nav items -->
+    <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+      <ng-container *ngFor="let item of menuItems">
+        <!-- Leaf item -->
+        <a
+          *ngIf="!item.children"
+          [routerLink]="item.route"
+          routerLinkActive="bg-blue-light text-blue"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-blue-light hover:text-blue transition-colors duration-200 cursor-pointer"
+        >
+          <span
+            class="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-0.5 rounded-r bg-blue scale-y-0 group-[.bg-blue-light]:scale-y-100 transition-transform duration-200"
+          >
+          </span>
+
+          <svg
+            class="w-5 h-5 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              [attr.d]="item.icon"
+            />
+          </svg>
+
+          <span class="flex-1 truncate">{{ item.label }}</span>
+
+          <span
+            *ngIf="item.badge"
+            class="text-[11px] font-semibold rounded-full px-1.5 py-0.5 leading-none text-white"
+            [class.bg-blue]="item.badgeColor !== 'orange'"
+            [class.bg-light-orange]="item.badgeColor === 'orange'"
+          >
+            {{ item.badge }}
+          </span>
+        </a>
+
+        <!-- Group with children -->
+        <div *ngIf="item.children">
+          <button
+            (click)="toggleGroup(item)"
+            class="w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200 cursor-pointer"
+            [class.text-blue]="isGroupActive(item)"
+            [class.bg-blue-light]="isGroupActive(item)"
+            [class.text-text-secondary]="!isGroupActive(item)"
+            [class.hover:bg-blue-light]="!isGroupActive(item)"
+            [class.hover:text-blue]="!isGroupActive(item)"
+          >
+            <svg
+              class="w-5 h-5 shrink-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                [attr.d]="item.icon"
+              />
+            </svg>
+
+            <span class="flex-1 text-left truncate">{{ item.label }}</span>
+
+            <svg
+              class="w-4 h-4 shrink-0 transition-transform duration-200"
+              [class.rotate-90]="item.expanded"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          <!-- Sub-items -->
+          <div
+            class="overflow-hidden transition-all duration-300 ease-in-out"
+            [style.max-height]="item.expanded ? '200px' : '0px'"
+          >
+            <div class="pl-11 pr-2 py-1 space-y-1">
+              <a
+                *ngFor="let child of item.children"
+                [routerLink]="child.route"
+                routerLinkActive="text-blue font-medium"
+                class="block rounded-lg px-3 py-2 text-sm text-text-secondary hover:text-blue transition-colors duration-200 cursor-pointer"
+              >
+                {{ child.label }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </nav>
+
+    <!-- Footer / mini profile -->
+    <div class="border-t border-border p-3 shrink-0">
+      <div
+        class="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-surface transition-colors duration-200 cursor-pointer"
+      >
+        <img
+          src="https://i.pravatar.cc/40"
+          class="w-9 h-9 rounded-full ring-2 ring-blue-light object-cover"
+        />
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-text-primary truncate">Admin</p>
+          <p class="text-xs text-text-muted truncate">admin&#64;company.com</p>
+        </div>
+        <svg
+          class="w-4 h-4 text-text-muted shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</aside>

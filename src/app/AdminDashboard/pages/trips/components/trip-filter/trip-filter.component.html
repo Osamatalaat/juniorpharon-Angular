@@ -1,0 +1,244 @@
+<div class="bg-white rounded-xl shadow-sm border border-border p-5">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-sm font-semibold text-text-primary flex items-center gap-2">
+      <svg class="w-4 h-4 text-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 4h18M6 8h12M9 12h6M11 16h2" />
+      </svg>
+      Filter Trips
+    </h2>
+
+    <button
+      (click)="resetFilters()"
+      class="text-xs font-medium text-text-muted hover:text-light-orange transition-colors duration-200">
+      Clear all
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    <!-- ================= Search ================= -->
+    <div>
+
+      <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
+        Search
+      </h3>
+
+      <div class="relative">
+
+        <svg
+          class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24">
+
+          <circle cx="11" cy="11" r="7"/>
+          <path stroke-linecap="round" d="M21 21l-4.3-4.3"/>
+
+        </svg>
+
+        <input
+          [(ngModel)]="filter.search"
+          (input)="apply()"
+          placeholder="Search..."
+          class="w-full rounded-lg border border-border pl-9 pr-3 py-2
+                 text-sm bg-surface
+                 focus:ring-2 focus:ring-blue/30
+                 focus:border-blue outline-none">
+
+      </div>
+
+    </div>
+
+    <!-- ================= City ================= -->
+    <div>
+
+      <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
+        City
+      </h3>
+
+      <div class="flex flex-wrap gap-2">
+
+        <label class="cursor-pointer">
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.cities.includes('Aswan')"
+            (change)="toggleCity('Aswan',$event)">
+
+          <span class="inline-flex px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-blue
+                       peer-checked:text-white
+                       peer-checked:border-blue
+                       hover:border-blue
+                       hover:text-blue">
+            Aswan
+          </span>
+        </label>
+
+        <label class="cursor-pointer">
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.cities.includes('Luxor')"
+            (change)="toggleCity('Luxor',$event)">
+
+          <span class="inline-flex px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-blue
+                       peer-checked:text-white
+                       peer-checked:border-blue
+                       hover:border-blue
+                       hover:text-blue">
+            Luxor
+          </span>
+        </label>
+
+        <label class="cursor-pointer">
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.cities.includes('Cairo')"
+            (change)="toggleCity('Cairo',$event)">
+
+          <span class="inline-flex px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-blue
+                       peer-checked:text-white
+                       peer-checked:border-blue
+                       hover:border-blue
+                       hover:text-blue">
+            Cairo
+          </span>
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- ================= Rating ================= -->
+    <div>
+
+      <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
+        Rating
+      </h3>
+
+      <div class="flex flex-wrap gap-2">
+
+        <label class="cursor-pointer">
+
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.ratings.includes(4)"
+            (change)="toggleRating(4,$event)">
+
+          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-light-orange
+                       peer-checked:text-white
+                       peer-checked:border-light-orange">
+
+            ⭐ 4+
+
+          </span>
+
+        </label>
+
+        <label class="cursor-pointer">
+
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.ratings.includes(5)"
+            (change)="toggleRating(5,$event)">
+
+          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-light-orange
+                       peer-checked:text-white
+                       peer-checked:border-light-orange">
+
+            ⭐ 5
+
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- ================= Duration ================= -->
+    <div>
+
+      <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
+        Duration
+      </h3>
+
+      <div class="flex flex-wrap gap-2">
+
+        <label class="cursor-pointer">
+
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.durations.includes('1-3')"
+            (change)="toggleDuration('1-3',$event)">
+
+          <span class="inline-flex px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-blue
+                       peer-checked:text-white
+                       peer-checked:border-blue">
+
+            1-3 Days
+
+          </span>
+
+        </label>
+
+        <label class="cursor-pointer">
+
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.durations.includes('4-7')"
+            (change)="toggleDuration('4-7',$event)">
+
+          <span class="inline-flex px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-blue
+                       peer-checked:text-white
+                       peer-checked:border-blue">
+
+            4-7 Days
+
+          </span>
+
+        </label>
+
+        <label class="cursor-pointer">
+
+          <input
+            type="checkbox"
+            class="peer hidden"
+            [checked]="filter.durations.includes('8+')"
+            (change)="toggleDuration('8+',$event)">
+
+          <span class="inline-flex px-3 py-1 rounded-full border border-border text-xs
+                       peer-checked:bg-blue
+                       peer-checked:text-white
+                       peer-checked:border-blue">
+
+            8+ Days
+
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

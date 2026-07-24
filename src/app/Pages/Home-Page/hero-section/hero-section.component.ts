@@ -62,6 +62,8 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
 
   }
 
+
+
   startSlider(): void {
 
     this.interval = setInterval(() => {
@@ -80,25 +82,74 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
 
       }, 700);
 
-    }, 4000);
+    }, 10000);
 
   }
 
-  changeSlide(index: number): void {
 
-    if (index === this.currentSlide) return;
+  previousSlide(): void {
 
-    this.isFading = true;
-
-    setTimeout(() => {
-
-      this.currentSlide = index;
-
-      this.isFading = false;
-
-    }, 700);
-
+  if (this.interval) {
+    clearInterval(this.interval);
   }
+
+  this.isFading = true;
+
+  setTimeout(() => {
+
+    this.currentSlide =
+      (this.currentSlide - 1 + this.heroSlides.length) % this.heroSlides.length;
+
+    this.isFading = false;
+
+    this.startSlider();
+
+  }, 700);
+
+}
+
+nextSlide(): void {
+
+  if (this.interval) {
+    clearInterval(this.interval);
+  }
+
+  this.isFading = true;
+
+  setTimeout(() => {
+
+    this.currentSlide =
+      (this.currentSlide + 1) % this.heroSlides.length;
+
+    this.isFading = false;
+
+    this.startSlider();
+
+  }, 700);
+
+}
+
+changeSlide(index: number): void {
+
+  if (index === this.currentSlide) return;
+
+  if (this.interval) {
+    clearInterval(this.interval);
+  }
+
+  this.isFading = true;
+
+  setTimeout(() => {
+
+    this.currentSlide = index;
+
+    this.isFading = false;
+
+    this.startSlider();
+
+  }, 700);
+
+}
 
   ngOnDestroy(): void {
 

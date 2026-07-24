@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './Home-Page/home/home.component';
 import { HeroSectionComponent } from './Home-Page/hero-section/hero-section.component';
-import { share } from 'rxjs';
+// import { share } from 'rxjs';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule, Routes } from '@angular/router';
+// import { RouterModule, Routes } from '@angular/router';
 import { ExploreResortsComponent } from './Home-Page/explore-resorts/explore-resorts.component';
 import { ResortGuideSectionComponent } from './Home-Page/ResortGuideSection/ResortGuideSection.component';
-import { spec } from 'node:test/reporters';
+
 import { SpecialOffersComponent } from './Home-Page/special-offers/special-offers.component';
 import { NewsletterSubscribeComponent } from './Home-Page/newsletter-subscribe/newsletter-subscribe.component';
 import { TripComponent } from './Trips-page/Trip/Trip.component';
@@ -25,36 +26,17 @@ import { HerooSectionComponent } from './Home-Page/heroo-section/heroo-section/h
 import { TripsHeroComponent } from './Trips-page/trips-hero/trips-hero.component';
 import { TripsToolbarComponent } from './Trips-page/trips-toolbar/trips-toolbar.component';
 import { TripsBreadcrumbComponent } from './Trips-page/trips-breadcrumb/trips-breadcrumb.component';
+import { PackagesHeroComponent } from './Packages-page/packages-hero/packages-hero.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'trips',
-    component: TripComponent,
-  },
-    {
-    path: 'trips/:id',
-    component: TripDetailsComponent,
-  },
-  {
-    path: 'packages',
-    component: PackageLayoutComponent,
-  },
-  {
-    path: 'packages/:id',
-    component: PackageDetailsComponent,
-  },
-  {
-    path: 'booking',
-    component: BookingLayoutComponent,
-  }
-];
+
 
 @NgModule({
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
+   imports: [
+    CommonModule,
+    SharedModule,
+    PagesRoutingModule,
+  ],
   declarations: [
     HomeComponent,
     HeroSectionComponent,
@@ -71,13 +53,16 @@ const routes: Routes = [
     TripsBreadcrumbComponent,
     TripsToolbarComponent,
     PackageLayoutComponent,
+    PackagesHeroComponent,
     PackageCardComponent,
     PackageFilterComponent,
     PackageDetailsComponent,
     BookingFormComponent,
     BookingLayoutComponent,
-    UserReviewCardComponent
+    UserReviewCardComponent,
+    MainLayoutComponent
   ],
-  exports: [RouterModule],
+  exports: [],
 })
 export class PagesModule {}
+

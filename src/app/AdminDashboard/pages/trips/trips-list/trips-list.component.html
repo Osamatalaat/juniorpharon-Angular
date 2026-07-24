@@ -1,0 +1,133 @@
+<div class="space-y-6">
+
+  <div class="flex items-center justify-between">
+
+  <div>
+    <h1 class="text-2xl font-bold text-text-primary">
+      Trips
+    </h1>
+
+    <p class="text-sm text-text-muted mt-1">
+      Manage all trips and destinations.
+    </p>
+  </div>
+
+  <button
+    routerLink="/admin/trips/new"
+    class="inline-flex items-center gap-2
+           bg-blue text-white
+           px-4 py-2.5 rounded-lg
+           hover:bg-blue/90
+           transition-colors
+           shadow-sm cursor-pointer">
+
+    <svg class="w-5 h-5"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         viewBox="0 0 24 24">
+
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 5v14M5 12h14"/>
+
+    </svg>
+
+    New Trip
+
+  </button>
+
+</div>
+
+  <app-trip-filter
+    class="block"
+    (filterChanged)="onFilterChanged($event)">
+  </app-trip-filter>
+
+  <app-trip-table
+    class="block"
+    [trips]="pagedTrips"
+    (deleteTrip)="delete($event)">
+  </app-trip-table>
+
+  <!-- Pagination -->
+  <div
+    class="flex items-center justify-between border rounded-lg bg-white px-5 py-3">
+
+    <p class="text-sm text-gray-500">
+  Showing
+  {{ (page - 1) * pageSize + 1 }}
+  -
+  {{ endItem }}
+  of
+  {{ filteredTrips.length }}
+  Trips
+</p>
+
+ <div class="flex items-center justify-between gap-4 px-1">
+
+  <!-- Results info -->
+  <p class="text-xs text-text-muted hidden sm:block">
+    Page <span class="font-medium text-text-primary">{{ page }}</span> of {{ totalPages }}
+  </p>
+
+  <!-- Controls -->
+  <div class="flex items-center gap-1 mx-auto sm:mx-0">
+
+    <!-- Previous -->
+    <button
+      (click)="previousPage()"
+      [disabled]="page === 1"
+      class="p-2 rounded-lg text-text-secondary border border-border
+             hover:bg-blue-light hover:text-blue hover:border-blue
+             disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-text-secondary disabled:hover:border-border
+             transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <!-- Page numbers -->
+    <ng-container *ngFor="let p of pages">
+
+      <button
+        *ngIf="p !== -1"
+        (click)="goToPage(p)"
+        class="min-w-[2.25rem] h-9 px-2 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer"
+        [class.bg-blue]="p === page"
+        [class.text-white]="p === page"
+        [class.text-text-secondary]="p !== page"
+        [class.hover:bg-blue-light]="p !== page"
+        [class.hover:text-blue]="p !== page">
+        {{ p }}
+      </button>
+
+      <span
+        *ngIf="p === -1"
+        class="w-9 h-9 flex items-center justify-center text-text-muted text-sm select-none">
+        …
+      </span>
+
+    </ng-container>
+
+    <!-- Next -->
+    <button
+      (click)="nextPage()"
+      [disabled]="page === totalPages"
+      class="p-2 rounded-lg text-text-secondary border border-border
+             hover:bg-blue-light hover:text-blue hover:border-blue
+             disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-text-secondary disabled:hover:border-border
+             transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>

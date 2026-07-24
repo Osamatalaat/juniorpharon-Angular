@@ -1,0 +1,53 @@
+<footer class="sticky bottom-0 z-40 bg-white/90 backdrop-blur-md border-t border-border">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 sm:px-6 py-3">
+
+    <!-- Left: Copyright + Version -->
+    <div class="flex items-center gap-3 order-2 sm:order-1">
+      <p class="text-xs text-text-muted">
+        © {{ currentYear }} <span class="text-text-secondary font-medium">{{ companyName }}</span>. All rights reserved.
+      </p>
+      <span class="hidden sm:inline w-px h-3 bg-border"></span>
+      <span class="hidden sm:inline-flex items-center rounded-md bg-blue-light px-2 py-0.5
+                   text-[11px] font-medium text-blue">
+        v{{ appVersion }}
+      </span>
+    </div>
+
+    <!-- Center: Quick Links -->
+    <div class="flex items-center gap-4 order-3 sm:order-2">
+      <a *ngFor="let link of quickLinks"
+         [href]="link.href"
+         class="text-xs text-text-secondary hover:text-blue transition-colors duration-200">
+        {{ link.label }}
+      </a>
+    </div>
+
+    <!-- Right: System Status + Back to top -->
+    <div class="flex items-center gap-4 order-1 sm:order-3">
+
+      <!-- System status -->
+      <div class="flex items-center gap-1.5">
+        <span class="relative flex w-2 h-2">
+          <span class="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+          <span class="relative inline-flex w-2 h-2 rounded-full bg-emerald-500"></span>
+        </span>
+        <span class="text-xs text-text-secondary">{{ systemStatus }}</span>
+      </div>
+
+      <span class="w-px h-3 bg-border"></span>
+
+      <!-- Back to top -->
+      <button
+        (click)="scrollToTop()"
+        class="flex items-center gap-1 text-xs text-text-secondary hover:text-blue
+               hover:bg-blue-light rounded-md px-2 py-1 transition-colors duration-200 cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+        </svg>
+        Top
+      </button>
+
+    </div>
+
+  </div>
+</footer>

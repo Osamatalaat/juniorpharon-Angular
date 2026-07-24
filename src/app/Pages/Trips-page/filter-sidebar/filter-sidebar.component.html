@@ -1,270 +1,601 @@
 <!-- Mobile Filter Button -->
-<div class="md:hidden mb-4">
+
+<div class="md:hidden mb-3">
+
   <button
     (click)="toggleFilter()"
-    class="w-full bg-blue text-white font-semibold py-3 rounded-xl hover:bg-blue-hover transition-all duration-300 shadow-md"
+    class="w-full
+           bg-dark-navy
+           text-white
+           text-sm
+           font-semibold
+           py-2.5
+           rounded-xl
+           hover:bg-navy
+           transition
+           shadow-md"
   >
-    <i class="fa-solid fa-filter mr-2"></i>
+
+    <i class="fa-solid fa-sliders mr-2 text-gold"></i>
+
     {{ showFilter ? "Hide Filters" : "Show Filters" }}
+
   </button>
+
 </div>
 
 <!-- Sidebar -->
+
 <div
   *ngIf="showFilter || isDesktop"
-  class="sticky top-24 self-start bg-white border border-border rounded-2xl shadow-lg p-6 space-y-6"
+  class="sticky
+         top-24
+         self-start
+         max-w-[300px]
+         bg-white
+         border
+         border-gray-200
+         rounded-2xl
+         shadow-lg
+         overflow-hidden"
 >
+
   <!-- Header -->
-  <div class="flex items-center gap-3 border-b border-border pb-5">
-    <div
-      class="w-12 h-12 rounded-xl bg-blue-light flex items-center justify-center"
-    >
-      <i class="fa-solid fa-sliders text-blue text-xl"></i>
-    </div>
 
-    <div>
-      <h3 class="text-xl font-bold text-text-primary">Filter Trips</h3>
+  <div
+    class="bg-dark-navy
+           px-4
+           py-3
+           text-white"
+  >
 
-      <p class="text-sm text-text-secondary">Find your perfect tour</p>
-    </div>
-  </div>
+    <div class="flex items-center gap-3">
 
-  <!-- ================= LOCATION ================= -->
-
-  <div class="border-b border-border pb-6">
-    <h4 class="flex items-center gap-2 text-text-primary font-semibold mb-4">
-      <i class="fa-solid fa-location-dot text-blue"></i>
-
-      Location
-    </h4>
-
-    <select
-      [(ngModel)]="selectedCountry"
-      (change)="onCountryChange()"
-      class="w-full border border-border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue"
-    >
-      <option value="">Select Country</option>
-
-      <option *ngFor="let country of countries" [value]="country.value">
-        {{ country.name }}
-      </option>
-    </select>
-  </div>
-
-  <!-- ================= CITIES ================= -->
-
-  <div class="border-b border-border pb-6">
-    <h4 class="flex items-center gap-2 text-text-primary font-semibold mb-4">
-      <i class="fa-solid fa-city text-blue"></i>
-
-      Cities
-    </h4>
-
-    <div class="space-y-2 max-h-52 overflow-auto pr-2">
-      <label
-        *ngFor="let city of cities"
-        [for]="city"
-        class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-light transition cursor-pointer"
+      <div
+        class="w-9
+               h-9
+               rounded-xl
+               bg-gold/10
+               border border-gold/20
+               flex
+               items-center
+               justify-center"
       >
-        <input
-          type="checkbox"
-          [id]="city"
-          (change)="toggleCity(city, $event)"
-          class="accent-light-orange w-4 h-4"
-        />
 
-        <span class="text-text-primary">
-          {{ city }}
-        </span>
-      </label>
+        <i class="fa-solid fa-sliders text-gold text-base"></i>
+
+      </div>
+
+      <div>
+
+        <h3 class="text-lg font-bold">
+
+          Filter Trips
+
+        </h3>
+
+        <p class="text-[11px] text-gray-300">
+
+          Find your trip
+
+        </p>
+
+      </div>
+
     </div>
+
   </div>
 
-  <!-- ================= PRICE ================= -->
+  <div class="p-4 space-y-4">
 
-  <div class="border-b border-border pb-6">
-    <h4 class="flex items-center justify-between mb-5">
-      <span class="flex items-center gap-2 font-semibold text-text-primary">
-        <i class="fa-solid fa-money-bill-wave text-blue"></i>
+    <!-- LOCATION -->
 
-        Price Range
-      </span>
+    <div class="pb-4 border-b border-gray-200">
 
-      <span class="text-blue font-semibold">
-        {{ minPrice }} - {{ maxPrice }}
-      </span>
-    </h4>
-
-    <div class="bg-surface border border-border rounded-xl p-5">
-      <div class="relative h-2">
-        <div class="absolute w-full h-2 bg-gray-300 rounded"></div>
+      <h4
+        class="flex
+               items-center
+               gap-2
+               text-sm
+               font-bold
+               text-dark-navy
+               mb-3"
+      >
 
         <div
-          class="absolute h-2 bg-blue rounded"
-          [style.left.%]="(minPrice / 1000) * 100"
-          [style.width.%]="((maxPrice - minPrice) / 1000) * 100"
-        ></div>
+          class="w-8
+                 h-8
+                 rounded-lg
+                 bg-gold/10
+                 flex
+                 items-center
+                 justify-center"
+        >
 
-        <input
-          type="range"
-          [min]="0"
-          [max]="1000"
-          [(ngModel)]="minPrice"
-          (input)="minPriceChanged()"
-          class="range-slider"
-        />
+          <i class="fa-solid fa-location-dot text-gold text-xs"></i>
 
-        <input
-          type="range"
-          [min]="0"
-          [max]="1000"
-          [(ngModel)]="maxPrice"
-          (input)="maxPriceChanged()"
-          class="range-slider"
-        />
+        </div>
+
+        <span>
+
+          Location
+
+        </span>
+
+      </h4>
+
+      <select
+        [(ngModel)]="selectedCountry"
+        (change)="onCountryChange()"
+        class="w-full
+               rounded-lg
+               border
+               border-gray-300
+               px-3
+               py-2
+               text-sm
+               focus:ring-2
+               focus:ring-gold
+               focus:border-gold
+               outline-none"
+      >
+
+        <option value="">
+          Select Country
+        </option>
+
+        <option
+          *ngFor="let country of countries"
+          [value]="country.value"
+        >
+          {{ country.name }}
+        </option>
+
+      </select>
+
+    </div>
+        <!-- CITIES -->
+
+    <div class="pb-4 border-b border-gray-200">
+
+      <h4
+        class="flex
+               items-center
+               gap-2
+               text-sm
+               font-bold
+               text-dark-navy
+               mb-3"
+      >
+
+        <div
+          class="w-8
+                 h-8
+                 rounded-lg
+                 bg-gold/10
+                 flex
+                 items-center
+                 justify-center"
+        >
+
+          <i class="fa-solid fa-city text-gold text-xs"></i>
+
+        </div>
+
+        <span>Cities</span>
+
+      </h4>
+
+      <div class="space-y-1 max-h-44 overflow-y-auto pr-1">
+
+        <label
+          *ngFor="let city of cities"
+          [for]="city"
+          class="flex
+                 items-center
+                 gap-2
+                 px-2
+                 py-2
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition
+                 cursor-pointer"
+        >
+
+          <input
+            type="checkbox"
+            [id]="city"
+            (change)="toggleCity(city,$event)"
+            class="accent-gold w-3.5 h-3.5"
+          />
+
+          <span class="text-sm text-dark-navy">
+
+            {{ city }}
+
+          </span>
+
+        </label>
+
       </div>
+
     </div>
-  </div>
 
-  <!-- ================= Duration ================= -->
+    <!-- PRICE -->
 
-  <div class="border-b border-border py-6">
-    <h4 class="font-semibold text-text-primary mb-4 flex items-center gap-2">
-      <i class="fa-regular fa-clock text-blue"></i>
-      Duration
-    </h4>
+    <div class="pb-4 border-b border-gray-200">
 
-    <div class="space-y-3">
-      <label
-        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
+      <h4 class="flex justify-between items-center mb-3">
+
+        <span
+          class="flex
+                 items-center
+                 gap-2
+                 text-sm
+                 font-bold
+                 text-dark-navy"
+        >
+
+          <div
+            class="w-8
+                   h-8
+                   rounded-lg
+                   bg-gold/10
+                   flex
+                   items-center
+                   justify-center"
+          >
+
+            <i class="fa-solid fa-money-bill-wave text-gold text-xs"></i>
+
+          </div>
+
+          Price
+
+        </span>
+
+        <span class="text-gold text-sm font-bold">
+
+          {{ minPrice }} - {{ maxPrice }}
+
+        </span>
+
+      </h4>
+
+      <div
+        class="bg-gray-50
+               border
+               border-gray-200
+               rounded-xl
+               p-3"
       >
-        <input type="checkbox" id="1" class="accent-blue w-4 h-4" />
 
-        <span class="text-text-primary">1 Day</span>
-      </label>
+        <div class="relative h-2">
 
-      <label
-        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
-      >
-        <input type="checkbox" id="2" class="accent-blue w-4 h-4" />
+          <div
+            class="absolute
+                   w-full
+                   h-2
+                   bg-gray-300
+                   rounded-full"
+          ></div>
 
-        <span class="text-text-primary">2 - 3 Days</span>
-      </label>
+          <div
+            class="absolute
+                   h-2
+                   bg-gold
+                   rounded-full"
+            [style.left.%]="(minPrice / 1000) * 100"
+            [style.width.%]="((maxPrice - minPrice) / 1000) * 100"
+          ></div>
 
-      <label
-        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
-      >
-        <input type="checkbox" id="4" class="accent-blue w-4 h-4" />
+          <input
+            type="range"
+            [min]="0"
+            [max]="1000"
+            [(ngModel)]="minPrice"
+            (input)="minPriceChanged()"
+            class="range-slider"
+          />
 
-        <span class="text-text-primary">4 - 7 Days</span>
-      </label>
+          <input
+            type="range"
+            [min]="0"
+            [max]="1000"
+            [(ngModel)]="maxPrice"
+            (input)="maxPriceChanged()"
+            class="range-slider"
+          />
 
-      <label
-        class="flex items-center gap-3 cursor-pointer hover:bg-blue-light rounded-lg px-3 py-2 transition"
-      >
-        <input type="checkbox" id="8" class="accent-blue w-4 h-4" />
+        </div>
 
-        <span class="text-text-primary">More than 7 Days</span>
-      </label>
+      </div>
+
     </div>
-  </div>
+        <!-- DURATION -->
 
-  <!-- ================= Rating ================= -->
+    <div class="pb-4 border-b border-gray-200">
 
-  <div class="border-b border-border py-6">
-    <h4 class="font-semibold text-text-primary mb-4 flex items-center gap-2">
-      <i class="fa-solid fa-star text-star"></i>
+      <h4
+        class="flex items-center gap-2
+               text-sm font-bold
+               text-dark-navy mb-3"
+      >
 
-      Rating
-    </h4>
+        <div
+          class="w-8 h-8
+                 rounded-lg
+                 bg-gold/10
+                 flex items-center justify-center"
+        >
+          <i class="fa-regular fa-clock text-gold text-xs"></i>
+        </div>
+
+        Duration
+
+      </h4>
+
+      <div class="space-y-1">
+
+        <label
+          class="flex items-center gap-2
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+          <span class="text-sm text-dark-navy">
+            1 Day
+          </span>
+
+        </label>
+
+        <label
+          class="flex items-center gap-2
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+          <span class="text-sm text-dark-navy">
+            2 - 3 Days
+          </span>
+
+        </label>
+
+        <label
+          class="flex items-center gap-2
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+          <span class="text-sm text-dark-navy">
+            4 - 7 Days
+          </span>
+
+        </label>
+
+        <label
+          class="flex items-center gap-2
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+          <span class="text-sm text-dark-navy">
+            +7 Days
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- RATING -->
+
+    <div class="pb-4 border-b border-gray-200">
+
+      <h4
+        class="flex items-center gap-2
+               text-sm font-bold
+               text-dark-navy mb-3"
+      >
+
+        <div
+          class="w-8 h-8
+                 rounded-lg
+                 bg-gold/10
+                 flex items-center justify-center"
+        >
+
+          <i class="fa-solid fa-star text-gold text-xs"></i>
+
+        </div>
+
+        Rating
+
+      </h4>
+
+      <div class="space-y-1">
+
+        <label
+          class="flex justify-between items-center
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <div class="flex items-center gap-2">
+
+            <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+            <div class="flex text-gold text-xs">
+
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+
+            </div>
+
+          </div>
+
+          <span class="text-xs font-semibold text-dark-navy">
+            5.0
+          </span>
+
+        </label>
+
+        <label
+          class="flex justify-between items-center
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <div class="flex items-center gap-2">
+
+            <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+            <div class="flex text-gold text-xs">
+
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+
+            </div>
+
+          </div>
+
+          <span class="text-xs text-dark-navy">
+            4+
+          </span>
+
+        </label>
+
+        <label
+          class="flex justify-between items-center
+                 px-2 py-1.5
+                 rounded-lg
+                 hover:bg-gold/5
+                 transition cursor-pointer"
+        >
+
+          <div class="flex items-center gap-2">
+
+            <input type="checkbox" class="accent-gold w-3.5 h-3.5"/>
+
+            <div class="flex text-gold text-xs">
+
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+
+            </div>
+
+          </div>
+
+          <span class="text-xs text-dark-navy">
+            3+
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- SORT -->
+
+    <div class="pb-4 border-b border-gray-200">
+
+      <label
+        class="flex items-center gap-2
+               px-2 py-1.5
+               rounded-lg
+               hover:bg-gold/5
+               transition cursor-pointer"
+      >
+
+        <input
+          type="checkbox"
+          [(ngModel)]="descending"
+          class="accent-gold w-4 h-4"
+        />
+
+        <span class="text-sm font-medium text-dark-navy">
+
+          Descending Order
+
+        </span>
+
+      </label>
+
+    </div>
+
+    <!-- BUTTONS -->
 
     <div class="space-y-2">
-      <label
-        class="flex justify-between items-center hover:bg-blue-light rounded-lg px-3 py-2 cursor-pointer transition"
+
+      <button
+        (click)="applyFilter()"
+        class="w-full
+               bg-dark-navy
+               hover:bg-navy
+               text-white
+               text-sm
+               py-2.5
+               rounded-xl
+               font-semibold
+               transition"
       >
-        <div class="flex items-center gap-3">
-          <input type="checkbox" class="accent-blue w-4 h-4" />
 
-          <div class="flex text-star">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </div>
+        <i class="fa-solid fa-magnifying-glass mr-2 text-gold"></i>
 
-        <span class="text-text-secondary text-sm"> 5.0 </span>
-      </label>
+        Apply Filters
 
-      <label
-        class="flex justify-between items-center hover:bg-blue-light rounded-lg px-3 py-2 cursor-pointer transition"
+      </button>
+
+      <button
+        class="w-full
+               border
+               border-gold
+               text-gold
+               hover:bg-gold
+               hover:text-white
+               text-sm
+               py-2.5
+               rounded-xl
+               font-semibold
+               transition"
       >
-        <div class="flex items-center gap-3">
-          <input type="checkbox" class="accent-blue w-4 h-4" />
 
-          <div class="flex text-star">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
+        <i class="fa-solid fa-rotate-left mr-2"></i>
 
-        </div>
-        <span class="text-text-secondary text-sm"> 4.0 & Up </span>
-      </label>
+        Reset Filters
 
-      <label
-        class="flex justify-between items-center hover:bg-blue-light rounded-lg px-3 py-2 cursor-pointer transition"
-      >
-        <div class="flex items-center gap-3">
-          <input type="checkbox" class="accent-blue w-4 h-4" />
+      </button>
 
-          <div class="flex text-star">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-
-        </div>
-        <span class="text-text-secondary"> 3.0 & Up </span>
-      </label>
     </div>
+
   </div>
 
-  <!-- ================= Sort ================= -->
-
-  <div class="py-6 border-b border-border">
-    <label class="flex items-center gap-3 cursor-pointer">
-      <input
-        type="checkbox"
-        [(ngModel)]="descending"
-        id="descending"
-        class="accent-blue w-5 h-5"
-      />
-
-      <span class="font-medium text-text-primary"> Descending Order </span>
-    </label>
-  </div>
-
-  <!-- ================= Buttons ================= -->
-
-  <div class="pt-6 space-y-3">
-    <button
-      (click)="applyFilter()"
-      class="w-full bg-blue hover:bg-blue-hover text-white py-3 rounded-xl font-semibold shadow-md hover:shadow-xl transition"
-    >
-      <i class="fa-solid fa-magnifying-glass mr-2"></i>
-
-      Apply Filters
-    </button>
-
-    <button
-      class="w-full border border-border hover:border-blue hover:bg-blue-light text-text-primary py-3 rounded-xl font-medium transition"
-    >
-      <i class="fa-solid fa-rotate-left mr-2"></i>
-
-      Reset Filters
-    </button>
-  </div>
 </div>

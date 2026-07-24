@@ -1,0 +1,594 @@
+<form [formGroup]="tripForm" (ngSubmit)="save()" class="space-y-6">
+  <!-- ========================= -->
+  <!-- Header -->
+  <!-- ========================= -->
+
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-text-primary">Create New Trip</h1>
+
+      <p class="text-sm text-text-muted mt-1">Add a new tourist trip.</p>
+    </div>
+
+    <button
+      type="button"
+      routerLink="/admin/trips"
+      class="px-4 py-2 rounded-lg border border-border hover:bg-surface transition-colors"
+    >
+      Back
+    </button>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Basic Information -->
+  <!-- ========================= -->
+
+  <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+    <h2 class="text-lg font-semibold mb-6">Basic Information</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Location -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2">
+          Location <span class="text-red-500">*</span>
+        </label>
+
+        <input
+          type="text"
+          formControlName="location"
+          class="w-full rounded-lg border border-border px-4 py-2.5 focus:ring-2 focus:ring-blue outline-none"
+        />
+
+        <p
+          *ngIf="
+            tripForm.get('location')?.invalid &&
+            tripForm.get('location')?.touched
+          "
+          class="text-red-600 text-sm mt-1"
+        >
+          Location is required.
+        </p>
+      </div>
+
+      <!-- City -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2">
+          City <span class="text-red-500">*</span>
+        </label>
+
+        <input
+          type="text"
+          formControlName="city"
+          class="w-full rounded-lg border border-border px-4 py-2.5 focus:ring-2 focus:ring-blue outline-none"
+        />
+
+        <p
+          *ngIf="tripForm.get('city')?.invalid && tripForm.get('city')?.touched"
+          class="text-red-600 text-sm mt-1"
+        >
+          City is required.
+        </p>
+      </div>
+
+      <!-- Trip Type  -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2">
+          Trip Type
+          <span class="text-red-500">*</span>
+        </label>
+
+        <select
+          formControlName="tripType"
+          class="w-full rounded-lg border border-border px-4 py-2.5"
+        >
+          <option *ngFor="let type of tripTypes" [ngValue]="type.value">
+            {{ type.name }}
+          </option>
+        </select>
+      </div>
+
+
+         <!-- Maximum Capacity -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2"> Maximum Capacity </label>
+
+        <input
+          type="number"
+          min="1"
+          formControlName="maxCapacity"
+          class="w-full rounded-lg border border-border px-4 py-2.5 focus:ring-2 focus:ring-blue outline-none"
+        />
+      </div>
+
+      <!-- Duration Value -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2">
+          Duration <span class="text-red-500">*</span>
+        </label>
+
+        <input
+          type="number"
+          min="1"
+          formControlName="durationValue"
+          class="w-full rounded-lg border border-border px-4 py-2.5 focus:ring-2 focus:ring-blue outline-none"
+        />
+
+        <p
+          *ngIf="
+            tripForm.get('durationValue')?.invalid &&
+            tripForm.get('durationValue')?.touched
+          "
+          class="text-red-600 text-sm mt-1"
+        >
+          Duration must be greater than zero.
+        </p>
+      </div>
+
+      <!-- Duration Unit -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2">
+          Duration Unit <span class="text-red-500">*</span>
+        </label>
+
+        <select
+          formControlName="durationUnit"
+          class="w-full rounded-lg border border-border px-4 py-2.5 focus:ring-2 focus:ring-blue outline-none"
+        >
+          <option value="Hours">Hours</option>
+
+          <option value="Days">Days</option>
+        </select>
+      </div>
+
+
+
+      <!-- Featured Trip -->
+
+      <div class="flex items-center gap-3 mt-8">
+        <input
+          type="checkbox"
+          formControlName="isFeatured"
+          class="w-5 h-5 rounded border-border"
+        />
+
+        <label class="text-sm font-medium"> Featured Trip </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== -->
+  <!-- Pricing Tiers -->
+  <!-- ==================== -->
+  <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+    <div class="flex justify-between items-center mb-5">
+      <h2 class="text-lg font-semibold">Pricing Tiers</h2>
+
+      <button
+        type="button"
+        (click)="addPricingTier()"
+        class="bg-blue text-white px-4 py-2 rounded-lg"
+      >
+        + Add Tier
+      </button>
+    </div>
+
+    <div formArrayName="pricingTiers">
+      <div
+        *ngFor="let tier of pricingTiers.controls; let i = index"
+        [formGroupName]="i"
+        class="border rounded-xl p-5 mb-5"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h3>Tier #{{ i + 1 }}</h3>
+
+          <button
+            type="button"
+            (click)="removePricingTier(i)"
+            class="text-red-600"
+          >
+            Remove
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Min People -->
+          <div>
+            <label class="block text-sm font-medium mb-2">
+              Minimum Number of People
+            </label>
+
+            <input
+              type="number"
+              formControlName="minPeople"
+              class="w-full border rounded-lg px-3 py-2"
+            />
+          </div>
+
+          <!-- Max People -->
+          <div>
+            <label class="block text-sm font-medium mb-2">
+              Maximum Number of People
+            </label>
+
+            <input
+              type="number"
+              formControlName="maxPeople"
+              class="w-full border rounded-lg px-3 py-2"
+            />
+
+            <p
+              *ngIf="
+                tier.hasError('maxLessThanMin') &&
+                (tier.get('maxPeople')?.touched ||
+                  tier.get('minPeople')?.touched)
+              "
+              class="text-red-600 text-sm mt-1"
+            >
+              Maximum number of people must be greater than or equal to the
+              minimum number.
+            </p>
+          </div>
+
+          <!-- Price -->
+          <div>
+            <label class="block text-sm font-medium mb-2">
+              Price per Person (EGP)
+            </label>
+
+            <input
+              type="number"
+              formControlName="pricePerPerson"
+              class="w-full border rounded-lg px-3 py-2"
+            />
+
+            <p
+              *ngIf="
+                tier.get('pricePerPerson')?.invalid &&
+                tier.get('pricePerPerson')?.touched
+              "
+              class="text-red-600 text-sm mt-1"
+            >
+              Price per person must be greater than 0.
+            </p>
+          </div>
+
+          <!-- Discount -->
+          <div>
+            <label class="block text-sm font-medium mb-2"> Discount (%) </label>
+
+            <input
+              type="number"
+              formControlName="discountPercentage"
+              class="w-full border rounded-lg px-3 py-2"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Trip Contents -->
+  <!-- ========================= -->
+
+  <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-lg font-semibold">Trip Contents</h2>
+
+      <button
+        type="button"
+        (click)="addContent()"
+        class="bg-blue text-white px-4 py-2 rounded-lg hover:opacity-90"
+      >
+        + Add Content
+      </button>
+    </div>
+
+    <div formArrayName="tripContents" *ngIf="tripContents.controls.length > 0">
+      <div
+        *ngFor="let content of tripContents.controls; let i = index"
+        [formGroupName]="i"
+        class="border rounded-xl p-5 mb-5"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-semibold">Content #{{ i + 1 }}</h3>
+
+          <button
+            type="button"
+            (click)="removeContent(i)"
+            class="text-red-600 hover:underline"
+          >
+            Remove
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Language -->
+
+          <div>
+            <label class="block text-sm mb-2">
+              Language
+              <span class="text-red-500">*</span>
+            </label>
+
+            <select
+              formControlName="languageCode"
+              class="w-full rounded-lg border border-border px-4 py-2.5"
+            >
+              <option
+                *ngFor="let lang of languages"
+                [ngValue]="lang.value"
+                [disabled]="isLanguageUsed(lang.value, i)"
+              >
+                {{ lang.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Name -->
+
+          <div>
+            <label class="block text-sm mb-2">
+              Name
+              <span class="text-red-500">*</span>
+            </label>
+
+            <input
+              type="text"
+              formControlName="name"
+              class="w-full rounded-lg border border-border px-4 py-2.5"
+            />
+
+            <p
+              *ngIf="
+                content.get('name')?.invalid && content.get('name')?.touched
+              "
+              class="text-red-600 text-sm mt-1"
+            >
+              Name is required.
+            </p>
+          </div>
+        </div>
+
+        <!-- Description -->
+
+        <div class="mt-5">
+          <label class="block text-sm mb-2">
+            Description
+            <span class="text-red-500">*</span>
+          </label>
+
+          <textarea
+            rows="5"
+            formControlName="description"
+            class="w-full rounded-lg border border-border px-4 py-3"
+          >
+          </textarea>
+
+          <p
+            *ngIf="
+              content.get('description')?.invalid &&
+              content.get('description')?.touched
+            "
+            class="text-red-600 text-sm mt-1"
+          >
+            Description is required.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p *ngIf="tripContents.length === 0" class="text-center text-gray-500 py-6">
+      No contents added yet.
+    </p>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Trip Itinerary -->
+  <!-- ========================= -->
+
+  <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+    <div class="flex justify-between items-center mb-5">
+      <h2 class="text-lg font-semibold">Trip Itinerary</h2>
+
+      <button
+        type="button"
+        (click)="addItinerary()"
+        class="bg-blue text-white px-4 py-2 rounded-lg hover:opacity-90"
+      >
+        + Add Day
+      </button>
+    </div>
+
+    <div formArrayName="itineraries" *ngIf="itineraries.controls.length > 0">
+      <div
+        *ngFor="let item of itineraries.controls; let i = index"
+        [formGroupName]="i"
+        class="border rounded-xl p-5 mb-5"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-semibold">Day {{ i + 1 }}</h3>
+
+          <button
+            type="button"
+            (click)="removeItinerary(i)"
+            class="text-red-600 hover:underline"
+          >
+            Remove
+          </button>
+        </div>
+
+        <!-- Hidden Day Number -->
+
+        <input type="hidden" formControlName="dayNumber" />
+
+        <!-- Title -->
+
+        <div class="mb-5">
+          <label class="block text-sm mb-2">
+            Title
+
+            <span class="text-red-500">*</span>
+          </label>
+
+          <input
+            type="text"
+            formControlName="title"
+            class="w-full rounded-lg border border-border px-4 py-2.5"
+          />
+        </div>
+
+        <!-- Description -->
+
+        <div>
+          <label class="block text-sm mb-2">
+            Description
+
+            <span class="text-red-500">*</span>
+          </label>
+
+          <textarea
+            rows="4"
+            formControlName="description"
+            class="w-full rounded-lg border border-border px-4 py-3"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+    <p *ngIf="itineraries.length == 0" class="text-center text-gray-500 py-6">
+      No itinerary added yet.
+    </p>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Trip Images -->
+  <!-- ========================= -->
+
+  <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+    <h2 class="text-lg font-semibold mb-5">Trip Images</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Cover Image -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2">
+          Cover Image
+          <span class="text-red-500">*</span>
+        </label>
+
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onCoverSelected($event)"
+          class="block w-full"
+        />
+
+        <p
+          *ngIf="!coverImage && tripForm.touched"
+          class="text-red-600 text-sm mt-2"
+        >
+          Cover image is required.
+        </p>
+
+        <div *ngIf="coverImage" class="mt-4">
+          <img
+            [src]="coverImage.preview"
+            class="w-40 h-40 rounded-xl object-cover border"
+          />
+        </div>
+      </div>
+
+      <!-- Gallery Images -->
+
+      <div>
+        <label class="block text-sm font-medium mb-2"> Gallery Images </label>
+
+        <input
+          type="file"
+          multiple
+          accept="image/*"
+          (change)="onGallerySelected($event)"
+          class="block w-full"
+        />
+
+        <div class="grid grid-cols-3 gap-3 mt-4">
+          <div
+            *ngFor="let image of galleryImages; let i = index"
+            class="relative"
+          >
+            <img
+              [src]="image.preview"
+              class="w-full h-28 rounded-lg object-cover border"
+            />
+
+            <button
+              type="button"
+              (click)="removeImage(i + 1)"
+              class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-6 h-6 text-xs"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Footer -->
+  <!-- ========================= -->
+
+  <div class="flex justify-end gap-3">
+    <button
+      type="button"
+      routerLink="/admin/trips"
+      class="px-5 py-2.5 rounded-lg border border-border hover:bg-surface"
+    >
+      Cancel
+    </button>
+
+    <button
+      type="submit"
+      [disabled]="tripForm.invalid || isLoading"
+      class="px-6 py-2.5 rounded-lg bg-blue text-white hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      <ng-container *ngIf="!isLoading"> Save Trip </ng-container>
+
+      <ng-container *ngIf="isLoading">
+        <div class="flex items-center gap-2">
+          <svg
+            class="w-5 h-5 animate-spin"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
+
+          Saving...
+        </div>
+      </ng-container>
+    </button>
+  </div>
+</form>

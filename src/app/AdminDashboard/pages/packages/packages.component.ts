@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-packages',
+  templateUrl: './packages.component.html',
+  styleUrls: ['./packages.component.css'],
+  standalone: false
+})
+export class PackagesComponent {
+
+}

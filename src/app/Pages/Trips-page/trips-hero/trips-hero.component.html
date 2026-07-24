@@ -17,7 +17,11 @@
 
   <!-- Overlay -->
   <div
-    class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20"
+    class="absolute inset-0
+           bg-gradient-to-r
+           from-[#081B33]/95
+           via-[#081B33]/75
+           to-[#081B33]/35"
   ></div>
 
   <!-- Content -->
@@ -28,17 +32,17 @@
       <!-- Badge -->
       <div
         class="inline-flex items-center gap-2
-               bg-white/15 backdrop-blur-md
-               border border-white/20
-               text-white
-               px-3 sm:px-5
-               py-2
+               px-5 py-2
                rounded-full
-               mb-4 sm:mb-6"
+               bg-[#C8A45D]/15
+               border border-[#C8A45D]/40
+               backdrop-blur-xl
+               text-white
+               mb-6"
       >
-        <i class="fa-solid fa-location-dot text-light-orange"></i>
+        <i class="fa-solid fa-location-dot text-gold"></i>
 
-        <span class="text-[11px] sm:text-sm font-medium">
+        <span class="text-sm font-medium">
           Ancient Wonders
         </span>
       </div>
@@ -46,7 +50,7 @@
       <!-- Title -->
       <h1
         class="font-extrabold
-               text-3xl
+               text-4xl
                sm:text-5xl
                lg:text-6xl
                leading-tight
@@ -55,50 +59,90 @@
       >
         Discover the
 
-        <span class="text-light-orange">
+        <span class="text-gold">
           Wonders
         </span>
 
         of Egypt
       </h1>
 
+      <!-- Gold Line -->
+      <div
+        class="mt-5
+               w-28
+               h-1
+               rounded-full
+               bg-gradient-to-r
+               from-gold
+               to-transparent"
+      ></div>
+
       <!-- Description -->
       <p
-        class="mt-4
-               text-sm
+        class="mt-6
+               text-base
                sm:text-lg
                lg:text-xl
-               leading-6
-               sm:leading-8
-               text-white/90
+               leading-8
+               text-gray-200
                max-w-2xl"
       >
         Explore timeless pyramids, breathtaking Nile cruises,
-        golden deserts, and unforgettable adventures across Egypt.
+        golden deserts, ancient temples, and unforgettable adventures
+        across the heart of Egypt.
       </p>
+
+      <!-- Buttons -->
+      <div class="mt-8 flex flex-wrap gap-4">
+
+        <button
+          class="bg-gold
+                 hover:bg-gold-hover
+                 text-white
+                 px-7 py-3
+                 rounded-xl
+                 font-semibold
+                 shadow-xl
+                 transition duration-300"
+        >
+          Explore Trips
+        </button>
+
+        <button
+          class="border border-white/25
+                 hover:border-gold
+                 hover:text-gold
+                 hover:bg-white/5
+                 text-white
+                 px-7 py-3
+                 rounded-xl
+                 transition duration-300"
+        >
+          Contact Us
+        </button>
+
+      </div>
 
       <!-- Rating -->
       <div
-        class="mt-5
+        class="mt-8
                flex flex-wrap
                items-center
-               gap-3
+               gap-4
                text-white"
       >
-        <div class="flex text-star text-sm sm:text-xl">
+        <div class="flex text-gold text-lg">
+
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star-half-stroke"></i>
+
         </div>
 
-        <span
-          class="text-xs
-                 sm:text-base
-                 font-medium"
-        >
-          4.9 / 5 • 10,000+ Happy Travelers
+        <span class="font-medium text-gray-200">
+          4.9 / 5 • Trusted by 10,000+ Travelers
         </span>
       </div>
 

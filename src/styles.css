@@ -1,81 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
-
-/* @theme {
-  /* Primary Backgrounds
---color-beige: #FDFDFD;
-/* --color-creamy-gray: #F2E8D5; */
-
-/* Accent Colors
---color-burnt-orange: #d07743;
---color-dark-teal: #008185;
---color-light-gold: #fcf2dc;
---color-sand-brown: #6b4532;
---color-gold-highlight: #C9A86B;
---color-olive-green: #7F8B52;
-/* Text & Utility *
---color-white: #FFFFFF;
---color-dark-gray: #4A4A4A;
-
-/* --color-olive:#66785F; *
---color-white: #ffffff;
---color-blue:#003b95;
-/* --color-blue:#0A4DA2; *
---color-light-orange:#FF9F3E;
-/* --color-light-orange:#F4A261; *
---color-light-orange:#F59E0B;
-} */
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); */
 
 @theme {
 
-    --font-display: "Poppins", sans-serif;
+  /* ===========================
+     FONT
+  ============================ */
 
-  /* Brand */
-  --color-blue: #003B95;
-  /* --color-blue: #1E5AA8; */
-  --color-blue:#0160c8;
-  --color-blue-hover: #0A4DA2;
-  --color-blue-light: #EAF2FF;
+  --font-display: "Poppins", sans-serif;
 
-  --color-light-orange: #F59E0B;
-  --color-orange-hover: #D97706;
-  --color-orange-light: #FFF5E5;
+  /* ===========================
+     BRAND COLORS
+  ============================ */
 
-  /* Background */
+  --color-gold: #C89B3C;
+  --color-gold-hover: #B8862E;
+  --color-gold-light: #F8E8C3;
+
+  --color-dark-navy: #0F172A;
+  --color-navy: #1E293B;
+  --color-blue-gray: #334155;
+
+  /* ===========================
+     BACKGROUND
+  ============================ */
+
   --color-white: #FFFFFF;
-  --color-surface: #F8FAFC;
+  --color-light-gray: #F8FAFC;
+  --color-surface: #FFFFFF;
 
-  /* Text */
-  --color-text-primary: #1E293B;
+  /* ===========================
+     TEXT
+  ============================ */
+
+  --color-heading: #0F172A;
+  --color-text: #475569;
   --color-text-secondary: #64748B;
-  --color-text-muted: #94A3B8;
+  --color-dark-text: #1F2937;
 
-  /* Border */
+  /* ===========================
+     BORDER
+  ============================ */
+
   --color-border: #E5E7EB;
+  --color-border-dark: #CBD5E1;
 
-  /* Rating */
+  /* ===========================
+     STATUS
+  ============================ */
+
   --color-star: #FBBF24;
+
+  /* ===========================
+     HERO
+  ============================ */
+
+  --hero-overlay: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.75),
+    rgba(15, 23, 42, 0.45)
+  );
+
+  --hero-height-mobile: 500px;
+  --hero-height-tablet: 560px;
+  --hero-height-desktop: 650px;
+
+  --hero-content-width: 680px;
+  --hero-card-width: 340px;
+
+  /* ===========================
+     SHADOWS
+  ============================ */
+
+  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  --shadow-hero: 0 25px 70px rgba(0, 0, 0, 0.35);
+
+  /* ===========================
+     RADIUS
+  ============================ */
+
+  --radius-card: 18px;
+  --radius-button: 16px;
+  --radius-hero: 28px;
 }
 
-body[dir="rtl"] {
-  text-align: right;
-  direction: rtl;
-}
+/* ===========================
+   BODY
+=========================== */
 
-body[dir="ltr"] {
-  text-align: left;
-  direction: ltr;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-display);
   background: var(--color-surface);
+  color: var(--color-text);
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
+/* ===========================
+   RTL / LTR
+=========================== */
+
+body[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+body[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* ===========================
+   SELECTION
+=========================== */
+
+::selection {
+  background: var(--color-gold);
+  color: white;
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-hover);
+}
+
+/* ===========================
+   IMAGES
+=========================== */
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+button {
+  transition: all 0.3s ease;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+a {
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* ===========================
+   FOCUS
+=========================== */
+
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
 }

@@ -1,0 +1,145 @@
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-border shadow-sm">
+  <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+
+    <!-- Left -->
+    <div class="flex items-center gap-3">
+
+      <!-- Sidebar Toggle -->
+      <button
+        (click)="sidebarToggle()"
+        class="p-2 rounded-lg text-text-secondary hover:bg-blue-light hover:text-blue
+               transition-colors duration-200 cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <div class="w-px h-6 bg-border hidden sm:block"></div>
+
+      <!-- Page Title -->
+      <div class="flex flex-col leading-tight">
+        <h1 class="font-display text-lg font-semibold text-text-primary tracking-tight">
+          {{ getTitle() }}
+        </h1>
+        <span class="text-xs text-text-muted hidden sm:block">Welcome back, manage your dashboard</span>
+      </div>
+
+    </div>
+
+    <!-- Right -->
+    <div class="flex items-center gap-3">
+
+      <!-- Search -->
+      <div class="hidden md:block relative">
+        <svg class="w-4 h-4 text-text-muted absolute left-3 top-1/2 -translate-y-1/2"
+             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"/>
+          <path stroke-linecap="round" d="M21 21l-4.3-4.3"/>
+        </svg>
+        <input
+          type="text"
+          placeholder="Search anything..."
+          class="w-64 rounded-lg border border-border bg-surface pl-9 pr-4 py-2 text-sm
+                 text-text-primary placeholder:text-text-muted
+                 focus:outline-none focus:ring-2 focus:ring-blue/40 focus:border-blue
+                 transition-all duration-200">
+      </div>
+
+      <!-- Notification -->
+      <div class="relative">
+        <button
+          (click)="toggleNotifications()"
+          class="relative p-2 rounded-lg text-text-secondary hover:bg-blue-light hover:text-blue
+                 transition-colors duration-200 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-light-orange
+                       ring-2 ring-white animate-pulse"></span>
+        </button>
+
+        <!-- Notification dropdown -->
+        <div
+          *ngIf="showNotifications"
+          class="absolute right-0 mt-2 w-80 rounded-xl border border-border bg-white shadow-lg
+                 origin-top-right animate-[fadeIn_.15s_ease-out] overflow-hidden">
+          <div class="px-4 py-3 border-b border-border flex items-center justify-between">
+            <span class="font-medium text-text-primary text-sm">Notifications</span>
+            <span class="text-xs text-blue font-medium cursor-pointer hover:underline">Mark all read</span>
+          </div>
+          <div class="max-h-72 overflow-y-auto divide-y divide-border">
+            <a class="flex gap-3 px-4 py-3 hover:bg-surface cursor-pointer">
+              <span class="w-2 h-2 mt-1.5 rounded-full bg-light-orange shrink-0"></span>
+              <div>
+                <p class="text-sm text-text-primary">New order received</p>
+                <p class="text-xs text-text-muted mt-0.5">2 minutes ago</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-px h-6 bg-border hidden sm:block"></div>
+
+      <!-- Dropdown -->
+      <div class="relative">
+        <button
+          (click)="collapse()"
+          class="flex items-center gap-2 hover:bg-blue-light rounded-lg pl-2 pr-3 py-1.5
+                 transition-colors duration-200 cursor-pointer">
+
+          <span class="relative">
+            <img src="https://i.pravatar.cc/40" class="w-9 h-9 rounded-full ring-2 ring-blue-light object-cover">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+          </span>
+
+          <span class="hidden md:flex flex-col items-start leading-tight">
+            <span class="text-sm font-medium text-text-primary">Admin</span>
+            <span class="text-xs text-text-muted">Super Admin</span>
+          </span>
+
+          <svg
+            class="w-4 h-4 text-text-muted transition-transform duration-200"
+            [class.rotate-180]="!isCollapsed"
+            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <div
+          *ngIf="!isCollapsed"
+          class="absolute right-0 mt-2 w-52 rounded-xl border border-border bg-white shadow-lg
+                 origin-top-right animate-[fadeIn_.15s_ease-out] overflow-hidden py-1">
+
+          <a class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text-primary hover:bg-blue-light hover:text-blue cursor-pointer transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path stroke-linecap="round" d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/>
+            </svg>
+            Profile
+          </a>
+
+          <a class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text-primary hover:bg-blue-light hover:text-blue cursor-pointer transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/>
+            </svg>
+            Settings
+          </a>
+
+          <hr class="my-1 border-border">
+
+          <a class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 cursor-pointer transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
+            </svg>
+            Logout
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</nav>

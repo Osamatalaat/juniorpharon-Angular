@@ -1,28 +1,32 @@
 <nav
-  class="container mx-auto mt-8 mb-6 text-sm text-text-secondary"
+  class="container mx-auto mt-8 mb-6 px-4"
   aria-label="Breadcrumb"
 >
-  <ol class="flex items-center gap-2 flex-wrap">
+  <ol
+    class="flex flex-wrap items-center gap-2
+           text-sm
+           text-gray-500"
+  >
 
     <!-- Home -->
     <li>
       <a
         routerLink="/"
-        class="hover:text-blue transition"
+        class="hover:text-gold transition duration-300"
       >
         Home
       </a>
     </li>
 
     <li>
-      <i class="fa-solid fa-chevron-right text-xs text-text-muted"></i>
+      <i class="fa-solid fa-chevron-right text-xs text-gold"></i>
     </li>
 
     <!-- Trips -->
     <li>
       <a
         routerLink="/trips"
-        class="hover:text-blue transition"
+        class="hover:text-gold transition duration-300"
       >
         Trips
       </a>
@@ -32,11 +36,11 @@
     <ng-container *ngIf="pageTitle">
 
       <li>
-        <i class="fa-solid fa-chevron-right text-xs text-text-muted"></i>
+        <i class="fa-solid fa-chevron-right text-xs text-gold"></i>
       </li>
 
       <li
-        class="text-blue font-semibold"
+        class="font-semibold text-dark-navy"
       >
         {{ pageTitle }}
       </li>
