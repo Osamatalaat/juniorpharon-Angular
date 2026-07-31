@@ -108,7 +108,7 @@ export class DestinationMapComponent {
     {
       id: 6,
       name: 'Hurghada',
-      image: 'assets/images/destinations/hurghada.jpg',
+      image: 'assets/images/destinations/hurghada2.jpg',
       description:
         'Crystal-clear water, diving and luxury Red Sea resorts.',
       x: '73%',
