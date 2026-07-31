@@ -44,7 +44,7 @@ import { BookingDetailsComponent } from './pages/bookings/booking-details/bookin
 import { BookingTableComponent } from './pages/bookings/components/booking-table/booking-table.component';
 import { BookingFilterComponent } from './pages/bookings/components/booking-filter/booking-filter.component';
 import { TripsListComponent } from './pages/trips/trips-list/trips-list.component';
-import { CreateTripComponent } from './pages/trips/create-trip/create-trip.component';
+import { TripCreateComponent } from './pages/trips/trip-create/trip-create.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import { CreateTripComponent } from './pages/trips/create-trip/create-trip.compo
     TripDetailsComponent,
     TripTableComponent,
     TripFilterComponent,
-    CreateTripComponent,
+    TripCreateComponent,
     DeleteDialogComponent,
 
     // Packages

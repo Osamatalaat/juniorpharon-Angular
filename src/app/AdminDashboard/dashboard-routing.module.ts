@@ -26,7 +26,7 @@ import { BookingDetailsComponent } from './pages/bookings/booking-details/bookin
 // Settings
 import { SettingsComponent } from './pages/settings/settings.component';
 import { TripsListComponent } from './pages/trips/trips-list/trips-list.component';
-import { CreateTripComponent } from './pages/trips/create-trip/create-trip.component';
+import { TripCreateComponent } from './pages/trips/trip-create/trip-create.component';
 
 const routes: Routes = [
   {
@@ -40,7 +40,7 @@ const routes: Routes = [
 
       // Trips
       { path: 'trips', component: TripsListComponent },
-      { path: 'trips/new', component: CreateTripComponent },
+      { path: 'trips/new', component: TripCreateComponent },
       { path: 'trips/:id', component: TripDetailsComponent },
       { path: 'trips/:id/edit', component: TripFormComponent },
 
