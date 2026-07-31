@@ -28,6 +28,12 @@ import { TripsToolbarComponent } from './Trips-page/trips-toolbar/trips-toolbar.
 import { TripsBreadcrumbComponent } from './Trips-page/trips-breadcrumb/trips-breadcrumb.component';
 import { PackagesHeroComponent } from './Packages-page/packages-hero/packages-hero.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { CompanyIntroComponent } from './Home-Page/company-intro/company-intro.component';
+import { FeaturedCategoriesComponent } from './Home-Page/featured-categories/featured-categories.component';
+import { FaqReviewsComponent } from './Home-Page/faq-reviews/faq-reviews.component';
+import { ThingsToDoComponent } from './Home-Page/things-to-do/things-to-do.component';
+import { WhyChooseUsComponent } from './Home-Page/why-choose-us/why-choose-us.component';
+import { TravelGuideCardComponent } from './Home-Page/travel-guide/travel-guide.component';
 
 
 
@@ -41,6 +47,12 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     HomeComponent,
     HeroSectionComponent,
     HerooSectionComponent,
+    CompanyIntroComponent,
+    FeaturedCategoriesComponent,
+    WhyChooseUsComponent,
+    TravelGuideCardComponent,
+    ThingsToDoComponent,
+    FaqReviewsComponent,
     ExploreResortsComponent,
     ResortGuideSectionComponent,
     SpecialOffersComponent,

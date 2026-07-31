@@ -1,5 +1,5 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hero-section',
@@ -16,7 +16,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
 
   heroSlides = [
     {
-      image: 'assets/images/trips-hero/pyramids.png',
+      image: 'assets/images/hero/1.png',
       badge: 'Ancient Wonders',
       title1: 'Discover the',
       title2: 'Wonders',
@@ -26,7 +26,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
     },
 
     {
-      image: 'assets/images/trips-hero/nile.png',
+      image: 'assets/images/hero/2.png',
       badge: 'Nile Cruises',
       title1: 'Sail Through',
       title2: 'The Nile',
@@ -36,7 +36,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
     },
 
     {
-      image: 'assets/images/trips-hero/luxor.png',
+      image: 'assets/images/hero/3.png',
       badge: 'Historical Temples',
       title1: 'Walk Inside',
       title2: 'Ancient',
@@ -46,7 +46,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
     },
 
     {
-      image: 'assets/images/trips-hero/redsea.png',
+      image: 'assets/images/hero/1.png',
       badge: 'Beach Escape',
       title1: 'Relax On',
       title2: 'Red Sea',

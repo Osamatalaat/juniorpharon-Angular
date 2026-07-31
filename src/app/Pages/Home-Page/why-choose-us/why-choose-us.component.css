@@ -1,0 +1,7 @@
+:host ::ng-deep img{
+    transition: .35s;
+}
+
+:host ::ng-deep .group:hover img{
+    transform: translateY(-3px);
+}

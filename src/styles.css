@@ -28,6 +28,8 @@
   --color-white: #FFFFFF;
   --color-light-gray: #F8FAFC;
   --color-surface: #FFFFFF;
+  --color-surface-dark: #F1F5F9;
+  --color-background-gray: #f5f3f0;
 
   /* ===========================
      TEXT
@@ -37,6 +39,7 @@
   --color-text: #475569;
   --color-text-secondary: #64748B;
   --color-dark-text: #1F2937;
+  --color-text-gold: #C89B3C;
 
   /* ===========================
      BORDER
@@ -44,6 +47,7 @@
 
   --color-border: #E5E7EB;
   --color-border-dark: #CBD5E1;
+  --color-border-gold: #C89B3C;
 
   /* ===========================
      STATUS

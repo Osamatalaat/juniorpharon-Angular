@@ -1,0 +1,145 @@
+<section
+  class="bg-white
+         rounded-[22px]
+         shadow-card
+         p-8
+         h-full">
+
+  <!-- Header -->
+
+  <div
+    class="flex
+           justify-between
+           items-center">
+
+    <div>
+
+      <h2
+        class="text-3xl
+               font-bold
+               text-dark-navy">
+
+        Traveler Reviews
+
+      </h2>
+
+      <p
+        class="text-text-secondary
+               mt-2">
+
+        Real experiences from our happy travelers.
+
+      </p>
+
+    </div>
+
+    <img
+      src="assets/icons/tripadvisor.svg"
+      class="w-10 h-10"
+      alt="Tripadvisor">
+
+  </div>
+
+  <!-- Stars -->
+
+  <div
+    class="flex gap-1 mt-7">
+
+    <i
+      *ngFor="let star of [1,2,3,4,5]"
+      class="fa-solid fa-star text-star text-lg">
+    </i>
+
+  </div>
+
+  <!-- Review -->
+
+  <p
+    class="mt-5
+           text-text-secondary
+           italic
+           leading-8">
+
+    "{{reviews[current].review}}"
+
+  </p>
+
+  <!-- User -->
+
+  <div
+    class="flex
+           items-center
+           gap-4
+           mt-8">
+
+    <img
+      [src]="reviews[current].image"
+      class="w-14
+             h-14
+             rounded-full
+             object-cover">
+
+    <div>
+
+      <h4
+        class="font-bold
+               text-dark-navy">
+
+        {{reviews[current].name}}
+
+      </h4>
+
+      <p
+        class="text-sm
+               text-text-secondary">
+
+        {{reviews[current].country}}
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+
+  <div
+    class="flex
+           justify-end
+           gap-3
+           mt-8">
+
+    <button
+      (click)="prev()"
+      class="w-10
+             h-10
+             rounded-full
+             border
+             border-border
+             hover:bg-gold
+             hover:text-white
+             transition
+             cursor-pointer">
+
+      <i class="fa-solid fa-arrow-left "></i>
+
+    </button>
+
+    <button
+      (click)="next()"
+      class="w-10
+             h-10
+             rounded-full
+             bg-gold
+             text-white
+             hover:bg-gold-hover
+             transition
+             cursor-pointer">
+
+      <i class="fa-solid fa-arrow-right "></i>
+
+    </button>
+
+  </div>
+
+</section>

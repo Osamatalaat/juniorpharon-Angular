@@ -1,0 +1,93 @@
+<section class="container mx-auto py-16">
+
+  <!-- Heading -->
+
+  <div class="text-center mb-10">
+
+    <h2
+      class="text-4xl
+             font-bold
+             text-dark-navy">
+
+      Things to Do in Egypt
+
+    </h2>
+
+    <p
+      class="mt-3
+             text-text-secondary">
+
+      Add more excitement to your trip with our unique travel experiences.
+
+    </p>
+
+  </div>
+
+  <!-- Activities -->
+
+  <div
+    class="grid
+           grid-cols-2
+           md:grid-cols-4
+           lg:grid-cols-8
+           gap-4">
+
+    <a
+      *ngFor="let item of activities"
+      [routerLink]="item.link"
+      class="group
+             block">
+
+      <!-- Card -->
+
+      <div
+        class="bg-white
+               rounded-xl
+               overflow-hidden
+               shadow-card
+               hover:-translate-y-1
+               hover:shadow-xl
+               transition-all
+               duration-300">
+
+        <!-- Image -->
+
+        <div class="overflow-hidden">
+
+          <img
+            [src]="item.image"
+            [alt]="item.title"
+            class="w-full
+                   h-24
+                   object-cover
+                   group-hover:scale-110
+                   transition-transform
+                   duration-500">
+
+        </div>
+
+        <!-- Title -->
+
+        <div
+          class="py-3
+                 px-2">
+
+          <h3
+            class="text-center
+                   text-[14px]
+                   font-semibold
+                   text-dark-navy">
+
+            {{item.title}}
+
+          </h3>
+
+        </div>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>

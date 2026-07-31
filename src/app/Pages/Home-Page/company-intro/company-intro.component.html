@@ -1,0 +1,155 @@
+<section class="container mx-auto px-4 lg:px-6 mt-20">
+ <!-- ================= Features ================= -->
+
+<div
+  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6
+         bg-white
+         rounded-[24px]
+         border border-slate-100
+         shadow-[0_0_35px_rgba(15,23,42,0.08)]
+         overflow-hidden">
+
+  <div
+    *ngFor="let feature of features; let last = last"
+    class="relative
+           flex flex-col items-center justify-center
+           px-6 py-5
+           transition-all duration-300
+           hover:bg-light-gray
+           hover:-translate-y-1">
+
+    <!-- Vertical Divider -->
+    <span
+      *ngIf="!last"
+      class="hidden lg:block
+             absolute
+             right-0
+             top-1/2
+             -translate-y-1/2
+             h-14
+             w-px
+             bg-slate-200">
+    </span>
+
+    <!-- Icon -->
+    <img
+      [src]="feature.icon"
+      [alt]="feature.title"
+      class="w-[60px] h-[60px]
+             object-contain
+             mb-3" />
+
+    <!-- Title -->
+    <h4
+      class="text-dark-navy
+             font-semibold
+             text-[15px]
+             text-center">
+      {{ feature.title }}
+    </h4>
+
+    <!-- Subtitle -->
+    <p
+      class="text-text-secondary
+             text-[13px]
+             text-center
+             mt-1
+             leading-5">
+      {{ feature.subtitle }}
+    </p>
+
+  </div>
+
+</div>
+
+  <!-- ================= Content ================= -->
+
+  <div
+    class="mt-10 bg-white rounded-[32px] shadow-xl border border-border overflow-hidden"
+  >
+    <div class="grid lg:grid-cols-2 gap-10 items-center p-8 lg:p-12">
+      <!-- ================= Left ================= -->
+
+      <div>
+        <span
+          class="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full text-sm font-semibold"
+        >
+          <i class="fa-solid fa-earth-africa"></i>
+
+          About Us
+        </span>
+
+        <h2 class="mt-6 text-4xl font-black leading-tight text-dark-navy">
+          Welcome to
+
+          <br />
+
+          <span class="text-gold"> JuniorPharon </span>
+
+          Tours
+        </h2>
+
+        <h3 class="mt-3 text-xl font-semibold text-dark-navy">
+          Discover The Real Egypt with Local Experts
+        </h3>
+
+        <p class="mt-6 text-text leading-8">
+          JuniorPharon Tours is a licensed Egyptian travel company specializing
+          in private tours, Nile cruises, day trips, and tailor-made vacations
+          across Egypt.
+        </p>
+
+        <p class="mt-5 text-text leading-8">
+          Our passionate Egyptologists help you explore ancient history,
+          breathtaking temples, relaxing Nile cruises, and unforgettable
+          adventures with comfort and safety.
+        </p>
+
+        <button
+  class="mt-8
+         cursor-pointer
+         rounded-xl
+         border-3
+         border-gold
+         px-7 py-3
+         font-semibold
+         text-gold
+
+         transition-all
+         duration-500
+         ease-out
+
+         hover:bg-gold-hover
+         hover:text-white
+         hover:translate-x-1">
+          Learn More About Us
+
+          <i class="fa-solid fa-arrow-right ml-2 hover:translate-x-1"></i>
+        </button>
+      </div>
+
+      <!-- ================= Right ================= -->
+
+      <div class="relative">
+        <img
+          src="assets/images/about/about-egypt.jpg"
+          class="w-full h-[450px] object-cover rounded-3xl"
+        />
+
+        <!-- Quote -->
+
+        <div
+          class="absolute bottom-8 right-8 bg-white/80 backdrop-blur-lg rounded-2xl px-6 py-5 shadow-xl"
+        >
+          <p class="text-2xl italic font-bold text-dark-navy leading-relaxed">
+            "Discover Egypt...
+
+            <br />
+
+            Experience the Extraordinary"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
