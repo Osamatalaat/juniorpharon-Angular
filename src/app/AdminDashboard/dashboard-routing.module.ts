@@ -26,7 +26,7 @@ import { BookingDetailsComponent } from './pages/bookings/booking-details/bookin
 // Settings
 import { SettingsComponent } from './pages/settings/settings.component';
 import { TripsListComponent } from './pages/trips/trips-list/trips-list.component';
-import { CreateTripComponent } from './pages/trips/Create-trip/Create-trip.component';
+import { CreateTripComponent } from './pages/trips/create-trip/create-trip.component';
 
 const routes: Routes = [
   {

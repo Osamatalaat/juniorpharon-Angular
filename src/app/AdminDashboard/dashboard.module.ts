@@ -44,7 +44,7 @@ import { BookingDetailsComponent } from './pages/bookings/booking-details/bookin
 import { BookingTableComponent } from './pages/bookings/components/booking-table/booking-table.component';
 import { BookingFilterComponent } from './pages/bookings/components/booking-filter/booking-filter.component';
 import { TripsListComponent } from './pages/trips/trips-list/trips-list.component';
-import { CreateTripComponent } from './pages/trips/Create-trip/Create-trip.component';
+import { CreateTripComponent } from './pages/trips/create-trip/create-trip.component';
 
 @NgModule({
   declarations: [
