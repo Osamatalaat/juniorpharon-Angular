@@ -16,7 +16,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
 
   heroSlides = [
     {
-      image: 'assets/images/hero/1.png',
+      image: 'assets/images/hero/luxor.png',
       badge: 'Ancient Wonders',
       title1: 'Discover the',
       title2: 'Wonders',
@@ -26,7 +26,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
     },
 
     {
-      image: 'assets/images/hero/2.png',
+      image: 'assets/images/hero/nile.png',
       badge: 'Nile Cruises',
       title1: 'Sail Through',
       title2: 'The Nile',
@@ -36,7 +36,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
     },
 
     {
-      image: 'assets/images/hero/3.png',
+      image: 'assets/images/hero/pyramids.png',
       badge: 'Historical Temples',
       title1: 'Walk Inside',
       title2: 'Ancient',
@@ -46,7 +46,7 @@ export class HeroSectionComponent implements OnInit , OnDestroy {
     },
 
     {
-      image: 'assets/images/hero/1.png',
+      image: 'assets/images/hero/redsea.png',
       badge: 'Beach Escape',
       title1: 'Relax On',
       title2: 'Red Sea',

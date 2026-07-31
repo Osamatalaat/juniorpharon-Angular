@@ -34,6 +34,7 @@ import { FaqReviewsComponent } from './Home-Page/faq-reviews/faq-reviews.compone
 import { ThingsToDoComponent } from './Home-Page/things-to-do/things-to-do.component';
 import { WhyChooseUsComponent } from './Home-Page/why-choose-us/why-choose-us.component';
 import { TravelGuideCardComponent } from './Home-Page/travel-guide/travel-guide.component';
+import { DestinationMapComponent } from './destination-map/destination-map.component';
 
 
 
@@ -72,7 +73,8 @@ import { TravelGuideCardComponent } from './Home-Page/travel-guide/travel-guide.
     BookingFormComponent,
     BookingLayoutComponent,
     UserReviewCardComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    DestinationMapComponent
   ],
   exports: [],
 })

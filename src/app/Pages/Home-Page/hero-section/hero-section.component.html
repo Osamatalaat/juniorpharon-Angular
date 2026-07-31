@@ -1,128 +1,86 @@
 <section
-  class="relative
-         h-[700px]
-         sm:h-[560px]
-         lg:h-[650px]
-         overflow-hidden
-         rounded-3xl
-         shadow-2xl
-         my-8"
+  class="relative min-h-[900px] sm:min-h-[760px] lg:min-h-[760px] overflow-hidden rounded-3xl shadow-2xl my-8"
 >
-  <!-- Background -->
+  <!-- ================= Background ================= -->
 
   <img
     [src]="heroSlides[currentSlide].image"
+    [alt]="heroSlides[currentSlide].title1"
     class="absolute inset-0 w-full h-full object-cover transition-all duration-700"
     [class.opacity-0]="isFading"
     [class.opacity-100]="!isFading"
   />
 
-  <!-- Overlay -->
-
-  <!-- <div
-    class="absolute inset-0
-           bg-gradient-to-r
-           from-dark-navy/85
-           via-dark-navy/45
-           to-black/20"
-  ></div> -->
-
-  <!-- Gold Light -->
-
-  <!-- <div
-    class="absolute
-           right-0
-           top-0
-           h-full
-           w-1/3
-           bg-gradient-to-l
-           from-gold/10
-           to-transparent"
-  ></div> -->
-
-  <!-- ================= CONTENT ================= -->
+  <!-- ================= Dark Overlay ================= -->
 
   <div
-    class="relative z-10 h-full flex items-center"
+    class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30"
+  ></div>
+
+  <!-- ================= Gold Light ================= -->
+
+  <div
+    class="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gold/20 via-gold/5 to-transparent"
+  ></div>
+
+  <!-- ================= Decorative Blur ================= -->
+
+  <div
+    class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-gold/10 blur-[120px]"
+  ></div>
+
+  <div
+    class="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-blue-700/20 blur-[150px]"
+  ></div>
+
+  <!-- ================= Main Content ================= -->
+
+  <div
+    class="relative z-20 h-full flex items-center transition-all duration-700"
     [class.opacity-0]="isFading"
     [class.opacity-100]="!isFading"
   >
     <div
-      class="container
-             mx-auto
-             px-6
-             lg:px-12
-             grid
-             xl:grid-cols-[1.2fr_380px]
-             items-center
-             gap-12"
+      class="container mx-auto px-6 lg:px-12 grid xl:grid-cols-[1.25fr_360px] gap-16 items-center"
     >
-      <!-- LEFT -->
+      <!-- ================= LEFT ================= -->
 
-      <!-- <div class="max-w-3xl">
-        Badge --
+      <div class="max-w-3xl">
+        <!-- Badge -->
 
         <div
-          class="inline-flex
-                 items-center
-                 gap-2
-                 bg-white/10
-                 backdrop-blur-xl
-                 border
-                 border-white/20
-                 px-4
-                 py-2
-                 rounded-full
-                 text-white
-                 mb-6"
+          class="inline-flex items-center gap-3 rounded-full border border-gold/40 bg-gold/15 backdrop-blur-xl px-5 py-2 text-gold font-semibold"
         >
-<i class="fa-solid fa-plane text-white/90"></i>
-          <span class="text-sm font-semibold">
+          <i class="fa-solid fa-crown"></i>
+
+          <span>
             {{ heroSlides[currentSlide].badge }}
           </span>
-        </div> -->
+        </div>
 
         <!-- Title -->
 
-        <!-- <h1
-          class="font-black
-                 text-4xl
-                 sm:text-5xl
-                 lg:text-6xl
-                 leading-tight
-                 text-white"
+        <h1
+          class="mt-8 text-5xl sm:text-6xl xl:text-7xl font-black leading-tight text-white"
         >
           {{ heroSlides[currentSlide].title1 }}
 
-          <span class="text-white">
+          <span class="text-gold">
             {{ heroSlides[currentSlide].title2 }}
           </span>
 
           {{ heroSlides[currentSlide].title3 }}
-        </h1> -->
+        </h1>
 
         <!-- Description -->
 
-        <!-- <p
-          class="mt-6
-                 max-w-2xl
-                 text-lg
-                 leading-8
-                 text-gray-200"
-        >
+        <p class="mt-8 max-w-2xl text-lg sm:text-xl leading-9 text-gray-200">
           {{ heroSlides[currentSlide].description }}
-        </p> -->
+        </p>
 
         <!-- Rating -->
 
-        <div
-          class="mt-8
-                 flex
-                 flex-wrap
-                 items-center
-                 gap-4
-                 text-white"
-        >
+        <div class="mt-8 flex flex-wrap items-center gap-4 text-white">
           <div class="flex text-star text-xl">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -131,277 +89,158 @@
             <i class="fa-solid fa-star-half-stroke"></i>
           </div>
 
-          <span class="text-base font-medium">
-            4.9 / 5 • Trusted by 50,000+ Travelers
+          <span class="font-medium text-lg">
+            Rated 4.9/5 by more than 50,000 travelers
           </span>
         </div>
 
         <!-- Buttons -->
 
-        <div class="mt-10 flex flex-wrap gap-4">
+        <div class="mt-10 flex flex-wrap gap-5">
           <button
             routerLink="/trips"
-            class="group
-                   bg-gold
-                   hover:bg-[#c89b2c]
-                   text-dark-navy
-                   px-8
-                   py-4
-                   rounded-2xl
-                   font-bold
-                   shadow-xl
-                   transition"
+            class="group inline-flex items-center justify-center rounded-2xl bg-gold px-8 py-4 text-lg font-bold text-dark-navy shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-[#d3a22e]"
           >
             <i
-              class="fa-solid fa-plane-departure
-                     mr-2
-                     group-hover:translate-x-1
-                     transition"
-            ></i>
+              class="fa-solid fa-plane-departure mr-3 transition-transform duration-300 group-hover:translate-x-1"
+            >
+            </i>
 
             Explore Tours
           </button>
 
           <button
             routerLink="/map"
-            class="group
-                   border-2
-                   border-white/70
-                   bg-white/10
-                   backdrop-blur-md
-                   hover:bg-white
-                   hover:text-dark-navy
-                   text-white
-                   px-8
-                   py-4
-                   rounded-2xl
-                   font-bold
-                   transition"
+            class="group inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white/10 backdrop-blur-xl px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-dark-navy"
           >
-            <i class="fa-solid fa-map-location-dot mr-2"></i>
+            <i class="fa-solid fa-map-location-dot mr-3"></i>
 
             View Destinations
           </button>
         </div>
 
-        <!-- Stats -->
+        <!-- Statistics -->
 
-        <div
-          class="mt-12
-                 flex
-                 flex-wrap
-                 gap-10
-                 text-white"
-        >
-          <div>
-            <h3 class="text-3xl font-black text-gold">
-              500+
-            </h3>
+        <div class="mt-14 grid grid-cols-3 gap-5 max-w-2xl">
+          <!-- Card 1 -->
 
-            <p class="text-gray-300 mt-1">
-              Premium Tours
-            </p>
+          <div
+            class="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/15"
+          >
+            <h3 class="text-4xl font-black text-gold">500+</h3>
+
+            <p class="mt-2 text-gray-200">Premium Tours</p>
           </div>
 
-          <div>
-            <h3 class="text-3xl font-black text-gold">
-              25+
-            </h3>
+          <!-- Card 2 -->
 
-            <p class="text-gray-300 mt-1">
-              Years Experience
-            </p>
+          <div
+            class="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/15"
+          >
+            <h3 class="text-4xl font-black text-gold">25+</h3>
+
+            <p class="mt-2 text-gray-200">Years Experience</p>
           </div>
 
-          <div>
-            <h3 class="text-3xl font-black text-gold">
-              50K+
-            </h3>
+          <!-- Card 3 -->
 
-            <p class="text-gray-300 mt-1">
-              Happy Travelers
-            </p>
+          <div
+            class="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/15"
+          >
+            <h3 class="text-4xl font-black text-gold">50K+</h3>
+
+            <p class="mt-2 text-gray-200">Happy Travelers</p>
           </div>
         </div>
       </div>
 
-            <!-- RIGHT CARD -->
+      <!-- ================= RIGHT ================= -->
 
       <div class="hidden xl:flex justify-end">
-
         <div
-          class="w-[340px]
-                 bg-white/10
-                 backdrop-blur-2xl
-                 border border-white/20
-                 rounded-[28px]
-                 p-7
-                 text-white
-                 shadow-2xl"
+          class="relative w-[360px] rounded-[30px] border border-white/15 bg-white/10 backdrop-blur-3xl p-8 text-white shadow-[0_25px_80px_rgba(0,0,0,.35)] transition-all duration-500 hover:-translate-y-3 hover:rotate-1"
         >
-
           <div
-            class="w-16 h-16
-                   rounded-2xl
-                   bg-gold/15
-                   flex items-center justify-center"
+            class="flex h-20 w-20 items-center justify-center rounded-3xl bg-gold/15"
           >
-            <i
-              class="fa-solid fa-earth-africa
-                     text-3xl
-                     text-gold"
-            ></i>
+            <i class="fa-solid fa-earth-africa text-4xl text-gold"> </i>
           </div>
 
-          <h3
-            class="text-3xl
-                   font-bold
-                   mt-6
-                   leading-snug"
-          >
-            Experience Egypt Like Never Before
-          </h3>
+          <h2 class="mt-8 text-4xl font-black leading-tight">
+            Experience Egypt
 
-          <p
-            class="mt-5
-                   leading-8
-                   text-gray-200"
-          >
-            From the majestic pyramids and ancient temples
-            to luxury Nile cruises and Red Sea adventures,
-            every journey is carefully designed to create
-            unforgettable memories.
+            <span class="block text-gold"> Like Never Before </span>
+          </h2>
+
+          <p class="mt-6 leading-8 text-gray-200">
+            Discover timeless monuments, luxury Nile cruises, breathtaking
+            deserts and unforgettable adventures designed by local experts.
           </p>
 
-          <div
-            class="mt-8
-                   flex
-                   items-center
-                   justify-between"
-          >
+          <div class="mt-8 h-px w-full bg-white/20"></div>
 
+          <div class="mt-8 grid grid-cols-2 gap-6">
             <div>
+              <div class="text-3xl font-black text-gold">★ 4.9</div>
 
-              <div class="text-gold text-2xl font-black">
-                ★ 4.9
-              </div>
-
-              <div class="text-sm text-gray-300">
-                Average Rating
-              </div>
-
+              <div class="mt-1 text-sm text-gray-300">Average Rating</div>
             </div>
 
             <div>
+              <div class="text-3xl font-black text-gold">#1</div>
 
-              <div class="text-gold text-2xl font-black">
-                #1
-              </div>
-
-              <div class="text-sm text-gray-300">
-                Egypt Tours
-              </div>
-
+              <div class="mt-1 text-sm text-gray-300">Egypt Tours</div>
             </div>
-
           </div>
 
+          <button
+            routerLink="/trips"
+            class="mt-10 flex w-full items-center justify-center rounded-2xl bg-gold py-4 font-bold text-dark-navy transition-all duration-300 hover:scale-105"
+          >
+            Explore Now
+
+            <i class="fa-solid fa-arrow-right ml-3"></i>
+          </button>
         </div>
-
       </div>
-
     </div>
-
-  <!-- </div> -->
+  </div>
 
   <!-- ================= Previous ================= -->
 
   <button
     (click)="previousSlide()"
-    class="hidden lg:flex
-           absolute
-           left-6
-           top-1/2
-           -translate-y-1/2
-           z-30
-           w-12
-           h-12
-           rounded-full
-           bg-white/10
-           backdrop-blur-xl
-           border
-           border-white/20
-           text-white
-           hover:bg-gold
-           hover:text-dark-navy
-           transition
-           items-center
-           justify-center"
+    class="absolute left-8 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-gold hover:text-dark-navy lg:flex"
   >
-
     <i class="fa-solid fa-chevron-left"></i>
-
   </button>
 
   <!-- ================= Next ================= -->
 
   <button
     (click)="nextSlide()"
-    class="hidden lg:flex
-           absolute
-           right-6
-           top-1/2
-           -translate-y-1/2
-           z-30
-           w-12
-           h-12
-           rounded-full
-           bg-white/10
-           backdrop-blur-xl
-           border
-           border-white/20
-           text-white
-           hover:bg-gold
-           hover:text-dark-navy
-           transition
-           items-center
-           justify-center"
+    class="absolute right-8 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:bg-gold hover:text-dark-navy lg:flex"
   >
-
     <i class="fa-solid fa-chevron-right"></i>
-
   </button>
 
   <!-- ================= Indicators ================= -->
 
   <div
-    class="absolute
-           bottom-7
-           left-1/2
-           -translate-x-1/2
-           flex
-           items-center
-           gap-3
-           z-30"
+    class="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 items-center gap-3"
   >
-
     <button
-      *ngFor="let slide of heroSlides; let i=index"
+      *ngFor="let slide of heroSlides; let i = index"
       (click)="changeSlide(i)"
       class="transition-all duration-300"
     >
-
-    <span
-  class="block rounded-full transition-all duration-300"
-  [ngClass]="
-    currentSlide === i
-      ? 'bg-gold w-10 h-2'
-      : 'bg-white w-2.5 h-2.5'
-  "
-></span>
-
+      <span
+        class="block rounded-full transition-all duration-300"
+        [ngClass]="
+          currentSlide === i ? 'bg-gold w-12 h-2' : 'bg-white/70 w-3 h-3'
+        "
+      >
+      </span>
     </button>
-
   </div>
-
 </section>

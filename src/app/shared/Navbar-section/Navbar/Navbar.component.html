@@ -5,8 +5,8 @@
   <div class="container mx-auto flex justify-between items-center h-full px-4">
     <!-- Mobile -->
     <div class="flex md:hidden w-full justify-between items-center">
-      <a routerLink="/" class="text-gold hover:text-white transition">
-        <i class="fa-solid fa-house"></i>
+      <a routerLink="/" class="text-surface transition">
+        <i class="fa-solid fa-house text-2xl"></i>
       </a>
 
       <a
@@ -14,21 +14,18 @@
         target="_blank"
         class="text-[#25D366] hover:scale-110 transition"
       >
-        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
       </a>
 
       <a
         href="mailto:juniorpharon&#64;gmail.com"
-        class="text-gold hover:text-white transition"
+        class="text-surface transition"
       >
-        <i class="fa-solid fa-envelope"></i>
+        <i class="fa-solid fa-envelope text-2xl"></i>
       </a>
 
-      <a
-        routerLink="/auth/register"
-        class="text-gold hover:text-white transition"
-      >
-        <i class="fa-solid fa-user-plus"></i>
+      <a routerLink="/auth/register" class="text-surface transition">
+        <i class="fa-solid fa-user-plus text-2xl"></i>
       </a>
     </div>
 
@@ -145,8 +142,13 @@
   <!-- Mobile Header -->
 
   <div class="flex md:hidden items-center justify-between px-6 h-full">
-    <img src="assets/images/logo5.png" alt="Logo" class="h-16 object-contain" />
-
+    <a routerLink="/">
+      <img
+        src="assets/images/logo5.png"
+        alt="Logo"
+        class="h-26 object-contain"
+      />
+    </a>
     <button
       (click)="toggleMenu()"
       class="text-white hover:text-gold text-2xl transition"
@@ -162,11 +164,13 @@
       <!-- Logo -->
 
       <div class="flex items-center">
-        <img
-          src="assets/images/logo5.png"
-          alt="Logo"
-          class="h-24 object-contain"
-        />
+        <a routerLink="/">
+          <img
+            src="assets/images/logo5.png"
+            alt="Logo"
+            class="h-24 object-contain"
+          />
+        </a>
       </div>
 
       <!-- Navigation Links -->

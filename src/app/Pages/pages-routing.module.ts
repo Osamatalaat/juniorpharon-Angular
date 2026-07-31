@@ -7,6 +7,7 @@ import { TripComponent } from './Trips-page/Trip/Trip.component';
 import { TripDetailsComponent } from './Trips-page/trip-details/trip-details.component';
 import { PackageLayoutComponent } from './Packages-page/package-layout/package-layout.component';
 import { PackageDetailsComponent } from './Packages-page/package-details/package-details.component';
+import { DestinationMapComponent } from './destination-map/destination-map.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'map',
+        component: DestinationMapComponent
       },
       {
         path: 'trips',
