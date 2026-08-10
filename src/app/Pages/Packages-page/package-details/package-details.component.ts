@@ -6,7 +6,8 @@ import { PackagesService } from '../../../core/Services/Packages.service';
 import { PackageDetails } from '../../../core/models/Details/PackageDetails';
 import { PackageTrip } from '../../../core/models/Details/PackageTrip';
 import { ReviewMedia } from '../../../core/models/Details/ReviewMedia';
-import { Package } from '../../../core/models/Details/Package';
+import { Package } from '../../../core/models/Details/packages/package';
+// import { Package } from '../../../core/models/Details/Package';
 
 
 @Component({

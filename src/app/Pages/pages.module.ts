@@ -35,6 +35,7 @@ import { ThingsToDoComponent } from './Home-Page/things-to-do/things-to-do.compo
 import { WhyChooseUsComponent } from './Home-Page/why-choose-us/why-choose-us.component';
 import { TravelGuideCardComponent } from './Home-Page/travel-guide/travel-guide.component';
 import { DestinationMapComponent } from './destination-map/destination-map.component';
+import { PackageCategoryComponent } from './Packages-page/package-category/package-category.component';
 
 
 
@@ -70,6 +71,7 @@ import { DestinationMapComponent } from './destination-map/destination-map.compo
     PackageCardComponent,
     PackageFilterComponent,
     PackageDetailsComponent,
+    PackageCategoryComponent,
     BookingFormComponent,
     BookingLayoutComponent,
     UserReviewCardComponent,

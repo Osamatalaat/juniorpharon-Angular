@@ -1,66 +1,38 @@
 <section class="container mx-auto px-4 lg:px-6 mt-20">
- <!-- ================= Features ================= -->
-
-<div
-  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6
-         bg-white
-         rounded-[24px]
-         border border-slate-100
-         shadow-[0_0_35px_rgba(15,23,42,0.08)]
-         overflow-hidden">
+  <!-- ================= Features ================= -->
 
   <div
-    *ngFor="let feature of features; let last = last"
-    class="relative
-           flex flex-col items-center justify-center
-           px-6 py-5
-           transition-all duration-300
-           hover:bg-light-gray
-           hover:-translate-y-1">
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 bg-white rounded-[24px] border border-slate-100 shadow-[0_0_35px_rgba(15,23,42,0.08)] overflow-hidden"
+  >
+    <div
+      *ngFor="let feature of features; let last = last"
+      class="relative flex flex-col items-center justify-center px-6 py-5 transition-all duration-300 hover:bg-light-gray hover:-translate-y-1"
+    >
+      <!-- Vertical Divider -->
+      <span
+        *ngIf="!last"
+        class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-14 w-px bg-slate-200"
+      >
+      </span>
 
-    <!-- Vertical Divider -->
-    <span
-      *ngIf="!last"
-      class="hidden lg:block
-             absolute
-             right-0
-             top-1/2
-             -translate-y-1/2
-             h-14
-             w-px
-             bg-slate-200">
-    </span>
+      <!-- Icon -->
+      <img
+        [src]="feature.icon"
+        [alt]="feature.title"
+        class="w-[60px] h-[60px] object-contain mb-3"
+      />
 
-    <!-- Icon -->
-    <img
-      [src]="feature.icon"
-      [alt]="feature.title"
-      class="w-[60px] h-[60px]
-             object-contain
-             mb-3" />
+      <!-- Title -->
+      <h4 class="text-dark-navy font-semibold text-[15px] text-center">
+        {{ feature.title }}
+      </h4>
 
-    <!-- Title -->
-    <h4
-      class="text-dark-navy
-             font-semibold
-             text-[15px]
-             text-center">
-      {{ feature.title }}
-    </h4>
-
-    <!-- Subtitle -->
-    <p
-      class="text-text-secondary
-             text-[13px]
-             text-center
-             mt-1
-             leading-5">
-      {{ feature.subtitle }}
-    </p>
-
+      <!-- Subtitle -->
+      <p class="text-text-secondary text-[13px] text-center mt-1 leading-5">
+        {{ feature.subtitle }}
+      </p>
+    </div>
   </div>
-
-</div>
 
   <!-- ================= Content ================= -->
 
@@ -106,22 +78,8 @@
         </p>
 
         <button
-  class="mt-8
-         cursor-pointer
-         rounded-xl
-         border-3
-         border-gold
-         px-7 py-3
-         font-semibold
-         text-gold
-
-         transition-all
-         duration-500
-         ease-out
-
-         hover:bg-gold-hover
-         hover:text-white
-         hover:translate-x-1">
+          class="mt-8 cursor-pointer rounded-xl border-3 border-gold px-7 py-3 font-semibold text-gold transition-all duration-500 ease-out hover:bg-gold-hover hover:text-white hover:translate-x-1"
+        >
           Learn More About Us
 
           <i class="fa-solid fa-arrow-right ml-2 hover:translate-x-1"></i>
@@ -130,25 +88,24 @@
 
       <!-- ================= Right ================= -->
 
-      <div class="relative">
+      <div
+        class="relative flex justify-center items-center h-[420px] sm:h-[470px] lg:h-[520px]"
+      >
+        <!-- Back Image -->
         <img
-          src="assets/images/about/about-egypt.jpg"
-          class="w-full h-[450px] object-cover rounded-3xl"
+          src="assets/images/about/about-egypt-1.jpg"
+          alt="Egypt Tour"
+          class="absolute top-2 left-2 sm:top-4 sm:left-6 lg:top-6 lg:left-8 w-[88%] sm:w-[82%] lg:w-[75%] h-[320px] sm:h-[380px] lg:h-[420px] object-cover rounded-3xl border-8 border-white shadow-2xl -rotate-6 z-10 transition-all duration-500 hover:-rotate-3 hover:scale-105"
         />
 
-        <!-- Quote -->
+        <!-- Front Image -->
+        <img
+          src="assets/images/about/about-egypt-2.jpg"
+          alt="Egypt Adventure"
+          class="absolute bottom-2 right-2 sm:bottom-4 sm:right-6 lg:bottom-6 lg:right-8 w-[88%] sm:w-[88%] lg:w-[75%] h-[320px] sm:h-[380px] lg:h-[420px] object-cover rounded-3xl border-8 border-white shadow-2xl rotate-6 z-20 transition-all duration-500 hover:rotate-3 hover:scale-105"
+        />
 
-        <div
-          class="absolute bottom-8 right-8 bg-white/80 backdrop-blur-lg rounded-2xl px-6 py-5 shadow-xl"
-        >
-          <p class="text-2xl italic font-bold text-dark-navy leading-relaxed">
-            "Discover Egypt...
 
-            <br />
-
-            Experience the Extraordinary"
-          </p>
-        </div>
       </div>
     </div>
   </div>
