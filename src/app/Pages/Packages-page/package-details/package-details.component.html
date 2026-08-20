@@ -1,276 +1,1423 @@
-<div class="bg-beige min-h-screen py-10 px-6">
-  <!-- 🖼️ Gallery -->
-  <div class="mb-8 max-w-7xl mx-auto">
+<!-- ===================================================== -->
+<!-- PAGE -->
+<!-- ===================================================== -->
+
+<div class="bg-background-gray min-h-screen py-10 px-6">
+
+  <!-- =================================================== -->
+  <!-- GALLERY -->
+  <!-- =================================================== -->
+
+  <div class="mb-8 container mx-auto">
+
     <!-- Main Image -->
-    <div class="mb-4">
+
+    <div
+      *ngIf="packageDetails?.images?.length"
+      class="mb-4"
+    >
+
       <img
         [src]="packageDetails?.images?.[0]"
         (click)="openViewer(0)"
-        class="w-full h-[500px] object-cover rounded-xl cursor-pointer"
+        class="
+          w-full
+          h-[500px]
+          object-cover
+          rounded-xl
+          cursor-pointer
+          hover:opacity-95
+          transition
+          shadow-card
+        "
+        alt="{{ packageDetails?.title }}"
       />
+
     </div>
 
+
+    <!-- No Image -->
+
+    <div
+      *ngIf="!packageDetails?.images?.length"
+      class="
+        w-full
+        h-[500px]
+        rounded-xl
+        bg-surface-dark
+        flex
+        items-center
+        justify-center
+        text-text-secondary
+      "
+    >
+
+      No Images Available
+
+    </div>
+
+
     <!-- Thumbnails -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+
+    <div
+      *ngIf="packageDetails?.images?.length"
+      class="
+        grid
+        grid-cols-2
+        md:grid-cols-4
+        gap-3
+      "
+    >
+
       <ng-container
-        *ngFor="let img of packageDetails?.images?.slice(1, 4); let i = index"
+        *ngFor="
+          let img of packageDetails?.images?.slice(1, 5);
+          let i = index
+        "
       >
+
         <img
           [src]="img"
           (click)="openViewer(i + 1)"
-          class="w-full h-40 object-cover rounded-lg cursor-pointer hover:scale-[1.02] transition"
+          class="
+            w-full
+            h-40
+            object-cover
+            rounded-lg
+            cursor-pointer
+            hover:scale-[1.02]
+            transition
+            shadow-sm
+          "
+          alt="{{ packageDetails?.title }}"
         />
+
       </ng-container>
 
-      <!-- More -->
-      <div
-        *ngIf="(packageDetails?.images?.length || 0) > 5"
-        (click)="openViewer(4)"
-        class="relative w-full h-40 rounded-lg cursor-pointer bg-black/70 flex items-center justify-center"
-      >
-        <span class="text-white text-2xl font-bold">
-          +{{ (packageDetails?.images?.length || 0) - 4 }}
-        </span>
-      </div>
     </div>
+
   </div>
 
-  <div class="max-w-7xl mx-auto space-y-8">
-    <!-- 📦 Package Info -->
-    <div class="bg-white rounded-2xl shadow-lg p-6">
-      <div class="flex justify-between items-start gap-6 flex-wrap">
-        <div>
-          <h1 class="text-3xl font-bold text-dark-gray mb-3">
-            {{ packageDetails?.name }}
+
+  <!-- =================================================== -->
+  <!-- MAIN CONTENT -->
+  <!-- =================================================== -->
+
+  <div class="container mx-auto space-y-8">
+
+
+    <!-- ================================================= -->
+    <!-- PACKAGE INFO -->
+    <!-- ================================================= -->
+
+    <div
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <div
+        class="
+          flex
+          justify-between
+          items-start
+          gap-6
+          flex-wrap
+        "
+      >
+
+        <!-- Package Information -->
+
+        <div class="flex-1 min-w-[280px]">
+
+          <!-- Destination -->
+
+          <div
+            class="
+              text-sm
+              text-text-gold
+              font-semibold
+              mb-2
+            "
+          >
+
+            {{ packageDetails?.destination?.name }}
+
+          </div>
+
+
+          <!-- Title -->
+
+          <h1
+            class="
+              text-3xl
+              md:text-4xl
+              font-bold
+              text-heading
+              mb-4
+            "
+          >
+
+            {{ packageDetails?.title }}
+
           </h1>
 
-          <p class="text-dark-gray leading-relaxed">
+
+          <!-- Description -->
+
+          <p
+            class="
+              text-text
+              leading-relaxed
+              mb-5
+            "
+          >
+
             {{ packageDetails?.description }}
+
           </p>
-        </div>
 
-        <!-- Price Card -->
-        <div class="bg-light-gold rounded-xl p-5 min-w-[260px] shadow-sm">
-          <div class="text-sm text-dark-gray mb-1">Starting From</div>
 
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-3xl font-bold text-burnt-orange">
-              {{ packageDetails?.pricePerPerson }} EGP
-            </span>
+          <!-- Types -->
+
+          <div
+            *ngIf="packageDetails?.type?.length"
+            class="
+              flex
+              flex-wrap
+              gap-2
+            "
+          >
 
             <span
-              *ngIf="packageDetails?.oldPricePerPerson"
-              class="line-through text-gray-400"
+              *ngFor="let type of packageDetails?.type"
+              class="
+                px-3
+                py-1
+                rounded-full
+                bg-gold-light
+                text-dark-navy
+                text-sm
+                font-medium
+              "
             >
-              {{ packageDetails?.oldPricePerPerson }}
+
+              {{ type }}
+
             </span>
+
           </div>
 
-          <div class="text-sm text-olive-green font-medium mb-4">
-            {{ packageDetails?.discountPercentage }}% OFF
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- PRICE CARD -->
+        <!-- ================================================= -->
+
+        <div
+          class="
+            bg-gold-light
+            rounded-xl
+            p-5
+            min-w-[260px]
+            border
+            border-border-gold
+          "
+        >
+
+          <div
+            class="
+              text-sm
+              text-text
+              mb-1
+            "
+          >
+
+            Starting From
+
           </div>
+
+
+          <div class="flex items-center gap-3 mb-2">
+
+            <span
+              class="
+                text-3xl
+                font-bold
+                text-gold
+              "
+            >
+
+              $ {{ packageDetails?.price | number }}
+
+            </span>
+
+
+            <span
+              *ngIf="packageDetails?.oldPrice"
+              class="
+                line-through
+                text-text-secondary
+              "
+            >
+
+              {{ packageDetails?.oldPrice | number }} EGP
+
+            </span>
+
+          </div>
+
+
+          <div
+            class="
+              text-sm
+              text-text
+              mb-4
+            "
+          >
+
+            Per Package
+
+          </div>
+
 
           <button
             (click)="openBooking()"
-            class="w-full bg-burnt-orange hover:bg-dark-teal text-white py-3 rounded-lg font-semibold transition"
+            class="
+              w-full
+              bg-gold
+              hover:bg-gold-hover
+              text-white
+              py-3
+              rounded-button
+              font-semibold
+              transition
+              shadow-sm
+            "
           >
+
             Book Package
+
           </button>
+
         </div>
+
       </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+
+      <!-- ================================================= -->
+      <!-- STATS -->
+      <!-- ================================================= -->
+
+      <div
+        class="
+          grid
+          grid-cols-2
+          md:grid-cols-4
+          gap-4
+          mt-8
+        "
+      >
+
         <!-- Duration -->
-        <div class="bg-beige/40 rounded-xl p-4 text-center">
-          <i class="bx bx-time text-3xl text-sand-brown"></i>
 
-          <div class="mt-2 text-sm text-dark-gray">Duration</div>
+        <div
+          class="
+            bg-light-gray
+            border
+            border-border
+            rounded-xl
+            p-4
+            text-center
+          "
+        >
 
-          <div class="font-bold text-sand-brown">
-            {{ packageDetails?.durationInDays }} Days
+          <i
+            class="
+              bx
+              bx-time
+              text-3xl
+              text-gold
+            "
+          ></i>
+
+          <div
+            class="
+              mt-2
+              text-sm
+              text-text-secondary
+            "
+          >
+
+            Duration
+
           </div>
+
+          <div
+            class="
+              font-bold
+              text-heading
+            "
+          >
+
+            {{ packageDetails?.duration?.text }}
+
+          </div>
+
         </div>
 
-        <!-- Trips -->
-        <div class="bg-beige/40 rounded-xl p-4 text-center">
-          <i class="bx bx-map text-3xl text-dark-teal"></i>
 
-          <div class="mt-2 text-sm text-dark-gray">Trips</div>
+        <!-- Itinerary -->
 
-          <div class="font-bold text-dark-teal">
-            {{ packageDetails?.trips?.length }}
+        <div
+          class="
+            bg-light-gray
+            border
+            border-border
+            rounded-xl
+            p-4
+            text-center
+          "
+        >
+
+          <i
+            class="
+              bx
+              bx-map
+              text-3xl
+              text-gold
+            "
+          ></i>
+
+          <div
+            class="
+              mt-2
+              text-sm
+              text-text-secondary
+            "
+          >
+
+            Itinerary
+
           </div>
+
+          <div
+            class="
+              font-bold
+              text-heading
+            "
+          >
+
+            {{ packageDetails?.itinerary?.length }} Days
+
+          </div>
+
         </div>
 
-        <!-- Max People -->
-        <div class="bg-beige/40 rounded-xl p-4 text-center">
-          <i class="bx bx-user text-3xl text-olive-green"></i>
 
-          <div class="mt-2 text-sm text-dark-gray">Max People</div>
+        <!-- Destination -->
 
-          <div class="font-bold text-olive-green">
-            {{ packageDetails?.maxPeople }}
+        <div
+          class="
+            bg-light-gray
+            border
+            border-border
+            rounded-xl
+            p-4
+            text-center
+          "
+        >
+
+          <i
+            class="
+              bx
+              bx-map-pin
+              text-3xl
+              text-gold
+            "
+          ></i>
+
+          <div
+            class="
+              mt-2
+              text-sm
+              text-text-secondary
+            "
+          >
+
+            Destination
+
           </div>
+
+          <div
+            class="
+              font-bold
+              text-heading
+            "
+          >
+
+            {{ packageDetails?.destination?.name }}
+
+          </div>
+
         </div>
+
 
         <!-- Rating -->
-        <div class="bg-beige/40 rounded-xl p-4 text-center">
-          <i class="bx bxs-star text-3xl text-gold-highlight"></i>
 
-          <div class="mt-2 text-sm text-dark-gray">Rating</div>
-
-          <div class="font-bold text-gold-highlight">
-            {{ packageDetails?.rating }}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 🧳 Included Trips -->
-    <div class="bg-white rounded-2xl shadow-lg p-6">
-      <h2 class="text-2xl font-bold text-dark-gray mb-6">Included Trips</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div
-          *ngFor="let trip of packageDetails?.trips"
-          class="border border-creamy-gray rounded-xl overflow-hidden hover:shadow-md transition"
+          class="
+            bg-light-gray
+            border
+            border-border
+            rounded-xl
+            p-4
+            text-center
+          "
         >
-          <img [src]="trip.coverImage" class="w-full h-52 object-cover" />
 
-          <div class="p-4">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="font-bold text-lg text-dark-gray">
-                {{ trip.title }}
-              </h3>
+          <i
+            class="
+              bx
+              bxs-star
+              text-3xl
+              text-star
+            "
+          ></i>
 
-              <span class="text-sm text-dark-teal font-semibold">
-                Day {{ trip.dayOrder }}
-              </span>
-            </div>
+          <div
+            class="
+              mt-2
+              text-sm
+              text-text-secondary
+            "
+          >
 
-            <p class="text-sm text-dark-gray mb-3">
-              {{ trip.location }}
-            </p>
+            Rating
 
-            <div class="flex items-center gap-2 text-gold-highlight">
-              <i class="bx bxs-star"></i>
-              {{ trip.rating }}
-            </div>
           </div>
+
+          <div
+            class="
+              font-bold
+              text-heading
+            "
+          >
+
+            {{ packageDetails?.rating || 'Not Rated' }}
+
+            <span
+              *ngIf="packageDetails?.reviews"
+              class="text-sm text-text-secondary"
+            >
+
+              ({{ packageDetails?.reviews }})
+
+            </span>
+
+          </div>
+
         </div>
+
       </div>
+
     </div>
 
-    <!-- ⭐ Media Reviews -->
-    <div class="bg-white rounded-2xl shadow-lg p-6">
-      <h2 class="text-2xl font-bold text-dark-gray mb-6">Media Reviews</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <ng-container *ngFor="let media of mediaReviews">
-          <!-- Image -->
-          <img
-            *ngIf="media.type === 'image'"
-            [src]="media.url"
-            class="rounded-xl w-full h-60 object-cover"
-          />
+    <!-- ================================================= -->
+    <!-- HIGHLIGHTS -->
+    <!-- ================================================= -->
 
-          <!-- Video -->
-          <iframe
-            *ngIf="media.type === 'video'"
-            [src]="media.url"
-            class="w-full h-60 rounded-xl"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </ng-container>
+    <div
+      *ngIf="packageDetails?.highlights?.length"
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <h2
+        class="
+          text-2xl
+          font-bold
+          text-heading
+          mb-6
+        "
+      >
+
+        Why You'll Love This Journey
+
+      </h2>
+
+
+      <div
+        class="
+          grid
+          grid-cols-1
+          md:grid-cols-2
+          gap-4
+        "
+      >
+
+        <div
+          *ngFor="let highlight of packageDetails?.highlights"
+          class="
+            flex
+            items-start
+            gap-3
+            text-text
+          "
+        >
+
+          <!-- GREEN CHECK -->
+
+          <span
+            class="
+              w-6
+              h-6
+              shrink-0
+              rounded-full
+              bg-green-100
+              text-green-600
+              flex
+              items-center
+              justify-center
+              mt-0.5
+            "
+          >
+
+            <i
+              class="
+                bx
+                bx-check
+                text-base
+              "
+            ></i>
+
+          </span>
+
+
+          <span>
+
+            {{ highlight }}
+
+          </span>
+
+        </div>
+
       </div>
-    </div>
-    <!-- 📦 Related Packages -->
-    <div class="mt-12">
-      <h2 class="text-2xl font-bold text-dark-gray mb-6">Related Packages</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <app-package-card *ngFor="let pkg of relatedPackages" [package]="pkg">
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- ITINERARY -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="packageDetails?.itinerary?.length"
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <h2
+        class="
+          text-2xl
+          font-bold
+          text-heading
+          mb-6
+        "
+      >
+
+        Itinerary
+
+      </h2>
+
+
+      <div class="space-y-6">
+
+        <div
+          *ngFor="let item of packageDetails?.itinerary"
+          class="
+            border
+            border-border
+            rounded-xl
+            p-5
+            bg-light-gray
+          "
+        >
+
+          <!-- Day Header -->
+
+          <div
+            class="
+              flex
+              justify-between
+              items-center
+              gap-4
+              mb-3
+              flex-wrap
+            "
+          >
+
+            <h3
+              class="
+                text-xl
+                font-bold
+                text-heading
+              "
+            >
+
+              Day {{ item.day }}:
+              {{ item.title }}
+
+            </h3>
+
+
+            <span
+              *ngIf="item.overnight"
+              class="
+                text-sm
+                font-semibold
+                text-dark-navy
+                bg-gold-light
+                border
+                border-border-gold
+                px-3
+                py-1
+                rounded-full
+              "
+            >
+
+              Overnight: {{ item.overnight }}
+
+            </span>
+
+          </div>
+
+
+          <!-- Description -->
+
+          <p
+            class="
+              text-text
+              leading-relaxed
+              mb-4
+            "
+          >
+
+            {{ item.description }}
+
+          </p>
+
+
+          <!-- Activities -->
+
+          <div
+            *ngIf="item.activities?.length"
+          >
+
+            <h4
+              class="
+                font-semibold
+                text-heading
+                mb-2
+              "
+            >
+
+              Activities
+
+            </h4>
+
+
+            <ul
+              class="
+                list-disc
+                list-inside
+                space-y-1
+                text-text
+              "
+            >
+
+              <li
+                *ngFor="let activity of item.activities"
+              >
+
+                {{ activity }}
+
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- OPTIONAL TOURS -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="packageDetails?.optionalTours?.length"
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <h2
+        class="
+          text-2xl
+          font-bold
+          text-heading
+          mb-6
+        "
+      >
+
+        Optional Tours
+
+      </h2>
+
+
+      <div
+        *ngFor="let tour of packageDetails?.optionalTours"
+        class="
+          border
+          border-border
+          rounded-xl
+          p-5
+          mb-4
+          last:mb-0
+          bg-light-gray
+        "
+      >
+
+        <h3
+          class="
+            text-xl
+            font-bold
+            text-heading
+            mb-3
+          "
+        >
+
+          {{ tour.destination }}
+
+        </h3>
+
+
+        <div
+          class="
+            flex
+            flex-wrap
+            gap-2
+          "
+        >
+
+          <span
+            *ngFor="let activity of tour.activities"
+            class="
+              px-3
+              py-2
+              rounded-lg
+              bg-gold-light
+              text-dark-navy
+              text-sm
+            "
+          >
+
+            {{ activity }}
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- INCLUDES / EXCLUDES -->
+    <!-- ================================================= -->
+
+    <div
+      class="
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        gap-8
+      "
+    >
+
+      <!-- Includes -->
+
+      <div
+        class="
+          bg-surface
+          rounded-2xl
+          shadow-card
+          p-6
+          border
+          border-border
+        "
+      >
+
+        <h2
+          class="
+            text-2xl
+            font-bold
+            text-heading
+            mb-6
+          "
+        >
+
+          Package Includes
+
+        </h2>
+
+
+        <div class="space-y-3">
+
+          <div
+            *ngFor="let item of packageDetails?.includes"
+            class="
+              flex
+              items-start
+              gap-3
+            "
+          >
+
+            <!-- GREEN CHECK CIRCLE -->
+
+            <span
+              class="
+                w-7
+                h-7
+                shrink-0
+                rounded-full
+                bg-green-100
+                text-green-600
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <i
+                class="
+                  bx
+                  bx-check
+                  text-lg
+                "
+              ></i>
+
+            </span>
+
+
+            <span
+              class="
+                text-text
+                leading-relaxed
+                pt-0.5
+              "
+            >
+
+              {{ item }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Excludes -->
+
+      <div
+        class="
+          bg-surface
+          rounded-2xl
+          shadow-card
+          p-6
+          border
+          border-border
+        "
+      >
+
+        <h2
+          class="
+            text-2xl
+            font-bold
+            text-heading
+            mb-6
+          "
+        >
+
+          Package Excludes
+
+        </h2>
+
+
+        <div class="space-y-3">
+
+          <div
+            *ngFor="let item of packageDetails?.excludes"
+            class="
+              flex
+              items-start
+              gap-3
+            "
+          >
+
+            <!-- RED X CIRCLE -->
+
+            <span
+              class="
+                w-7
+                h-7
+                shrink-0
+                rounded-full
+                bg-red-100
+                text-red-600
+                flex
+                items-center
+                justify-center
+              "
+            >
+
+              <i
+                class="
+                  bx
+                  bx-x
+                  text-lg
+                "
+              ></i>
+
+            </span>
+
+
+            <span
+              class="
+                text-text
+                leading-relaxed
+                pt-0.5
+              "
+            >
+
+              {{ item }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- ENTRANCE FEE POLICY -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="packageDetails?.entranceFeePolicy"
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <h2
+        class="
+          text-2xl
+          font-bold
+          text-heading
+          mb-4
+        "
+      >
+
+        Entrance Fee Policy
+
+      </h2>
+
+
+      <p
+        class="
+          text-text
+          leading-relaxed
+        "
+      >
+
+        {{ packageDetails?.entranceFeePolicy }}
+
+      </p>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- GOOD TO KNOW -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="packageDetails?.goodToKnow?.length"
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <h2
+        class="
+          text-2xl
+          font-bold
+          text-heading
+          mb-6
+        "
+      >
+
+        Good to Know
+
+      </h2>
+
+
+      <div class="space-y-3">
+
+        <div
+          *ngFor="let item of packageDetails?.goodToKnow"
+          class="
+            flex
+            items-start
+            gap-3
+          "
+        >
+
+          <i
+            class="
+              bx
+              bx-info-circle
+              text-xl
+              text-gold
+              mt-0.5
+            "
+          ></i>
+
+
+          <span
+            class="
+              text-text
+              leading-relaxed
+            "
+          >
+
+            {{ item }}
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- RELATED PACKAGES -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="relatedPackages.length"
+      class="mt-12"
+    >
+
+      <h2
+        class="
+          text-2xl
+          font-bold
+          text-heading
+          mb-6
+        "
+      >
+
+        Related Packages
+
+      </h2>
+
+
+      <div
+        class="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-3
+          gap-6
+        "
+      >
+
+        <app-package-card
+          *ngFor="let pkg of relatedPackages"
+          [package]="pkg"
+        >
         </app-package-card>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- 🖼️ Viewer -->
+
+<!-- ===================================================== -->
+<!-- IMAGE VIEWER -->
+<!-- ===================================================== -->
+
 <div
   *ngIf="isViewerOpen"
-  class="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+  class="
+    fixed
+    inset-0
+    bg-dark-navy/90
+    flex
+    items-center
+    justify-center
+    z-50
+  "
 >
+
   <!-- Close -->
+
   <button
     (click)="closeViewer()"
-    class="absolute top-5 right-5 text-white text-4xl"
+    class="
+      absolute
+      top-5
+      right-5
+      text-white
+      text-4xl
+      hover:text-gold
+      transition
+    "
   >
+
     ✕
+
   </button>
 
-  <!-- Prev -->
-  <button (click)="prevImage()" class="absolute left-5 text-white text-5xl">
+
+  <!-- Previous -->
+
+  <button
+    (click)="prevImage()"
+    class="
+      absolute
+      left-5
+      text-white
+      text-5xl
+      hover:text-gold
+      transition
+    "
+  >
+
     ❮
+
   </button>
+
 
   <!-- Image -->
+
   <img
     [src]="packageDetails?.images?.[selectedImageIndex]"
-    class="max-h-[85vh] max-w-[90vw] rounded-xl"
+    class="
+      max-h-[85vh]
+      max-w-[90vw]
+      rounded-xl
+      object-contain
+    "
+    alt="{{ packageDetails?.title }}"
   />
 
+
   <!-- Next -->
-  <button (click)="nextImage()" class="absolute right-5 text-white text-5xl">
+
+  <button
+    (click)="nextImage()"
+    class="
+      absolute
+      right-5
+      text-white
+      text-5xl
+      hover:text-gold
+      transition
+    "
+  >
+
     ❯
+
   </button>
+
 </div>
 
 
-<!-- =========================
-📌 Booking Modal
-========================= -->
+<!-- ===================================================== -->
+<!-- BOOKING MODAL -->
+<!-- ===================================================== -->
 
 <div
   *ngIf="showBookingModal"
-  class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+  class="
+    fixed
+    inset-0
+    z-50
+    flex
+    items-center
+    justify-center
+    bg-dark-navy/70
+    px-4
+  "
 >
 
-  <!-- Modal -->
   <div
-    class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto relative"
+    class="
+      bg-surface
+      rounded-3xl
+      w-full
+      max-w-3xl
+      max-h-[90vh]
+      overflow-y-auto
+      relative
+      shadow-hero
+    "
   >
 
     <!-- Close -->
+
     <button
       (click)="closeBooking()"
-      class="absolute top-4 right-4 text-2xl text-gray-500 hover:text-red-500 z-50"
+      class="
+        absolute
+        top-4
+        right-4
+        text-2xl
+        text-text-secondary
+        hover:text-red-600
+        z-50
+      "
     >
+
       ✕
+
     </button>
 
+
     <!-- Booking Form -->
+
     <app-booking-form
-      [item]="packageDetails">
+      [item]="packageDetails"
+    >
     </app-booking-form>
 
   </div>
 
 </div>
 
-<!-- ⏳ Loading -->
-<div *ngIf="loading" class="flex items-center justify-center min-h-screen">
+
+<!-- ===================================================== -->
+<!-- LOADING -->
+<!-- ===================================================== -->
+
+<div
+  *ngIf="loading"
+  class="
+    fixed
+    inset-0
+    bg-white/80
+    flex
+    items-center
+    justify-center
+    z-40
+  "
+>
+
   <div
-    class="w-14 h-14 border-4 border-dark-teal border-t-transparent rounded-full animate-spin"
+    class="
+      w-14
+      h-14
+      border-4
+      border-gold
+      border-t-transparent
+      rounded-full
+      animate-spin
+    "
   ></div>
+
 </div>
 
-<!-- ❌ Not Found -->
+
+<!-- ===================================================== -->
+<!-- NOT FOUND -->
+<!-- ===================================================== -->
+
 <div
   *ngIf="!loading && !packageDetails"
-  class="flex items-center justify-center min-h-screen"
+  class="
+    flex
+    items-center
+    justify-center
+    min-h-screen
+    bg-background-gray
+  "
 >
-  <h2 class="text-3xl font-bold">Package Not Found</h2>
+
+  <h2
+    class="
+      text-3xl
+      font-bold
+      text-heading
+    "
+  >
+
+    Package Not Found
+
+  </h2>
+
 </div>

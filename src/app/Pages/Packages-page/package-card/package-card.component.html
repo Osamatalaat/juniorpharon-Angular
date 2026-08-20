@@ -1,124 +1,202 @@
 <div
   (click)="goToDetails()"
-  class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300
-         border border-border hover:border-blue
-         overflow-hidden group cursor-pointer"
+  class="bg-white
+         rounded-xl
+         shadow-md
+         hover:shadow-xl
+         transition-all
+         duration-300
+         border
+         border-border
+         hover:border-blue
+         overflow-hidden
+         group
+         cursor-pointer"
 >
 
-  <!-- 🖼️ Image -->
+  <!-- ================= IMAGE ================= -->
+
   <div class="relative overflow-hidden">
 
     <img
-      [src]="package?.coverImage || 'https://via.placeholder.com/400'"
-      alt="package"
-      class="w-full h-52 object-cover transition duration-500 group-hover:scale-105"
+      [src]="package.coverImage || 'https://via.placeholder.com/400'"
+      [alt]="package.title"
+      class="w-full
+             h-52
+             object-cover
+             transition
+             duration-500
+             group-hover:scale-105"
     />
 
     <!-- Overlay -->
+
     <div
-      class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300">
+      class="absolute
+             inset-0
+             bg-black/0
+             group-hover:bg-black/10
+             transition
+             duration-300">
     </div>
 
-    <!-- Discount -->
+
+    <!-- ================= TYPE ================= -->
+
     <div
-      *ngIf="package?.discountPercentage"
-      class="absolute top-3 right-3
-             bg-light-orange text-white
+      *ngIf="package.type?.length"
+      class="absolute
+             top-3
+             left-3
+             bg-blue
+             text-white
              text-xs
-             px-3 py-1
-             rounded-full
-             font-bold
-             shadow">
-
-      -{{ package.discountPercentage }}%
-
-    </div>
-
-    <!-- Active -->
-    <div
-      *ngIf="package?.isActive"
-      class="absolute top-3 left-3
-             bg-blue text-white
-             text-xs
-             px-3 py-1
+             px-3
+             py-1
              rounded-full
              font-semibold
-             shadow">
+             shadow"
+    >
 
-      {{ 'PACKAGES.ACTIVE' | translate }}
+      {{ package.type[0] }}
+
+    </div>
+
+
+    <!-- ================= DISCOUNT ================= -->
+
+    <div
+      *ngIf="package.oldPrice && package.oldPrice > package.price"
+      class="absolute
+             top-3
+             right-3
+             bg-light-orange
+             text-white
+             text-xs
+             px-3
+             py-1
+             rounded-full
+             font-bold
+             shadow"
+    >
+
+      -{{
+        ((package.oldPrice - package.price) /
+        package.oldPrice * 100)
+        | number:'1.0-0'
+      }}%
 
     </div>
 
   </div>
 
-  <!-- ================= Content ================= -->
+
+  <!-- ================= CONTENT ================= -->
 
   <div class="p-5">
 
-    <!-- Title -->
+
+    <!-- TITLE -->
+
     <h3
-      class="text-text-primary font-bold text-lg mb-3
+      class="text-text-primary
+             font-bold
+             text-lg
+             mb-3
              line-clamp-2
              group-hover:text-blue
-             transition-colors duration-300">
+             transition-colors
+             duration-300"
+    >
 
-      {{ package?.name }}
+      {{ package.title }}
 
     </h3>
 
-    <!-- Description -->
+
+    <!-- DESCRIPTION -->
+
     <p
       class="text-text-secondary
              text-sm
              leading-6
              line-clamp-2
-             mb-5">
+             mb-5"
+    >
 
-      {{ package?.description }}
+      {{ package.shortDescription }}
 
     </p>
 
-    <!-- Info -->
-    <div class="flex items-center justify-between text-sm mb-5">
+
+    <!-- ================= INFO ================= -->
+
+    <div
+      class="flex
+             items-center
+             justify-between
+             text-sm
+             mb-5"
+    >
+
 
       <!-- Duration -->
-      <div class="flex items-center gap-1 text-blue">
+
+      <div
+        class="flex
+               items-center
+               gap-1
+               text-blue"
+      >
 
         <i class="far fa-clock"></i>
 
         <span>
 
-          {{ package?.durationInDays }}
-
-          {{ 'PACKAGES.DAYS' | translate }}
+          {{ package.duration.text }}
 
         </span>
 
       </div>
 
-      <!-- Trips -->
-      <div class="flex items-center gap-1 text-text-secondary">
 
-        <i class="fas fa-route"></i>
+      <!-- Destination -->
+
+      <div
+        class="flex
+               items-center
+               gap-1
+               text-text-secondary"
+      >
+
+        <i class="fas fa-map-marker-alt"></i>
 
         <span>
 
-          {{ package?.tripsCount }}
-
-          {{ 'PACKAGES.TRIPS_INCLUDED' | translate }}
+          {{ package.destination.name }}
 
         </span>
 
       </div>
 
+
       <!-- Rating -->
-      <div class="flex items-center gap-1">
+
+      <div
+        *ngIf="package.rating > 0"
+        class="flex
+               items-center
+               gap-1"
+      >
 
         <i class="fas fa-star text-star"></i>
 
-        <span class="text-text-primary font-semibold">
+        <span
+          class="text-text-primary
+                 font-semibold"
+        >
 
-          {{ package?.rating || 4.8 }}
+          {{ package.rating }}
 
         </span>
 
@@ -126,50 +204,83 @@
 
     </div>
 
-    <!-- Price -->
 
-    <div class="flex items-center gap-3 mb-5">
+    <!-- ================= PRICE ================= -->
 
-      <span class="text-blue font-bold text-2xl">
+    <div
+      class="flex
+             items-center
+             gap-3
+             mb-5"
+    >
 
-        {{ package?.pricePerPerson }} EGP
+      <span
+        class="text-blue
+               font-bold
+               text-2xl"
+      >
+
+        <ng-container *ngIf="package.price > 0; else priceNotAvailable">
+
+          {{ package.price }} EGP
+
+        </ng-container>
+
+        <ng-template #priceNotAvailable>
+
+          Contact Us
+
+        </ng-template>
 
       </span>
 
-      <span
-        *ngIf="package?.oldPricePerPerson"
-        class="text-text-muted line-through">
 
-        {{ package?.oldPricePerPerson }} EGP
+      <span
+        *ngIf="package.oldPrice"
+        class="text-text-muted
+               line-through"
+      >
+
+        {{ package.oldPrice }} EGP
 
       </span>
 
     </div>
 
-    <!-- Footer -->
+
+    <!-- ================= FOOTER ================= -->
 
     <div
       class="pt-4
-             border-t border-border
-             flex items-center justify-between">
+             border-t
+             border-border
+             flex
+             items-center
+             justify-between"
+    >
 
       <span
         class="text-blue
                font-semibold
-               transition-colors duration-300
-               group-hover:text-blue-hover">
+               transition-colors
+               duration-300
+               group-hover:text-blue-hover"
+      >
 
         {{ 'PACKAGES.DETAILS' | translate }}
 
       </span>
 
-      <i
-        class="fas fa-arrow-right
-               text-blue
-               transition-all duration-300
-               group-hover:translate-x-2
-               group-hover:text-blue-hover">
 
+      <i
+        class="fas
+               fa-arrow-right
+               text-blue
+               transition-all
+               duration-300
+               group-hover:translate-x-2
+               group-hover:text-blue-hover"
+      >
       </i>
 
     </div>

@@ -2,7 +2,6 @@
 @import "tailwindcss";
 
 @theme {
-
   /* ===========================
      FONT
   ============================ */
@@ -13,47 +12,49 @@
      BRAND COLORS
   ============================ */
 
-  --color-gold: #C89B3C;
-  --color-gold-hover: #B8862E;
-  --color-gold-light: #F8E8C3;
+  --color-gold: #c89b3c;
+  --color-gold-hover: #b8862e;
+  --color-gold-light: #f8e8c3;
 
-  --color-dark-navy: #0F172A;
-  --color-navy: #1E293B;
+  --color-dark-navy: #0f172a;
+  --color-navy: #1e293b;
   --color-blue-gray: #334155;
 
   /* ===========================
      BACKGROUND
   ============================ */
 
-  --color-white: #FFFFFF;
-  --color-light-gray: #F8FAFC;
-  --color-surface: #FFFFFF;
-  --color-surface-dark: #F1F5F9;
+  --color-white: #ffffff;
+  --color-light-gray: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-dark: #f1f5f9;
   --color-background-gray: #f5f3f0;
 
   /* ===========================
      TEXT
   ============================ */
 
-  --color-heading: #0F172A;
+  --color-heading: #0f172a;
   --color-text: #475569;
-  --color-text-secondary: #64748B;
-  --color-dark-text: #1F2937;
-  --color-text-gold: #C89B3C;
+  --color-text-secondary: #64748b;
+  --color-dark-text: #1f2937;
+  --color-text-gold: #c89b3c;
 
   /* ===========================
      BORDER
   ============================ */
 
-  --color-border: #E5E7EB;
-  --color-border-dark: #CBD5E1;
-  --color-border-gold: #C89B3C;
+  --color-border: #e5e7eb;
+  --color-border-dark: #cbd5e1;
+  --color-border-gold: #c89b3c;
 
   /* ===========================
      STATUS
   ============================ */
 
-  --color-star: #FBBF24;
+  --color-star: #fbbf24;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
 
   /* ===========================
      HERO

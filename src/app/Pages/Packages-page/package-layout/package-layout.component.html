@@ -1,22 +1,465 @@
-
-
 <app-packages-hero></app-packages-hero>
 
-<div class=" mb-8 container mx-auto">
 
-  <!-- Sidebar -->
-  <!-- <div class="w-full md:w-1/4">
-    <app-filter-sidebar (filterApplied)="loadTrips($event)"></app-filter-sidebar>
-  </div> -->
+<div class="container mx-auto px-4 mb-10">
 
-  <!-- Trips Grid -->
-  <app-package-filter (filterChanged)="loadPackages($event)"></app-package-filter>
-  <div class="flex-1 mt-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- ===================================================== -->
+  <!-- MAIN CONTENT -->
+  <!-- ===================================================== -->
 
+  <div
+    class="
+      flex
+      flex-col
+      md:flex-row
+      gap-6
+      items-start
+    "
+  >
 
-      <app-package-card *ngFor="let package of packages" [package]="package"></app-package-card>
+    <!-- =================================================== -->
+    <!-- FILTER SIDEBAR -->
+    <!-- =================================================== -->
+
+    <div class="w-full md:w-[300px] shrink-0">
+
+      <app-package-filter
+        (filterChanged)="loadPackages($event)">
+      </app-package-filter>
+
     </div>
+
+
+    <!-- =================================================== -->
+    <!-- PACKAGES CONTENT -->
+    <!-- =================================================== -->
+
+    <div class="flex-1 w-full">
+
+
+      <!-- ================================================= -->
+      <!-- RESULTS HEADER -->
+      <!-- ================================================= -->
+
+      <div
+        class="
+          flex
+          items-center
+          justify-between
+          gap-4
+          mb-5
+          flex-wrap
+        "
+      >
+
+        <!-- LEFT -->
+
+        <div>
+
+          <h2
+            class="
+              text-2xl
+              font-bold
+              text-dark-navy
+            "
+          >
+
+            Tour Packages
+
+          </h2>
+
+
+          <p
+            class="
+              text-sm
+              text-gray-500
+              mt-1
+            "
+          >
+
+            {{ totalItems }} packages found
+
+          </p>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div
+          class="
+            flex
+            items-center
+            gap-4
+            flex-wrap
+          "
+        >
+
+          <!-- ================================================= -->
+          <!-- ITEMS PER PAGE -->
+          <!-- ================================================= -->
+
+          <div
+            class="
+              flex
+              items-center
+              gap-2
+            "
+          >
+
+            <label
+              class="
+                text-sm
+                text-gray-500
+                whitespace-nowrap
+              "
+            >
+
+              Show
+
+            </label>
+
+
+            <select
+              [(ngModel)]="pageSize"
+              (change)="changePageSize()"
+              class="
+                border
+                border-gray-200
+                rounded-xl
+                px-3
+                py-2
+                text-sm
+                font-semibold
+                text-dark-navy
+                bg-white
+                focus:outline-none
+                focus:ring-2
+                focus:ring-gold
+                cursor-pointer
+              "
+            >
+
+              <option [ngValue]="6">
+                6
+              </option>
+
+              <option [ngValue]="9">
+                9
+              </option>
+
+              <option [ngValue]="12">
+                12
+              </option>
+
+              <option [ngValue]="18">
+                18
+              </option>
+
+            </select>
+
+
+            <span
+              class="
+                text-sm
+                text-gray-500
+              "
+            >
+
+              per page
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- LOADING -->
+      <!-- ================================================= -->
+
+      <div
+        *ngIf="loading"
+        class="
+          flex
+          items-center
+          justify-center
+          py-20
+        "
+      >
+
+        <div
+          class="
+            w-12
+            h-12
+            border-4
+            border-dark-teal
+            border-t-transparent
+            rounded-full
+            animate-spin
+          "
+        ></div>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- PACKAGES GRID -->
+      <!-- ================================================= -->
+
+      <div
+        *ngIf="!loading"
+        class="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          gap-6
+        "
+      >
+
+        <app-package-card
+          *ngFor="let package of packages"
+          [package]="package"
+        >
+        </app-package-card>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- NO RESULTS -->
+      <!-- ================================================= -->
+
+      <div
+        *ngIf="!loading && packages.length === 0"
+        class="
+          bg-white
+          border
+          border-gray-200
+          rounded-2xl
+          shadow-sm
+          py-16
+          px-6
+          text-center
+        "
+      >
+
+        <div
+          class="
+            w-16
+            h-16
+            mx-auto
+            mb-4
+            rounded-full
+            bg-gold/10
+            flex
+            items-center
+            justify-center
+          "
+        >
+
+          <i
+            class="
+              fa-solid
+              fa-box-open
+              text-gold
+              text-2xl
+            "
+          ></i>
+
+        </div>
+
+
+        <h3
+          class="
+            text-xl
+            font-bold
+            text-dark-navy
+            mb-2
+          "
+        >
+
+          No Packages Found
+
+        </h3>
+
+
+        <p class="text-gray-500 text-sm">
+
+          Try changing your filter options.
+
+        </p>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- PAGINATION -->
+      <!-- ================================================= -->
+
+      <div
+        *ngIf="!loading && totalPages > 0"
+        class="
+          flex
+          items-center
+          justify-center
+          gap-3
+          mt-10
+          pt-6
+          border-t
+          border-gray-200
+          flex-wrap
+        "
+      >
+
+        <!-- ================================================= -->
+        <!-- PREVIOUS -->
+        <!-- ================================================= -->
+
+        <button
+          (click)="previousPage()"
+          [disabled]="currentPage === 1"
+          class="
+            w-10
+            h-10
+            rounded-xl
+            border
+            border-gray-200
+            bg-white
+            text-dark-navy
+            flex
+            items-center
+            justify-center
+            transition
+            hover:bg-dark-navy
+            hover:text-white
+            disabled:opacity-40
+            disabled:cursor-not-allowed
+          "
+        >
+
+          <i class="fa-solid fa-chevron-left"></i>
+
+        </button>
+
+
+        <!-- ================================================= -->
+        <!-- CURRENT PAGE -->
+        <!-- ================================================= -->
+
+        <div
+          class="
+            text-sm
+            text-gray-500
+            whitespace-nowrap
+            px-2
+          "
+        >
+
+          Page
+
+          <span
+            class="
+              font-semibold
+              text-dark-navy
+            "
+          >
+
+            {{ currentPage }}
+
+          </span>
+
+          of
+
+          <span
+            class="
+              font-semibold
+              text-dark-navy
+            "
+          >
+
+            {{ totalPages }}
+
+          </span>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- PAGE NUMBERS -->
+        <!-- ================================================= -->
+
+        <ng-container
+          *ngFor="let page of pageNumbers"
+        >
+
+         <button
+  (click)="goToPage(page)"
+  [disabled]="page === currentPage"
+  [ngClass]="{
+    'bg-dark-navy text-white border-dark-navy': page === currentPage,
+    'bg-white text-dark-navy border-gray-200': page !== currentPage
+  }"
+  class="
+    w-10
+    h-10
+    rounded-xl
+    border
+    font-semibold
+    flex
+    items-center
+    justify-center
+    transition
+    disabled:cursor-not-allowed
+    disabled:opacity-100
+  "
+>
+  {{ page }}
+</button>
+
+        </ng-container>
+
+
+        <!-- ================================================= -->
+        <!-- NEXT -->
+        <!-- ================================================= -->
+
+        <button
+          (click)="nextPage()"
+          [disabled]="
+            currentPage === totalPages
+          "
+          class="
+            w-10
+            h-10
+            rounded-xl
+            border
+            border-gray-200
+            bg-white
+            text-dark-navy
+            flex
+            items-center
+            justify-center
+            transition
+            hover:bg-dark-navy
+            hover:text-white
+            disabled:opacity-40
+            disabled:cursor-not-allowed
+          "
+        >
+
+          <i class="fa-solid fa-chevron-right"></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
 
 </div>

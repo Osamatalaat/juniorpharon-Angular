@@ -1,13 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { PackagesService } from '../../../core/Services/Packages.service';
-
-import { PackageDetails } from '../../../core/models/Details/PackageDetails';
-import { PackageTrip } from '../../../core/models/Details/PackageTrip';
-import { ReviewMedia } from '../../../core/models/Details/ReviewMedia';
-import { Package } from '../../../core/models/Details/packages/package';
-// import { Package } from '../../../core/models/Details/Package';
+import { Package } from '../../../core/models/package.model';
+import { PACKAGES } from '../../../core/data/packages';
 
 
 @Component({
@@ -18,22 +14,45 @@ import { Package } from '../../../core/models/Details/packages/package';
 })
 export class PackageDetailsComponent implements OnInit {
 
-  packageDetails?: PackageDetails;
+  // =====================================================
+  // PACKAGE
+  // =====================================================
+
+  packageDetails?: Package;
 
   relatedPackages: Package[] = [];
 
- mediaReviews: ReviewMedia[] = [];
-
   loading = false;
 
-  // 🖼️ Viewer
+
+  // =====================================================
+  // IMAGE VIEWER
+  // =====================================================
+
   isViewerOpen = false;
+
   selectedImageIndex = 0;
 
+
+  // =====================================================
+  // BOOKING MODAL
+  // =====================================================
+
+  showBookingModal = false;
+
+
+  // =====================================================
+  // CONSTRUCTOR
+  // =====================================================
+
   constructor(
-    private route: ActivatedRoute,
-    private packagesService: PackagesService
+    private route: ActivatedRoute
   ) {}
+
+
+  // =====================================================
+  // INIT
+  // =====================================================
 
   ngOnInit(): void {
 
@@ -44,123 +63,129 @@ export class PackageDetailsComponent implements OnInit {
       this.getPackageById(id);
 
     });
+
   }
+
+
+  // =====================================================
+  // GET PACKAGE BY ID
+  // =====================================================
 
   getPackageById(id: number): void {
 
     this.loading = true;
 
-    this.packagesService.getPackageDetails().subscribe({
+    const foundPackage =
+      PACKAGES.find(pkg => pkg.id === id);
 
-      next: (res: PackageDetails[]) => {
+    this.packageDetails = foundPackage;
 
-        // 📦 Current Package
-        this.packageDetails =
-          res.find(p => p.id === id);
+    if (this.packageDetails) {
 
-        // ⭐ Media Reviews
-        this.mediaReviews =
-          this.packageDetails?.mediaReviews || [];
+      this.loadRelatedPackages();
 
-        // 📦 Related Packages
-        this.loadRelatedPackages();
+    } else {
 
-        console.log('Package Details:', this.packageDetails);
+      this.relatedPackages = [];
 
-      },
+      this.loading = false;
 
-      error: (err) => {
+    }
 
-        console.error(
-          'Error fetching package details:',
-          err
-        );
+    console.log(
+      'Package Details:',
+      this.packageDetails
+    );
 
-        this.loading = false;
-      }
-    });
   }
 
-  // ====================================
-  // 📦 Load Related Packages
-  // ====================================
+
+  // =====================================================
+  // RELATED PACKAGES
+  // =====================================================
 
   loadRelatedPackages(): void {
 
-    if (!this.packageDetails?.relatedPackagesIds?.length) {
+    if (
+      !this.packageDetails?.relatedPackagesIds?.length
+    ) {
+
+      this.relatedPackages = [];
 
       this.loading = false;
 
       return;
+
     }
 
-    this.packagesService.getPackages().subscribe({
 
-      next: (res: Package[]) => {
+    this.relatedPackages =
+      PACKAGES.filter(pkg =>
+        this.packageDetails
+          ?.relatedPackagesIds
+          ?.includes(pkg.id)
+      );
 
-        this.relatedPackages = res.filter(pkg =>
 
-          this.packageDetails
-            ?.relatedPackagesIds
-            ?.includes(pkg.id)
+    this.loading = false;
 
-        );
 
-        this.loading = false;
+    console.log(
+      'Related Packages:',
+      this.relatedPackages
+    );
 
-        console.log(
-          'Related Packages:',
-          this.relatedPackages
-        );
-      },
-
-      error: (err) => {
-
-        console.error(
-          'Error fetching related packages:',
-          err
-        );
-
-        this.loading = false;
-      }
-
-    });
   }
 
-  // ====================================
-  // 🖼️ Viewer Functions
-  // ====================================
+
+  // =====================================================
+  // IMAGE VIEWER
+  // =====================================================
 
   openViewer(index: number): void {
 
     this.selectedImageIndex = index;
 
     this.isViewerOpen = true;
+
   }
+
 
   closeViewer(): void {
 
     this.isViewerOpen = false;
+
   }
+
 
   nextImage(): void {
 
     if (
       !this.packageDetails ||
       !this.packageDetails.images?.length
-    ) return;
+    ) {
+      return;
+    }
+
 
     this.selectedImageIndex =
-      (this.selectedImageIndex + 1) %
+      (
+        this.selectedImageIndex + 1
+      ) %
       this.packageDetails.images.length;
+
   }
+
 
   prevImage(): void {
 
     if (
       !this.packageDetails ||
       !this.packageDetails.images?.length
-    ) return;
+    ) {
+      return;
+    }
+
 
     this.selectedImageIndex =
       (
@@ -168,17 +193,25 @@ export class PackageDetailsComponent implements OnInit {
         this.packageDetails.images.length
       ) %
       this.packageDetails.images.length;
+
   }
 
-  showBookingModal = false;
 
-openBooking(): void {
+  // =====================================================
+  // BOOKING
+  // =====================================================
 
-  this.showBookingModal = true;
-}
+  openBooking(): void {
 
-closeBooking(): void {
+    this.showBookingModal = true;
 
-  this.showBookingModal = false;
-}
+  }
+
+
+  closeBooking(): void {
+
+    this.showBookingModal = false;
+
+  }
+
 }

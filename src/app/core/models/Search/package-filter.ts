@@ -1,23 +1,19 @@
 export interface PackageFilter {
 
-  search?: string;
-  name?: string;
-
   minPrice?: number;
 
   maxPrice?: number;
 
-  durationInDays?: number;
+  durationMin?: number;
 
-  tripsCount?: number;
+  durationMax?: number;
+
+  durationUnit?: 'hours' | 'days';
 
   rating?: number;
-
-  peopleCount?: number;
-
-  descending?: boolean;
 
   pageIndex?: number;
 
   pageSize?: number;
+
 }

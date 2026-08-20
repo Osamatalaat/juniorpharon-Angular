@@ -8,6 +8,7 @@ import { TripDetailsComponent } from './Trips-page/trip-details/trip-details.com
 import { PackageLayoutComponent } from './Packages-page/package-layout/package-layout.component';
 import { PackageDetailsComponent } from './Packages-page/package-details/package-details.component';
 import { DestinationMapComponent } from './destination-map/destination-map.component';
+import { PackageCategoryComponent } from './Packages-page/package-category/package-category.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'map',
-        component: DestinationMapComponent
+        component: DestinationMapComponent,
       },
       {
         path: 'trips',
@@ -35,9 +36,17 @@ const routes: Routes = [
         component: PackageLayoutComponent,
       },
       {
+        path: 'packages/category/:category',
+        component: PackageCategoryComponent,
+      },
+      {
+        path: 'packages/destination/:destination',
+        component: PackageCategoryComponent,
+      },
+      {
         path: 'packages/:id',
         component: PackageDetailsComponent,
-      }
+      },
     ],
   },
 ];

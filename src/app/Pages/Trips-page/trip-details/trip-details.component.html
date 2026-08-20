@@ -1,187 +1,355 @@
+<!-- ===================================================== -->
+<!-- Breadcrumb -->
+<!-- ===================================================== -->
+
 <app-trips-breadcrumb
-  [pageTitle]="trip?.title ?? ''">
+  [pageTitle]="trip?.title ?? 'Trip Details'">
 </app-trips-breadcrumb>
 
-<div *ngIf="trip as tripData" class="bg-[#F8FAFC] min-h-screen py-12">
+
+<!-- ===================================================== -->
+<!-- Loading -->
+<!-- ===================================================== -->
+
+<div
+  *ngIf="loading"
+  class="min-h-screen flex items-center justify-center bg-[#F8FAFC]">
+
+  <div
+    class="w-16 h-16 border-[5px]
+           border-gold border-t-transparent
+           rounded-full animate-spin">
+  </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- Trip Details -->
+<!-- ===================================================== -->
+
+<div
+  *ngIf="!loading && trip as tripData"
+  class="bg-[#F8FAFC] min-h-screen py-10">
 
   <div class="container mx-auto px-4">
 
-    <!-- ================= Images ================= -->
 
-    <div class="mb-12">
+    <!-- ================================================= -->
+    <!-- Images -->
+    <!-- ================================================= -->
+
+    <section class="mb-12">
 
       <!-- Main Image -->
 
-      <div class="relative group overflow-hidden rounded-3xl shadow-2xl">
+      <div
+        class="relative group overflow-hidden
+               rounded-3xl shadow-2xl">
 
         <img
-          [src]="tripData.images[0] || 'https://via.placeholder.com/1200x600'"
+          [src]="tripData.coverImage"
+          [alt]="tripData.title"
           (click)="openViewer(0)"
-          class="w-full h-[550px] object-cover cursor-pointer transition duration-700 group-hover:scale-105"
+          class="w-full h-[500px] md:h-[600px]
+                 object-cover cursor-pointer
+                 transition duration-700
+                 group-hover:scale-105"
         />
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        <!-- Overlay -->
 
         <div
-          class="absolute bottom-6 left-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3 text-white">
+          class="absolute inset-0
+                 bg-gradient-to-t
+                 from-black/60
+                 via-transparent
+                 to-transparent
+                 pointer-events-none">
+        </div>
 
-          <div class="text-sm opacity-80">
+
+        <!-- Image Caption -->
+
+        <div
+          class="absolute bottom-6 left-6 right-6
+                 text-white">
+
+          <p class="text-sm opacity-80 mb-2">
             Explore Egypt
-          </div>
+          </p>
 
-          <div class="text-2xl font-bold">
-            {{tripData.title}}
-          </div>
+          <h1
+            class="text-2xl md:text-4xl
+                   font-extrabold">
+
+            {{ tripData.title }}
+
+          </h1>
 
         </div>
 
       </div>
+
 
       <!-- Gallery -->
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
+      <div
+        *ngIf="tripData.images?.length"
+        class="grid grid-cols-2 md:grid-cols-4
+               gap-4 mt-5">
 
         <ng-container
-          *ngFor="let img of tripData.images.slice(1,5); let i=index">
+          *ngFor="
+            let image of tripData.images.slice(1, 5);
+            let i = index
+          ">
 
           <img
-            [src]="img"
-            (click)="openViewer(i+1)"
-            class="rounded-2xl h-40 w-full object-cover cursor-pointer
-                   shadow-md hover:shadow-xl hover:scale-105 transition duration-300"/>
+            [src]="image"
+            [alt]="tripData.title"
+            (click)="openViewer(i + 1)"
+            class="rounded-2xl
+                   h-36 md:h-40
+                   w-full
+                   object-cover
+                   cursor-pointer
+                   shadow-md
+                   hover:shadow-xl
+                   hover:scale-105
+                   transition duration-300"
+          />
 
         </ng-container>
 
-        <div
-          *ngIf="tripData.images.length>5"
-          (click)="openViewer(5)"
-          class="rounded-2xl bg-dark-navy text-white flex items-center justify-center
-                 text-3xl font-bold cursor-pointer hover:bg-navy transition">
 
-          +{{tripData.images.length-5}}
+        <!-- More Images -->
+
+        <div
+          *ngIf="tripData.images.length > 5"
+          (click)="openViewer(5)"
+          class="rounded-2xl
+                 bg-dark-navy
+                 text-white
+                 flex items-center justify-center
+                 text-2xl md:text-3xl
+                 font-bold
+                 cursor-pointer
+                 hover:bg-navy
+                 transition">
+
+          +{{ tripData.images.length - 5 }}
 
         </div>
 
       </div>
 
-    </div>
+    </section>
 
-    <!-- ================= Main ================= -->
 
-    <div class="grid lg:grid-cols-3 gap-10">
 
+    <!-- ================================================= -->
+    <!-- Main Content -->
+    <!-- ================================================= -->
+
+    <div
+      class="grid
+             lg:grid-cols-3
+             gap-10">
+
+
+      <!-- ================================================= -->
       <!-- LEFT -->
+      <!-- ================================================= -->
 
       <div class="lg:col-span-2">
 
-        <h1
-          class="text-5xl font-extrabold text-dark-navy leading-tight">
 
-          {{tripData.title}}
+        <!-- Title -->
+
+        <h1
+          class="text-4xl md:text-5xl
+                 font-extrabold
+                 text-dark-navy
+                 leading-tight">
+
+          {{ tripData.title }}
 
         </h1>
 
-        <p class="text-gray-500 mt-3 text-lg">
 
-          Discover one of Egypt's most unforgettable travel experiences.
+        <!-- Short Description -->
+
+        <p
+          class="text-gray-500
+                 mt-4
+                 text-lg
+                 leading-8">
+
+          {{ tripData.shortDescription }}
 
         </p>
 
-        <!-- Badges -->
 
-        <div class="flex flex-wrap gap-4 mt-8 mb-10">
+
+        <!-- ================================================= -->
+        <!-- Badges -->
+        <!-- ================================================= -->
+
+        <div
+          class="flex flex-wrap
+                 gap-3
+                 mt-7
+                 mb-10">
+
+
+          <!-- Destination -->
 
           <div
-            class="flex items-center gap-2 bg-blue-50 text-blue px-5 py-3 rounded-full">
+            class="flex items-center gap-2
+                   bg-blue-50
+                   text-blue
+                   px-5 py-3
+                   rounded-full">
 
             <i class="bx bx-map text-xl"></i>
 
-            {{tripData.city}}
+            <span>
+              {{ tripData.destination.name }}
+            </span>
 
           </div>
 
+
+          <!-- Duration -->
+
           <div
-            class="flex items-center gap-2 bg-white border border-gray-200 px-5 py-3 rounded-full">
+            class="flex items-center gap-2
+                   bg-white
+                   border border-gray-200
+                   px-5 py-3
+                   rounded-full">
 
             <i class="bx bx-time text-blue"></i>
 
-            {{tripData.durationInDays}} Days
+            <span>
+              {{ tripData.duration.value }}
+              {{ tripData.duration.unit }}
+            </span>
 
           </div>
 
+
+          <!-- Rating -->
+
           <div
-            class="flex items-center gap-2 bg-gold/10 text-gold px-5 py-3 rounded-full">
+            *ngIf="tripData.rating > 0"
+            class="flex items-center gap-2
+                   bg-gold/10
+                   text-gold
+                   px-5 py-3
+                   rounded-full">
 
             <i class="bx bxs-star"></i>
 
-            {{tripData.rating}}
+            <span>
+              {{ tripData.rating }}
+            </span>
+
+            <span
+              *ngIf="tripData.reviews"
+              class="text-gray-500">
+
+              ({{ tripData.reviews }})
+
+            </span>
 
           </div>
 
         </div>
 
-        <!-- Description -->
+
+
+        <!-- ================================================= -->
+        <!-- About -->
+        <!-- ================================================= -->
 
         <div
-          class="bg-white rounded-3xl border border-gray-200 shadow-lg p-8">
+          class="bg-white
+                 rounded-3xl
+                 border border-gray-200
+                 shadow-lg
+                 p-7 md:p-8
+                 mb-10">
 
           <h2
-            class="text-3xl font-bold text-dark-navy mb-6">
+            class="text-3xl
+                   font-bold
+                   text-dark-navy
+                   mb-6">
 
-            About this Trip
+            About This Trip
 
           </h2>
 
           <p
-            class="leading-9 text-gray-600 text-lg">
+            class="leading-8
+                   text-gray-600
+                   text-lg">
 
-            {{tripData.description}}
+            {{ tripData.shortDescription }}
 
           </p>
 
         </div>
-              </div>
 
-      <!-- ================= RIGHT ================= -->
 
-      <div class="lg:sticky lg:top-28 h-fit">
+
+        <!-- ================================================= -->
+        <!-- Highlights -->
+        <!-- ================================================= -->
 
         <div
-          class="overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-2xl">
+          *ngIf="tripData.highlights?.length"
+          class="bg-white
+                 rounded-3xl
+                 border border-gray-200
+                 shadow-lg
+                 p-7 md:p-8
+                 mb-10">
 
-          <!-- Header -->
+          <h2
+            class="text-3xl
+                   font-bold
+                   text-dark-navy
+                   mb-7">
+
+            Trip Highlights
+
+          </h2>
+
 
           <div
-            class="bg-dark-navy text-white p-8">
-
-            <p class="uppercase tracking-widest text-xs text-gray-300">
-              Starting From
-            </p>
-
-            <div class="flex items-end gap-2 mt-2">
-
-              <h2 class="text-5xl font-extrabold text-gold">
-                {{tripData.price}}
-              </h2>
-
-              <span class="text-lg mb-2">
-                EGP
-              </span>
-
-            </div>
+            class="grid
+                   md:grid-cols-2
+                   gap-5">
 
             <div
-              *ngIf="tripData.oldPrice"
-              class="flex items-center gap-3 mt-4">
+              *ngFor="let highlight of tripData.highlights"
+              class="flex items-start gap-3">
 
-              <span class="line-through text-gray-300">
-                {{tripData.oldPrice}} EGP
-              </span>
+              <i
+                class="bx bx-check-circle
+                       text-gold
+                       text-2xl
+                       shrink-0">
+              </i>
 
               <span
-                class="bg-gold text-dark-navy px-3 py-1 rounded-full text-xs font-bold">
+                class="text-gray-700
+                       leading-7">
 
-                SAVE {{tripData.discount}}%
+                {{ highlight }}
 
               </span>
 
@@ -189,18 +357,492 @@
 
           </div>
 
-          <!-- Body -->
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- Itinerary -->
+        <!-- ================================================= -->
+
+        <div
+          *ngIf="tripData.itinerary?.length"
+          class="bg-white
+                 rounded-3xl
+                 border border-gray-200
+                 shadow-xl
+                 p-7 md:p-8
+                 mb-10">
+
+          <h2
+            class="text-3xl
+                   font-bold
+                   text-dark-navy
+                   mb-10">
+
+            Tour Itinerary
+
+          </h2>
+
+
+          <div class="relative">
+
+
+            <!-- Timeline -->
+
+            <div
+              class="absolute
+                     left-5
+                     top-0
+                     bottom-0
+                     w-1
+                     bg-gold/20">
+            </div>
+
+
+            <!-- Items -->
+
+            <div
+              *ngFor="
+                let item of tripData.itinerary;
+                let i = index
+              "
+              class="relative
+                     pl-16
+                     mb-8
+                     last:mb-0">
+
+
+              <!-- Number -->
+
+              <div
+                class="absolute
+                       left-0
+                       top-1
+                       w-10 h-10
+                       rounded-full
+                       bg-gold
+                       text-dark-navy
+                       font-bold
+                       flex items-center
+                       justify-center
+                       shadow-lg">
+
+                {{ i + 1 }}
+
+              </div>
+
+
+              <!-- Content -->
+
+              <div
+                class="bg-[#F8FAFC]
+                       rounded-2xl
+                       border border-gray-200
+                       p-6">
+
+                <h3
+                  class="font-bold
+                         text-xl
+                         text-dark-navy
+                         mb-3">
+
+                  {{ item.title }}
+
+                </h3>
+
+                <p
+                  class="text-gray-600
+                         leading-8">
+
+                  {{ item.description }}
+
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- Included / Excluded -->
+        <!-- ================================================= -->
+
+        <div
+          class="grid
+                 md:grid-cols-2
+                 gap-6
+                 mb-10">
+
+
+          <!-- Includes -->
+
+          <div
+            *ngIf="tripData.includes?.length"
+            class="bg-white
+                   rounded-3xl
+                   border border-gray-200
+                   shadow-lg
+                   p-7">
+
+            <h2
+              class="text-2xl
+                     font-bold
+                     text-dark-navy
+                     mb-6">
+
+              What's Included?
+
+            </h2>
+
+
+            <div
+              *ngFor="let item of tripData.includes"
+              class="flex items-start gap-3 mb-4">
+
+              <i
+                class="bx bx-check-circle
+                       text-green-600
+                       text-2xl
+                       shrink-0">
+              </i>
+
+              <span
+                class="text-gray-700">
+
+                {{ item }}
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Excludes -->
+
+          <div
+            *ngIf="tripData.excludes?.length"
+            class="bg-white
+                   rounded-3xl
+                   border border-gray-200
+                   shadow-lg
+                   p-7">
+
+            <h2
+              class="text-2xl
+                     font-bold
+                     text-dark-navy
+                     mb-6">
+
+              What's Not Included?
+
+            </h2>
+
+
+            <div
+              *ngFor="let item of tripData.excludes"
+              class="flex items-start gap-3 mb-4">
+
+              <i
+                class="bx bx-x-circle
+                       text-red-500
+                       text-2xl
+                       shrink-0">
+              </i>
+
+              <span
+                class="text-gray-700">
+
+                {{ item }}
+
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- What To Bring -->
+        <!-- ================================================= -->
+
+        <div
+          *ngIf="tripData.whatToBring?.length"
+          class="bg-white
+                 rounded-3xl
+                 border border-gray-200
+                 shadow-lg
+                 p-7 md:p-8
+                 mb-10">
+
+          <h2
+            class="text-3xl
+                   font-bold
+                   text-dark-navy
+                   mb-6">
+
+            What To Bring
+
+          </h2>
+
+
+          <div
+            class="grid
+                   md:grid-cols-2
+                   gap-4">
+
+            <div
+              *ngFor="let item of tripData.whatToBring"
+              class="flex items-center gap-3">
+
+              <i
+                class="bx bx-check
+                       text-gold
+                       text-xl">
+              </i>
+
+              <span class="text-gray-700">
+                {{ item }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- Good To Know -->
+        <!-- ================================================= -->
+
+        <div
+          *ngIf="tripData.goodToKnow?.length"
+          class="bg-white
+                 rounded-3xl
+                 border border-gray-200
+                 shadow-lg
+                 p-7 md:p-8
+                 mb-10">
+
+          <h2
+            class="text-3xl
+                   font-bold
+                   text-dark-navy
+                   mb-6">
+
+            Good To Know
+
+          </h2>
+
+
+          <ul class="space-y-4">
+
+            <li
+              *ngFor="let item of tripData.goodToKnow"
+              class="flex items-start gap-3">
+
+              <i
+                class="bx bx-info-circle
+                       text-blue
+                       text-xl
+                       shrink-0">
+              </i>
+
+              <span class="text-gray-700">
+                {{ item }}
+              </span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- FAQs -->
+        <!-- ================================================= -->
+
+        <div
+          *ngIf="tripData.faqs?.length"
+          class="bg-white
+                 rounded-3xl
+                 border border-gray-200
+                 shadow-lg
+                 p-7 md:p-8
+                 mb-10">
+
+          <h2
+            class="text-3xl
+                   font-bold
+                   text-dark-navy
+                   mb-7">
+
+            Frequently Asked Questions
+
+          </h2>
+
+
+          <div
+            *ngFor="let faq of tripData.faqs"
+            class="border-b
+                   border-gray-200
+                   py-5
+                   last:border-b-0">
+
+            <h3
+              class="font-bold
+                     text-lg
+                     text-dark-navy
+                     mb-2">
+
+              {{ faq.question }}
+
+            </h3>
+
+            <p
+              class="text-gray-600
+                     leading-7">
+
+              {{ faq.answer }}
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ================================================= -->
+      <!-- RIGHT SIDEBAR -->
+      <!-- ================================================= -->
+
+      <div
+        class="lg:sticky
+               lg:top-28
+               h-fit">
+
+
+        <div
+          class="overflow-hidden
+                 rounded-3xl
+                 bg-white
+                 border border-gray-200
+                 shadow-2xl">
+
+
+          <!-- Price Header -->
+
+          <div
+            class="bg-dark-navy
+                   text-white
+                   p-7 md:p-8">
+
+            <p
+              class="uppercase
+                     tracking-widest
+                     text-xs
+                     text-gray-300">
+
+              Starting From
+
+            </p>
+
+
+            <!-- Current Price -->
+
+            <div
+              class="flex items-end
+                     gap-2
+                     mt-2">
+
+              <h2
+                class="text-4xl md:text-5xl
+                       font-extrabold
+                       text-gold">
+
+                ${{ tripData.price }}
+
+              </h2>
+
+            </div>
+
+
+            <!-- Old Price -->
+
+            <div
+              *ngIf="tripData.oldPrice"
+              class="flex items-center
+                     gap-3
+                     mt-4">
+
+              <span
+                class="line-through
+                       text-gray-300">
+
+                ${{ tripData.oldPrice }}
+
+              </span>
+
+              <span
+                class="bg-gold
+                       text-dark-navy
+                       px-3 py-1
+                       rounded-full
+                       text-xs
+                       font-bold">
+
+                SAVE
+                {{ 100 - (tripData.price / tripData.oldPrice * 100) | number:'1.0-0' }}%
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Sidebar Body -->
 
           <div class="p-7">
 
+
             <div class="space-y-5">
 
-              <div class="flex items-center gap-4">
+
+              <!-- Availability -->
+
+              <div
+                class="flex items-center gap-4">
 
                 <div
-                  class="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center">
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-gold/10
+                         flex items-center
+                         justify-center">
 
-                  <i class="bx bx-calendar text-gold text-xl"></i>
+                  <i
+                    class="bx bx-calendar
+                           text-gold
+                           text-xl">
+                  </i>
 
                 </div>
 
@@ -210,20 +852,37 @@
                     Availability
                   </p>
 
-                  <p class="font-semibold text-dark-navy">
+                  <p
+                    class="font-semibold
+                           text-dark-navy">
+
                     Everyday
+
                   </p>
 
                 </div>
 
               </div>
 
-              <div class="flex items-center gap-4">
+
+
+              <!-- Destination -->
+
+              <div
+                class="flex items-center gap-4">
 
                 <div
-                  class="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center">
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-gold/10
+                         flex items-center
+                         justify-center">
 
-                  <i class="bx bx-map text-gold text-xl"></i>
+                  <i
+                    class="bx bx-map
+                           text-gold
+                           text-xl">
+                  </i>
 
                 </div>
 
@@ -233,20 +892,79 @@
                     Destination
                   </p>
 
-                  <p class="font-semibold text-dark-navy">
-                    {{tripData.city}}
+                  <p
+                    class="font-semibold
+                           text-dark-navy">
+
+                    {{ tripData.destination.name }}
+
                   </p>
 
                 </div>
 
               </div>
 
-              <div class="flex items-center gap-4">
+
+
+              <!-- Duration -->
+
+              <div
+                class="flex items-center gap-4">
 
                 <div
-                  class="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center">
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-gold/10
+                         flex items-center
+                         justify-center">
 
-                  <i class="bx bxs-star text-gold text-xl"></i>
+                  <i
+                    class="bx bx-time
+                           text-gold
+                           text-xl">
+                  </i>
+
+                </div>
+
+                <div>
+
+                  <p class="text-sm text-gray-500">
+                    Duration
+                  </p>
+
+                  <p
+                    class="font-semibold
+                           text-dark-navy">
+
+                    {{ tripData.duration.value }}
+                    {{ tripData.duration.unit }}
+
+                  </p>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- Rating -->
+
+              <div
+                *ngIf="tripData.rating > 0"
+                class="flex items-center gap-4">
+
+                <div
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-gold/10
+                         flex items-center
+                         justify-center">
+
+                  <i
+                    class="bx bxs-star
+                           text-gold
+                           text-xl">
+                  </i>
 
                 </div>
 
@@ -256,8 +974,21 @@
                     Rating
                   </p>
 
-                  <p class="font-semibold text-dark-navy">
-                    {{tripData.rating}} / 5
+                  <p
+                    class="font-semibold
+                           text-dark-navy">
+
+                    {{ tripData.rating }} / 5
+
+                    <span
+                      *ngIf="tripData.reviews"
+                      class="text-gray-400
+                             text-sm">
+
+                      ({{ tripData.reviews }})
+
+                    </span>
+
                   </p>
 
                 </div>
@@ -266,63 +997,69 @@
 
             </div>
 
-            <div class="my-7 border-t border-gray-200"></div>
 
-            <!-- Features -->
 
-            <div class="grid grid-cols-2 gap-4">
+            <!-- Divider -->
 
-              <div
-                class="rounded-2xl bg-[#F8FAFC] p-4 text-center hover:shadow-md transition">
+            <div
+              class="my-7
+                     border-t
+                     border-gray-200">
+            </div>
 
-                <i class="bx bx-building-house text-3xl text-blue"></i>
 
-                <p class="mt-2 text-sm font-medium">
-                  Temples
-                </p>
 
-              </div>
+            <!-- Trip Types -->
 
-              <div
-                class="rounded-2xl bg-[#F8FAFC] p-4 text-center hover:shadow-md transition">
+            <div
+              *ngIf="tripData.type?.length">
 
-                <i class="bx bx-water text-3xl text-blue"></i>
+              <p
+                class="font-bold
+                       text-dark-navy
+                       mb-4">
 
-                <p class="mt-2 text-sm font-medium">
-                  Nile Cruise
-                </p>
+                Trip Type
 
-              </div>
+              </p>
 
               <div
-                class="rounded-2xl bg-[#F8FAFC] p-4 text-center hover:shadow-md transition">
+                class="flex flex-wrap gap-2">
 
-                <i class="bx bx-sun text-3xl text-blue"></i>
+                <span
+                  *ngFor="let type of tripData.type"
+                  class="px-3 py-2
+                         rounded-full
+                         bg-[#F8FAFC]
+                         border border-gray-200
+                         text-sm
+                         text-gray-600">
 
-                <p class="mt-2 text-sm font-medium">
-                  Beach
-                </p>
+                  {{ type }}
 
-              </div>
-
-              <div
-                class="rounded-2xl bg-[#F8FAFC] p-4 text-center hover:shadow-md transition">
-
-                <i class="bx bx-landscape text-3xl text-blue"></i>
-
-                <p class="mt-2 text-sm font-medium">
-                  Desert
-                </p>
+                </span>
 
               </div>
 
             </div>
 
+
+
+            <!-- Book -->
+
             <button
-              class="mt-8 w-full py-4 rounded-2xl
-                     bg-gold hover:bg-[#c89b2c]
-                     text-dark-navy font-bold
-                     transition duration-300 shadow-lg">
+              class="mt-8
+                     w-full
+                     py-4
+                     rounded-2xl
+                     bg-gold
+                     hover:bg-[#c89b2c]
+                     text-dark-navy
+                     font-bold
+                     text-lg
+                     transition
+                     duration-300
+                     shadow-lg">
 
               Book Now
 
@@ -335,176 +1072,39 @@
       </div>
 
     </div>
-        <!-- ================= Tour Itinerary ================= -->
 
-    <div
-      class="mt-16 bg-white rounded-3xl border border-gray-200 shadow-xl p-8">
 
-      <h2
-        class="text-3xl font-bold text-dark-navy mb-10">
 
-        Tour Itinerary
+    <!-- ================================================= -->
+    <!-- Related Trips -->
+    <!-- ================================================= -->
 
-      </h2>
-
-      <div class="relative">
-
-        <div
-          class="absolute left-5 top-0 bottom-0 w-1 bg-gold/20">
-        </div>
-
-        <div
-          *ngFor="let day of tripData.itineraries; let i=index"
-          class="relative pl-16 mb-8">
-
-          <!-- Timeline Dot -->
-
-          <div
-            class="absolute left-0 top-2 w-10 h-10 rounded-full
-                   bg-gold text-dark-navy font-bold
-                   flex items-center justify-center shadow-lg">
-
-            {{i+1}}
-
-          </div>
-
-          <!-- Card -->
-
-          <div
-            class="bg-[#F8FAFC] rounded-2xl border border-gray-200 overflow-hidden">
-
-            <div
-              (click)="day.open=!day.open"
-              class="cursor-pointer px-6 py-5
-                     flex justify-between items-center
-                     hover:bg-blue-50 transition">
-
-              <div>
-
-                <h3
-                  class="font-bold text-xl text-dark-navy">
-
-                  {{day.title}}
-
-                </h3>
-
-                <p class="text-gray-500 text-sm mt-1">
-
-                  Day {{i+1}}
-
-                </p>
-
-              </div>
-
-              <i
-                class="bx text-3xl text-blue"
-                [ngClass]="day.open ? 'bx-chevron-up' : 'bx-chevron-down'">
-              </i>
-
-            </div>
-
-            <div *ngIf="day.open" class="p-6">
-
-              <img
-                [src]="day.image"
-                class="rounded-2xl w-full h-72 object-cover mb-6"/>
-
-              <p
-                class="text-gray-600 leading-8 mb-6">
-
-                {{day.description}}
-
-              </p>
-
-              <div class="grid md:grid-cols-2 gap-4">
-
-                <div
-                  *ngFor="let act of day.activities"
-                  class="flex items-start gap-3">
-
-                  <i
-                    class="bx bx-check-circle text-gold text-2xl">
-                  </i>
-
-                  <span class="text-gray-700">
-
-                    {{act}}
-
-                  </span>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ================= Gallery ================= -->
-
-    <div class="mt-20">
+    <section
+      *ngIf="relatedTrips.length"
+      class="mt-20">
 
       <div
-        class="flex justify-between items-center mb-8">
+        class="flex
+               justify-between
+               items-center
+               mb-8">
 
         <h2
-          class="text-3xl font-bold text-dark-navy">
-
-          Gallery & Reviews
-
-        </h2>
-
-      </div>
-
-      <div
-        class="grid md:grid-cols-3 gap-6">
-
-        <ng-container
-          *ngFor="let media of tripData.mediaReviews">
-
-          <img
-            *ngIf="media.type==='image'"
-            [src]="media.url"
-            class="rounded-3xl h-72 w-full object-cover shadow-lg
-                   hover:scale-105 hover:shadow-2xl transition duration-300"/>
-
-          <iframe
-            *ngIf="media.type==='video'"
-            [src]="media.url"
-            class="rounded-3xl w-full h-72 shadow-lg"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-
-        </ng-container>
-
-      </div>
-
-    </div>
-
-    <!-- ================= Related Trips ================= -->
-
-    <div class="mt-20">
-
-      <div
-        class="flex justify-between items-center mb-8">
-
-        <h2
-          class="text-3xl font-bold text-dark-navy">
+          class="text-3xl
+                 font-bold
+                 text-dark-navy">
 
           Related Trips
 
         </h2>
 
+
         <a
           routerLink="/trips"
-          class="text-gold font-bold hover:text-dark-navy transition">
+          class="text-gold
+                 font-bold
+                 hover:text-dark-navy
+                 transition">
 
           View All →
 
@@ -512,8 +1112,12 @@
 
       </div>
 
+
       <div
-        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        class="grid
+               sm:grid-cols-2
+               lg:grid-cols-3
+               gap-8">
 
         <app-trip-card
           *ngFor="let relatedTrip of relatedTrips"
@@ -522,100 +1126,192 @@
 
       </div>
 
-    </div>
+    </section>
 
   </div>
 
 </div>
 
-<!-- ================= Fullscreen Viewer ================= -->
+
+
+<!-- ===================================================== -->
+<!-- Fullscreen Image Viewer -->
+<!-- ===================================================== -->
 
 <div
   *ngIf="isViewerOpen && trip as tripData"
-  class="fixed inset-0 bg-black/95 flex items-center justify-center z-[999]">
+  class="fixed
+         inset-0
+         bg-black/95
+         flex
+         items-center
+         justify-center
+         z-[999]">
+
+
+  <!-- Close -->
 
   <button
     (click)="closeViewer()"
-    class="absolute top-8 right-8 w-14 h-14 rounded-full
-           bg-white/10 hover:bg-gold
-           text-white hover:text-dark-navy
-           text-3xl transition">
+    class="absolute
+           top-6
+           right-6
+           md:top-8
+           md:right-8
+           w-12 h-12
+           md:w-14 md:h-14
+           rounded-full
+           bg-white/10
+           hover:bg-gold
+           text-white
+           hover:text-dark-navy
+           text-2xl md:text-3xl
+           transition
+           z-10">
 
     ✕
 
   </button>
 
+
+  <!-- Previous -->
+
   <button
     (click)="prevImage()"
-    class="absolute left-8 text-white text-6xl hover:text-gold transition">
+    class="absolute
+           left-3
+           md:left-8
+           text-white
+           text-4xl
+           md:text-6xl
+           hover:text-gold
+           transition
+           z-10">
 
     ❮
 
   </button>
 
+
+  <!-- Image -->
+
   <img
     [src]="tripData.images[selectedImageIndex]"
-    class="max-h-[88vh] max-w-[92vw] rounded-3xl shadow-2xl"/>
+    [alt]="tripData.title"
+    class="max-h-[85vh]
+           max-w-[85vw]
+           object-contain
+           rounded-2xl
+           shadow-2xl"
+  />
+
+
+  <!-- Next -->
 
   <button
     (click)="nextImage()"
-    class="absolute right-8 text-white text-6xl hover:text-gold transition">
+    class="absolute
+           right-3
+           md:right-8
+           text-white
+           text-4xl
+           md:text-6xl
+           hover:text-gold
+           transition
+           z-10">
 
     ❯
 
   </button>
 
-</div>
 
-<!-- ================= Loading ================= -->
-
-<div
-  *ngIf="loading"
-  class="min-h-screen flex items-center justify-center">
+  <!-- Counter -->
 
   <div
-    class="w-16 h-16 border-[5px]
-           border-gold border-t-transparent
-           rounded-full animate-spin">
+    class="absolute
+           bottom-6
+           left-1/2
+           -translate-x-1/2
+           bg-white/10
+           backdrop-blur-md
+           text-white
+           px-5 py-2
+           rounded-full
+           text-sm">
+
+    {{ selectedImageIndex + 1 }}
+    /
+    {{ tripData.images.length }}
+
   </div>
 
 </div>
 
-<!-- ================= Not Found ================= -->
+
+
+<!-- ===================================================== -->
+<!-- Not Found -->
+<!-- ===================================================== -->
 
 <div
   *ngIf="!loading && !trip"
-  class="min-h-screen flex flex-col items-center justify-center">
+  class="min-h-screen
+         bg-[#F8FAFC]
+         flex
+         flex-col
+         items-center
+         justify-center
+         px-4">
 
   <div
-    class="w-28 h-28 rounded-full bg-gold/10
-           flex items-center justify-center mb-6">
+    class="w-28 h-28
+           rounded-full
+           bg-gold/10
+           flex items-center
+           justify-center
+           mb-6">
 
     <i
-      class="bx bx-map-alt text-6xl text-gold">
+      class="bx bx-map-alt
+             text-6xl
+             text-gold">
     </i>
 
   </div>
 
+
   <h2
-    class="text-5xl font-bold text-dark-navy mb-4">
+    class="text-4xl md:text-5xl
+           font-bold
+           text-dark-navy
+           mb-4
+           text-center">
 
     Trip Not Found
 
   </h2>
 
+
   <p
-    class="text-gray-500 mb-8 text-lg">
+    class="text-gray-500
+           mb-8
+           text-lg
+           text-center">
 
     The requested trip could not be found.
 
   </p>
 
+
   <a
     routerLink="/trips"
-    class="bg-dark-navy hover:bg-navy
-           text-white px-8 py-4 rounded-2xl
-           font-semibold transition">
+    class="bg-dark-navy
+           hover:bg-navy
+           text-white
+           px-8 py-4
+           rounded-2xl
+           font-semibold
+           transition">
 
     Back To Trips
 

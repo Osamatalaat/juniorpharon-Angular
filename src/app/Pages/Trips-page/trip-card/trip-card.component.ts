@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Trip } from '../../../core/models/trip.model';
 
 @Component({
   selector: 'app-trip-card',
@@ -9,8 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TripCardComponent {
 
-  @Input() trip: any;
-
+  @Input() trip!: Trip;
   constructor(private router: Router) {}
 
   goToDetails() {

@@ -1,14 +1,21 @@
 export interface TripFilter {
 
-  location?: string;
-  city?: string;
-  minPrice?: number;
-  maxPrice?: number;
-  durationInDays?: number;
-  rating?: number;
-  descending?: boolean;
-  pageSize?: number;
-  pageIndex?: number;
+  city?: string[];
 
+  minPrice?: number;
+
+  maxPrice?: number;
+
+  durationMin?: number;
+
+  durationMax?: number;
+
+  durationUnit?: 'hours' | 'days';
+
+  rating?: number;
+
+  descending?: boolean;
+
+  pageIndex?: number;
 
 }

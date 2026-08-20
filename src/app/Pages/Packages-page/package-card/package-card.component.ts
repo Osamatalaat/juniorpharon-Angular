@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Package } from '../../../core/models/package.model';
 
 @Component({
   selector: 'app-package-card',
@@ -8,24 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./package-card.component.css'],
   standalone: false
 })
-export class PackageCardComponent  {
+export class PackageCardComponent {
 
-  @Input() package: any;
+  @Input() package!: Package;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router
+  ) {}
 
-  goToDetails() {
-    this.router.navigate(['/packages', this.package.id]);
+  goToDetails(): void {
+
+    this.router.navigate([
+      '/packages',
+      this.package.id
+    ]);
+
   }
-showBookingModal = false;
 
-openBooking(): void {
-
-  this.showBookingModal = true;
-}
-
-closeBooking(): void {
-
-  this.showBookingModal = false;
-}
 }

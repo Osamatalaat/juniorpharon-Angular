@@ -1,3 +1,246 @@
-<p>
-  package-category works!
-</p>
+<!-- ========================================================= -->
+<!-- PACKAGE CATEGORY HERO -->
+<!-- ========================================================= -->
+
+<section
+  class="relative overflow-hidden rounded-3xl shadow-2xl my-8 min-h-[360px] sm:min-h-[420px]"
+>
+  <!-- ================= Background ================= -->
+
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-dark-navy via-dark-navy/90 to-black/60"
+  ></div>
+
+  <!-- ================= Decorative Gold Light ================= -->
+
+  <div
+    class="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gold/20 blur-[120px]"
+  ></div>
+
+  <div
+    class="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-blue-700/20 blur-[120px]"
+  ></div>
+
+  <!-- ================= Hero Content ================= -->
+
+  <div class="relative z-10 flex min-h-[360px] items-center sm:min-h-[420px]">
+    <div class="container mx-auto px-6 py-16 lg:px-12">
+      <!-- Breadcrumb -->
+
+      <div class="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-300">
+        <a routerLink="/" class="transition hover:text-gold"> Home </a>
+
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+
+        <a routerLink="/packages" class="transition hover:text-gold">
+          Packages
+        </a>
+
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+
+        <span class="text-gold">
+          {{ pageTitle }}
+        </span>
+      </div>
+
+      <!-- Badge -->
+
+      <div
+        class="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold backdrop-blur-md"
+      >
+        <i class="fa-solid fa-suitcase-rolling"></i>
+
+        <span> Explore Our Packages </span>
+      </div>
+
+      <!-- Title -->
+
+      <h1
+        class="max-w-4xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl"
+      >
+        {{ pageTitle }}
+      </h1>
+
+      <!-- Description -->
+
+      <p class="mt-6 max-w-3xl text-base leading-8 text-gray-200 sm:text-lg">
+        {{ pageDescription }}
+      </p>
+
+      <!-- Result Count -->
+
+      <div
+        class="mt-8 inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-5 py-3 text-white backdrop-blur-xl"
+      >
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/20"
+        >
+          <i class="fa-solid fa-layer-group text-gold"></i>
+        </div>
+
+        <div>
+          <div class="font-bold">{{ filteredPackages.length }} Packages</div>
+
+          <div class="text-sm text-gray-300">Available for your journey</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= -->
+<!-- PACKAGES SECTION -->
+<!-- ========================================================= -->
+
+<section class="container mx-auto mb-16 px-4 sm:px-6 lg:px-8">
+  <!-- ================= Section Header ================= -->
+
+  <div
+    class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+  >
+    <div>
+      <p class="text-sm font-bold uppercase tracking-wider text-gold">
+        Discover Egypt
+      </p>
+
+      <h2 class="mt-2 text-3xl font-black text-dark-navy sm:text-4xl">
+        Explore Our Packages
+      </h2>
+    </div>
+
+    <!-- ================= Page Size ================= -->
+
+    <div class="flex items-center gap-3 text-sm text-gray-500">
+      <span> Showing </span>
+
+      <span class="font-bold text-dark-navy">
+        {{ packages.length }}
+      </span>
+
+      <span> of </span>
+
+      <span class="font-bold text-dark-navy">
+        {{ filteredPackages.length }}
+      </span>
+
+      <span> packages </span>
+
+      <!-- Page Size -->
+
+      <select
+        [(ngModel)]="pageSize"
+        (change)="changePageSize()"
+        class="ml-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-dark-navy focus:outline-none focus:ring-2 focus:ring-gold"
+      >
+        <option [ngValue]="6">6</option>
+
+        <option [ngValue]="9">9</option>
+
+        <option [ngValue]="12">12</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ================================================= -->
+  <!-- PACKAGES GRID -->
+  <!-- ================================================= -->
+
+  <div
+    *ngIf="packages.length > 0"
+    class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  >
+    <app-package-card *ngFor="let package of packages" [package]="package">
+    </app-package-card>
+  </div>
+
+  <!-- ================================================= -->
+  <!-- EMPTY STATE -->
+  <!-- ================================================= -->
+
+  <div
+    *ngIf="packages.length === 0"
+    class="flex min-h-[300px] flex-col items-center justify-center rounded-3xl border border-gray-200 bg-white px-6 text-center shadow-lg"
+  >
+    <div
+      class="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+    >
+      <i class="fa-solid fa-box-open text-3xl text-gray-400"></i>
+    </div>
+
+    <h3 class="mt-6 text-2xl font-bold text-dark-navy">No Packages Found</h3>
+
+    <p class="mt-3 max-w-md text-gray-500">
+      We couldn't find any packages matching this category.
+    </p>
+
+    <a
+      routerLink="/packages"
+      class="mt-6 inline-flex items-center gap-2 rounded-xl bg-gold px-6 py-3 font-bold text-dark-navy transition hover:scale-105 hover:bg-gold-hover"
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+
+      View All Packages
+    </a>
+  </div>
+
+  <!-- ================================================= -->
+  <!-- PAGINATION -->
+  <!-- ================================================= -->
+
+  <div
+    *ngIf="totalPages > 0"
+    class="mt-12 flex items-center justify-center gap-3 flex-wrap"
+  >
+    <!-- ================= Previous ================= -->
+
+    <button
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+      class="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-dark-navy transition-all duration-300 hover:bg-dark-navy hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-dark-navy"
+    >
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <!-- ================= Page Numbers ================= -->
+
+    <ng-container *ngFor="let page of pageNumbers">
+      <button
+        (click)="goToPage(page)"
+        [ngClass]="
+          page === currentPage
+            ? 'bg-dark-navy text-white border-dark-navy'
+            : 'bg-white text-dark-navy border-gray-200'
+        "
+        class="flex h-10 w-10 items-center justify-center rounded-xl border font-semibold transition-all duration-300 hover:bg-dark-navy hover:text-white hover:border-dark-navy"
+      >
+        {{ page }}
+      </button>
+    </ng-container>
+
+    <!-- ================= Next ================= -->
+
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+      class="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-dark-navy transition-all duration-300 hover:bg-dark-navy hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-dark-navy"
+    >
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- ================= Current Page ================= -->
+
+    <div class="ml-2 text-sm whitespace-nowrap text-gray-500">
+      Page
+
+      <span class="font-semibold text-dark-navy">
+        {{ currentPage }}
+      </span>
+
+      of
+
+      <span class="font-semibold text-dark-navy">
+        {{ totalPages }}
+      </span>
+    </div>
+  </div>
+</section>

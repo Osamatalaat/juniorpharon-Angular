@@ -1,5 +1,10 @@
-// filter-sidebar.component.ts
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output
+} from '@angular/core';
+
 import { TripFilter } from '../../../core/models/Search/trip-filter';
 
 @Component({
@@ -9,134 +14,345 @@ import { TripFilter } from '../../../core/models/Search/trip-filter';
   standalone: false
 })
 export class FilterSidebarComponent implements OnInit {
-  @Output() filterApplied = new EventEmitter<TripFilter>();
 
-  showFilter: boolean = false;
-  isDesktop: boolean = false;
+  @Output() filterApplied =
+    new EventEmitter<TripFilter>();
 
-  location: string = '';
-  city: string = '';
-  minPrice: number = 0;
-  maxPrice: number = 1000;
-  durationInDays?: number;
+
+  // =====================================================
+  // MOBILE
+  // =====================================================
+
+  showFilter = false;
+
+  isDesktop = false;
+
+
+  // =====================================================
+  // PRICE
+  // =====================================================
+
+  minPrice = 0;
+
+  maxPrice = 1000;
+
+
+  // =====================================================
+  // DURATION
+  // =====================================================
+
+  durationMin?: number;
+
+  durationMax?: number;
+
+  durationUnit?: 'hours' | 'days';
+
+
+  // =====================================================
+  // RATING
+  // =====================================================
+
   rating?: number;
-  descending: boolean = false;
+
+
+  // =====================================================
+  // SORT
+  // =====================================================
+
+  descending = false;
+
+
+  // =====================================================
+  // LOCATION / CITIES
+  // =====================================================
+
   countries = [
-  {
-    name: 'Egypt',
-    value: 'egypt',
-    cities: [
-      'Cairo',
-      'Giza',
-      'Luxor',
-      'Aswan',
-      'Alexandria',
-      'Hurghada',
-      'Sharm El Sheikh'
-    ]
-  },
+    {
+      name: 'Egypt',
+      value: 'egypt',
+      cities: [
+        'Cairo',
+        'Giza',
+        'Luxor',
+        'Aswan',
+        'Alexandria',
+        'Hurghada',
+        'Sharm El Sheikh'
+      ]
+    },
 
-  {
-    name: 'Saudi Arabia',
-    value: 'saudi',
-    cities: [
-      'Riyadh',
-      'Jeddah',
-      'Makkah',
-      'Madinah'
-    ]
-  },
+    {
+      name: 'Saudi Arabia',
+      value: 'saudi',
+      cities: [
+        'Riyadh',
+        'Jeddah',
+        'Makkah',
+        'Madinah'
+      ]
+    },
 
-  {
-    name: 'UAE',
-    value: 'uae',
-    cities: [
-      'Dubai',
-      'Abu Dhabi',
-      'Sharjah'
-    ]
-  }
-];
+    {
+      name: 'UAE',
+      value: 'uae',
+      cities: [
+        'Dubai',
+        'Abu Dhabi',
+        'Sharjah'
+      ]
+    }
+  ];
 
-  ngOnInit(): void {
-    this.checkScreenWidth();
-  }
 
   selectedCountry = '';
 
-cities: string[] = [];
+  cities: string[] = [];
 
-selectedCities: string[] = [];
+  selectedCities: string[] = [];
 
-onCountryChange() {
 
-  const country = this.countries.find(
+  // =====================================================
+  // INIT
+  // =====================================================
+
+  ngOnInit(): void {
+
+    this.checkScreenWidth();
+
+  }
+
+
+  // =====================================================
+  // COUNTRY
+  // =====================================================
+
+  onCountryChange(): void {
+
+    const country = this.countries.find(
       x => x.value === this.selectedCountry
-  );
+    );
 
-  this.cities = country?.cities || [];
+    this.cities =
+      country?.cities || [];
 
-  this.selectedCities = [];
+    this.selectedCities = [];
 
-}
+  }
 
-toggleCity(city: string, event: any) {
 
-  if(event.target.checked){
+  // =====================================================
+  // CITY
+  // =====================================================
 
-      this.selectedCities.push(city);
+  toggleCity(
+    city: string,
+    event: Event
+  ): void {
 
-  }else{
+    const checked =
+      (event.target as HTMLInputElement).checked;
+
+
+    if (checked) {
+
+      if (!this.selectedCities.includes(city)) {
+
+        this.selectedCities.push(city);
+
+      }
+
+    } else {
 
       this.selectedCities =
-          this.selectedCities.filter(x=>x!==city);
+        this.selectedCities.filter(
+          x => x !== city
+        );
+
+    }
 
   }
 
-}
 
-  checkScreenWidth() {
-    // Angular SSR safety
+  // =====================================================
+  // SCREEN
+  // =====================================================
+
+  checkScreenWidth(): void {
+
     if (typeof window !== 'undefined') {
-      this.isDesktop = window.innerWidth >= 768;
+
+      this.isDesktop =
+        window.innerWidth >= 768;
+
     } else {
-      this.isDesktop = true; // افتراض ديسكتوب على السيرفر
+
+      this.isDesktop = true;
+
     }
+
   }
 
-  toggleFilter() {
-    this.showFilter = !this.showFilter;
+
+  // =====================================================
+  // MOBILE FILTER
+  // =====================================================
+
+  toggleFilter(): void {
+
+    this.showFilter =
+      !this.showFilter;
+
   }
 
-  // دوال لتصحيح القيم عند تعديل السعر
-  minPriceChanged() {
+
+  // =====================================================
+  // PRICE
+  // =====================================================
+
+  minPriceChanged(): void {
+
     if (this.minPrice > this.maxPrice) {
-      this.minPrice = this.maxPrice;
+
+      this.minPrice =
+        this.maxPrice;
+
     }
+
   }
 
-  maxPriceChanged() {
+
+  maxPriceChanged(): void {
+
     if (this.maxPrice < this.minPrice) {
-      this.maxPrice = this.minPrice;
+
+      this.maxPrice =
+        this.minPrice;
+
     }
+
   }
 
-  applyFilter() {
+
+  // =====================================================
+  // DURATION
+  // =====================================================
+
+  selectDuration(
+    min: number | undefined,
+    max: number | undefined,
+    unit: 'hours' | 'days'
+  ): void {
+
+    this.durationMin = min;
+
+    this.durationMax = max;
+
+    this.durationUnit = unit;
+
+  }
+
+
+  // =====================================================
+  // RATING
+  // =====================================================
+
+  selectRating(
+    rating: number
+  ): void {
+
+    if (this.rating === rating) {
+
+      this.rating = undefined;
+
+    } else {
+
+      this.rating = rating;
+
+    }
+
+  }
+
+
+  // =====================================================
+  // APPLY
+  // =====================================================
+
+  applyFilter(): void {
+
     const filter: TripFilter = {
-      location: this.location,
-      city: this.city,
-      minPrice: this.minPrice,
-      maxPrice: this.maxPrice,
-      durationInDays: this.durationInDays,
-      rating: this.rating,
-      descending: this.descending,
-      pageIndex: 1,
+
+      city:
+        this.selectedCities.length
+          ? [...this.selectedCities]
+          : undefined,
+
+      minPrice:
+        this.minPrice,
+
+      maxPrice:
+        this.maxPrice,
+
+      durationMin:
+        this.durationMin,
+
+      durationMax:
+        this.durationMax,
+
+      durationUnit:
+        this.durationUnit,
+
+      rating:
+        this.rating,
+
+      descending:
+        this.descending,
+
+      pageIndex: 1
+
     };
 
-    // إرسال الفلتر للـ parent
+
     this.filterApplied.emit(filter);
 
-    // على الموبايل نخفي الفلتر بعد التطبيق
-    if (!this.isDesktop) this.showFilter = false;
+
+    if (!this.isDesktop) {
+
+      this.showFilter = false;
+
+    }
+
   }
+
+
+  // =====================================================
+  // RESET
+  // =====================================================
+
+  resetFilters(): void {
+
+    this.selectedCountry = '';
+
+    this.cities = [];
+
+    this.selectedCities = [];
+
+    this.minPrice = 0;
+
+    this.maxPrice = 1000;
+
+    this.durationMin = undefined;
+
+    this.durationMax = undefined;
+
+    this.durationUnit = undefined;
+
+    this.rating = undefined;
+
+    this.descending = false;
+
+
+    this.applyFilter();
+
+  }
+
 }

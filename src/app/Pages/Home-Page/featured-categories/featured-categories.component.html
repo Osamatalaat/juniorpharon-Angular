@@ -1,214 +1,397 @@
 <section class="container mx-auto py-20">
-  <!-- Heading -->
+
+  <!-- ===================================================== -->
+  <!-- HEADING -->
+  <!-- ===================================================== -->
+
   <div class="text-center mb-10">
-    <h2 class="text-4xl font-bold text-dark-navy inline-block relative pb-3">
+
+    <h2
+      class="
+        text-4xl
+        font-bold
+        text-dark-navy
+        inline-block
+        relative
+        pb-3
+      "
+    >
+
       Our Most Popular Egypt Tour Packages
-      <span
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-gold rounded-full"
-      ></span>
+
+      <!-- <span
+        class="
+          absolute
+          bottom-0
+          left-1/2
+          -translate-x-1/2
+          w-16
+          h-1.5
+          bg-gold
+          rounded-full
+        "
+      >
+      </span> -->
+
     </h2>
 
+
     <p
-      class="mt-5 max-w-2xl mx-auto text-text-secondary text-sm md:text-base leading-relaxed"
+      class="
+        mt-5
+        max-w-2xl
+        mx-auto
+        text-text-secondary
+        text-sm
+        md:text-base
+        leading-relaxed
+      "
     >
-      Choose from a wide range of Egypt vacation packages, from classic tours to
-      luxury, family, honeymoon and seasonal programs. All tours are
+
+      Choose from a wide range of Egypt vacation packages, from classic tours
+      to luxury, family, honeymoon and seasonal programs. All tours are
       customizable to match your interests and time.
+
     </p>
+
   </div>
-<!-- Top Categories -->
 
-<div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
 
-  <a
-    *ngFor="let item of packages"
-    [routerLink]="item.link"
-    class="group relative block overflow-hidden rounded-xl cursor-pointer shadow-card">
 
-    <!-- Image -->
-    <img
-      [src]="item.image"
-      [alt]="item.title"
-      class="w-full h-72 object-cover transition duration-700 group-hover:scale-105">
+  <!-- ===================================================== -->
+  <!-- TOP CATEGORIES -->
+  <!-- ===================================================== -->
 
-    <!-- Bottom Dark Area -->
+  <div
+    class="
+      grid
+      gap-4
+      grid-cols-2
+      md:grid-cols-3
+      lg:grid-cols-6
+    "
+  >
+
+    <a
+      *ngFor="let item of categories"
+      [routerLink]="item.link"
+      class="
+        group
+        relative
+        block
+        overflow-hidden
+        rounded-xl
+        cursor-pointer
+        shadow-card
+      "
+    >
+
+      <!-- ================================================= -->
+      <!-- IMAGE -->
+      <!-- ================================================= -->
+
+      <img
+        [src]="item.image"
+        [alt]="item.title"
+        class="
+          w-full
+          h-72
+          object-cover
+          transition
+          duration-700
+          group-hover:scale-105
+        "
+      >
+
+
+      <!-- ================================================= -->
+      <!-- BOTTOM DARK AREA -->
+      <!-- ================================================= -->
+
+      <div
+        class="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          h-20
+          overflow-hidden
+        "
+      >
+
+        <!-- Original Background -->
+
+        <div
+          class="
+            absolute
+            inset-0
+            bg-dark-navy/75
+          "
+        >
+        </div>
+
+
+        <!-- Sliding Layer -->
+
+        <div
+          class="
+            absolute
+            inset-0
+            bg-navy/90
+            -translate-x-full
+            group-hover:translate-x-0
+            transition-transform
+            duration-500
+            ease-out
+          "
+        >
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- CONTENT -->
+        <!-- ================================================= -->
+
+        <div
+          class="
+            relative
+            z-10
+            h-full
+            flex
+            items-center
+            justify-between
+            px-5
+          "
+        >
+
+          <!-- Title -->
+
+          <h3
+            class="
+              text-white
+              font-semibold
+              text-[15px]
+              leading-5
+            "
+          >
+
+            {{ item.title }}
+
+          </h3>
+
+
+          <!-- Arrow -->
+
+          <span
+            class="
+              text-gold
+              text-xl
+              transition-all
+              duration-300
+              group-hover:translate-x-2
+            "
+          >
+
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </a>
+
+  </div>
+
+
+
+  <!-- ===================================================== -->
+  <!-- VIEW ALL PACKAGES BUTTON -->
+  <!-- ===================================================== -->
+
+  <div class="flex justify-center mt-10">
+
+    <button
+      routerLink="/packages"
+      class="
+        px-8
+        py-3
+        rounded-2xl
+        cursor-pointer
+        border
+        border-gold
+        text-gold
+        font-semibold
+        transition-all
+        duration-300
+        hover:bg-gold-hover
+        hover:shadow-lg
+        hover:text-white
+        hover:translate-x-1
+      "
+    >
+
+      View All Egypt Tour Packages
+
+      <span>
+
+        <i class="fa-solid fa-arrow-right ml-2"></i>
+
+      </span>
+
+    </button>
+
+  </div>
+
+
+
+  <!-- ===================================================== -->
+  <!-- BOTTOM HIGHLIGHTS -->
+  <!-- ===================================================== -->
+
+  <div
+    class="
+      grid
+      lg:grid-cols-3
+      gap-8
+      mt-16
+    "
+  >
+
     <div
-      class="absolute bottom-0 left-0 right-0 h-20 overflow-hidden">
+      *ngFor="let item of highlights"
+      class="
+        bg-background-gray
+        rounded-2xl
+        shadow-card
+        overflow-hidden
+        flex
+        flex-col
+        transition-all
+        duration-300
+        hover:-translate-y-2
+        hover:shadow-xl
+      "
+    >
 
-      <!-- Original Background -->
-      <div
-        class="absolute inset-0 bg-dark-navy/75">
-      </div>
+      <!-- ================================================= -->
+      <!-- TITLE -->
+      <!-- ================================================= -->
 
-      <!-- Blue Sliding Layer -->
       <div
-        class="absolute inset-0
-               bg-navy/90
-               -translate-x-full
-               group-hover:translate-x-0
-               transition-transform
-               duration-500
-               ease-out">
-      </div>
-
-      <!-- Content -->
-      <div
-        class="relative z-10
-               h-full
-               flex
-               items-center
-               justify-between
-               px-5">
+        class="
+          px-6
+          pt-7
+          pb-5
+        "
+      >
 
         <h3
-          class="text-white
-                 font-semibold
-                 text-[15px]
-                 leading-5">
+          class="
+            text-2xl
+            font-bold
+            text-dark-navy
+            text-center
+          "
+        >
 
-          {{item.title}}
+          {{ item.title }}
 
         </h3>
 
-        <span
-          class="text-gold
-                 text-xl
-                 transition-all
-                 duration-300
-                 group-hover:translate-x-2">
+      </div>
+
+
+
+      <!-- ================================================= -->
+      <!-- IMAGE -->
+      <!-- ================================================= -->
+
+      <div class="overflow-hidden">
+
+        <img
+          [src]="item.image"
+          [alt]="item.title"
+          class="
+            w-full
+            h-56
+            object-cover
+            transition
+            duration-500
+            hover:scale-105
+          "
+        >
+
+      </div>
+
+
+
+      <!-- ================================================= -->
+      <!-- DESCRIPTION -->
+      <!-- ================================================= -->
+
+      <div
+        class="
+          flex
+          flex-col
+          flex-1
+          p-6
+        "
+      >
+
+        <p
+          class="
+            text-text-secondary
+            leading-7
+            text-[15px]
+            text-center
+            flex-1
+          "
+        >
+
+          {{ item.description }}
+
+        </p>
+
+
+
+        <!-- ================================================= -->
+        <!-- BUTTON -->
+        <!-- ================================================= -->
+
+        <button
+          [routerLink]="item.link"
+          class="
+            mt-8
+            self-center
+            px-6
+            py-3
+            rounded-xl
+            text-text-gold
+            border-2
+            border-border-gold
+            font-semibold
+            cursor-pointer
+            transition-all
+            duration-300
+            hover:bg-gold-hover
+            hover:text-white
+            hover:-translate-y-1
+            hover:shadow-lg
+          "
+        >
+
+          {{ item.button }}
 
           <i class="fa-solid fa-arrow-right ml-2"></i>
 
-        </span>
+        </button>
 
       </div>
 
     </div>
 
-  </a>
-
-</div>
-
-<!-- Button -->
-
-<div class="flex justify-center mt-10">
-
-  <button
-    routerLink="/packages"
-    class="px-8 py-3
-           rounded-2xl
-           cursor-pointer
-          border border-gold
-           text-gold
-           font-semibold
-           transition-all
-           duration-300
-           hover:bg-gold-hover
-           hover:shadow-lg
-           hover:text-white
-           hover:translate-x-1">
-
-    View All Egypt Tour Packages
-
-    <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-      <i class="fa-solid fa-arrow-right ml-2"></i>
-    </span>
-
-  </button>
-
-</div>
-
- <!-- Bottom Cards -->
-
-<div class="grid lg:grid-cols-3 gap-8 mt-16">
-
-  <div
-    *ngFor="let item of highlights"
-    class="bg-background-gray
-           rounded-2xl
-           shadow-card
-           overflow-hidden
-           flex
-           flex-col
-           transition-all
-           duration-300
-           hover:-translate-y-2
-           hover:shadow-xl">
-
-    <!-- Title -->
-
-    <div class="px-6 pt-7 pb-5">
-
-      <h3
-        class="text-2xl
-               font-bold
-               text-dark-navy
-               text-center">
-
-        {{ item.title }}
-
-      </h3>
-
-    </div>
-
-    <!-- Image -->
-
-    <img
-      [src]="item.image"
-      [alt]="item.title"
-      class="w-full
-             h-56
-             object-cover
-             transition
-             duration-500
-             hover:scale-105">
-
-    <!-- Description -->
-
-    <div class="flex flex-col flex-1 p-6">
-
-      <p
-        class="text-text-secondary
-               leading-7
-               text-[15px]
-               text-center
-               flex-1">
-
-        {{ item.description }}
-
-      </p>
-
-      <!-- Button -->
-
-      <button
-        class="mt-8
-               self-center
-               px-6
-               py-3
-               rounded-xl
-               hover:bg-gold-hover
-               text-text-gold
-               border-2 border-border-gold
-               font-semibold
-              cursor-pointer
-
-               transition-all
-               duration-300
-
-              hover:text-white
-               hover:-translate-y-1
-               hover:shadow-lg">
-
-        {{ item.button }}
-
-       <i class="fa-solid fa-arrow-right ml-2"></i>
-
-      </button>
-
-    </div>
-
   </div>
-
-</div>
 
 </section>

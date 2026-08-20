@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TripsService } from '../../../core/Services/Trips.service';
-import { TripDetails } from '../../../core/models/Details/TripDetails';
-import { Trip } from '../../../core/models/Details/Trip';
+import { Trip } from '../../../core/models/trip.model';
+import { TRIPS } from '../../../core/data/trips';
 
 @Component({
   selector: 'app-trip-details',
@@ -12,106 +11,122 @@ import { Trip } from '../../../core/models/Details/Trip';
   standalone: false,
 })
 export class TripDetailsComponent implements OnInit {
-  trip?: TripDetails;
+
+  // ================= Trip =================
+
+  trip?: Trip;
+
+  // ================= Related Trips =================
 
   relatedTrips: Trip[] = [];
 
+  // ================= Loading =================
+
   loading = false;
 
-  // gallery
+  // ================= Gallery =================
+
   isViewerOpen = false;
   selectedImageIndex = 0;
 
   constructor(
-    private route: ActivatedRoute,
-    private tripsService: TripsService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
+
+    this.route.paramMap.subscribe(params => {
+
       const id = Number(params.get('id'));
 
       this.getTripById(id);
+
     });
+
   }
 
-  getTripById(id: number) {
+  // ================= Get Trip =================
+
+  getTripById(id: number): void {
+
     this.loading = true;
 
-    this.tripsService.getTripDetails().subscribe({
-      next: (res: TripDetails[]) => {
-        // current trip
-        this.trip = res.find((t) => t.id === id);
+    this.trip = TRIPS.find(t => t.id === id);
 
-        if (!this.trip) {
-          this.loading = false;
-          return;
-        }
+    if (!this.trip) {
 
-        // this.loadRelatedTrips();
-
-        this.loadRelatedTrips();
-
-        // this.loading = false;
-
-        console.log('Trip Details:', this.trip);
-
-        console.log('Related Trips:', this.relatedTrips);
-      },
-
-      error: (err) => {
-        console.error('Error fetching trip details:', err);
-
-        // this.loading = false;
-      },
-    });
-  }
-
-  loadRelatedTrips() {
-    if (!this.trip?.relatedTripsIds?.length) {
       this.loading = false;
+
       return;
+
     }
 
-    this.tripsService.getTrips().subscribe({
-      next: (res: Trip[]) => {
-        this.relatedTrips = res.filter((t) =>
-          this.trip?.relatedTripsIds?.includes(t.id),
-        );
-        this.loading = false;
-      },
+    this.loadRelatedTrips();
 
-      error: (err) => {
-        console.error('Error fetching related trips:', err);
-        this.loading = false;
-      },
-    });
+    this.loading = false;
+
+    console.log('Trip:', this.trip);
+    console.log('Related Trips:', this.relatedTrips);
+
   }
 
-  // ===== Image Viewer =====
+  // ================= Related Trips =================
 
-  openViewer(index: number) {
+  loadRelatedTrips(): void {
+
+    if (!this.trip) {
+
+      this.relatedTrips = [];
+
+      return;
+
+    }
+
+    this.relatedTrips = TRIPS
+      .filter(t =>
+        t.destination.id === this.trip!.destination.id
+      )
+      .filter(t =>
+        t.id !== this.trip!.id
+      )
+      .slice(0, 3);
+
+  }
+
+  // ================= Image Viewer =================
+
+  openViewer(index: number): void {
+
     this.selectedImageIndex = index;
 
     this.isViewerOpen = true;
+
   }
 
-  closeViewer() {
+  closeViewer(): void {
+
     this.isViewerOpen = false;
+
   }
 
-  nextImage() {
-    if (!this.trip || !this.trip.images?.length) return;
+  nextImage(): void {
+
+    if (!this.trip?.images?.length) return;
 
     this.selectedImageIndex =
-      (this.selectedImageIndex + 1) % this.trip.images.length;
+      (this.selectedImageIndex + 1) %
+      this.trip.images.length;
+
   }
 
-  prevImage() {
-    if (!this.trip || !this.trip.images?.length) return;
+  prevImage(): void {
+
+    if (!this.trip?.images?.length) return;
 
     this.selectedImageIndex =
       (this.selectedImageIndex - 1 + this.trip.images.length) %
       this.trip.images.length;
+
   }
+
 }

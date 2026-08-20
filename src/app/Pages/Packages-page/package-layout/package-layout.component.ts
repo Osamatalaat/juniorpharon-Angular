@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+
+import { Package } from '../../../core/models/package.model';
+
 import { PackageFilter } from '../../../core/models/Search/package-filter';
-import { PackagesService } from '../../../core/Services/Packages.service';
+import { PACKAGES } from '../../../core/data/packages';
+
+
 
 @Component({
   selector: 'app-package-layout',
@@ -11,150 +19,463 @@ import { PackagesService } from '../../../core/Services/Packages.service';
 export class PackageLayoutComponent implements OnInit {
 
 
+  // =====================================================
+  // ALL PACKAGES
+  // =====================================================
+
+  private allPackages: Package[] = PACKAGES;
 
 
-  packages = [
-  {
-    id: 1,
-    name: 'Cairo & Luxor Adventure',
-    description:
-      'Discover ancient Egypt with an unforgettable journey through Cairo, Luxor, and the Nile.',
+  // =====================================================
+  // DISPLAYED PACKAGES
+  // =====================================================
 
-    durationInDays: 7,
-    tripsCount: 4,
+  packages: Package[] = [];
 
-    pricePerPerson: 12500,
-    oldPricePerPerson: 15000,
-    discountPercentage: 15,
 
-    rating: 4.8,
-
-    startDate: new Date('2026-06-10'),
-    endDate: new Date('2026-06-17'),
-
-    isActive: true,
-
-    coverImage:
-      'https://images.unsplash.com/photo-1572252009286-268acec5ca0a'
-  },
-
-  {
-    id: 2,
-    name: 'Red Sea Relax Package',
-    description:
-      'Enjoy luxury beaches, diving activities, and stunning sunsets in Hurghada.',
-
-    durationInDays: 5,
-    tripsCount: 3,
-
-    pricePerPerson: 8900,
-    oldPricePerPerson: 10500,
-    discountPercentage: 10,
-
-    rating: 4.6,
-
-    startDate: new Date('2026-07-05'),
-    endDate: new Date('2026-07-10'),
-
-    isActive: true,
-
-    coverImage:
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'
-  },
-
-  {
-    id: 3,
-    name: 'Siwa Desert Escape',
-    description:
-      'Experience desert safari, camping, salt lakes, and the magical beauty of Siwa Oasis.',
-
-    durationInDays: 4,
-    tripsCount: 2,
-
-    pricePerPerson: 6400,
-    oldPricePerPerson: 7800,
-    discountPercentage: 18,
-
-    rating: 4.9,
-
-    startDate: new Date('2026-08-01'),
-    endDate: new Date('2026-08-05'),
-
-    isActive: true,
-
-    coverImage:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee'
-  },
-
-  {
-    id: 4,
-    name: 'Aswan & Abu Simbel Tour',
-    description:
-      'Explore the beauty of Upper Egypt and visit the iconic Abu Simbel temples.',
-
-    durationInDays: 6,
-    tripsCount: 5,
-
-    pricePerPerson: 11200,
-    oldPricePerPerson: 13200,
-    discountPercentage: 12,
-
-    rating: 4.7,
-
-    startDate: new Date('2026-09-12'),
-    endDate: new Date('2026-09-18'),
-
-      isActive: true,
-
-      coverImage:
-        'https://images.unsplash.com/photo-1526772662000-3f88f10405ff'
-    },
-    {
-      id: 5,
-      name: 'Alexandria & Mediterranean Cruise',
-      description:
-        'Discover the charm of Alexandria and enjoy a luxurious cruise along the Mediterranean coast.',
-
-      durationInDays: 8,
-      tripsCount: 6,
-      pricePerPerson: 13500,
-      oldPricePerPerson: 16000,
-      discountPercentage: 15,
-
-      rating: 4.8,
-
-      startDate: new Date('2026-10-05'),
-      endDate: new Date('2026-10-13'),
-
-      isActive: true,
-
-      coverImage:
-        'https://images.unsplash.com/photo-1506744038136-46273834b3fb'
-        
-  }
-];
-
+  // =====================================================
+  // LOADING
+  // =====================================================
 
   loading = false;
 
-  constructor(private packagesService: PackagesService) {}
+
+  // =====================================================
+  // PAGINATION
+  // =====================================================
+
+  currentPage = 1;
+
+
+  // Number of cards displayed per page
+
+  pageSize = 6;
+
+
+  totalItems = 0;
+
+
+  totalPages = 0;
+
+
+  pageNumbers: number[] = [];
+
+
+  // =====================================================
+  // CURRENT FILTER
+  // =====================================================
+
+  currentFilter: PackageFilter = {
+
+    pageIndex: 1,
+
+    pageSize: this.pageSize
+
+  };
+
+
+  // =====================================================
+  // INIT
+  // =====================================================
 
   ngOnInit(): void {
-    this.loadPackages({}); // load all packages initially
-  }
 
+    this.loadPackages({
 
- loadPackages(filter: PackageFilter) {
-    this.loading = true;
-    this.packagesService.searchPackages(filter).subscribe({
-      next: (res: any) => {
-        this.packages = res.data.data; // assuming backend returns { data: [...] }
-        this.loading = false;
-        console.log("Packages:", this.packages);
-      },
-      error: () => this.loading = false
+      pageIndex: 1,
+
+      pageSize: this.pageSize
+
     });
+
   }
 
+
+  // =====================================================
+  // LOAD PACKAGES
+  // =====================================================
+
+  loadPackages(filter: PackageFilter): void {
+
+    this.loading = true;
+
+
+    // ---------------------------------------------------
+    // SAVE FILTER
+    // ---------------------------------------------------
+
+    this.currentFilter = {
+
+      ...filter,
+
+      pageIndex:
+        filter.pageIndex ?? 1,
+
+      pageSize:
+        this.pageSize
+
+    };
+
+
+    this.currentPage =
+      this.currentFilter.pageIndex ?? 1;
+
+
+    // ---------------------------------------------------
+    // START WITH ALL PACKAGES
+    // ---------------------------------------------------
+
+    let filteredPackages =
+      [...this.allPackages];
+
+
+    // ===================================================
+    // PRICE
+    // ===================================================
+
+    if (
+      this.currentFilter.minPrice !== undefined
+    ) {
+
+      filteredPackages =
+        filteredPackages.filter(pkg =>
+
+          pkg.price >=
+          this.currentFilter.minPrice!
+
+        );
+
+    }
+
+
+    if (
+      this.currentFilter.maxPrice !== undefined
+    ) {
+
+      filteredPackages =
+        filteredPackages.filter(pkg =>
+
+          pkg.price <=
+          this.currentFilter.maxPrice!
+
+        );
+
+    }
+
+
+    // ===================================================
+    // DURATION
+    // ===================================================
+
+    if (
+      this.currentFilter.durationMin !== undefined
+    ) {
+
+      filteredPackages =
+        filteredPackages.filter(pkg => {
+
+          const duration =
+            pkg.duration.value;
+
+
+          const min =
+            this.currentFilter.durationMin!;
+
+
+          const max =
+            this.currentFilter.durationMax;
+
+
+          // ---------------------------------------------
+          // UNIT
+          // ---------------------------------------------
+
+          if (
+
+            this.currentFilter.durationUnit &&
+
+            pkg.duration.unit !==
+            this.currentFilter.durationUnit
+
+          ) {
+
+            return false;
+
+          }
+
+
+          // ---------------------------------------------
+          // MIN
+          // ---------------------------------------------
+
+          if (duration < min) {
+
+            return false;
+
+          }
+
+
+          // ---------------------------------------------
+          // MAX
+          // ---------------------------------------------
+
+          if (
+            max !== undefined &&
+            duration > max
+          ) {
+
+            return false;
+
+          }
+
+
+          return true;
+
+        });
+
+    }
+
+
+    // ===================================================
+    // RATING
+    // ===================================================
+
+    if (
+      this.currentFilter.rating !== undefined
+    ) {
+
+      filteredPackages =
+        filteredPackages.filter(pkg =>
+
+          pkg.rating >=
+          this.currentFilter.rating!
+
+        );
+
+    }
+
+
+    // ===================================================
+    // TOTAL
+    // ===================================================
+
+    this.totalItems =
+      filteredPackages.length;
+
+
+    this.totalPages =
+      Math.ceil(
+        this.totalItems /
+        this.pageSize
+      );
+
+
+    // ===================================================
+    // VALIDATE CURRENT PAGE
+    // ===================================================
+
+    if (
+      this.totalPages > 0 &&
+      this.currentPage > this.totalPages
+    ) {
+
+      this.currentPage =
+        this.totalPages;
+
+    }
+
+
+    if (this.currentPage < 1) {
+
+      this.currentPage = 1;
+
+    }
+
+
+    // ===================================================
+    // PAGINATION
+    // ===================================================
+
+    const startIndex =
+      (this.currentPage - 1) *
+      this.pageSize;
+
+
+    const endIndex =
+      startIndex +
+      this.pageSize;
+
+
+    this.packages =
+      filteredPackages.slice(
+        startIndex,
+        endIndex
+      );
+
+
+    // ===================================================
+    // PAGE NUMBERS
+    // ===================================================
+
+    this.generatePageNumbers();
+
+
+    // ===================================================
+    // FINISH
+    // ===================================================
+
+    this.loading = false;
+
+  }
+
+
+  // =====================================================
+  // CHANGE PAGE SIZE
+  // =====================================================
+
+  changePageSize(): void {
+
+    // Always return to first page
+    // when changing number of cards.
+
+    this.currentPage = 1;
+
+
+    this.currentFilter = {
+
+      ...this.currentFilter,
+
+      pageIndex: 1,
+
+      pageSize: this.pageSize
+
+    };
+
+
+    this.loadPackages(
+      this.currentFilter
+    );
+
+  }
+
+
+  // =====================================================
+  // GO TO PAGE
+  // =====================================================
+
+  goToPage(page: number): void {
+
+    if (
+
+      page < 1 ||
+
+      page > this.totalPages ||
+
+      page === this.currentPage
+
+    ) {
+
+      return;
+
+    }
+
+
+    this.currentPage = page;
+
+
+    this.currentFilter = {
+
+      ...this.currentFilter,
+
+      pageIndex: page,
+
+      pageSize: this.pageSize
+
+    };
+
+
+    this.loadPackages(
+      this.currentFilter
+    );
+
+
+    // Scroll slightly to packages
+
+    window.scrollTo({
+
+      top: 350,
+
+      behavior: 'smooth'
+
+    });
+
+  }
+
+
+  // =====================================================
+  // PREVIOUS PAGE
+  // =====================================================
+
+  previousPage(): void {
+
+    if (
+      this.currentPage <= 1
+    ) {
+
+      return;
+
+    }
+
+
+    this.goToPage(
+      this.currentPage - 1
+    );
+
+  }
+
+
+  // =====================================================
+  // NEXT PAGE
+  // =====================================================
+
+  nextPage(): void {
+
+    if (
+      this.currentPage >=
+      this.totalPages
+    ) {
+
+      return;
+
+    }
+
+
+    this.goToPage(
+      this.currentPage + 1
+    );
+
+  }
+
+
+  // =====================================================
+  // GENERATE PAGE NUMBERS
+  // =====================================================
+
+  private generatePageNumbers(): void {
+
+    this.pageNumbers = [];
+
+
+    for (
+      let i = 1;
+      i <= this.totalPages;
+      i++
+    ) {
+
+      this.pageNumbers.push(i);
+
+    }
+
+  }
 
 }

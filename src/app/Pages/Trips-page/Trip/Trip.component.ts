@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TripsService } from '../../../core/Services/Trips.service';
-import { Trip } from '../../../core/models/Details/Trip';
+
+import { Trip } from '../../../core/models/trip.model';
 import { TripFilter } from '../../../core/models/Search/trip-filter';
+
+import { TRIPS } from '../../../core/data/trips';
 
 @Component({
   selector: 'app-Trip',
@@ -11,7 +13,9 @@ import { TripFilter } from '../../../core/models/Search/trip-filter';
 })
 export class TripComponent implements OnInit {
 
-  // ================= Data =================
+  // =====================================================
+  // DATA
+  // =====================================================
 
   allTrips: Trip[] = [];
 
@@ -21,19 +25,31 @@ export class TripComponent implements OnInit {
 
   loading = false;
 
-  // ================= Search =================
+
+  // =====================================================
+  // SEARCH
+  // =====================================================
 
   searchText = '';
 
-  // ================= Sort =================
+
+  // =====================================================
+  // SORT
+  // =====================================================
 
   sortBy = 'popular';
 
-  // ================= Filter =================
+
+  // =====================================================
+  // FILTER
+  // =====================================================
 
   currentFilter: TripFilter = {};
 
-  // ================= Pagination =================
+
+  // =====================================================
+  // PAGINATION
+  // =====================================================
 
   currentPage = 1;
 
@@ -41,65 +57,59 @@ export class TripComponent implements OnInit {
 
   totalPages = 1;
 
-  constructor(private tripsService: TripsService) {}
+
+  // =====================================================
+  // INIT
+  // =====================================================
 
   ngOnInit(): void {
-
     this.getTrips();
-
   }
 
-  // ================= Get Trips =================
+
+  // =====================================================
+  // GET TRIPS
+  // =====================================================
 
   getTrips(): void {
 
     this.loading = true;
 
-    this.tripsService.getTrips().subscribe({
+    this.allTrips = [...TRIPS];
 
-      next: (res: Trip[]) => {
+    this.updateTrips();
 
-        this.allTrips = res;
-
-        this.updateTrips();
-
-        this.loading = false;
-
-      },
-
-      error: (err) => {
-
-        console.error(err);
-
-        this.loading = false;
-
-      }
-
-    });
-
+    this.loading = false;
   }
 
-  // ================= Search =================
+
+  // =====================================================
+  // SEARCH
+  // =====================================================
 
   onSearchChange(): void {
 
     this.currentPage = 1;
 
     this.updateTrips();
-
   }
 
-  // ================= Sort =================
+
+  // =====================================================
+  // SORT
+  // =====================================================
 
   onSortChange(): void {
 
     this.currentPage = 1;
 
     this.updateTrips();
-
   }
 
-  // ================= Filter =================
+
+  // =====================================================
+  // FILTER
+  // =====================================================
 
   applyFilter(filter: TripFilter): void {
 
@@ -108,128 +118,259 @@ export class TripComponent implements OnInit {
     this.currentPage = 1;
 
     this.updateTrips();
-
   }
 
-  // ================= Main Function =================
+
+  // =====================================================
+  // MAIN FILTER / SEARCH / SORT
+  // =====================================================
 
   updateTrips(): void {
 
     let result = [...this.allTrips];
 
-    // -------- Filter --------
 
-    if (this.currentFilter) {
+    // ===================================================
+    // FILTER
+    // ===================================================
 
-      result = result.filter(trip => {
+    result = result.filter(trip => {
 
-        const matchesCity =
-          !this.currentFilter.city ||
-          trip.city.toLowerCase().includes(this.currentFilter.city.toLowerCase());
+      // -------------------------------------------------
+      // CITY
+      // -------------------------------------------------
 
-        const matchesLocation =
-          !this.currentFilter.location ||
-          trip.location.toLowerCase().includes(this.currentFilter.location.toLowerCase());
-
-        const matchesMinPrice =
-          this.currentFilter.minPrice == null ||
-          (trip.price ?? 0) >= this.currentFilter.minPrice;
-
-        const matchesMaxPrice =
-          this.currentFilter.maxPrice == null ||
-          (trip.price ?? 0) <= this.currentFilter.maxPrice;
-
-        const matchesDuration =
-          !this.currentFilter.durationInDays ||
-          trip.durationInDays === this.currentFilter.durationInDays;
-
-        const matchesRating =
-          !this.currentFilter.rating ||
-          (trip.rating ?? 0) >= this.currentFilter.rating;
-
-        return (
-          matchesCity &&
-          matchesLocation &&
-          matchesMinPrice &&
-          matchesMaxPrice &&
-          matchesDuration &&
-          matchesRating
+      const matchesCity =
+        !this.currentFilter.city?.length ||
+        this.currentFilter.city.includes(
+          trip.destination.name
         );
 
-      });
 
-    }
+      // -------------------------------------------------
+      // MIN PRICE
+      // -------------------------------------------------
 
-    // -------- Search --------
+      const matchesMinPrice =
+        this.currentFilter.minPrice == null ||
+        trip.price >= this.currentFilter.minPrice;
 
-    if (this.searchText.trim()) {
 
-      const keyword = this.searchText.toLowerCase();
+      // -------------------------------------------------
+      // MAX PRICE
+      // -------------------------------------------------
 
-      result = result.filter(trip =>
+      const matchesMaxPrice =
+        this.currentFilter.maxPrice == null ||
+        trip.price <= this.currentFilter.maxPrice;
 
-        trip.title.toLowerCase().includes(keyword) ||
 
-        trip.city.toLowerCase().includes(keyword) ||
+      // -------------------------------------------------
+      // DURATION
+      // -------------------------------------------------
 
-        trip.location.toLowerCase().includes(keyword)
+      const matchesDurationMin =
+        this.currentFilter.durationMin == null ||
+        this.currentFilter.durationUnit !== trip.duration.unit ||
+        trip.duration.value >= this.currentFilter.durationMin;
+
+
+      const matchesDurationMax =
+        this.currentFilter.durationMax == null ||
+        this.currentFilter.durationUnit !== trip.duration.unit ||
+        trip.duration.value <= this.currentFilter.durationMax;
+
+
+      const matchesDurationUnit =
+        !this.currentFilter.durationUnit ||
+        trip.duration.unit === this.currentFilter.durationUnit;
+
+
+      // -------------------------------------------------
+      // RATING
+      // -------------------------------------------------
+
+      const matchesRating =
+        this.currentFilter.rating == null ||
+        trip.rating >= this.currentFilter.rating;
+
+
+      return (
+
+        matchesCity &&
+
+        matchesMinPrice &&
+
+        matchesMaxPrice &&
+
+        matchesDurationMin &&
+
+        matchesDurationMax &&
+
+        matchesDurationUnit &&
+
+        matchesRating
 
       );
 
+    });
+
+
+    // ===================================================
+    // SEARCH
+    // ===================================================
+
+    if (this.searchText.trim()) {
+
+      const keyword =
+        this.searchText
+          .toLowerCase()
+          .trim();
+
+
+      result = result.filter(trip =>
+
+        trip.title
+          .toLowerCase()
+          .includes(keyword)
+
+        ||
+
+        trip.destination.name
+          .toLowerCase()
+          .includes(keyword)
+
+        ||
+
+        trip.destination.slug
+          .toLowerCase()
+          .includes(keyword)
+
+        ||
+
+        trip.shortDescription
+          .toLowerCase()
+          .includes(keyword)
+
+      );
     }
 
-    // -------- Sort --------
+
+    // ===================================================
+    // SORT
+    // ===================================================
 
     switch (this.sortBy) {
 
       case 'lowPrice':
 
-        result.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+        result.sort(
+          (a, b) => a.price - b.price
+        );
 
         break;
+
 
       case 'highPrice':
 
-        result.sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
+        result.sort(
+          (a, b) => b.price - a.price
+        );
 
         break;
+
 
       case 'rating':
 
-        result.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+        result.sort(
+          (a, b) => b.rating - a.rating
+        );
 
         break;
+
 
       case 'popular':
 
       default:
 
+        // Keep original order
+
         break;
+    }
+
+
+    // ===================================================
+    // DESCENDING
+    // ===================================================
+
+    if (this.currentFilter.descending) {
+
+      result.reverse();
 
     }
 
+
+    // ===================================================
+    // SAVE RESULT
+    // =====================================================
+
     this.trips = result;
+
+
+    // =====================================================
+    // PAGINATION
+    // =====================================================
 
     this.updatePagination();
 
   }
 
-  // ================= Pagination =================
+
+  // =====================================================
+  // PAGINATION
+  // =====================================================
 
   updatePagination(): void {
 
     this.totalPages = Math.max(
       1,
-      Math.ceil(this.trips.length / this.pageSize)
+      Math.ceil(
+        this.trips.length / this.pageSize
+      )
     );
 
-    const start = (this.currentPage - 1) * this.pageSize;
 
-    const end = start + this.pageSize;
+    // حماية لو الصفحة الحالية أصبحت أكبر من عدد الصفحات
 
-    this.paginatedTrips = this.trips.slice(start, end);
+    if (this.currentPage > this.totalPages) {
+
+      this.currentPage = this.totalPages;
+
+    }
+
+
+    const start =
+      (this.currentPage - 1) *
+      this.pageSize;
+
+
+    const end =
+      start +
+      this.pageSize;
+
+
+    this.paginatedTrips =
+      this.trips.slice(
+        start,
+        end
+      );
 
   }
+
+
+  // =====================================================
+  // PAGE CHANGE
+  // =====================================================
 
   onPageChanged(page: number): void {
 

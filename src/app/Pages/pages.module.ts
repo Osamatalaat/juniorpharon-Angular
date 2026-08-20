@@ -36,6 +36,7 @@ import { WhyChooseUsComponent } from './Home-Page/why-choose-us/why-choose-us.co
 import { TravelGuideCardComponent } from './Home-Page/travel-guide/travel-guide.component';
 import { DestinationMapComponent } from './destination-map/destination-map.component';
 import { PackageCategoryComponent } from './Packages-page/package-category/package-category.component';
+import { TripActivityComponent } from './Trips-page/trip-activity/trip-activity.component';
 
 
 
@@ -66,6 +67,7 @@ import { PackageCategoryComponent } from './Packages-page/package-category/packa
     TripsHeroComponent,
     TripsBreadcrumbComponent,
     TripsToolbarComponent,
+    TripActivityComponent,
     PackageLayoutComponent,
     PackagesHeroComponent,
     PackageCardComponent,
