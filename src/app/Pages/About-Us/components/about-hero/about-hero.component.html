@@ -1,0 +1,105 @@
+<section
+  class="relative overflow-hidden bg-dark-navy text-white"
+  aria-labelledby="about-hero-heading"
+>
+  <img
+    src="/assets/images/about/hero-pyramids.jpg"
+    alt="Pyramids of Giza and the Great Sphinx in Egypt"
+    class="absolute inset-0 h-full w-full object-cover opacity-60"
+    loading="eager"
+    fetchpriority="high"
+    width="1920"
+    height="700"
+  />
+
+  <div class="absolute inset-0 bg-dark-navy/70" aria-hidden="true"></div>
+
+  <div
+    class="relative z-10 mx-auto flex min-h-[520px] max-w-7xl flex-col justify-center px-6 py-24 lg:min-h-[620px] lg:px-8"
+  >
+    <!-- Breadcrumb -->
+
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol
+        class="flex flex-wrap items-center gap-2 text-sm text-gold-light"
+        itemscope
+        itemtype="https://schema.org/BreadcrumbList"
+      >
+        <li
+          *ngFor="let crumb of breadcrumbs; let last = last; let i = index"
+          class="flex items-center gap-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <a
+            *ngIf="!last"
+            [routerLink]="crumb.url"
+            itemprop="item"
+            class="transition hover:text-white"
+          >
+            <span itemprop="name">
+              {{ crumb.label }}
+            </span>
+          </a>
+
+          <span
+            *ngIf="last"
+            class="text-white"
+            aria-current="page"
+            itemprop="name"
+          >
+            {{ crumb.label }}
+          </span>
+
+          <meta itemprop="position" [content]="(i + 1).toString()" />
+
+          <span *ngIf="!last" aria-hidden="true" class="text-gold"> / </span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Eyebrow -->
+
+    <p
+      class="mb-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-gold"
+    >
+      <span aria-hidden="true" class="h-px w-8 bg-gold"></span>
+
+      About JuniorPharon Tours
+    </p>
+
+    <h1
+      id="about-hero-heading"
+      class="max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+    >
+      Discover the
+
+      <span class="text-gold"> Real Egypt </span>
+
+      with Local Experts
+    </h1>
+
+    <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200 sm:text-xl">
+      JuniorPharon Tours is a licensed Egyptian travel company specializing in
+      private Egypt tours, Nile cruises, Egypt tour packages, day tours, and
+      tailor-made travel experiences.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a
+        routerLink="/tours"
+        class="rounded-button bg-gold px-7 py-3.5 text-sm font-semibold text-dark-navy transition hover:bg-gold-hover"
+      >
+        Explore Our Tours
+      </a>
+
+      <a
+        routerLink="/contact"
+        class="rounded-button border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-gold hover:text-gold"
+      >
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>

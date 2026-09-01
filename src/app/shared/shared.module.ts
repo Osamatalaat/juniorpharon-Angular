@@ -19,6 +19,7 @@ import { NavbarComponent } from './Navbar-section/Navbar/Navbar.component';
 import { DayTourComponent } from './Navbar-section/day-tour/day-tour.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { DayTourMobileComponent } from './Navbar-section/day-tour-mobile/day-tour-mobile.component';
 // PrimeNG Modules
 // import { MenuModule } from 'primeng/menu';
 // import { ButtonModule } from 'primeng/button';
@@ -53,6 +54,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     NavbarComponent,
     FooterComponent,
     DayTourComponent,
+    DayTourMobileComponent,
     PaginationComponent,
     BreadcrumbComponent
   ],

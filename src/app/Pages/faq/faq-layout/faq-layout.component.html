@@ -1,0 +1,33 @@
+<section>
+  <!-- Hero -->
+
+  <app-faq-hero> </app-faq-hero>
+
+  <!-- Search -->
+
+  <app-faq-search (searchChange)="onSearch($event)"> </app-faq-search>
+
+  <!-- Content -->
+
+  <section class="container mx-auto px-5 py-12">
+    <div class="grid lg:grid-cols-4 gap-8">
+      <!-- Categories -->
+
+      <aside class="lg:col-span-1">
+        <app-faq-category-filter (categoryChange)="onCategoryChange($event)">
+        </app-faq-category-filter>
+      </aside>
+
+      <!-- Questions -->
+
+      <div class="lg:col-span-3">
+        <app-faq-list [searchValue]="searchValue" [category]="selectedCategory">
+        </app-faq-list>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+
+  <app-faq-contact> </app-faq-contact>
+</section>

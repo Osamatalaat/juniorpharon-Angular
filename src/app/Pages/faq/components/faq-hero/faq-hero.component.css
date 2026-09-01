@@ -1,0 +1,9 @@
+/* faq-hero.component.css */
+
+@media(max-width:640px){
+
+  section{
+    min-height:460px;
+  }
+
+}

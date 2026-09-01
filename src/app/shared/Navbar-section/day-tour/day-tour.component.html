@@ -1,91 +1,59 @@
 <li class="relative group">
+  <!-- =========================
+        Trigger
+  ========================== -->
 
-  <!-- Trigger -->
   <div
-    class="cursor-pointer flex items-center gap-1
-           hover:text-light-orange
-           transition-colors duration-300"
+    class="cursor-pointer flex items-center gap-1 text-white hover:text-gold transition-colors duration-300"
   >
-    {{ 'NAVBAR.DAY_TOURS' | translate }}
+    {{ "NAVBAR.DAY_TOURS" | translate }}
 
     <i
-      class="bx bx-chevron-down text-sm
-             transition-transform duration-300
-             group-hover:rotate-180">
-    </i>
+      class="bx bx-chevron-down text-sm transition-transform duration-300 group-hover:rotate-180"
+    ></i>
   </div>
 
-  <!-- Hover Bridge -->
+  <!-- =========================
+        Hover Bridge
+  ========================== -->
+
   <div class="absolute left-0 top-full h-3 w-full"></div>
 
-  <!-- Dropdown -->
-  <div
-    class="absolute left-1/2 -translate-x-1/2 top-full mt-2
-           w-[520px]
-           bg-white
-           border border-border
-           rounded-2xl
-           shadow-2xl
-           p-6
-           opacity-0 invisible
-           group-hover:opacity-100
-           group-hover:visible
-           transition-all duration-300
-           z-50"
-  >
+  <!-- =========================
+        Dropdown
+  ========================== -->
 
+  <div
+    class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[560px] bg-white border border-border rounded-2xl shadow-2xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+  >
     <!-- Title -->
-    <h3
-      class="text-blue
-             text-lg
-             font-bold
-             mb-5
-             border-b border-border
-             pb-3"
-    >
-      {{ 'NAVBAR.EXPLORE_BY_CITY' | translate }}
+
+    <h3 class="text-heading text-lg font-bold mb-5 border-b border-border pb-3">
+      {{ "NAVBAR.EXPLORE_BY_CITY" | translate }}
     </h3>
 
     <!-- Cities -->
-    <div class="grid grid-cols-2 gap-3">
 
+    <div class="grid grid-cols-2 gap-3">
       <a
         *ngFor="let city of cities"
-        [routerLink]="['/trips']"
-        [queryParams]="{ city: city.slug }"
-
-        class="flex items-center gap-3
-               rounded-xl
-               p-3
-               transition-all duration-300
-
-               hover:bg-blue-light
-               hover:shadow-md
-               hover:-translate-y-1"
-
+        [routerLink]="['/day-tours', city.slug]"
+        class="flex items-center gap-3 rounded-xl p-3 transition-all duration-300 hover:bg-light-gray hover:shadow-md hover:-translate-y-1"
       >
+        <!-- Icon -->
 
         <div
-          class="w-10 h-10
-                 rounded-full
-                 bg-orange-light
-                 flex items-center justify-center"
+          class="w-10 h-10 rounded-full bg-gold-light flex items-center justify-center shrink-0"
         >
-          <i class="bx bx-map text-light-orange text-xl"></i>
+          <i class="bx bx-map text-gold text-xl"></i>
         </div>
 
-        <span
-          class="font-medium
-                 text-text-primary
-                 hover:text-blue"
-        >
+        <!-- City Name -->
+
+        <span class="font-medium text-text hover:text-gold transition">
           {{ city.key | translate }}
         </span>
-
       </a>
-
     </div>
-
   </div>
-
 </li>

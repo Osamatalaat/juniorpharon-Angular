@@ -1,0 +1,112 @@
+<section class="overflow-hidden">
+  <!-- ================= HERO ================= -->
+
+  <section class="relative h-[420px] sm:h-[480px]">
+    <img
+      [src]="hero.image"
+      [alt]="hero.title"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-dark-navy/90 via-dark-navy/60 to-dark-navy/30"
+    ></div>
+
+    <div class="relative z-10 container mx-auto flex h-full items-center px-5">
+      <div class="max-w-3xl text-white">
+        <!-- Breadcrumb -->
+
+        <div class="mb-5 text-sm text-gold">
+          Home / Trips /
+          {{ title }}
+        </div>
+
+        <h1 class="text-3xl font-bold leading-tight sm:text-5xl">
+          {{ title }}
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-sm leading-7 text-gray-200 sm:text-lg">
+          {{ hero.description }}
+        </p>
+
+        <div
+          class="mt-6 inline-flex rounded-full bg-gold/20 px-5 py-2 text-sm text-gold"
+        >
+          {{ allTrips.length }} Available Tours
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRIPS ================= -->
+
+  <section class="container mx-auto px-5 py-12">
+    <div class="mb-8 flex items-center justify-between">
+      <h2 class="text-2xl font-bold text-dark-navy">{{ title }} Tours</h2>
+    </div>
+
+    <div
+      class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <app-trip-card *ngFor="let trip of trips" [trip]="trip"> </app-trip-card>
+    </div>
+
+    <!-- EMPTY -->
+
+    <div *ngIf="!trips.length" class="py-20 text-center text-text-secondary">
+      No tours available currently.
+    </div>
+
+    <!-- ================================================= -->
+    <!-- PAGINATION -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="totalPages >= 1"
+      class="mt-12 flex items-center justify-center gap-2"
+    >
+      <!-- ================================================= -->
+      <!-- PREVIOUS -->
+      <!-- ================================================= -->
+
+      <button
+        (click)="previousPage()"
+        [disabled]="currentPage === 1"
+        class="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-dark-navy transition hover:bg-dark-navy hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- ================================================= -->
+      <!-- PAGE NUMBERS -->
+      <!-- ================================================= -->
+
+      <ng-container *ngFor="let page of pages()">
+        <button
+          (click)="changePage(page)"
+          [disabled]="page === currentPage"
+          [ngClass]="{
+            'bg-dark-navy text-white border-dark-navy': page === currentPage,
+
+            'bg-white text-dark-navy border-gray-200': page !== currentPage,
+          }"
+          class="flex h-10 w-10 items-center justify-center rounded-xl border font-semibold transition disabled:cursor-not-allowed"
+        >
+          {{ page }}
+        </button>
+      </ng-container>
+
+      <!-- ================================================= -->
+      <!-- NEXT -->
+      <!-- ================================================= -->
+
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage === totalPages"
+        class="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-dark-navy transition hover:bg-dark-navy hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+</section>

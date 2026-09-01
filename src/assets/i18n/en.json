@@ -37,7 +37,10 @@
     "BOOK_NOW": "Book Now",
     "REGISTER_FREE": "Register Free",
     "LANGUAGE": "Language",
-    "EXPLORE_BY_CITY": "Explore by City"
+    "EXPLORE_BY_CITY": "Explore by City",
+    "ABOUT_US": "About Us",
+    "FAQ": "FAQ",
+    "CONTACT_US": "Contact Us"
   },
   "CITIES": {
     "CAIRO": "Cairo",

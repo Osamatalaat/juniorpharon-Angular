@@ -1,0 +1,18 @@
+<div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-5">
+  <h3 class="text-xl font-bold text-dark-navy mb-5">Categories</h3>
+
+  <div class="flex flex-wrap lg:flex-col gap-3">
+    <button
+      *ngFor="let category of categories"
+      (click)="selectCategory(category.value)"
+      class="px-4 py-3 rounded-xl text-left font-medium transition border"
+      [ngClass]="
+        selectedCategory === category.value
+          ? 'bg-dark-navy text-white border-dark-navy'
+          : 'bg-white text-gray-600 border-gray-200 hover:border-gold hover:text-gold'
+      "
+    >
+      {{ category.name }}
+    </button>
+  </div>
+</div>

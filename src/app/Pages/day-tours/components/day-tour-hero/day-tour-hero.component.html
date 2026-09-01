@@ -1,0 +1,388 @@
+<section
+  class="
+  relative
+  overflow-hidden
+  rounded-b-3xl
+
+  min-h-[620px]
+  sm:min-h-[560px]
+  lg:min-h-[520px]
+  "
+>
+
+
+  <!-- IMAGE -->
+
+  <img
+
+    [src]="hero.image"
+
+    [alt]="hero.title"
+
+    class="
+    absolute
+    inset-0
+
+    w-full
+    h-full
+
+    object-cover
+
+    object-center
+    "
+
+  />
+
+
+
+  <!-- OVERLAY -->
+
+  <div
+
+    class="
+    absolute
+    inset-0
+
+    bg-gradient-to-b
+
+    from-dark-navy/90
+
+    via-dark-navy/75
+
+    to-dark-navy/60
+
+    lg:bg-gradient-to-r
+
+    lg:from-dark-navy/90
+
+    lg:via-dark-navy/60
+
+    lg:to-dark-navy/30
+    "
+
+  ></div>
+
+
+
+
+  <!-- GOLD LIGHT -->
+
+  <div
+
+    class="
+    absolute
+
+    -right-20
+
+    -top-20
+
+    w-72
+
+    h-72
+
+    bg-gold/20
+
+    blur-[120px]
+    "
+
+  ></div>
+
+
+
+
+  <!-- CONTENT -->
+
+  <div
+
+    class="
+    relative
+    z-10
+
+    container
+    mx-auto
+
+    min-h-[620px]
+
+    sm:min-h-[560px]
+
+    lg:min-h-[520px]
+
+    px-5
+
+    sm:px-6
+
+    flex
+
+    items-center
+
+    "
+
+  >
+
+
+    <div
+
+      class="
+      max-w-3xl
+
+      pt-10
+
+      sm:pt-0
+
+      "
+
+    >
+
+
+
+      <!-- Badge -->
+
+
+      <div
+
+        class="
+        inline-flex
+
+        items-center
+
+        gap-2
+
+        rounded-full
+
+        border
+
+        border-gold/40
+
+        bg-gold/10
+
+        backdrop-blur-md
+
+        px-4
+
+        py-2
+
+        text-gold
+
+        font-semibold
+
+        text-xs
+
+        sm:text-sm
+        "
+
+      >
+
+        <i class="fa-solid fa-compass"></i>
+
+        Explore Egypt
+
+      </div>
+
+
+
+
+      <!-- TITLE -->
+
+
+      <h1
+
+        class="
+        mt-5
+
+        text-3xl
+
+        sm:text-4xl
+
+        lg:text-6xl
+
+        font-black
+
+        leading-tight
+
+        text-white
+        "
+
+      >
+
+        {{ hero.title }}
+
+
+        <span
+
+          class="
+          text-gold
+
+          block
+
+          "
+
+        >
+
+          {{ hero.highlight }}
+
+        </span>
+
+
+      </h1>
+
+
+
+
+      <!-- DESCRIPTION -->
+
+
+      <p
+
+        class="
+        mt-4
+
+        text-sm
+
+        sm:text-base
+
+        lg:text-lg
+
+        leading-7
+
+        sm:leading-8
+
+        text-gray-200
+
+        max-w-xl
+
+        "
+
+      >
+
+        {{ hero.description }}
+
+      </p>
+
+
+
+
+
+      <!-- BUTTONS -->
+
+
+      <div
+
+        class="
+        mt-7
+
+        flex
+
+        flex-col
+
+        sm:flex-row
+
+        gap-3
+
+        sm:gap-4
+
+        "
+
+      >
+
+
+        <a
+
+          routerLink="/trips"
+
+          class="
+          flex
+
+          items-center
+
+          justify-center
+
+          gap-2
+
+          rounded-xl
+
+          bg-gold
+
+          px-6
+
+          py-3
+
+          font-bold
+
+          text-dark-navy
+
+          transition
+
+          hover:bg-gold-hover
+
+          "
+
+        >
+
+          <i class="fa-solid fa-route"></i>
+
+          Explore Tours
+
+        </a>
+
+
+
+
+        <a
+
+          routerLink="/packages"
+
+          class="
+          flex
+
+          items-center
+
+          justify-center
+
+          gap-2
+
+          rounded-xl
+
+          border
+
+          border-white/30
+
+          bg-white/10
+
+          backdrop-blur-md
+
+          px-6
+
+          py-3
+
+          font-semibold
+
+          text-white
+
+          transition
+
+          hover:bg-white
+
+          hover:text-dark-navy
+
+          "
+
+        >
+
+          <i class="fa-solid fa-suitcase"></i>
+
+          View Packages
+
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>

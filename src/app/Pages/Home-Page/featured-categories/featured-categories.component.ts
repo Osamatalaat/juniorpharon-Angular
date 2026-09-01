@@ -170,7 +170,7 @@ export class FeaturedCategoriesComponent {
 
       button: 'Explore Nile Cruises',
 
-      link: '/nile-cruises'
+      link: 'trips/category/nile-cruises'
     },
 
 
@@ -198,7 +198,7 @@ export class FeaturedCategoriesComponent {
 
       button: 'Explore Destinations',
 
-      link: '/destinations'
+      link: '/map'
     }
 
   ];

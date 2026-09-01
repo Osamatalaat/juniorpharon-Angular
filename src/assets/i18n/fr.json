@@ -37,7 +37,8 @@
     "BOOK_NOW": "Réservez maintenant",
     "REGISTER_FREE": "Inscrivez-vous gratuitement",
     "LANGUAGE": "Langue",
-    "EXPLORE_BY_CITY": "Explorer par ville"
+    "EXPLORE_BY_CITY": "Explorer par ville",
+    "ABOUT_US": "À propos de nous"
   },
   "CITIES": {
     "CAIRO": "Le Caire",

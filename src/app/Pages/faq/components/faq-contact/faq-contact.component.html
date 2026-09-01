@@ -1,0 +1,57 @@
+<section class="container mx-auto px-5 pb-16">
+  <div
+    class="relative overflow-hidden rounded-3xl bg-dark-navy px-6 py-12 sm:px-12 text-center shadow-2xl"
+  >
+    <!-- Gold Blur -->
+
+    <div class="absolute right-0 top-0 w-72 h-72 bg-gold/20 blur-[120px]"></div>
+
+    <div
+      class="absolute left-0 bottom-0 w-60 h-60 bg-blue-500/20 blur-[120px]"
+    ></div>
+
+    <!-- Content -->
+
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <!-- Icon -->
+
+      <div
+        class="mx-auto w-20 h-20 rounded-3xl bg-gold/10 border border-gold/30 flex items-center justify-center"
+      >
+        <i class="fa-solid fa-headset text-4xl text-gold"></i>
+      </div>
+
+      <h2 class="mt-6 text-3xl sm:text-4xl font-black text-white">
+        Still have questions?
+      </h2>
+
+      <p class="mt-4 text-gray-300 leading-7 text-base sm:text-lg">
+        Our travel experts are ready to help you plan your perfect Egypt
+        experience. Contact us and we will answer all your questions.
+      </p>
+
+      <!-- Buttons -->
+
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          [href]="'https://wa.me/' + phone"
+          target="_blank"
+          class="inline-flex items-center gap-3 rounded-xl bg-[#25D366] px-7 py-3.5 font-bold text-white transition hover:-translate-y-1 hover:shadow-xl"
+        >
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+
+          WhatsApp Us
+        </a>
+
+        <a
+          routerLink="/trips"
+          class="inline-flex items-center gap-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur-md px-7 py-3.5 font-semibold text-white transition hover:bg-white hover:text-dark-navy"
+        >
+          <i class="fa-solid fa-route"></i>
+
+          Explore Tours
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

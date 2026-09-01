@@ -159,8 +159,6 @@
 
   <!-- Desktop -->
 
-  
-
   <div class="hidden md:block container mx-auto h-full">
     <div class="flex items-center justify-between h-full">
       <!-- Logo -->
@@ -174,8 +172,6 @@
           />
         </a>
       </div>
-
-
 
       <!-- Navigation Links -->
 
@@ -216,21 +212,6 @@
         <!-- Day Tours -->
         <app-day-tour></app-day-tour>
 
-        <!-- Offers -->
-        <li class="relative group">
-          <a
-            routerLink="/offers"
-            routerLinkActive="active-link text-gold"
-            class="transition duration-300 hover:text-gold"
-          >
-            {{ "NAVBAR.OFFERS" | translate }}
-          </a>
-
-          <span
-            class="absolute left-0 -bottom-2 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"
-          ></span>
-        </li>
-
         <!-- Packages -->
         <li class="relative group">
           <a
@@ -246,14 +227,29 @@
           ></span>
         </li>
 
-        <!-- Meetings -->
+        <!-- Offers -->
         <li class="relative group">
           <a
-            routerLink="/meetings"
+            routerLink="/offers"
             routerLinkActive="active-link text-gold"
             class="transition duration-300 hover:text-gold"
           >
-            {{ "NAVBAR.MEETINGS" | translate }}
+            {{ "NAVBAR.OFFERS" | translate }}
+          </a>
+
+          <span
+            class="absolute left-0 -bottom-2 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"
+          ></span>
+        </li>
+
+        <!-- About us -->
+        <li class="relative group">
+          <a
+            routerLink="/about-us"
+            routerLinkActive="active-link text-gold"
+            class="transition duration-300 hover:text-gold"
+          >
+            {{ "NAVBAR.ABOUT_US" | translate }}
           </a>
 
           <span
@@ -264,11 +260,11 @@
         <!-- Credit Cards -->
         <li class="relative group">
           <a
-            routerLink="/credit-cards"
+            routerLink="/faq"
             routerLinkActive="active-link text-gold"
             class="transition duration-300 hover:text-gold"
           >
-            {{ "NAVBAR.CREDIT_CARDS" | translate }}
+            {{ "NAVBAR.FAQ" | translate }}
           </a>
 
           <span
@@ -280,8 +276,8 @@
         RIGHT SIDE
 ========================= -->
 
-      <div class="flex items-center gap-4">
-        <!-- Language -->
+      <!-- <div class="flex items-center gap-4">
+        <!-- Language --
 
         <div class="relative">
           <button
@@ -300,7 +296,7 @@
             ></i>
           </button>
 
-          <!-- Dropdown -->
+          <!-- Dropdown --
 
           <div
             *ngIf="isLangOpen"
@@ -322,7 +318,7 @@
           </div>
         </div>
 
-        <!-- Book -->
+        <!-- Book --
 
         <button
           class="bg-gold text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-gold-hover transition-all duration-300"
@@ -330,7 +326,7 @@
           {{ "NAVBAR.BOOK_NOW" | translate }}
         </button>
 
-        <!-- Dashboard -->
+        <!-- Dashboard --
 
         <button
           routerLink="/admin/dashboard"
@@ -338,7 +334,7 @@
         >
           Dashboard
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -392,46 +388,26 @@
       </li>
 
       <li>
-        <button
-          (click)="toggleDayTours()"
-          class="w-full flex justify-between items-center px-6 py-4 text-white hover:bg-white/5 transition"
-        >
-          <span>{{ "NAVBAR.DAY_TOURS" | translate }}</span>
-
-          <i
-            class="fa-solid fa-chevron-down transition"
-            [class.rotate-180]="dayToursOpen"
-          ></i>
-        </button>
-
-        <div *ngIf="dayToursOpen" class="bg-navy">
-          <a
-            *ngFor="let city of cities"
-            [routerLink]="['/trips']"
-            [queryParams]="{ city: city.slug }"
-            (click)="closeMenu()"
-            class="flex items-center gap-3 px-8 py-3 border-t border-white/10 hover:bg-white/5 transition"
-          >
-            <div
-              class="w-8 h-8 rounded-full bg-gold flex items-center justify-center"
-            >
-              <i class="bx bx-map text-white"></i>
-            </div>
-
-            <span class="text-white">
-              {{ city.key | translate }}
-            </span>
-          </a>
-        </div>
-      </li>
-
-      <li>
         <a
-          routerLink="/meetings"
+          routerLink="/about-us"
           (click)="closeMenu()"
           class="block px-6 py-4 text-white hover:bg-white/5 hover:text-gold transition"
         >
-          {{ "NAVBAR.MEETINGS" | translate }}
+          {{ "NAVBAR.ABOUT_US" | translate }}
+        </a>
+      </li>
+
+      <div class="md:hidden">
+        <app-day-tour-mobile (closeMenu)="closeMenu()"> </app-day-tour-mobile>
+      </div>
+
+      <li>
+        <a
+          routerLink="/faq"
+          (click)="closeMenu()"
+          class="block px-6 py-4 text-white hover:bg-white/5 hover:text-gold transition"
+        >
+          {{ "NAVBAR.FAQ" | translate }}
         </a>
       </li>
 

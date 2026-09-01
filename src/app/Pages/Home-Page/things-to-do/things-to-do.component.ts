@@ -1,5 +1,18 @@
 import { Component } from '@angular/core';
 
+
+interface ActivityItem {
+
+  title: string;
+
+  slug: string;
+
+  image: string;
+
+}
+
+
+
 @Component({
   selector: 'app-things-to-do',
   templateUrl: './things-to-do.component.html',
@@ -8,56 +21,68 @@ import { Component } from '@angular/core';
 })
 export class ThingsToDoComponent {
 
-  activities = [
+
+
+  readonly activities: ActivityItem[] = [
 
     {
       title: 'Nile Cruises',
-      image: 'assets/images/things/nile.jpg',
-      link: '/nile-cruises'
+      slug: 'nile-cruises',
+      image: 'assets/images/things/nile.jpg'
     },
+
 
     {
       title: 'Hot Air Balloon',
-      image: 'assets/images/things/ballon.jpg',
-      link: '/hot-air-balloon'
+      slug: 'hot-air-balloon',
+      image: 'assets/images/things/ballon.jpg'
     },
+
 
     {
       title: 'Camel Riding',
-      image: 'assets/images/things/camel.jpg',
-      link: '/camel-riding'
+      slug: 'camel-riding',
+      image: 'assets/images/things/camel.jpg'
     },
+
 
     {
       title: 'Desert Safari',
-      image: 'assets/images/things/desert.jpg',
-      link: '/desert-safari'
+      slug: 'desert-safari',
+      image: 'assets/images/things/desert.jpg'
     },
+
 
     {
       title: 'Snorkeling',
-      image: 'assets/images/things/snokeling.jpg',
-      link: '/snorkeling'
+      slug: 'snorkeling',
+      image: 'assets/images/things/snokeling.jpg'
     },
+
 
     {
       title: 'Scuba Diving',
-      image: 'assets/images/things/scubadiving.jpg',
-      link: '/scuba-diving'
+      slug: 'scuba-diving',
+      image: 'assets/images/things/scubadiving.jpg'
     },
+
 
     {
       title: 'Dinner Cruise',
-      image: 'assets/images/things/dinner.jpg',
-      link: '/dinner-cruise'
+      slug: 'dinner-cruise',
+      image: 'assets/images/things/dinner.jpg'
     },
+
 
     {
       title: 'Sound & Light Show',
-      image: 'assets/images/things/philae3.webp',
-      link: '/sound-light-show'
+      slug: 'sound-light-show',
+      image: 'assets/images/things/philae3.webp'
     }
 
+
   ];
+
+
 
 }

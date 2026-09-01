@@ -1,0 +1,64 @@
+<div
+  class="bg-white rounded-3xl shadow-card border border-border p-6 h-full flex flex-col"
+>
+  <!-- Header -->
+
+  <div class="flex items-center gap-3 mb-6">
+    <div
+      class="w-12 h-12 rounded-2xl bg-gold-light flex items-center justify-center"
+    >
+      <i class="fa-solid fa-circle-question text-gold text-xl"></i>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-bold text-dark-navy">
+        Frequently Asked Questions
+      </h3>
+
+      <p class="text-sm text-text-secondary">Find answers quickly</p>
+    </div>
+  </div>
+
+  <!-- FAQ Preview -->
+
+  <div class="space-y-3 flex-1">
+    <div
+      *ngFor="let faq of faqs; let i = index"
+      class="border border-border rounded-xl overflow-hidden"
+    >
+      <button
+        (click)="toggle(i)"
+        class="w-full flex items-center justify-between gap-3 p-4 text-left"
+      >
+        <span class="text-sm font-semibold text-dark-navy">
+          {{ faq.question }}
+        </span>
+
+        <i
+          class="fa-solid fa-chevron-down text-gold transition-transform"
+          [class.rotate-180]="activeIndex === i"
+        ></i>
+      </button>
+
+      <div
+        *ngIf="activeIndex === i"
+        class="px-4 pb-4 text-sm leading-6 text-text-secondary"
+      >
+        {{ faq.answer }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Button -->
+
+  <div class="mt-6">
+    <a
+      routerLink="/faq"
+      class="w-full inline-flex items-center justify-center gap-3 bg-gold text-dark-navy rounded-xl py-3 font-bold transition-all hover:bg-gold-hover hover:-translate-y-1"
+    >
+      View All Questions
+
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+</div>

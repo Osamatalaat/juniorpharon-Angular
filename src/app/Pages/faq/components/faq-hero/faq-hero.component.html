@@ -1,0 +1,71 @@
+<section class="relative overflow-hidden rounded-b-3xl h-[420px] sm:h-[480px]">
+  <!-- ================= IMAGE ================= -->
+
+  <img
+    [src]="hero.image"
+    alt="FAQ"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <!-- ================= OVERLAY ================= -->
+
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-dark-navy/95 via-dark-navy/70 to-dark-navy/40"
+  ></div>
+
+  <!-- ================= GOLD EFFECT ================= -->
+
+  <div class="absolute right-0 top-0 w-96 h-96 bg-gold/20 blur-[140px]"></div>
+
+  <!-- ================= CONTENT ================= -->
+
+  <div class="relative z-10 container mx-auto px-6 h-full flex items-center">
+    <div class="max-w-3xl text-white">
+      <!-- Badge -->
+
+      <div
+        class="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 backdrop-blur-md px-5 py-2 text-gold font-semibold text-sm"
+      >
+        <i class="fa-solid fa-circle-question"></i>
+
+        {{ hero.badge }}
+      </div>
+
+      <!-- Title -->
+
+      <h1
+        class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
+      >
+        {{ hero.title }}
+      </h1>
+
+      <!-- Description -->
+
+      <p class="mt-5 text-base sm:text-lg leading-8 text-gray-200 max-w-2xl">
+        {{ hero.description }}
+      </p>
+
+      <!-- Buttons -->
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          routerLink="/trips"
+          class="inline-flex items-center gap-3 rounded-xl bg-gold px-7 py-3.5 font-bold text-dark-navy transition hover:bg-gold-hover hover:-translate-y-1"
+        >
+          <i class="fa-solid fa-route"></i>
+
+          Explore Tours
+        </a>
+
+        <a
+          routerLink="/"
+          class="inline-flex items-center gap-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur-md px-7 py-3.5 font-semibold text-white transition hover:bg-white hover:text-dark-navy"
+        >
+          <i class="fa-solid fa-house"></i>
+
+          Back Home
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

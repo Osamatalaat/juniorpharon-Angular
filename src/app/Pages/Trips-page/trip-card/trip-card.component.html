@@ -1,62 +1,68 @@
 <div
   (click)="goToDetails()"
-  class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-200 hover:border-gold overflow-hidden group cursor-pointer hover:-translate-y-2"
+  class="group cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-xl"
 >
   <!-- ================= IMAGE ================= -->
 
-  <div class="relative overflow-hidden">
+  <div class="relative h-32 overflow-hidden sm:h-44 lg:h-52">
     <img
       [src]="trip.coverImage || 'https://via.placeholder.com/400'"
       [alt]="trip.title"
-      class="w-full h-56 object-cover transition duration-700 group-hover:scale-110"
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-110"
     />
 
-    <!-- Overlay -->
-
     <div
-      class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"
+      class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
     ></div>
   </div>
 
   <!-- ================= CONTENT ================= -->
 
-  <div class="p-6">
-    <!-- Title -->
+  <div class="p-3 sm:p-4 lg:p-5">
+    <!-- TITLE -->
 
     <h3
-      class="text-dark-navy font-bold text-xl mb-4 line-clamp-2 group-hover:text-gold transition"
+      class="line-clamp-2 min-h-[40px] text-sm font-bold leading-5 text-dark-navy transition group-hover:text-gold sm:text-base lg:text-lg"
     >
       {{ trip.title }}
     </h3>
 
-    <!-- ================= INFO ================= -->
+    <!-- INFO -->
 
-    <div class="flex items-center justify-between text-sm mb-5 gap-3">
+    <div
+      class="mt-3 flex flex-col gap-2 text-xs text-gray-600 sm:flex-row sm:items-center sm:justify-between"
+    >
       <!-- Destination -->
 
-      <div class="flex items-center gap-2 text-gold min-w-0">
-        <i class="fas fa-location-dot shrink-0"></i>
+      <div class="flex min-w-0 items-center gap-1">
+        <i class="fa-solid fa-location-dot text-gold"></i>
 
-        <span class="text-gray-700 truncate">
+        <span class="truncate">
           {{ trip.destination.name }}
         </span>
       </div>
 
       <!-- Duration -->
 
-      <div class="flex items-center gap-2 text-gray-500 shrink-0">
-        <i class="far fa-clock"></i>
+      <div class="flex items-center gap-1">
+        <i class="fa-regular fa-clock text-gold"></i>
 
         <span>
           {{ trip.duration.value }}
           {{ trip.duration.unit }}
         </span>
       </div>
+    </div>
 
-      <!-- Rating -->
+    <!-- PRICE + RATING -->
 
-      <div class="flex items-center gap-1 shrink-0">
-        <i class="fas fa-star text-gold"></i>
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-base font-extrabold text-dark-navy sm:text-lg">
+        <ng-container *ngIf="trip.price > 0"> ${{ trip.price }} </ng-container>
+      </span>
+
+      <div class="flex items-center gap-1 text-xs">
+        <i class="fa-solid fa-star text-gold"></i>
 
         <span class="font-semibold text-dark-navy">
           {{ trip.rating || 0 }}
@@ -64,33 +70,20 @@
       </div>
     </div>
 
-    <!-- ================= PRICE ================= -->
-
-    <div class="flex items-center gap-3 mb-6">
-      <span class="text-3xl font-extrabold text-dark-navy">
-        ${{ trip.price }}
-      </span>
-
-      <span *ngIf="trip.oldPrice" class="text-gray-400 line-through">
-        ${{ trip.oldPrice }}
-      </span>
-    </div>
-
-    <!-- ================= BOTTOM ================= -->
+    <!-- FOOTER -->
 
     <div
-      class="pt-4 border-t border-gray-200 flex items-center justify-between"
+      class="mt-4 flex items-center justify-between border-t border-gray-200 pt-3"
     >
       <span
-        class="font-semibold text-gold group-hover:tracking-wide transition-all"
+        class="text-xs font-semibold text-gold transition group-hover:tracking-wide sm:text-sm"
       >
         {{ "TRIP_LIST.DETAILS" | translate }}
       </span>
 
       <i
-        class="fas fa-arrow-right text-dark-navy group-hover:text-gold group-hover:translate-x-2 transition-all duration-300"
-      >
-      </i>
+        class="fa-solid fa-arrow-right text-sm text-dark-navy transition-all duration-300 group-hover:translate-x-1 group-hover:text-gold"
+      ></i>
     </div>
   </div>
 </div>

@@ -1,0 +1,68 @@
+<section>
+  <app-day-tour-hero></app-day-tour-hero>
+
+  <app-destination-filter
+    [selectedDestination]="selectedDestination"
+    (destinationChange)="onDestinationChange($event)"
+  >
+  </app-destination-filter>
+
+  <section class="container mx-auto px-6 py-12">
+    <!-- ================= TOURS ================= -->
+
+    <ng-container *ngIf="filteredTrips.length > 0; else noTrips">
+      <h2 class="text-3xl font-bold text-dark-navy mb-8">Tours</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <app-trip-card *ngFor="let trip of filteredTrips" [trip]="trip">
+        </app-trip-card>
+      </div>
+    </ng-container>
+
+    <!-- NO TOURS -->
+
+    <ng-template #noTrips>
+      <div
+        class="text-center py-12 bg-gray-50 rounded-2xl border border-gray-200"
+      >
+        <i class="fa-solid fa-map-location-dot text-4xl text-gold mb-4"></i>
+
+        <h3 class="text-2xl font-bold text-dark-navy">No Tours Available</h3>
+
+        <p class="mt-2 text-gray-500">
+          We are preparing amazing experiences for this destination.
+        </p>
+      </div>
+    </ng-template>
+
+    <!-- ================= PACKAGES ================= -->
+
+    <ng-container *ngIf="filteredPackages.length > 0; else noPackages">
+      <h2 class="text-3xl font-bold text-dark-navy mt-16 mb-8">Packages</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <app-package-card
+          *ngFor="let package of filteredPackages"
+          [package]="package"
+        >
+        </app-package-card>
+      </div>
+    </ng-container>
+
+    <!-- NO PACKAGES -->
+
+    <ng-template #noPackages>
+      <div
+        class="mt-16 text-center py-12 bg-gray-50 rounded-2xl border border-gray-200"
+      >
+        <i class="fa-solid fa-suitcase-rolling text-4xl text-gold mb-4"></i>
+
+        <h3 class="text-2xl font-bold text-dark-navy">No Packages Available</h3>
+
+        <p class="mt-2 text-gray-500">
+          New travel packages will be available soon.
+        </p>
+      </div>
+    </ng-template>
+  </section>
+</section>

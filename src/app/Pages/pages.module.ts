@@ -38,6 +38,29 @@ import { DestinationMapComponent } from './destination-map/destination-map.compo
 import { PackageCategoryComponent } from './Packages-page/package-category/package-category.component';
 import { TripActivityComponent } from './Trips-page/trip-activity/trip-activity.component';
 
+import { AboutUsLayoutComponent } from './About-Us/about-us-layout/about-us-layout.component';
+import { AboutHeroComponent } from './About-Us/components/about-hero/about-hero.component';
+import { AboutCompanyComponent } from './About-Us/components/about-company/about-company.component';
+import { AboutDestinationsComponent } from './About-Us/components/about-destinations/about-destinations.component';
+import { AboutServicesComponent } from './About-Us/components/about-services/about-services.component';
+import { AboutWhyUsComponent } from './About-Us/components/about-why-us/about-why-us.component';
+import { AboutFaqComponent } from './About-Us/components/about-faq/about-faq.component';
+import { AboutCtaComponent } from './About-Us/components/about-cta/about-cta.component';
+import { AboutValuesComponent } from './About-Us/components/about-values/about-values.component';
+import { TripCategoryPageComponent } from './Trips-page/trip-category-page/trip-category-page.component';
+import { DayToursLayoutComponent } from './day-tours/day-tours-layout/day-tours-layout.component';
+import { DestinationFilterComponent } from './day-tours/components/destination-filter/destination-filter.component';
+import { DayTourTripsComponent } from './day-tours/components/day-tour-trips/day-tour-trips.component';
+import { DayTourPackagesComponent } from './day-tours/components/day-tour-packages/day-tour-packages.component';
+import { DayTourHeroComponent } from './day-tours/components/day-tour-hero/day-tour-hero.component';
+import { HomeFaqComponent } from './Home-Page/home-faq/home-faq.component';
+import { FaqHeroComponent } from './faq/components/faq-hero/faq-hero.component';
+import { FaqLayoutComponent } from './faq/faq-layout/faq-layout.component';
+import { FaqContactComponent } from './faq/components/faq-contact/faq-contact.component';
+import { FaqListComponent } from './faq/components/faq-list/faq-list.component';
+import { FaqSearchComponent } from './faq/components/faq-search/faq-search.component';
+import { FaqCategoryFilterComponent } from './faq/components/faq-category-filter/faq-category-filter.component';
+
 
 
 @NgModule({
@@ -52,6 +75,7 @@ import { TripActivityComponent } from './Trips-page/trip-activity/trip-activity.
     HerooSectionComponent,
     CompanyIntroComponent,
     FeaturedCategoriesComponent,
+    HomeFaqComponent,
     WhyChooseUsComponent,
     TravelGuideCardComponent,
     ThingsToDoComponent,
@@ -61,6 +85,7 @@ import { TripActivityComponent } from './Trips-page/trip-activity/trip-activity.
     SpecialOffersComponent,
     NewsletterSubscribeComponent,
     TripComponent,
+    TripCategoryPageComponent,
     FilterSidebarComponent,
     TripCardComponent,
     TripDetailsComponent,
@@ -78,7 +103,32 @@ import { TripActivityComponent } from './Trips-page/trip-activity/trip-activity.
     BookingLayoutComponent,
     UserReviewCardComponent,
     MainLayoutComponent,
-    DestinationMapComponent
+    DestinationMapComponent,
+    AboutUsLayoutComponent,
+    AboutHeroComponent,
+    AboutCompanyComponent,
+    AboutDestinationsComponent,
+    AboutServicesComponent,
+    AboutWhyUsComponent,
+    AboutFaqComponent,
+    AboutCtaComponent,
+    AboutValuesComponent,
+    DayTourHeroComponent,
+    DayTourPackagesComponent,
+    DayTourTripsComponent,
+    DestinationFilterComponent,
+    DayToursLayoutComponent,
+    //faq
+    FaqReviewsComponent,
+    FaqLayoutComponent,
+    FaqHeroComponent,
+    FaqContactComponent,
+    FaqListComponent,
+    FaqSearchComponent,
+    FaqCategoryFilterComponent,
+
+
+
   ],
   exports: [],
 })

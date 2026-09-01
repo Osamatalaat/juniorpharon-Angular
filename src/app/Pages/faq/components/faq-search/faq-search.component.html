@@ -1,0 +1,43 @@
+<section class="container mx-auto px-5 relative z-20">
+  <div
+    class="- mt-12 bg-white rounded-3xl shadow-xl border border-gray-100 p-5 sm:p-8"
+  >
+    <div class="max-w-3xl mx-auto">
+      <!-- Title -->
+
+      <h2 class="text-center text-2xl sm:text-3xl font-bold text-dark-navy">
+        How can we help you?
+      </h2>
+
+      <p class="text-center mt-2 text-text-secondary">
+        Search for answers about tours, bookings and payments
+      </p>
+
+      <!-- Search Box -->
+
+      <div class="mt-6 relative">
+        <i
+          class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-lg"
+        ></i>
+
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          (input)="onSearch()"
+          placeholder="Search your question..."
+          class="w-full rounded-2xl border border-gray-200 bg-gray-50 py-4 pl-14 pr-14 text-dark-navy outline-none transition focus:border-gold focus:ring-4 focus:ring-gold/20"
+        />
+
+        <!-- Clear -->
+
+        <button
+          *ngIf="searchText"
+          (click)="clearSearch()"
+          class="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

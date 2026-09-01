@@ -22,25 +22,25 @@ export const routes: Routes = [
   },
 
   // Authentication
-  {
-    path: 'auth',
-    component: AccountLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-      {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-    ],
-  },
+  // {
+  //   path: 'auth',
+  //   component: AccountLayoutComponent,
+  //   children: [
+  //     {
+  //       path: 'login',
+  //       component: LoginComponent,
+  //     },
+  //     {
+  //       path: 'register',
+  //       component: RegisterComponent,
+  //     },
+  //     {
+  //       path: '',
+  //       redirectTo: 'login',
+  //       pathMatch: 'full',
+  //     },
+  //   ],
+  // },
 
   // 404
   {

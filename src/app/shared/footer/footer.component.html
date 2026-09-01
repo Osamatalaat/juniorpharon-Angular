@@ -1,4 +1,4 @@
-<footer class="bg-dark-navy text-white border-t border-gold/20">
+<footer class="bg-dark-navy text-white border-t border-gold/20 ">
   <!-- Main Footer -->
   <div class="max-w-7xl mx-auto px-6 py-16">
     <div class="grid lg:grid-cols-5 md:grid-cols-2 gap-10">
@@ -81,19 +81,35 @@
         <h3 class="text-gold font-semibold text-xl mb-6">Company</h3>
 
         <ul class="space-y-3 text-gray-400">
-          <li class="hover:text-gold cursor-pointer transition">About Us</li>
-
-          <li class="hover:text-gold cursor-pointer transition">
-            Destinations
+          <li>
+            <a routerLink="/about-us" class="transition hover:text-gold">
+              About Us
+            </a>
           </li>
 
-          <li class="hover:text-gold cursor-pointer transition">
-            Travel Guide
+          <li>
+            <a routerLink="/map" class="transition hover:text-gold">
+              Destinations
+            </a>
           </li>
 
-          <li class="hover:text-gold cursor-pointer transition">Careers</li>
+          <li>
+            <a routerLink="/travel-guide" class="transition hover:text-gold">
+              Travel Guide
+            </a>
+          </li>
 
-          <li class="hover:text-gold cursor-pointer transition">Contact</li>
+          <li>
+            <a routerLink="/careers" class="transition hover:text-gold">
+              Careers
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/contact" class="transition hover:text-gold">
+              Contact
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -103,22 +119,49 @@
         <h3 class="text-gold font-semibold text-xl mb-6">Tours</h3>
 
         <ul class="space-y-3 text-gray-400">
-          <li class="hover:text-gold cursor-pointer transition">
-            Nile Cruises
+          <li>
+            <a
+              routerLink="trips/category/:nile-cruises"
+              class="hover:text-gold cursor-pointer transition"
+            >
+              Nile Cruises
+            </a>
           </li>
 
-          <li class="hover:text-gold cursor-pointer transition">Day Tours</li>
-
-          <li class="hover:text-gold cursor-pointer transition">
-            Egypt Packages
+          <li>
+            <a
+              routerLink="/day-tours"
+              class="hover:text-gold cursor-pointer transition"
+            >
+              Day Tours
+            </a>
           </li>
 
-          <li class="hover:text-gold cursor-pointer transition">
-            Luxury Tours
+          <li>
+            <a
+              routerLink="/packages"
+              class="hover:text-gold cursor-pointer transition"
+            >
+              Egypt Packages
+            </a>
           </li>
 
-          <li class="hover:text-gold cursor-pointer transition">
-            Shore Excursions
+          <li>
+            <a
+              routerLink="/packages/category/luxury"
+              class="hover:text-gold cursor-pointer transition"
+            >
+              Luxury Tours
+            </a>
+          </li>
+
+          <li>
+            <a
+              routerLink="/shore-excursions"
+              class="hover:text-gold cursor-pointer transition"
+            >
+              Shore Excursions
+            </a>
           </li>
         </ul>
       </div>

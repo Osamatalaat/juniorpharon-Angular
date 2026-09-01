@@ -37,7 +37,8 @@
     "BOOK_NOW": "احجز الآن",
     "REGISTER_FREE": "سجل مجانًا",
     "LANGUAGE": "اللغة",
-    "EXPLORE_BY_CITY": "استكشف حسب المدينة"
+    "EXPLORE_BY_CITY": "استكشف حسب المدينة",
+    "ABOUT_US": "معلومات عنا"
   },
   "CITIES": {
     "CAIRO": "القاهرة",
