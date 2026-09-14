@@ -227,6 +227,25 @@
           ></span>
         </li>
 
+        
+        <!-- Articles -->
+
+        <li class="relative group">
+          <a
+            routerLink="/articles"
+            routerLinkActive="active-link text-gold"
+            class="transition duration-300 hover:text-gold"
+          >
+            Articles
+          </a>
+
+          <span
+            class="absolute left-0 -bottom-2 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"
+          ></span>
+        </li>
+
+
+
         <!-- Offers -->
         <li class="relative group">
           <a
@@ -384,6 +403,15 @@
           class="block px-6 py-4 text-white hover:bg-white/5 hover:text-gold transition"
         >
           {{ "NAVBAR.PACKAGES" | translate }}
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/articles"
+          (click)="closeMenu()"
+          class="block px-6 py-4 text-white hover:bg-white/5 hover:text-gold transition"
+        >
+          Articles
         </a>
       </li>
 

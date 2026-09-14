@@ -6,7 +6,7 @@ import {
 import { Package } from '../../../core/models/package.model';
 
 import { PackageFilter } from '../../../core/models/Search/package-filter';
-import { PACKAGES } from '../../../core/data/packages';
+import { PACKAGES } from '../../../core/data/packages/index';
 
 
 

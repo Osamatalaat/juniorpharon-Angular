@@ -60,6 +60,9 @@ import { FaqContactComponent } from './faq/components/faq-contact/faq-contact.co
 import { FaqListComponent } from './faq/components/faq-list/faq-list.component';
 import { FaqSearchComponent } from './faq/components/faq-search/faq-search.component';
 import { FaqCategoryFilterComponent } from './faq/components/faq-category-filter/faq-category-filter.component';
+import { ArticleDetailsComponent } from './Articles-page/article-details/article-details.component';
+import { ArticlesLayoutComponent } from './Articles-page/articles-layout/articles-layout.component';
+import { ArticleCardComponent } from './Articles-page/article-card/article-card.component';
 
 
 
@@ -126,6 +129,11 @@ import { FaqCategoryFilterComponent } from './faq/components/faq-category-filter
     FaqListComponent,
     FaqSearchComponent,
     FaqCategoryFilterComponent,
+
+    //articles
+    ArticlesLayoutComponent,
+    ArticleDetailsComponent,
+    ArticleCardComponent,
 
 
 

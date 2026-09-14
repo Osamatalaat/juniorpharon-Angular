@@ -43,6 +43,8 @@
     "CONTACT_US": "Contact Us"
   },
   "CITIES": {
+    "ALL": "All",
+    "GIZA": "Giza",
     "CAIRO": "Cairo",
     "LUXOR": "Luxor",
     "ASWAN": "Aswan",

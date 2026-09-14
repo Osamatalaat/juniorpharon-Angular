@@ -13,6 +13,8 @@ import { AboutUsLayoutComponent } from './About-Us/about-us-layout/about-us-layo
 import { TripCategoryPageComponent } from './Trips-page/trip-category-page/trip-category-page.component';
 import { DayToursLayoutComponent } from './day-tours/day-tours-layout/day-tours-layout.component';
 import { FaqLayoutComponent } from './faq/faq-layout/faq-layout.component';
+import { ArticleDetailsComponent } from './Articles-page/article-details/article-details.component';
+import { ArticlesLayoutComponent } from './Articles-page/articles-layout/articles-layout.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,17 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'articles',
+
+        component: ArticlesLayoutComponent,
+      },
+
+      {
+        path: 'articles/:slug',
+
+        component: ArticleDetailsComponent,
       },
 
       {
@@ -101,9 +114,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 // export class PagesRoutingModule {}

@@ -89,40 +89,28 @@ export class PackageCategoryComponent implements OnInit {
   // FILTER BY TYPE
   // =====================================================
 
-  private filterByType(type: string): void {
+private filterByType(category: string): void {
 
-    // ---------------------------------------------------
-    // Get packages from the central static data
-    // ---------------------------------------------------
+  this.filteredPackages = PACKAGES.filter(packageItem =>
 
-    this.filteredPackages = PACKAGES.filter(packageItem =>
+    packageItem.category?.toLowerCase() === category.toLowerCase()
 
-      packageItem.type?.some(
-        packageType =>
-          packageType.toLowerCase() === type
-      )
+  );
 
-    );
 
-    // ---------------------------------------------------
-    // Page Information
-    // ---------------------------------------------------
+  this.pageTitle =
+    this.formatTitle(category) + ' Packages';
 
-    this.pageTitle =
-      this.formatTitle(type) + ' Packages';
 
-    this.pageDescription =
-      `Discover our best ${this.formatTitle(type).toLowerCase()} holiday packages across Egypt.`;
+  this.pageDescription =
+    `Discover our best ${this.formatTitle(category).toLowerCase()} holiday packages across Egypt.`;
 
-    // ---------------------------------------------------
-    // Reset Pagination
-    // ---------------------------------------------------
 
-    this.currentPage = 1;
+  this.currentPage = 1;
 
-    this.updatePagination();
+  this.updatePagination();
 
-  }
+}
 
   // =====================================================
   // UPDATE PAGINATION

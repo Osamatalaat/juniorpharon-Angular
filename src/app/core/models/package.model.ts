@@ -2,7 +2,29 @@ export interface Package {
 
   // ================= BASIC INFO =================
 
+
   id: number;
+
+  category:
+    | 'family'
+    | 'honeymoon'
+    | 'luxury'
+    | 'solo'
+    | 'christmas'
+    | 'new-year'
+    | 'seasonal'
+    | 'adventure'
+    | 'cultural'
+    | 'historical'
+    | 'nature'
+    | 'beach'
+    | 'cruise'
+    | 'wellness'
+    | 'sports'
+    | 'shopping'
+    | 'food-and-drink'
+    | 'festivals-and-events'
+    | 'classic';
 
   title: string;
 

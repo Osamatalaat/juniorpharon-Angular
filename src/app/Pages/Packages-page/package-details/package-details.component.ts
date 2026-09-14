@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Package } from '../../../core/models/package.model';
-import { PACKAGES } from '../../../core/data/packages';
+import { PACKAGES } from '../../../core/data/packages/index';
 
 
 @Component({

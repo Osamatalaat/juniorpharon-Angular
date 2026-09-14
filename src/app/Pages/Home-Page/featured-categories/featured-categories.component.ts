@@ -85,13 +85,13 @@ export class FeaturedCategoriesComponent {
 
 
     {
-      title: 'Seasonal Tours',
+      title: 'New Year & Christmas Packages',
 
-      type: 'Seasonal',
+      type: 'Christmas',
 
       image: 'assets/images/packages/3.jpg',
 
-      link: '/packages/category/seasonal'
+      link: '/packages/category/christmas'
     }
 
   ];
@@ -110,22 +110,14 @@ export class FeaturedCategoriesComponent {
   //
   // =====================================================
 
-  getPackagesByType(type: string) {
+getPackagesByCategory(category: string) {
 
-    return this.packages.filter(pkg =>
+  return this.packages.filter(pkg =>
+    pkg.category.toLowerCase() ===
+    category.toLowerCase()
+  );
 
-      pkg.type.some(
-
-        packageType =>
-
-          packageType.toLowerCase() ===
-          type.toLowerCase()
-
-      )
-
-    );
-
-  }
+}
 
 
   // =====================================================
@@ -138,9 +130,9 @@ export class FeaturedCategoriesComponent {
   //
   // =====================================================
 
-  getPackageCount(type: string): number {
+  getPackageCount(category: string): number {
 
-    return this.getPackagesByType(type).length;
+    return this.getPackagesByCategory(category).length;
 
   }
 
