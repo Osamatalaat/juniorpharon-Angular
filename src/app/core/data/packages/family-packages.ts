@@ -49,9 +49,20 @@ export const FAMILY_PACKAGES: Package[] = [
   reviews: 0,
 
 
-  coverImage: '',
+  coverImage: 'assets/images/packages/family/1.jpg',
 
-  images: [],
+  images: [
+    'assets/images/packages/family/1.jpg',
+    'assets/images/packages/family/2.jpg',
+    'assets/images/packages/family/3.jpg',
+    'assets/images/packages/family/4.jpg',
+    'assets/images/packages/family/5.jpg',
+    'assets/images/packages/family/6.jpg',
+    'assets/images/packages/family/7.jpg',
+    'assets/images/packages/family/8.jpg',
+    'assets/images/packages/family/9.jpg',
+    'assets/images/packages/family/10.jpg'
+  ],
 
 
   shortDescription:
@@ -299,7 +310,7 @@ export const FAMILY_PACKAGES: Package[] = [
     reviews: 0,
 
 
-    coverImage: '',
+    coverImage: 'assets/images/packages/family/3.jpg',
 
     images: [],
 
@@ -553,7 +564,7 @@ export const FAMILY_PACKAGES: Package[] = [
     reviews: 0,
 
 
-    coverImage: '',
+    coverImage: 'assets/images/packages/family/5.jpg',
 
     images: [],
 
