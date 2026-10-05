@@ -1,260 +1,211 @@
-import { Package } from "../../models/package.model";
+import { Package } from '../../models/package.model';
 
 export const FAMILY_PACKAGES: Package[] = [
-
   // =====================================================
   // 1. 3 Days Cairo City Break
   // =====================================================
 
-{
-  id: 1001,
+  {
+    id: 1001,
 
-  title: '3 Days Cairo City Break',
+    title: '3 Days Cairo City Break',
 
-  slug: '3-days-cairo-city-break',
+    slug: '3-days-cairo-city-break',
 
-
-  destination: {
-    id: 1,
-    name: 'Cairo',
-    slug: 'cairo'
-  },
-
-
-  type: [
-    'Family',
-    'Cultural',
-    'Private Tour',
-    'City Break'
-  ],
-
-
-  category: 'family',
-
-
-  duration: {
-    value: 3,
-    unit: 'days',
-    text: '3 Days / 2 Nights'
-  },
-
-
-  price: 0,
-
-  oldPrice: undefined,
-
-
-  rating: 0,
-
-  reviews: 0,
-
-
-  coverImage: 'assets/images/packages/family/1.jpg',
-
-  images: [
-    'assets/images/packages/family/1.jpg',
-    'assets/images/packages/family/2.jpg',
-    'assets/images/packages/family/3.jpg',
-    'assets/images/packages/family/4.jpg',
-    'assets/images/packages/family/5.jpg',
-    'assets/images/packages/family/6.jpg',
-    'assets/images/packages/family/7.jpg',
-    'assets/images/packages/family/8.jpg',
-    'assets/images/packages/family/9.jpg',
-    'assets/images/packages/family/10.jpg'
-  ],
-
-
-  shortDescription:
-    'Enjoy the perfect 3 Days Cairo City Break and discover the Great Pyramids of Giza, the Sphinx, the Grand Egyptian Museum, Old Cairo, and Khan El Khalili with a private Egyptologist guide and comfortable hotel accommodation.',
-
-
-  description:
-    'Experience the magic of Egypt’s capital with a short vacation designed for travelers who want to discover Cairo’s most famous landmarks. Explore ancient wonders, museums, historic churches, and traditional markets while enjoying private transportation and expert guidance.',
-
-
-
-  highlights: [
-
-    'Visit the Great Pyramids of Giza',
-
-    'Explore the Great Sphinx',
-
-    'Discover the Valley Temple',
-
-    'Visit the Grand Egyptian Museum',
-
-    'Explore Old Cairo',
-
-    'Visit the Hanging Church',
-
-    'Visit Abu Serga Church',
-
-    'Explore Ben Ezra Synagogue',
-
-    'Wander through Khan El Khalili Bazaar',
-
-    'Private Egyptologist guide',
-
-    'Private air-conditioned transportation'
-
-  ],
-
-
-
-  itinerary: [
-
-    {
-      day: 1,
-
-      title: 'Arrival in Cairo',
-
-      description:
-        'Meet and assist upon arrival at Cairo International Airport followed by transfer to your hotel.',
-
-      overnight: 'Cairo'
+    destination: {
+      id: 1,
+      name: 'Cairo',
+      slug: 'cairo',
     },
 
+    type: ['Family', 'Cultural', 'Private Tour', 'City Break'],
 
-    {
-      day: 2,
+    category: 'family',
 
-      title: 'Giza Pyramids & Cairo Highlights',
-
-      description:
-        'Explore the Great Pyramids of Giza, Great Sphinx, Valley Temple, Grand Egyptian Museum, and Old Cairo.',
-
-      activities: [
-
-        'Great Pyramids of Giza',
-
-        'Great Sphinx',
-
-        'Valley Temple',
-
-        'Grand Egyptian Museum',
-
-        'Old Cairo',
-
-        'Khan El Khalili Bazaar'
-
-      ],
-
-      overnight: 'Cairo'
+    duration: {
+      value: 3,
+      unit: 'days',
+      text: '3 Days / 2 Nights',
     },
 
+    price: 0,
 
-    {
-      day: 3,
+    oldPrice: undefined,
 
-      title: 'Departure',
+    rating: 0,
 
-      description:
-        'Transfer to Cairo International Airport for your departure flight.'
-    }
+    reviews: 0,
 
-  ],
+    coverImage: 'assets/images/packages/family/1001/1.jpg',
 
+    images: [
+      'assets/images/packages/family/1001/1.jpg',
+      'assets/images/packages/family/1001/2.jpg',
+      'assets/images/packages/family/1001/3.jpg',
+      'assets/images/packages/family/1001/4.jpg',
+      'assets/images/packages/family/1001/5.jpg',
+      'assets/images/packages/family/1001/6.jpg',
+      'assets/images/packages/family/1001/7.jpg',
+      'assets/images/packages/family/1001/8.jpg',
+      'assets/images/packages/family/1001/9.jpg',
+      'assets/images/packages/family/1001/10.jpg',
+      'assets/images/packages/family/1001/11.jpg',
+      'assets/images/packages/family/1001/12.jpg',
+      'assets/images/packages/family/1001/13.jpg',
+      'assets/images/packages/family/1001/14.jpg',
+      'assets/images/packages/family/1001/15.jpg',
+      'assets/images/packages/family/1001/16.jpg',
+    ],
 
+    shortDescription:
+      'Enjoy the perfect 3 Days Cairo City Break and discover the Great Pyramids of Giza, the Sphinx, the Grand Egyptian Museum, Old Cairo, and Khan El Khalili with a private Egyptologist guide and comfortable hotel accommodation.',
 
-  optionalTours: [
+    description:
+      'Experience the magic of Egypt’s capital with a short vacation designed for travelers who want to discover Cairo’s most famous landmarks. Explore ancient wonders, museums, historic churches, and traditional markets while enjoying private transportation and expert guidance.',
 
-    {
+    highlights: [
+      'Visit the Great Pyramids of Giza',
 
-      destination: 'Cairo',
+      'Explore the Great Sphinx',
 
-      activities: [
+      'Discover the Valley Temple',
 
-        'Nile Dinner Cruise',
+      'Visit the Grand Egyptian Museum',
 
-        'Sound & Light Show',
+      'Explore Old Cairo',
 
-        'Cairo Tower',
+      'Visit the Hanging Church',
 
-        'Memphis & Saqqara Tour'
+      'Visit Abu Serga Church',
 
-      ]
+      'Explore Ben Ezra Synagogue',
 
-    }
+      'Wander through Khan El Khalili Bazaar',
 
-  ],
+      'Private Egyptologist guide',
 
+      'Private air-conditioned transportation',
+    ],
 
+    itinerary: [
+      {
+        day: 1,
 
-  includes: [
+        title: 'Arrival in Cairo',
 
-    'Airport transfers',
+        description:
+          'Meet and assist upon arrival at Cairo International Airport followed by transfer to your hotel.',
 
-    '2 Nights accommodation in Cairo hotel',
+        overnight: 'Cairo',
+      },
 
-    'Daily breakfast',
+      {
+        day: 2,
 
-    'Private air-conditioned transportation',
+        title: 'Giza Pyramids & Cairo Highlights',
 
-    'Professional Egyptologist guide',
+        description:
+          'Explore the Great Pyramids of Giza, Great Sphinx, Valley Temple, Grand Egyptian Museum, and Old Cairo.',
 
-    'Private sightseeing tours',
+        activities: [
+          'Great Pyramids of Giza',
 
-    'Bottled mineral water',
+          'Great Sphinx',
 
-    'All taxes and service charges'
+          'Valley Temple',
 
-  ],
+          'Grand Egyptian Museum',
 
+          'Old Cairo',
 
+          'Khan El Khalili Bazaar',
+        ],
 
-  excludes: [
+        overnight: 'Cairo',
+      },
 
-    'International flights',
+      {
+        day: 3,
 
-    'Egypt entry visa',
+        title: 'Departure',
 
-    'Entrance fees not mentioned',
+        description:
+          'Transfer to Cairo International Airport for your departure flight.',
+      },
+    ],
 
-    'Meals not mentioned',
+    optionalTours: [
+      {
+        destination: 'Cairo',
 
-    'Optional excursions',
+        activities: [
+          'Nile Dinner Cruise',
 
-    'Personal expenses',
+          'Sound & Light Show',
 
-    'Tipping'
+          'Cairo Tower',
 
-  ],
+          'Memphis & Saqqara Tour',
+        ],
+      },
+    ],
 
+    includes: [
+      'Airport transfers',
 
+      '2 Nights accommodation in Cairo hotel',
 
-  entranceFeePolicy:
+      'Daily breakfast',
 
-    'Entrance fees are not included unless specifically mentioned. Guests can choose additional attractions and pay fees directly during the tour.',
+      'Private air-conditioned transportation',
 
+      'Professional Egyptologist guide',
 
+      'Private sightseeing tours',
 
-  goodToKnow: [
+      'Bottled mineral water',
 
-    'Perfect short family getaway',
+      'All taxes and service charges',
+    ],
 
-    'Suitable for families and couples',
+    excludes: [
+      'International flights',
 
-    'Private guided experience',
+      'Egypt entry visa',
 
-    'Comfortable transportation'
+      'Entrance fees not mentioned',
 
-  ],
+      'Meals not mentioned',
 
+      'Optional excursions',
 
+      'Personal expenses',
 
-  relatedPackagesIds: [
+      'Tipping',
+    ],
 
-    1002,
+    entranceFeePolicy:
+      'Entrance fees are not included unless specifically mentioned. Guests can choose additional attractions and pay fees directly during the tour.',
 
-    1004,
+    goodToKnow: [
+      'Perfect short family getaway',
 
-    1005
+      'Suitable for families and couples',
 
-  ]
+      'Private guided experience',
 
-},
-    // =====================================================
+      'Comfortable transportation',
+    ],
+
+    relatedPackagesIds: [
+      1002,
+
+      1004,
+
+      1005,
+    ],
+  },
+  // =====================================================
   // 2. 4 Days Cairo & Alexandria Tour by Private Car
   // =====================================================
 
@@ -265,68 +216,64 @@ export const FAMILY_PACKAGES: Package[] = [
 
     slug: '4-days-cairo-alexandria-tour-private-car',
 
-
     destination: {
       id: 1,
       name: 'Cairo',
-      slug: 'cairo'
+      slug: 'cairo',
     },
 
-
-    type: [
-
-      'Family',
-
-      'Cultural',
-
-      'Historical',
-
-      'Private Tour'
-
-    ],
-
+    type: ['Family', 'Cultural', 'Historical', 'Private Tour'],
 
     category: 'family',
 
-
     duration: {
-
       value: 4,
 
       unit: 'days',
 
-      text: '4 Days / 3 Nights'
-
+      text: '4 Days / 3 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
 
+    coverImage: 'assets/images/packages/family/1002/3.jpg',
 
-    coverImage: 'assets/images/packages/family/3.jpg',
-
-    images: [],
-
+    images: [
+      'assets/images/packages/family/1002/1.jpg',
+      'assets/images/packages/family/1002/2.jpg',
+      'assets/images/packages/family/1002/3.jpg',
+      'assets/images/packages/family/1002/4.jpg',
+      'assets/images/packages/family/1002/5.jpg',
+      'assets/images/packages/family/1002/6.jpg',
+      'assets/images/packages/family/1002/7.jpg',
+      'assets/images/packages/family/1002/8.jpg',
+      'assets/images/packages/family/1002/9.jpg',
+      'assets/images/packages/family/1002/10.jpg',
+      'assets/images/packages/family/1002/11.jpg',
+      'assets/images/packages/family/1002/12.jpg',
+      'assets/images/packages/family/1002/13.jpg',
+      'assets/images/packages/family/1002/14.jpg',
+      'assets/images/packages/family/1002/15.jpg',
+      'assets/images/packages/family/1002/16.jpg',
+      'assets/images/packages/family/1002/17.jpg',
+      'assets/images/packages/family/1002/18.jpg',
+      'assets/images/packages/family/1002/19.jpg',
+      'assets/images/packages/family/1002/20.jpg',
+    ],
 
     shortDescription:
-
       'Explore Cairo and Alexandria in 4 unforgettable days. Visit the Pyramids of Giza, Grand Egyptian Museum, Catacombs of Kom El Shoqafa, Bibliotheca Alexandrina, Qaitbay Citadel, and more with a private Egyptologist guide.',
 
-
     description:
-
       'Discover two of Egypt’s most iconic cities combining ancient history, cultural heritage and Mediterranean beauty while traveling comfortably by private air-conditioned vehicle.',
 
-
     highlights: [
-
       'Visit the Great Pyramids of Giza',
 
       'Explore the Great Sphinx',
@@ -343,98 +290,70 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Explore Citadel of Qaitbay',
 
-      'Walk along Alexandria Corniche'
-
+      'Walk along Alexandria Corniche',
     ],
 
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Meet and assist at Cairo International Airport and transfer to your hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Giza Pyramids & Grand Egyptian Museum',
 
         description:
-
           'Explore the Giza Plateau and visit the Great Pyramids, Sphinx, Valley Temple and Grand Egyptian Museum.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Alexandria Tour',
 
         description:
-
           'Discover Alexandria attractions including Catacombs of Kom El Shoqafa, Pompey’s Pillar, Bibliotheca Alexandrina and Qaitbay Citadel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 4,
 
         title: 'Departure',
 
         description:
-
-          'Transfer to Cairo International Airport for departure flight.'
-
-      }
-
+          'Transfer to Cairo International Airport for departure flight.',
+      },
     ],
 
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Nile Dinner Cruise',
 
           'Sound & Light Show',
 
           'Memphis & Saqqara Tour',
 
-          'Cairo Tower'
-
-        ]
-
-      }
-
+          'Cairo Tower',
+        ],
+      },
     ],
 
-
     includes: [
-
       'Meet and assist at Cairo Airport',
 
       'Airport transfers',
@@ -453,13 +372,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled water',
 
-      'All taxes and service charges'
-
+      'All taxes and service charges',
     ],
 
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -470,41 +386,31 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Personal expenses',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
     entranceFeePolicy:
-
       'Entrance fees to all mentioned attractions are included according to the package details.',
 
-
     goodToKnow: [
-
       'Private transportation throughout the tour',
 
       'Suitable for families and couples',
 
       'Available daily throughout the year',
 
-      'Hotel upgrade options available'
-
+      'Hotel upgrade options available',
     ],
 
-
     relatedPackagesIds: [
-
       1001,
 
       1003,
 
-      1005
-
-    ]
-
+      1005,
+    ],
   },
-    // =====================================================
+  // =====================================================
   // 3. Cairo & Alexandria Tour by Train
   // =====================================================
 
@@ -515,75 +421,73 @@ export const FAMILY_PACKAGES: Package[] = [
 
     slug: 'cairo-alexandria-tour-by-train',
 
-
     destination: {
-
       id: 1,
 
       name: 'Cairo',
 
-      slug: 'cairo'
-
+      slug: 'cairo',
     },
 
-
-    type: [
-
-      'Family',
-
-      'Cultural',
-
-      'Historical',
-
-      'Train Tour'
-
-    ],
-
+    type: ['Family', 'Cultural', 'Historical', 'Train Tour'],
 
     category: 'family',
 
-
     duration: {
-
       value: 5,
 
       unit: 'days',
 
-      text: '5 Days / 4 Nights'
-
+      text: '5 Days / 4 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
 
-
     coverImage: 'assets/images/packages/family/5.jpg',
 
-    images: [],
-
-
+    images: [
+      'assets/images/packages/family/1003/1.jpg',
+      'assets/images/packages/family/1003/2.jpg',
+      'assets/images/packages/family/1003/3.jpg',
+      'assets/images/packages/family/1003/4.jpg',
+      'assets/images/packages/family/1003/5.jpg',
+      'assets/images/packages/family/1003/6.jpg',
+      'assets/images/packages/family/1003/7.jpg',
+      'assets/images/packages/family/1003/8.jpg',
+      'assets/images/packages/family/1003/9.jpg',
+      'assets/images/packages/family/1003/10.jpg',
+      'assets/images/packages/family/1003/11.jpg',
+      'assets/images/packages/family/1003/12.jpg',
+      'assets/images/packages/family/1003/13.jpg',
+      'assets/images/packages/family/1003/14.jpg',
+      'assets/images/packages/family/1003/15.jpg',
+      'assets/images/packages/family/1003/16.jpg',
+      'assets/images/packages/family/1003/17.jpg',
+      'assets/images/packages/family/1003/18.jpg',
+      'assets/images/packages/family/1003/19.jpg',
+      'assets/images/packages/family/1003/20.jpg',
+      'assets/images/packages/family/1003/21.jpg',
+      'assets/images/packages/family/1003/22.jpg',
+      'assets/images/packages/family/1003/23.jpg',
+      'assets/images/packages/family/1003/24.jpg',
+      'assets/images/packages/family/1003/25.jpg',
+      'assets/images/packages/family/1003/26.jpg',
+      'assets/images/packages/family/1003/27.jpg',
+    ],
 
     shortDescription:
-
       'Discover the highlights of Cairo and Alexandria with a comfortable family-friendly tour including ancient Egyptian landmarks, museums, and Mediterranean attractions.',
 
-
-
     description:
-
       'Enjoy an unforgettable Egyptian adventure combining the historical treasures of Cairo with the coastal beauty of Alexandria. Travel comfortably and explore Egypt’s most famous attractions with a professional guide.',
 
-
-
     highlights: [
-
       'Great Pyramids of Giza',
 
       'Great Sphinx',
@@ -602,41 +506,30 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Citadel of Qaitbay',
 
-      'Alexandria Corniche'
-
+      'Alexandria Corniche',
     ],
 
-
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Arrival at Cairo International Airport. Meet and assist service followed by transfer to your hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Giza Pyramids & Cairo Highlights',
 
         description:
-
           'Visit the Great Pyramids of Giza, Great Sphinx, Valley Temple and explore the treasures of Ancient Egypt.',
 
         activities: [
-
           'Great Pyramid of Khufu',
 
           'Pyramid of Khafre',
@@ -645,50 +538,34 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Great Sphinx',
 
-          'Valley Temple'
-
+          'Valley Temple',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Egyptian Museum & Khan El Khalili',
 
         description:
-
           'Discover the Egyptian Museum treasures and enjoy shopping at the historic Khan El Khalili Bazaar.',
 
-        activities: [
+        activities: ['Egyptian Museum', 'Khan El Khalili Bazaar'],
 
-          'Egyptian Museum',
-
-          'Khan El Khalili Bazaar'
-
-        ],
-
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 4,
 
         title: 'Alexandria Day Trip',
 
         description:
-
           'Travel to Alexandria and explore the ancient and modern attractions of the Mediterranean city.',
 
         activities: [
-
           'Catacombs of Kom El Shoqafa',
 
           'Pompey’s Pillar',
@@ -697,57 +574,39 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Qaitbay Citadel',
 
-          'Alexandria Corniche'
-
+          'Alexandria Corniche',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 5,
 
         title: 'Departure',
 
         description:
-
-          'Transfer to Cairo International Airport for your departure flight.'
-
-      }
-
+          'Transfer to Cairo International Airport for your departure flight.',
+      },
     ],
 
-
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Grand Egyptian Museum',
 
           'Nile Dinner Cruise',
 
           'Sound & Light Show',
 
-          'Memphis & Saqqara Tour'
-
-        ]
-
-      }
-
+          'Memphis & Saqqara Tour',
+        ],
+      },
     ],
 
-
-
     includes: [
-
       'Airport pickup and drop-off',
 
       '4 Nights accommodation in Cairo hotel',
@@ -764,14 +623,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled mineral water',
 
-      'All taxes and service charges'
-
+      'All taxes and service charges',
     ],
 
-
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -782,44 +637,31 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Personal expenses',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
-
     entranceFeePolicy:
-
       'Entrance fees depend on the selected sightseeing program and can be paid directly during the tour.',
 
-
-
     goodToKnow: [
-
       'Family-friendly experience',
 
       'Comfortable transportation',
 
       'Suitable for children and adults',
 
-      'Private guided tours available'
-
+      'Private guided tours available',
     ],
 
-
-
     relatedPackagesIds: [
-
       1001,
 
       1002,
 
-      1004
-
-    ]
-
+      1004,
+    ],
   },
-    // =====================================================
+  // =====================================================
   // 4. Cairo Family Vacation
   // =====================================================
 
@@ -830,77 +672,78 @@ export const FAMILY_PACKAGES: Package[] = [
 
     slug: 'cairo-family-vacation',
 
-
     destination: {
-
       id: 1,
 
       name: 'Cairo',
 
-      slug: 'cairo'
-
+      slug: 'cairo',
     },
 
-
-    type: [
-
-      'Family',
-
-      'Holiday',
-
-      'Cultural',
-
-      'Historical',
-
-      'Private Tour'
-
-    ],
-
+    type: ['Family', 'Holiday', 'Cultural', 'Historical', 'Private Tour'],
 
     category: 'family',
 
-
     duration: {
-
       value: 6,
 
       unit: 'days',
 
-      text: '6 Days / 5 Nights'
-
+      text: '6 Days / 5 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
 
+    coverImage: 'assets/images/packages/family/1004/1.jpg',
 
-    coverImage: '',
-
-    images: [],
-
-
+    images: [
+      'assets/images/packages/family/1004/1.jpg',
+      'assets/images/packages/family/1004/2.jpg',
+      'assets/images/packages/family/1004/3.jpg',
+      'assets/images/packages/family/1004/4.jpg',
+      'assets/images/packages/family/1004/5.jpg',
+      'assets/images/packages/family/1004/6.jpg',
+      'assets/images/packages/family/1004/7.jpg',
+      'assets/images/packages/family/1004/8.jpg',
+      'assets/images/packages/family/1004/9.jpg',
+      'assets/images/packages/family/1004/10.jpg',
+      'assets/images/packages/family/1004/11.jpg',
+      'assets/images/packages/family/1004/12.jpg',
+      'assets/images/packages/family/1004/13.jpg',
+      'assets/images/packages/family/1004/14.jpg',
+      'assets/images/packages/family/1004/15.jpg',
+      'assets/images/packages/family/1004/16.jpg',
+      'assets/images/packages/family/1004/17.jpg',
+      'assets/images/packages/family/1004/18.jpg',
+      'assets/images/packages/family/1004/19.jpg',
+      'assets/images/packages/family/1004/20.jpg',
+      'assets/images/packages/family/1004/21.jpg',
+      'assets/images/packages/family/1004/22.jpg',
+      'assets/images/packages/family/1004/23.jpg',
+      'assets/images/packages/family/1004/24.jpg',
+      'assets/images/packages/family/1004/25.jpg',
+      'assets/images/packages/family/1004/26.jpg',
+      'assets/images/packages/family/1004/27.jpg',
+      'assets/images/packages/family/1004/28.jpg',
+      'assets/images/packages/family/1004/29.jpg',
+      'assets/images/packages/family/1004/30.jpg',
+      'assets/images/packages/family/1004/31.jpg',
+      'assets/images/packages/family/1004/32.jpg',
+    ],
 
     shortDescription:
-
       'Enjoy an unforgettable family holiday in Cairo combining ancient Egyptian wonders, museums, cultural experiences, and exciting activities suitable for all family members.',
 
-
-
     description:
-
       'Discover Cairo with your family through a relaxed itinerary designed for adults and children. Explore the legendary pyramids, fascinating museums, historic areas, and enjoy comfortable accommodation with private guided tours.',
 
-
-
     highlights: [
-
       'Great Pyramids of Giza',
 
       'Great Sphinx',
@@ -917,41 +760,30 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Private Egyptologist Guide',
 
-      'Comfortable hotel accommodation'
-
+      'Comfortable hotel accommodation',
     ],
 
-
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Meet and assist upon arrival at Cairo International Airport followed by transfer to your family hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Giza Pyramids Adventure',
 
         description:
-
           'Enjoy a family adventure visiting the Great Pyramids, Sphinx and Valley Temple.',
 
         activities: [
-
           'Great Pyramid of Khufu',
 
           'Pyramid of Khafre',
@@ -960,114 +792,74 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Great Sphinx',
 
-          'Valley Temple'
-
+          'Valley Temple',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Egyptian Museum & Old Cairo',
 
         description:
-
           'Explore ancient Egyptian treasures and discover the historical streets of Old Cairo.',
 
         activities: [
-
           'Egyptian Museum',
 
           'Old Cairo',
 
           'Hanging Church',
 
-          'Ben Ezra Synagogue'
-
+          'Ben Ezra Synagogue',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 4,
 
         title: 'Family Fun Day',
 
         description:
-
           'Enjoy a relaxing day with optional family activities and entertainment.',
 
-        activities: [
+        activities: ['Cairo attractions', 'Shopping', 'Family activities'],
 
-          'Cairo attractions',
-
-          'Shopping',
-
-          'Family activities'
-
-        ],
-
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 5,
 
         title: 'Khan El Khalili & Cairo Experience',
 
         description:
-
           'Visit the famous Khan El Khalili Bazaar and enjoy the traditional atmosphere of Cairo.',
 
-        activities: [
+        activities: ['Khan El Khalili Bazaar', 'Local markets'],
 
-          'Khan El Khalili Bazaar',
-
-          'Local markets'
-
-        ],
-
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 6,
 
         title: 'Departure',
 
         description:
-
-          'Transfer to Cairo International Airport for your departure flight.'
-
-      }
-
+          'Transfer to Cairo International Airport for your departure flight.',
+      },
     ],
 
-
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Grand Egyptian Museum',
 
           'Nile Dinner Cruise',
@@ -1078,18 +870,12 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Memphis & Saqqara Tour',
 
-          'Felucca Ride'
-
-        ]
-
-      }
-
+          'Felucca Ride',
+        ],
+      },
     ],
 
-
-
     includes: [
-
       'Airport pickup and drop-off',
 
       '5 Nights accommodation in Cairo hotel',
@@ -1104,14 +890,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled mineral water',
 
-      'All taxes and service charges'
-
+      'All taxes and service charges',
     ],
 
-
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -1124,44 +906,31 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Personal expenses',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
-
     entranceFeePolicy:
-
       'Entrance fees are not included unless specifically mentioned. Guests can select additional attractions and pay fees directly during the tour.',
 
-
-
     goodToKnow: [
-
       'Designed for families with children',
 
       'Flexible and comfortable itinerary',
 
       'Private guided experience',
 
-      'Suitable for all ages'
-
+      'Suitable for all ages',
     ],
 
-
-
     relatedPackagesIds: [
-
       1001,
 
       1003,
 
-      1005
-
-    ]
-
+      1005,
+    ],
   },
-    // =====================================================
+  // =====================================================
   // 5. Cairo & Nile Family Package
   // =====================================================
 
@@ -1172,77 +941,86 @@ export const FAMILY_PACKAGES: Package[] = [
 
     slug: 'cairo-nile-family-package',
 
-
     destination: {
-
       id: 1,
 
       name: 'Cairo',
 
-      slug: 'cairo'
-
+      slug: 'cairo',
     },
 
-
-    type: [
-
-      'Family',
-
-      'Holiday',
-
-      'Cultural',
-
-      'Nile Cruise',
-
-      'Private Tour'
-
-    ],
-
+    type: ['Family', 'Holiday', 'Cultural', 'Nile Cruise', 'Private Tour'],
 
     category: 'family',
 
-
     duration: {
-
       value: 7,
 
       unit: 'days',
 
-      text: '7 Days / 6 Nights'
-
+      text: '7 Days / 6 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
 
+    coverImage: 'assets/images/packages/family/1005/1.jpg',
 
-    coverImage: '',
-
-    images: [],
-
-
+    images: [
+      'assets/images/packages/family/1005/1.jpg',
+      'assets/images/packages/family/1005/2.jpg',
+      'assets/images/packages/family/1005/3.jpg',
+      'assets/images/packages/family/1005/4.jpg',
+      'assets/images/packages/family/1005/5.jpg',
+      'assets/images/packages/family/1005/6.jpg',
+      'assets/images/packages/family/1005/7.jpg',
+      'assets/images/packages/family/1005/8.jpg',
+      'assets/images/packages/family/1005/9.jpg',
+      'assets/images/packages/family/1005/10.jpg',
+      'assets/images/packages/family/1005/11.jpg',
+      'assets/images/packages/family/1005/12.jpg',
+      'assets/images/packages/family/1005/13.jpg',
+      'assets/images/packages/family/1005/14.jpg',
+      'assets/images/packages/family/1005/15.jpg',
+      'assets/images/packages/family/1005/16.jpg',
+      'assets/images/packages/family/1005/17.jpg',
+      'assets/images/packages/family/1005/18.jpg',
+      'assets/images/packages/family/1005/19.jpg',
+      'assets/images/packages/family/1005/20.jpg',
+      'assets/images/packages/family/1005/21.jpg',
+      'assets/images/packages/family/1005/22.jpg',
+      'assets/images/packages/family/1005/23.jpg',
+      'assets/images/packages/family/1005/24.jpg',
+      'assets/images/packages/family/1005/25.jpg',
+      'assets/images/packages/family/1005/26.jpg',
+      'assets/images/packages/family/1005/27.jpg',
+      'assets/images/packages/family/1005/28.jpg',
+      'assets/images/packages/family/1005/29.jpg',
+      'assets/images/packages/family/1005/30.jpg',
+      'assets/images/packages/family/1005/31.jpg',
+      'assets/images/packages/family/1005/32.jpg',
+      'assets/images/packages/family/1005/33.jpg',
+      'assets/images/packages/family/1005/34.jpg',
+      'assets/images/packages/family/1005/35.jpg',
+      'assets/images/packages/family/1005/36.jpg',
+      'assets/images/packages/family/1005/37.jpg',
+      'assets/images/packages/family/1005/38.jpg',
+      'assets/images/packages/family/1005/39.jpg',
+      'assets/images/packages/family/1005/40.jpg',
+    ],
 
     shortDescription:
-
       'Enjoy a wonderful family journey combining the historical treasures of Cairo with a relaxing Nile Cruise experience through Luxor and Aswan.',
 
-
-
     description:
-
       'Create unforgettable family memories while exploring the ancient wonders of Cairo and sailing along the legendary Nile River. Discover temples, monuments, and breathtaking landscapes with a comfortable private itinerary.',
 
-
-
     highlights: [
-
       'Great Pyramids of Giza',
 
       'Great Sphinx',
@@ -1261,41 +1039,30 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Aswan High Dam',
 
-      'Family-friendly experience'
-
+      'Family-friendly experience',
     ],
 
-
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Arrival at Cairo International Airport. Meet and assist service followed by transfer to your hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Giza Pyramids Tour',
 
         description:
-
           'Enjoy a family tour to the Great Pyramids, Sphinx and Valley Temple.',
 
         activities: [
-
           'Great Pyramid of Khufu',
 
           'Pyramid of Khafre',
@@ -1304,172 +1071,104 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Great Sphinx',
 
-          'Valley Temple'
-
+          'Valley Temple',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Cairo Sightseeing & Fly to Luxor',
 
         description:
-
           'Visit Cairo highlights before transferring to Luxor to start your Nile Cruise.',
 
-        activities: [
+        activities: ['Egyptian Museum', 'Khan El Khalili Bazaar'],
 
-          'Egyptian Museum',
-
-          'Khan El Khalili Bazaar'
-
-        ],
-
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 4,
 
         title: 'Luxor East & West Bank',
 
         description:
-
           'Explore the ancient wonders of Luxor including temples and royal tombs.',
 
         activities: [
-
           'Karnak Temple',
 
           'Luxor Temple',
 
           'Valley of the Kings',
 
-          'Temple of Queen Hatshepsut'
-
+          'Temple of Queen Hatshepsut',
         ],
 
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 5,
 
         title: 'Edfu & Kom Ombo Temples',
 
         description:
-
           'Enjoy sailing on the Nile and visit the famous temples of Edfu and Kom Ombo.',
 
-        activities: [
+        activities: ['Edfu Temple', 'Kom Ombo Temple'],
 
-          'Edfu Temple',
-
-          'Kom Ombo Temple'
-
-        ],
-
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 6,
 
         title: 'Aswan Highlights',
 
         description:
-
           'Discover Aswan attractions before enjoying your final cruise experience.',
 
-        activities: [
+        activities: ['Philae Temple', 'Aswan High Dam', 'Unfinished Obelisk'],
 
-          'Philae Temple',
-
-          'Aswan High Dam',
-
-          'Unfinished Obelisk'
-
-        ],
-
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 7,
 
         title: 'Departure',
 
-        description:
-
-          'Transfer to Aswan Airport for your departure flight.'
-
-      }
-
+        description: 'Transfer to Aswan Airport for your departure flight.',
+      },
     ],
 
-
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Grand Egyptian Museum',
 
           'Nile Dinner Cruise',
 
           'Sound & Light Show',
 
-          'Cairo Tower'
-
-        ]
-
+          'Cairo Tower',
+        ],
       },
 
-
       {
-
         destination: 'Aswan',
 
-        activities: [
-
-          'Abu Simbel Temples',
-
-          'Nubian Village',
-
-          'Felucca Ride'
-
-        ]
-
-      }
-
+        activities: ['Abu Simbel Temples', 'Nubian Village', 'Felucca Ride'],
+      },
     ],
 
-
-
     includes: [
-
       'Airport pickup and drop-off',
 
       'Accommodation in selected hotels',
@@ -1488,14 +1187,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled mineral water',
 
-      'All taxes and service charges'
-
+      'All taxes and service charges',
     ],
 
-
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -1506,20 +1201,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Optional tours',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
-
     entranceFeePolicy:
-
       'Entrance fees are not included unless mentioned. Guests can choose additional sightseeing options and pay fees directly.',
 
-
-
     goodToKnow: [
-
       'Perfect for families',
 
       'Comfortable Nile experience',
@@ -1528,24 +1216,18 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Private guided tour',
 
-      'Relaxed family itinerary'
-
+      'Relaxed family itinerary',
     ],
 
-
-
     relatedPackagesIds: [
-
       1002,
 
       1004,
 
-      1006
-
-    ]
-
+      1006,
+    ],
   },
-    // =====================================================
+  // =====================================================
   // 6. Egypt Family Adventure Package
   // =====================================================
 
@@ -1556,77 +1238,88 @@ export const FAMILY_PACKAGES: Package[] = [
 
     slug: 'egypt-family-adventure-package',
 
-
     destination: {
-
       id: 1,
 
       name: 'Cairo',
 
-      slug: 'cairo'
-
+      slug: 'cairo',
     },
 
-
-    type: [
-
-      'Family',
-
-      'Adventure',
-
-      'Cultural',
-
-      'Historical',
-
-      'Private Tour'
-
-    ],
-
+    type: ['Family', 'Adventure', 'Cultural', 'Historical', 'Private Tour'],
 
     category: 'family',
 
-
     duration: {
-
       value: 8,
 
       unit: 'days',
 
-      text: '8 Days / 7 Nights'
-
+      text: '8 Days / 7 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
 
+    coverImage: 'assets/images/packages/family/1006/1.jpg',
 
-    coverImage: '',
-
-    images: [],
-
-
+    images: [
+      'assets/images/packages/family/1006/1.jpg',
+      'assets/images/packages/family/1006/2.jpg',
+      'assets/images/packages/family/1006/3.jpg',
+      'assets/images/packages/family/1006/4.jpg',
+      'assets/images/packages/family/1006/5.jpg',
+      'assets/images/packages/family/1006/6.jpg',
+      'assets/images/packages/family/1006/7.jpg',
+      'assets/images/packages/family/1006/8.jpg',
+      'assets/images/packages/family/1006/9.jpg',
+      'assets/images/packages/family/1006/10.jpg',
+      'assets/images/packages/family/1006/11.jpg',
+      'assets/images/packages/family/1006/12.jpg',
+      'assets/images/packages/family/1006/13.jpg',
+      'assets/images/packages/family/1006/14.jpg',
+      'assets/images/packages/family/1006/15.jpg',
+      'assets/images/packages/family/1006/16.jpg',
+      'assets/images/packages/family/1006/17.jpg',
+      'assets/images/packages/family/1006/18.jpg',
+      'assets/images/packages/family/1006/19.jpg',
+      'assets/images/packages/family/1006/20.jpg',
+      'assets/images/packages/family/1006/21.jpg',
+      'assets/images/packages/family/1006/22.jpg',
+      'assets/images/packages/family/1006/23.jpg',
+      'assets/images/packages/family/1006/24.jpg',
+      'assets/images/packages/family/1006/25.jpg',
+      'assets/images/packages/family/1006/26.jpg',
+      'assets/images/packages/family/1006/27.jpg',
+      'assets/images/packages/family/1006/28.jpg',
+      'assets/images/packages/family/1006/29.jpg',
+      'assets/images/packages/family/1006/30.jpg',
+      'assets/images/packages/family/1006/31.jpg',
+      'assets/images/packages/family/1006/32.jpg',
+      'assets/images/packages/family/1006/33.jpg',
+      'assets/images/packages/family/1006/34.jpg',
+      'assets/images/packages/family/1006/35.jpg',
+      'assets/images/packages/family/1006/36.jpg',
+      'assets/images/packages/family/1006/37.jpg',
+      'assets/images/packages/family/1006/38.jpg',
+      'assets/images/packages/family/1006/39.jpg',
+      'assets/images/packages/family/1006/40.jpg',
+      'assets/images/packages/family/1006/41.jpg',
+      'assets/images/packages/family/1006/42.jpg',
+    ],
 
     shortDescription:
-
       'An exciting family adventure across Egypt combining Cairo, Luxor, Aswan, ancient monuments, Nile experiences, and unforgettable cultural activities.',
 
-
-
     description:
-
       'Enjoy a complete Egyptian family adventure designed to create unforgettable memories. Explore ancient wonders, discover Pharaohs history, experience the Nile, and enjoy comfortable private tours suitable for all ages.',
 
-
-
     highlights: [
-
       'Great Pyramids of Giza',
 
       'Grand Egyptian Museum',
@@ -1645,214 +1338,155 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Family-friendly activities',
 
-      'Private Egyptologist Guide'
-
+      'Private Egyptologist Guide',
     ],
 
-
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Arrival at Cairo International Airport. Meet and assist service followed by transfer to your hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Giza Pyramids & Museum',
 
         description:
-
           'Discover the wonders of Ancient Egypt including the pyramids and the Egyptian Museum.',
 
         activities: [
-
           'Great Pyramids of Giza',
 
           'Great Sphinx',
 
-          'Egyptian Museum'
-
+          'Egyptian Museum',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Fly to Luxor',
 
         description:
-
           'Transfer to Cairo Airport and fly to Luxor to begin your Upper Egypt adventure.',
 
-        overnight: 'Luxor'
-
+        overnight: 'Luxor',
       },
 
-
       {
-
         day: 4,
 
         title: 'Luxor Historical Tour',
 
         description:
-
           'Explore the legendary temples and tombs of ancient Luxor.',
 
         activities: [
-
           'Karnak Temple',
 
           'Luxor Temple',
 
           'Valley of the Kings',
 
-          'Temple of Queen Hatshepsut'
-
+          'Temple of Queen Hatshepsut',
         ],
 
-        overnight: 'Luxor'
-
+        overnight: 'Luxor',
       },
 
-
       {
-
         day: 5,
 
         title: 'Transfer to Aswan',
 
-        description:
+        description: 'Travel to Aswan and enjoy the beautiful Nile landscapes.',
 
-          'Travel to Aswan and enjoy the beautiful Nile landscapes.',
-
-        overnight: 'Aswan'
-
+        overnight: 'Aswan',
       },
 
-
       {
-
         day: 6,
 
         title: 'Aswan Highlights',
 
         description:
-
           'Discover Aswan’s most famous attractions and enjoy a family-friendly cultural experience.',
 
         activities: [
-
           'Philae Temple',
 
           'Aswan High Dam',
 
           'Unfinished Obelisk',
 
-          'Nubian Village'
-
+          'Nubian Village',
         ],
 
-        overnight: 'Aswan'
-
+        overnight: 'Aswan',
       },
 
-
       {
-
         day: 7,
 
         title: 'Family Leisure Day',
 
         description:
-
           'Enjoy free time with optional activities and relaxing family experiences.',
 
-        overnight: 'Aswan'
-
+        overnight: 'Aswan',
       },
 
-
       {
-
         day: 8,
 
         title: 'Departure',
 
         description:
-
-          'Transfer to Aswan International Airport for your departure flight.'
-
-      }
-
+          'Transfer to Aswan International Airport for your departure flight.',
+      },
     ],
 
-
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Grand Egyptian Museum',
 
           'Nile Dinner Cruise',
 
           'Sound & Light Show',
 
-          'Cairo Tower'
-
-        ]
-
+          'Cairo Tower',
+        ],
       },
 
-
       {
-
         destination: 'Aswan',
 
         activities: [
-
           'Abu Simbel Temples',
 
           'Nubian Village',
 
           'Felucca Ride',
 
-          'Botanical Garden'
-
-        ]
-
-      }
-
+          'Botanical Garden',
+        ],
+      },
     ],
 
-
-
     includes: [
-
       'Airport transfers',
 
       'Accommodation in selected hotels',
@@ -1869,14 +1503,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled mineral water',
 
-      'All taxes and service charges'
-
+      'All taxes and service charges',
     ],
 
-
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -1889,20 +1519,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Personal expenses',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
-
     entranceFeePolicy:
-
       'Entrance fees are not included unless specified. Guests can select additional attractions and pay fees directly during the tour.',
 
-
-
     goodToKnow: [
-
       'Perfect family adventure',
 
       'Suitable for children and adults',
@@ -1911,24 +1534,18 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Cultural and educational experience',
 
-      'Comfortable transportation'
-
+      'Comfortable transportation',
     ],
 
-
-
     relatedPackagesIds: [
-
       1005,
 
       1007,
 
-      1008
-
-    ]
-
+      1008,
+    ],
   },
-    // =====================================================
+  // =====================================================
   // 7. Egypt Family Discovery Package
   // =====================================================
 
@@ -1939,77 +1556,45 @@ export const FAMILY_PACKAGES: Package[] = [
 
     slug: 'egypt-family-discovery-package',
 
-
     destination: {
-
       id: 1,
 
       name: 'Cairo',
 
-      slug: 'cairo'
-
+      slug: 'cairo',
     },
 
-
-    type: [
-
-      'Family',
-
-      'Discovery',
-
-      'Cultural',
-
-      'Historical',
-
-      'Private Tour'
-
-    ],
-
+    type: ['Family', 'Discovery', 'Cultural', 'Historical', 'Private Tour'],
 
     category: 'family',
 
-
     duration: {
-
       value: 9,
 
       unit: 'days',
 
-      text: '9 Days / 8 Nights'
-
+      text: '9 Days / 8 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
-
 
     coverImage: '',
 
     images: [],
 
-
-
     shortDescription:
-
       'Discover Egypt with your family through an amazing journey covering Cairo, Luxor, Aswan, ancient monuments, museums, and unforgettable cultural experiences.',
 
-
-
     description:
-
       'Experience the best of Egypt with a family-friendly itinerary combining history, adventure, and relaxation. Explore the ancient civilization, visit iconic landmarks, and enjoy private guided tours designed for all ages.',
 
-
-
     highlights: [
-
       'Great Pyramids of Giza',
 
       'Great Sphinx',
@@ -2028,108 +1613,81 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Traditional Egyptian experiences',
 
-      'Private Egyptologist Guide'
-
+      'Private Egyptologist Guide',
     ],
 
-
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Meet and assist at Cairo International Airport followed by transfer to your hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Pyramids & Ancient Cairo',
 
         description:
-
           'Explore the most famous landmarks of ancient Egypt and discover Cairo’s historical treasures.',
 
         activities: [
-
           'Great Pyramids of Giza',
 
           'Great Sphinx',
 
           'Valley Temple',
 
-          'Old Cairo'
-
+          'Old Cairo',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Museum & Cultural Experience',
 
         description:
-
           'Discover Egyptian history through museums and local cultural attractions.',
 
         activities: [
-
           'Grand Egyptian Museum',
 
           'Egyptian Museum',
 
-          'Khan El Khalili Bazaar'
-
+          'Khan El Khalili Bazaar',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 4,
 
         title: 'Fly to Luxor',
 
         description:
-
           'Transfer to Cairo Airport and fly to Luxor. Upon arrival transfer to your hotel.',
 
-        overnight: 'Luxor'
-
+        overnight: 'Luxor',
       },
 
-
       {
-
         day: 5,
 
         title: 'Luxor East & West Bank',
 
         description:
-
           'Explore the magnificent temples and tombs of ancient Luxor.',
 
         activities: [
-
           'Karnak Temple',
 
           'Luxor Temple',
@@ -2138,131 +1696,86 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Temple of Queen Hatshepsut',
 
-          'Colossi of Memnon'
-
+          'Colossi of Memnon',
         ],
 
-        overnight: 'Luxor'
-
+        overnight: 'Luxor',
       },
 
-
       {
-
         day: 6,
 
         title: 'Transfer to Aswan',
 
-        description:
+        description: 'Travel to Aswan while enjoying the beautiful Nile views.',
 
-          'Travel to Aswan while enjoying the beautiful Nile views.',
-
-        overnight: 'Aswan'
-
+        overnight: 'Aswan',
       },
 
-
       {
-
         day: 7,
 
         title: 'Aswan Tour',
 
         description:
-
           'Discover the highlights of Aswan and experience Nubian culture.',
 
         activities: [
-
           'Philae Temple',
 
           'Aswan High Dam',
 
           'Unfinished Obelisk',
 
-          'Nubian Village'
-
+          'Nubian Village',
         ],
 
-        overnight: 'Aswan'
-
+        overnight: 'Aswan',
       },
 
-
       {
-
         day: 8,
 
         title: 'Family Leisure Day',
 
-        description:
+        description: 'Enjoy free time and optional family activities.',
 
-          'Enjoy free time and optional family activities.',
-
-        overnight: 'Aswan'
-
+        overnight: 'Aswan',
       },
 
-
       {
-
         day: 9,
 
         title: 'Departure',
 
         description:
-
-          'Transfer to Aswan International Airport for your departure flight.'
-
-      }
-
+          'Transfer to Aswan International Airport for your departure flight.',
+      },
     ],
 
-
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Nile Dinner Cruise',
 
           'Sound & Light Show',
 
           'Cairo Tower',
 
-          'Memphis & Saqqara Tour'
-
-        ]
-
+          'Memphis & Saqqara Tour',
+        ],
       },
 
-
       {
-
         destination: 'Aswan',
 
-        activities: [
-
-          'Abu Simbel Temples',
-
-          'Felucca Ride',
-
-          'Botanical Garden'
-
-        ]
-
-      }
-
+        activities: ['Abu Simbel Temples', 'Felucca Ride', 'Botanical Garden'],
+      },
     ],
 
-
-
     includes: [
-
       'Airport transfers',
 
       'Accommodation in selected family-friendly hotels',
@@ -2279,14 +1792,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled mineral water',
 
-      'All taxes and service charges'
-
+      'All taxes and service charges',
     ],
 
-
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -2299,20 +1808,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Personal expenses',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
-
     entranceFeePolicy:
-
       'Entrance fees are not included unless specified. Guests can customize their sightseeing program and pay fees directly.',
 
-
-
     goodToKnow: [
-
       'Educational family experience',
 
       'Suitable for children',
@@ -2321,49 +1823,37 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Perfect introduction to Egypt',
 
-      'Comfortable travel pace'
-
+      'Comfortable travel pace',
     ],
 
-
-
     relatedPackagesIds: [
-
       1005,
 
       1006,
 
-      1008
-
-    ]
-
+      1008,
+    ],
   },
-    // =====================================================
+  // =====================================================
   // 8. Ultimate Egypt Family Experience
   // =====================================================
 
   {
-
     id: 1008,
 
     title: 'Ultimate Egypt Family Experience',
 
     slug: 'ultimate-egypt-family-experience',
 
-
     destination: {
-
       id: 1,
 
       name: 'Cairo',
 
-      slug: 'cairo'
-
+      slug: 'cairo',
     },
 
-
     type: [
-
       'Family',
 
       'Luxury',
@@ -2374,55 +1864,38 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Nile Cruise',
 
-      'Beach Holiday'
-
+      'Beach Holiday',
     ],
-
 
     category: 'family',
 
-
     duration: {
-
       value: 12,
 
       unit: 'days',
 
-      text: '12 Days / 11 Nights'
-
+      text: '12 Days / 11 Nights',
     },
-
 
     price: 0,
 
     oldPrice: undefined,
 
-
     rating: 0,
 
     reviews: 0,
-
 
     coverImage: '',
 
     images: [],
 
-
-
     shortDescription:
-
       'The ultimate family journey across Egypt combining Cairo, Luxor, Aswan, a luxury Nile Cruise, Abu Simbel, and Red Sea relaxation.',
 
-
-
     description:
-
       'Create unforgettable family memories with the ultimate Egypt experience. Discover ancient wonders, sail the legendary Nile, explore magnificent temples, and relax on the beautiful Red Sea coast with a comfortable private itinerary.',
 
-
-
     highlights: [
-
       'Great Pyramids of Giza',
 
       'Great Sphinx',
@@ -2447,41 +1920,30 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Hurghada Red Sea Experience',
 
-      'Family-friendly activities'
-
+      'Family-friendly activities',
     ],
 
-
-
     itinerary: [
-
       {
-
         day: 1,
 
         title: 'Arrival in Cairo',
 
         description:
-
           'Meet and assist upon arrival at Cairo International Airport followed by transfer to your family hotel.',
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 2,
 
         title: 'Giza Pyramids & Cairo Tour',
 
         description:
-
           'Explore the legendary pyramids and discover Cairo’s ancient treasures.',
 
         activities: [
-
           'Great Pyramid of Khufu',
 
           'Pyramid of Khafre',
@@ -2492,67 +1954,44 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Valley Temple',
 
-          'Grand Egyptian Museum'
-
+          'Grand Egyptian Museum',
         ],
 
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 3,
 
         title: 'Cairo Cultural Experience',
 
         description:
-
           'Discover the history and culture of Cairo through museums and traditional markets.',
 
-        activities: [
+        activities: ['Egyptian Museum', 'Khan El Khalili Bazaar', 'Old Cairo'],
 
-          'Egyptian Museum',
-
-          'Khan El Khalili Bazaar',
-
-          'Old Cairo'
-
-        ],
-
-        overnight: 'Cairo'
-
+        overnight: 'Cairo',
       },
 
-
       {
-
         day: 4,
 
         title: 'Fly to Luxor & Nile Cruise',
 
         description:
-
           'Transfer to Cairo Airport, fly to Luxor and board your luxury Nile Cruise.',
 
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 5,
 
         title: 'Luxor East & West Bank',
 
-        description:
-
-          'Explore the greatest monuments of ancient Luxor.',
+        description: 'Explore the greatest monuments of ancient Luxor.',
 
         activities: [
-
           'Valley of the Kings',
 
           'Temple of Queen Hatshepsut',
@@ -2561,153 +2000,106 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Karnak Temple',
 
-          'Luxor Temple'
-
+          'Luxor Temple',
         ],
 
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 6,
 
         title: 'Sailing to Edfu',
 
         description:
-
           'Enjoy sailing along the Nile and visit the Temple of Horus.',
 
-        activities: [
+        activities: ['Edfu Temple'],
 
-          'Edfu Temple'
-
-        ],
-
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 7,
 
         title: 'Kom Ombo & Aswan',
 
-        description:
-
-          'Visit Kom Ombo Temple and continue sailing to Aswan.',
+        description: 'Visit Kom Ombo Temple and continue sailing to Aswan.',
 
         activities: [
-
           'Kom Ombo Temple',
 
           'Philae Temple',
 
           'Aswan High Dam',
 
-          'Unfinished Obelisk'
-
+          'Unfinished Obelisk',
         ],
 
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 8,
 
         title: 'Abu Simbel Excursion',
 
         description:
-
           'Visit the magnificent Abu Simbel Temples and return to your cruise.',
 
-        activities: [
+        activities: ['Abu Simbel Temples'],
 
-          'Abu Simbel Temples'
-
-        ],
-
-        overnight: 'Nile Cruise'
-
+        overnight: 'Nile Cruise',
       },
 
-
       {
-
         day: 9,
 
         title: 'Transfer to Hurghada',
 
         description:
-
           'Transfer from Aswan to Hurghada for a relaxing family beach holiday.',
 
-        overnight: 'Hurghada'
-
+        overnight: 'Hurghada',
       },
 
-
       {
-
         day: 10,
 
         title: 'Red Sea Family Relaxation',
 
         description:
-
           'Enjoy the beach, resort facilities, and optional family activities.',
 
-        overnight: 'Hurghada'
-
+        overnight: 'Hurghada',
       },
 
-
       {
-
         day: 11,
 
         title: 'Red Sea Adventure Day',
 
         description:
-
           'Enjoy optional snorkeling, desert safari, or family sea activities.',
 
-        overnight: 'Hurghada'
-
+        overnight: 'Hurghada',
       },
 
-
       {
-
         day: 12,
 
         title: 'Departure',
 
         description:
-
-          'Transfer to Hurghada International Airport for your departure flight.'
-
-      }
-
+          'Transfer to Hurghada International Airport for your departure flight.',
+      },
     ],
 
-
-
     optionalTours: [
-
       {
-
         destination: 'Cairo',
 
         activities: [
-
           'Nile Dinner Cruise',
 
           'Sound & Light Show',
@@ -2716,38 +2108,28 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Memphis & Saqqara Tour',
 
-          'Felucca Ride'
-
-        ]
-
+          'Felucca Ride',
+        ],
       },
 
-
       {
-
         destination: 'Aswan',
 
         activities: [
-
           'Nubian Village',
 
           'Felucca Ride',
 
           'Botanical Garden',
 
-          'Kalabsha Temple'
-
-        ]
-
+          'Kalabsha Temple',
+        ],
       },
 
-
       {
-
         destination: 'Hurghada',
 
         activities: [
-
           'Orange Bay',
 
           'Paradise Island',
@@ -2760,18 +2142,12 @@ export const FAMILY_PACKAGES: Package[] = [
 
           'Quad Bike Adventure',
 
-          'Dolphin House'
-
-        ]
-
-      }
-
+          'Dolphin House',
+        ],
+      },
     ],
 
-
-
     includes: [
-
       'Meet, Assist & Escort upon arrival and departure',
 
       'Accommodation in selected 5-Star hotels',
@@ -2794,14 +2170,10 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Bottled mineral water',
 
-      'All Taxes & Service Charges'
-
+      'All Taxes & Service Charges',
     ],
 
-
-
     excludes: [
-
       'International flights',
 
       'Egypt entry visa',
@@ -2816,20 +2188,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Personal expenses',
 
-      'Tipping'
-
+      'Tipping',
     ],
 
-
-
     entranceFeePolicy:
-
       'Entrance fees are not included unless specified. Families can choose additional attractions and pay entrance fees directly during the tour.',
 
-
-
     goodToKnow: [
-
       'Ultimate family holiday in Egypt',
 
       'Perfect combination of history and relaxation',
@@ -2838,22 +2203,15 @@ export const FAMILY_PACKAGES: Package[] = [
 
       'Suitable for children and adults',
 
-      'Private flexible itinerary'
-
+      'Private flexible itinerary',
     ],
 
-
-
     relatedPackagesIds: [
-
       1005,
 
       1006,
 
-      1007
-
-    ]
-
-  }
-
+      1007,
+    ],
+  },
 ];
