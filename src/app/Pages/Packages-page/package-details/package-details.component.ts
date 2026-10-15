@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,6 +22,22 @@ export class PackageDetailsComponent implements OnInit {
   relatedPackages: Package[] = [];
 
   loading = false;
+
+
+  // =====================================================
+  // IMAGE GALLERY
+  // =====================================================
+
+  /**
+   * Number of images displayed initially.
+   * The first 20 images are shown.
+   */
+  readonly initialImagesCount = 20;
+
+  /**
+   * Controls whether all gallery images are displayed.
+   */
+  showAllImages = false;
 
 
   // =====================================================
@@ -79,6 +94,13 @@ export class PackageDetailsComponent implements OnInit {
       PACKAGES.find(pkg => pkg.id === id);
 
     this.packageDetails = foundPackage;
+
+    // Reset gallery state whenever a new package is loaded
+    this.showAllImages = false;
+
+    // Reset viewer
+    this.isViewerOpen = false;
+    this.selectedImageIndex = 0;
 
     if (this.packageDetails) {
 
@@ -139,10 +161,58 @@ export class PackageDetailsComponent implements OnInit {
 
 
   // =====================================================
+  // GALLERY
+  // =====================================================
+
+  /**
+   * Show all gallery images / show only first 20.
+   */
+  toggleAllImages(): void {
+
+    this.showAllImages = !this.showAllImages;
+
+  }
+
+
+  /**
+   * Returns the number of images currently visible.
+   */
+  get visibleImagesCount(): number {
+
+    if (!this.packageDetails?.images?.length) {
+      return 0;
+    }
+
+    if (this.showAllImages) {
+      return this.packageDetails.images.length;
+    }
+
+    return Math.min(
+      this.initialImagesCount,
+      this.packageDetails.images.length
+    );
+
+  }
+
+
+  // =====================================================
   // IMAGE VIEWER
   // =====================================================
 
   openViewer(index: number): void {
+
+    if (
+      !this.packageDetails?.images?.length
+    ) {
+      return;
+    }
+
+    if (
+      index < 0 ||
+      index >= this.packageDetails.images.length
+    ) {
+      return;
+    }
 
     this.selectedImageIndex = index;
 

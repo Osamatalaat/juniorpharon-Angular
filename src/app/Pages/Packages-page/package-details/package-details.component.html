@@ -5,45 +5,45 @@
 <div class="bg-background-gray min-h-screen py-10 px-6">
 
   <!-- =================================================== -->
-  <!-- GALLERY -->
+  <!-- HERO IMAGE -->
   <!-- =================================================== -->
 
-  <div class="mb-8 container mx-auto">
+  <div class="container mx-auto mb-10">
 
-    <!-- Main Image -->
+    <!-- Hero Image -->
 
     <div
-      *ngIf="packageDetails?.images?.length"
-      class="mb-4"
+      *ngIf="packageDetails?.coverImage"
+      class="
+        relative
+        overflow-hidden
+        rounded-2xl
+        shadow-card
+      "
     >
 
       <img
-        [src]="packageDetails?.images?.[0]"
-        (click)="openViewer(0)"
+        [src]="packageDetails?.coverImage"
+        [alt]="packageDetails?.title"
         class="
           w-full
           h-[500px]
+          md:h-[600px]
           object-cover
-          rounded-xl
-          cursor-pointer
-          hover:opacity-95
-          transition
-          shadow-card
         "
-        alt="{{ packageDetails?.title }}"
       />
 
     </div>
 
 
-    <!-- No Image -->
+    <!-- No Hero Image -->
 
     <div
-      *ngIf="!packageDetails?.images?.length"
+      *ngIf="!packageDetails?.coverImage"
       class="
         w-full
         h-[500px]
-        rounded-xl
+        rounded-2xl
         bg-surface-dark
         flex
         items-center
@@ -52,47 +52,7 @@
       "
     >
 
-      No Images Available
-
-    </div>
-
-
-    <!-- Thumbnails -->
-
-    <div
-      *ngIf="packageDetails?.images?.length"
-      class="
-        grid
-        grid-cols-2
-        md:grid-cols-4
-        gap-3
-      "
-    >
-
-      <ng-container
-        *ngFor="
-          let img of packageDetails?.images?.slice(1, 5);
-          let i = index
-        "
-      >
-
-        <img
-          [src]="img"
-          (click)="openViewer(i + 1)"
-          class="
-            w-full
-            h-40
-            object-cover
-            rounded-lg
-            cursor-pointer
-            hover:scale-[1.02]
-            transition
-            shadow-sm
-          "
-          alt="{{ packageDetails?.title }}"
-        />
-
-      </ng-container>
+      No Image Available
 
     </div>
 
@@ -107,7 +67,7 @@
 
 
     <!-- ================================================= -->
-    <!-- PACKAGE INFO -->
+    <!-- PACKAGE INFORMATION -->
     <!-- ================================================= -->
 
     <div
@@ -131,9 +91,12 @@
         "
       >
 
-        <!-- Package Information -->
+        <!-- ================================================= -->
+        <!-- PACKAGE INFORMATION -->
+        <!-- ================================================= -->
 
         <div class="flex-1 min-w-[280px]">
+
 
           <!-- Destination -->
 
@@ -287,7 +250,10 @@
           </div>
 
 
+          <!-- BOOK PACKAGE -->
+
           <button
+            type="button"
             (click)="openBooking()"
             class="
               w-full
@@ -299,6 +265,7 @@
               font-semibold
               transition
               shadow-sm
+              cursor-pointer
             "
           >
 
@@ -528,6 +495,271 @@
       </div>
 
     </div>
+        <!-- ================================================= -->
+    <!-- PHOTO GALLERY -->
+    <!-- ================================================= -->
+
+    <div
+      *ngIf="packageDetails?.images?.length"
+      class="
+        bg-surface
+        rounded-2xl
+        shadow-card
+        p-6
+        border
+        border-border
+      "
+    >
+
+      <!-- Gallery Header -->
+
+      <div
+        class="
+          flex
+          items-end
+          justify-between
+          gap-4
+          mb-6
+          flex-wrap
+        "
+      >
+
+        <div>
+
+          <h2
+            class="
+              text-2xl
+              md:text-3xl
+              font-bold
+              text-heading
+            "
+          >
+
+            Photo Gallery
+
+          </h2>
+
+          <p
+            class="
+              mt-2
+              text-text-secondary
+              text-sm
+              md:text-base
+            "
+          >
+
+            Explore the places and experiences included in this journey.
+
+          </p>
+
+        </div>
+
+
+        <!-- PHOTO COUNT -->
+
+        <div
+          class="
+            text-sm
+            font-semibold
+            text-text-gold
+          "
+        >
+
+          {{ packageDetails?.images?.length }} Photos
+
+        </div>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- GALLERY -->
+      <!-- ================================================= -->
+
+      <div
+        class="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          gap-5
+        "
+      >
+
+        <div
+          *ngFor="
+            let img of packageDetails?.images?.slice(
+              0,
+              visibleImagesCount
+            );
+            let i = index
+          "
+          class="
+            relative
+            overflow-hidden
+            rounded-xl
+            group
+            cursor-pointer
+            shadow-sm
+            bg-light-gray
+          "
+          (click)="openViewer(i)"
+        >
+
+          <img
+            [src]="img"
+            [alt]="packageDetails?.title + ' - Photo ' + (i + 1)"
+            class="
+              w-full
+              h-64
+              md:h-72
+              object-cover
+              transition
+              duration-700
+              group-hover:scale-105
+            "
+          />
+
+
+          <!-- Hover Overlay -->
+
+          <div
+            class="
+              absolute
+              inset-0
+              bg-dark-navy/0
+              group-hover:bg-dark-navy/35
+              transition
+              duration-300
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <div
+              class="
+                opacity-0
+                group-hover:opacity-100
+                transition
+                duration-300
+                w-12
+                h-12
+                rounded-full
+                bg-white/90
+                flex
+                items-center
+                justify-center
+                text-dark-navy
+              "
+            >
+
+              <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+          </div>
+
+
+          <!-- Image Number -->
+
+          <!-- <div
+            class="
+              absolute
+              bottom-3
+              right-3
+              px-3
+              py-1
+              rounded-full
+              bg-dark-navy/75
+              text-white
+              text-xs
+              font-medium
+            "
+          >
+
+            {{ i + 1 }}
+
+          </div> -->
+
+        </div>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- VIEW MORE / SHOW LESS -->
+      <!-- ================================================= -->
+
+      <div
+        *ngIf="
+          (packageDetails?.images?.length ?? 0)
+          > initialImagesCount
+        "
+        class="
+          flex
+          justify-center
+          mt-8
+        "
+      >
+
+        <button
+          type="button"
+          (click)="toggleAllImages()"
+          class="
+            px-7
+            py-3
+            rounded-xl
+            border-2
+            border-gold
+            text-gold
+            font-semibold
+            transition-all
+            duration-300
+            hover:bg-gold
+            hover:text-white
+            cursor-pointer
+          "
+        >
+
+          <!-- View More -->
+
+          <span *ngIf="!showAllImages">
+
+            View More Photos
+
+            <i
+              class="
+                fa-solid
+                fa-chevron-down
+                ml-2
+              "
+            ></i>
+
+          </span>
+
+
+          <!-- Show Less -->
+
+          <span *ngIf="showAllImages">
+
+            Show Less
+
+            <i
+              class="
+                fa-solid
+                fa-chevron-up
+                ml-2
+              "
+            ></i>
+
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
 
 
     <!-- ================================================= -->
@@ -579,7 +811,7 @@
           "
         >
 
-          <!-- GREEN CHECK -->
+          <!-- CHECK -->
 
           <span
             class="
@@ -596,13 +828,7 @@
             "
           >
 
-            <i
-              class="
-                bx
-                bx-check
-                text-base
-              "
-            ></i>
+            <i class="bx bx-check text-base"></i>
 
           </span>
 
@@ -618,9 +844,7 @@
       </div>
 
     </div>
-
-
-    <!-- ================================================= -->
+        <!-- ================================================= -->
     <!-- ITINERARY -->
     <!-- ================================================= -->
 
@@ -689,6 +913,8 @@
 
             </h3>
 
+
+            <!-- Overnight -->
 
             <span
               *ngIf="item.overnight"
@@ -875,7 +1101,9 @@
       "
     >
 
-      <!-- Includes -->
+      <!-- ================================================= -->
+      <!-- INCLUDES -->
+      <!-- ================================================= -->
 
       <div
         class="
@@ -913,7 +1141,7 @@
             "
           >
 
-            <!-- GREEN CHECK CIRCLE -->
+            <!-- CHECK -->
 
             <span
               class="
@@ -929,13 +1157,7 @@
               "
             >
 
-              <i
-                class="
-                  bx
-                  bx-check
-                  text-lg
-                "
-              ></i>
+              <i class="bx bx-check text-lg"></i>
 
             </span>
 
@@ -959,7 +1181,9 @@
       </div>
 
 
-      <!-- Excludes -->
+      <!-- ================================================= -->
+      <!-- EXCLUDES -->
+      <!-- ================================================= -->
 
       <div
         class="
@@ -997,7 +1221,7 @@
             "
           >
 
-            <!-- RED X CIRCLE -->
+            <!-- X -->
 
             <span
               class="
@@ -1013,13 +1237,7 @@
               "
             >
 
-              <i
-                class="
-                  bx
-                  bx-x
-                  text-lg
-                "
-              ></i>
+              <i class="bx bx-x text-lg"></i>
 
             </span>
 
@@ -1043,9 +1261,7 @@
       </div>
 
     </div>
-
-
-    <!-- ================================================= -->
+        <!-- ================================================= -->
     <!-- ENTRANCE FEE POLICY -->
     <!-- ================================================= -->
 
@@ -1206,7 +1422,6 @@
 
 </div>
 
-
 <!-- ===================================================== -->
 <!-- IMAGE VIEWER -->
 <!-- ===================================================== -->
@@ -1220,80 +1435,125 @@
     flex
     items-center
     justify-center
-    z-50
+    z-[200]
+    px-4
   "
+  (click)="closeViewer()"
 >
 
-  <!-- Close -->
+  <!-- CLOSE -->
 
   <button
+    type="button"
     (click)="closeViewer()"
     class="
       absolute
       top-5
       right-5
+      w-12
+      h-12
+      rounded-full
+      bg-white/10
       text-white
-      text-4xl
+      text-3xl
+      hover:bg-white/20
       hover:text-gold
       transition
+      z-50
     "
   >
-
     ✕
-
   </button>
 
 
-  <!-- Previous -->
+  <!-- PREVIOUS -->
 
   <button
-    (click)="prevImage()"
+    type="button"
+    (click)="$event.stopPropagation(); prevImage()"
     class="
       absolute
-      left-5
+      left-3
+      md:left-8
+      w-12
+      h-12
+      rounded-full
+      bg-white/10
       text-white
-      text-5xl
+      text-3xl
+      hover:bg-white/20
       hover:text-gold
       transition
+      z-50
     "
   >
-
     ❮
-
   </button>
 
 
-  <!-- Image -->
+  <!-- IMAGE -->
 
   <img
     [src]="packageDetails?.images?.[selectedImageIndex]"
+    [alt]="packageDetails?.title"
+    (click)="$event.stopPropagation()"
     class="
       max-h-[85vh]
       max-w-[90vw]
       rounded-xl
       object-contain
+      shadow-2xl
     "
-    alt="{{ packageDetails?.title }}"
   />
 
 
-  <!-- Next -->
+  <!-- NEXT -->
 
   <button
-    (click)="nextImage()"
+    type="button"
+    (click)="$event.stopPropagation(); nextImage()"
     class="
       absolute
-      right-5
+      right-3
+      md:right-8
+      w-12
+      h-12
+      rounded-full
+      bg-white/10
       text-white
-      text-5xl
+      text-3xl
+      hover:bg-white/20
       hover:text-gold
       transition
+      z-50
     "
   >
-
     ❯
-
   </button>
+
+
+  <!-- IMAGE COUNTER -->
+
+  <div
+    (click)="$event.stopPropagation()"
+    class="
+      absolute
+      bottom-5
+      left-1/2
+      -translate-x-1/2
+      bg-dark-navy/80
+      text-white
+      px-5
+      py-2
+      rounded-full
+      text-sm
+      backdrop-blur-sm
+    "
+  >
+    {{ selectedImageIndex + 1 }}
+    /
+    {{ packageDetails?.images?.length }}
+  </div>
 
 </div>
 
@@ -1307,13 +1567,15 @@
   class="
     fixed
     inset-0
-    z-50
+    z-[300]
     flex
     items-center
     justify-center
     bg-dark-navy/70
     px-4
+    py-6
   "
+  (click)="closeBooking()"
 >
 
   <div
@@ -1327,20 +1589,30 @@
       relative
       shadow-hero
     "
+    (click)="$event.stopPropagation()"
   >
 
-    <!-- Close -->
+    <!-- CLOSE -->
 
     <button
+      type="button"
       (click)="closeBooking()"
       class="
         absolute
         top-4
         right-4
-        text-2xl
+        w-10
+        h-10
+        rounded-full
+        bg-white
         text-text-secondary
         hover:text-red-600
+        shadow-md
+        flex
+        items-center
+        justify-center
         z-50
+        transition
       "
     >
 
@@ -1349,7 +1621,7 @@
     </button>
 
 
-    <!-- Booking Form -->
+    <!-- BOOKING FORM -->
 
     <app-booking-form
       [item]="packageDetails"
@@ -1374,7 +1646,7 @@
     flex
     items-center
     justify-center
-    z-40
+    z-[400]
   "
 >
 

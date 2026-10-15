@@ -38,25 +38,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
     coverImage: 'assets/images/packages/family/1001/1.jpg',
 
-    images: [
-      'assets/images/packages/family/1001/1.jpg',
-      'assets/images/packages/family/1001/2.jpg',
-      'assets/images/packages/family/1001/3.jpg',
-      'assets/images/packages/family/1001/4.jpg',
-      'assets/images/packages/family/1001/5.jpg',
-      'assets/images/packages/family/1001/6.jpg',
-      'assets/images/packages/family/1001/7.jpg',
-      'assets/images/packages/family/1001/8.jpg',
-      'assets/images/packages/family/1001/9.jpg',
-      'assets/images/packages/family/1001/10.jpg',
-      'assets/images/packages/family/1001/11.jpg',
-      'assets/images/packages/family/1001/12.jpg',
-      'assets/images/packages/family/1001/13.jpg',
-      'assets/images/packages/family/1001/14.jpg',
-      'assets/images/packages/family/1001/15.jpg',
-      'assets/images/packages/family/1001/16.jpg',
-    ],
-
+   images: [
+  ...Array.from(
+    { length: 52 },
+    (_, i) =>
+      `assets/images/packages/family/1001/${i + 1}.webp`
+  ),
+],
     shortDescription:
       'Enjoy the perfect 3 Days Cairo City Break and discover the Great Pyramids of Giza, the Sphinx, the Grand Egyptian Museum, Old Cairo, and Khan El Khalili with a private Egyptologist guide and comfortable hotel accommodation.',
 
@@ -243,29 +231,14 @@ export const FAMILY_PACKAGES: Package[] = [
     reviews: 0,
 
     coverImage: 'assets/images/packages/family/1002/3.jpg',
+images: [
+  ...Array.from(
+    { length: 44 },
+    (_, i) =>
+      `assets/images/packages/family/1002/${i + 1}.webp`
+  ),
 
-    images: [
-      'assets/images/packages/family/1002/1.jpg',
-      'assets/images/packages/family/1002/2.jpg',
-      'assets/images/packages/family/1002/3.jpg',
-      'assets/images/packages/family/1002/4.jpg',
-      'assets/images/packages/family/1002/5.jpg',
-      'assets/images/packages/family/1002/6.jpg',
-      'assets/images/packages/family/1002/7.jpg',
-      'assets/images/packages/family/1002/8.jpg',
-      'assets/images/packages/family/1002/9.jpg',
-      'assets/images/packages/family/1002/10.jpg',
-      'assets/images/packages/family/1002/11.jpg',
-      'assets/images/packages/family/1002/12.jpg',
-      'assets/images/packages/family/1002/13.jpg',
-      'assets/images/packages/family/1002/14.jpg',
-      'assets/images/packages/family/1002/15.jpg',
-      'assets/images/packages/family/1002/16.jpg',
-      'assets/images/packages/family/1002/17.jpg',
-      'assets/images/packages/family/1002/18.jpg',
-      'assets/images/packages/family/1002/19.jpg',
-      'assets/images/packages/family/1002/20.jpg',
-    ],
+],
 
     shortDescription:
       'Explore Cairo and Alexandria in 4 unforgettable days. Visit the Pyramids of Giza, Grand Egyptian Museum, Catacombs of Kom El Shoqafa, Bibliotheca Alexandrina, Qaitbay Citadel, and more with a private Egyptologist guide.',
@@ -452,34 +425,18 @@ export const FAMILY_PACKAGES: Package[] = [
     coverImage: 'assets/images/packages/family/5.jpg',
 
     images: [
-      'assets/images/packages/family/1003/1.jpg',
-      'assets/images/packages/family/1003/2.jpg',
-      'assets/images/packages/family/1003/3.jpg',
-      'assets/images/packages/family/1003/4.jpg',
-      'assets/images/packages/family/1003/5.jpg',
-      'assets/images/packages/family/1003/6.jpg',
-      'assets/images/packages/family/1003/7.jpg',
-      'assets/images/packages/family/1003/8.jpg',
-      'assets/images/packages/family/1003/9.jpg',
-      'assets/images/packages/family/1003/10.jpg',
-      'assets/images/packages/family/1003/11.jpg',
-      'assets/images/packages/family/1003/12.jpg',
-      'assets/images/packages/family/1003/13.jpg',
-      'assets/images/packages/family/1003/14.jpg',
-      'assets/images/packages/family/1003/15.jpg',
-      'assets/images/packages/family/1003/16.jpg',
-      'assets/images/packages/family/1003/17.jpg',
-      'assets/images/packages/family/1003/18.jpg',
-      'assets/images/packages/family/1003/19.jpg',
-      'assets/images/packages/family/1003/20.jpg',
-      'assets/images/packages/family/1003/21.jpg',
-      'assets/images/packages/family/1003/22.jpg',
-      'assets/images/packages/family/1003/23.jpg',
-      'assets/images/packages/family/1003/24.jpg',
-      'assets/images/packages/family/1003/25.jpg',
-      'assets/images/packages/family/1003/26.jpg',
-      'assets/images/packages/family/1003/27.jpg',
-    ],
+  ...Array.from(
+    { length: 5 },
+    (_, i) =>
+      `assets/images/packages/family/1003/${i + 1}.webp`
+  ),
+
+  ...Array.from(
+    { length: 27 },
+    (_, i) =>
+      `assets/images/packages/family/1003/${i + 1}.jpg`
+  )
+],
 
     shortDescription:
       'Discover the highlights of Cairo and Alexandria with a comfortable family-friendly tour including ancient Egyptian landmarks, museums, and Mediterranean attractions.',
@@ -702,40 +659,19 @@ export const FAMILY_PACKAGES: Package[] = [
 
     coverImage: 'assets/images/packages/family/1004/1.jpg',
 
-    images: [
-      'assets/images/packages/family/1004/1.jpg',
-      'assets/images/packages/family/1004/2.jpg',
-      'assets/images/packages/family/1004/3.jpg',
-      'assets/images/packages/family/1004/4.jpg',
-      'assets/images/packages/family/1004/5.jpg',
-      'assets/images/packages/family/1004/6.jpg',
-      'assets/images/packages/family/1004/7.jpg',
-      'assets/images/packages/family/1004/8.jpg',
-      'assets/images/packages/family/1004/9.jpg',
-      'assets/images/packages/family/1004/10.jpg',
-      'assets/images/packages/family/1004/11.jpg',
-      'assets/images/packages/family/1004/12.jpg',
-      'assets/images/packages/family/1004/13.jpg',
-      'assets/images/packages/family/1004/14.jpg',
-      'assets/images/packages/family/1004/15.jpg',
-      'assets/images/packages/family/1004/16.jpg',
-      'assets/images/packages/family/1004/17.jpg',
-      'assets/images/packages/family/1004/18.jpg',
-      'assets/images/packages/family/1004/19.jpg',
-      'assets/images/packages/family/1004/20.jpg',
-      'assets/images/packages/family/1004/21.jpg',
-      'assets/images/packages/family/1004/22.jpg',
-      'assets/images/packages/family/1004/23.jpg',
-      'assets/images/packages/family/1004/24.jpg',
-      'assets/images/packages/family/1004/25.jpg',
-      'assets/images/packages/family/1004/26.jpg',
-      'assets/images/packages/family/1004/27.jpg',
-      'assets/images/packages/family/1004/28.jpg',
-      'assets/images/packages/family/1004/29.jpg',
-      'assets/images/packages/family/1004/30.jpg',
-      'assets/images/packages/family/1004/31.jpg',
-      'assets/images/packages/family/1004/32.jpg',
-    ],
+   images: [
+     ...Array.from(
+       { length: 9 },
+       (_, i) =>
+        `assets/images/packages/family/1004/${i + 1}.webp`
+      ),
+      ...Array.from(
+        { length: 32 },
+        (_, i) =>
+          `assets/images/packages/family/1004/${i + 1}.jpg`
+      ),
+
+],
 
     shortDescription:
       'Enjoy an unforgettable family holiday in Cairo combining ancient Egyptian wonders, museums, cultural experiences, and exciting activities suitable for all family members.',
@@ -972,47 +908,18 @@ export const FAMILY_PACKAGES: Package[] = [
     coverImage: 'assets/images/packages/family/1005/1.jpg',
 
     images: [
-      'assets/images/packages/family/1005/1.jpg',
-      'assets/images/packages/family/1005/2.jpg',
-      'assets/images/packages/family/1005/3.jpg',
-      'assets/images/packages/family/1005/4.jpg',
-      'assets/images/packages/family/1005/5.jpg',
-      'assets/images/packages/family/1005/6.jpg',
-      'assets/images/packages/family/1005/7.jpg',
-      'assets/images/packages/family/1005/8.jpg',
-      'assets/images/packages/family/1005/9.jpg',
-      'assets/images/packages/family/1005/10.jpg',
-      'assets/images/packages/family/1005/11.jpg',
-      'assets/images/packages/family/1005/12.jpg',
-      'assets/images/packages/family/1005/13.jpg',
-      'assets/images/packages/family/1005/14.jpg',
-      'assets/images/packages/family/1005/15.jpg',
-      'assets/images/packages/family/1005/16.jpg',
-      'assets/images/packages/family/1005/17.jpg',
-      'assets/images/packages/family/1005/18.jpg',
-      'assets/images/packages/family/1005/19.jpg',
-      'assets/images/packages/family/1005/20.jpg',
-      'assets/images/packages/family/1005/21.jpg',
-      'assets/images/packages/family/1005/22.jpg',
-      'assets/images/packages/family/1005/23.jpg',
-      'assets/images/packages/family/1005/24.jpg',
-      'assets/images/packages/family/1005/25.jpg',
-      'assets/images/packages/family/1005/26.jpg',
-      'assets/images/packages/family/1005/27.jpg',
-      'assets/images/packages/family/1005/28.jpg',
-      'assets/images/packages/family/1005/29.jpg',
-      'assets/images/packages/family/1005/30.jpg',
-      'assets/images/packages/family/1005/31.jpg',
-      'assets/images/packages/family/1005/32.jpg',
-      'assets/images/packages/family/1005/33.jpg',
-      'assets/images/packages/family/1005/34.jpg',
-      'assets/images/packages/family/1005/35.jpg',
-      'assets/images/packages/family/1005/36.jpg',
-      'assets/images/packages/family/1005/37.jpg',
-      'assets/images/packages/family/1005/38.jpg',
-      'assets/images/packages/family/1005/39.jpg',
-      'assets/images/packages/family/1005/40.jpg',
-    ],
+  ...Array.from(
+    { length: 162 },
+    (_, i) =>
+      `assets/images/packages/family/1005/${i + 1}.webp`
+  ),
+
+  ...Array.from(
+    { length: 40 },
+    (_, i) =>
+      `assets/images/packages/family/1005/${i + 1}.jpg`
+  )
+],
 
     shortDescription:
       'Enjoy a wonderful family journey combining the historical treasures of Cairo with a relaxing Nile Cruise experience through Luxor and Aswan.',
@@ -1266,52 +1173,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
     reviews: 0,
 
-    coverImage: 'assets/images/packages/family/1006/1.jpg',
+    coverImage: 'assets/images/packages/family/1006/1.webp',
 
-    images: [
-      'assets/images/packages/family/1006/1.jpg',
-      'assets/images/packages/family/1006/2.jpg',
-      'assets/images/packages/family/1006/3.jpg',
-      'assets/images/packages/family/1006/4.jpg',
-      'assets/images/packages/family/1006/5.jpg',
-      'assets/images/packages/family/1006/6.jpg',
-      'assets/images/packages/family/1006/7.jpg',
-      'assets/images/packages/family/1006/8.jpg',
-      'assets/images/packages/family/1006/9.jpg',
-      'assets/images/packages/family/1006/10.jpg',
-      'assets/images/packages/family/1006/11.jpg',
-      'assets/images/packages/family/1006/12.jpg',
-      'assets/images/packages/family/1006/13.jpg',
-      'assets/images/packages/family/1006/14.jpg',
-      'assets/images/packages/family/1006/15.jpg',
-      'assets/images/packages/family/1006/16.jpg',
-      'assets/images/packages/family/1006/17.jpg',
-      'assets/images/packages/family/1006/18.jpg',
-      'assets/images/packages/family/1006/19.jpg',
-      'assets/images/packages/family/1006/20.jpg',
-      'assets/images/packages/family/1006/21.jpg',
-      'assets/images/packages/family/1006/22.jpg',
-      'assets/images/packages/family/1006/23.jpg',
-      'assets/images/packages/family/1006/24.jpg',
-      'assets/images/packages/family/1006/25.jpg',
-      'assets/images/packages/family/1006/26.jpg',
-      'assets/images/packages/family/1006/27.jpg',
-      'assets/images/packages/family/1006/28.jpg',
-      'assets/images/packages/family/1006/29.jpg',
-      'assets/images/packages/family/1006/30.jpg',
-      'assets/images/packages/family/1006/31.jpg',
-      'assets/images/packages/family/1006/32.jpg',
-      'assets/images/packages/family/1006/33.jpg',
-      'assets/images/packages/family/1006/34.jpg',
-      'assets/images/packages/family/1006/35.jpg',
-      'assets/images/packages/family/1006/36.jpg',
-      'assets/images/packages/family/1006/37.jpg',
-      'assets/images/packages/family/1006/38.jpg',
-      'assets/images/packages/family/1006/39.jpg',
-      'assets/images/packages/family/1006/40.jpg',
-      'assets/images/packages/family/1006/41.jpg',
-      'assets/images/packages/family/1006/42.jpg',
-    ],
+   images: Array.from(
+  { length: 56 },
+  (_, i) =>
+    `assets/images/packages/family/1006/${i + 1}.webp`
+),
 
     shortDescription:
       'An exciting family adventure across Egypt combining Cairo, Luxor, Aswan, ancient monuments, Nile experiences, and unforgettable cultural activities.',
@@ -1586,7 +1454,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
     coverImage: '',
 
-    images: [],
+    images: [
+  ...Array.from(
+    { length: 88 },
+    (_, i) =>
+      `assets/images/packages/family/1007/${i + 1}.webp`
+  ),
+],
 
     shortDescription:
       'Discover Egypt with your family through an amazing journey covering Cairo, Luxor, Aswan, ancient monuments, museums, and unforgettable cultural experiences.',
@@ -1887,7 +1761,13 @@ export const FAMILY_PACKAGES: Package[] = [
 
     coverImage: '',
 
-    images: [],
+    images: [
+  ...Array.from(
+    { length: 76 },
+    (_, i) =>
+      `assets/images/packages/family/1008/${i + 1}.webp`
+  ),
+],
 
     shortDescription:
       'The ultimate family journey across Egypt combining Cairo, Luxor, Aswan, a luxury Nile Cruise, Abu Simbel, and Red Sea relaxation.',
