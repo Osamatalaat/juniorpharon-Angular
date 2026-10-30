@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { Trip } from '../../../core/models/trip.model';
 import { TripFilter } from '../../../core/models/Search/trip-filter';
-
-import { TRIPS } from '../../../core/data/trips';
+import { TRIPS } from '../../../core/data/trips/index';
 
 @Component({
-  selector: 'app-Trip',
+  selector: 'app-trip',
   templateUrl: './Trip.component.html',
   styleUrls: ['./Trip.component.css'],
   standalone: false
@@ -16,368 +15,173 @@ export class TripComponent implements OnInit {
   // =====================================================
   // DATA
   // =====================================================
-
   allTrips: Trip[] = [];
-
   trips: Trip[] = [];
-
   paginatedTrips: Trip[] = [];
-
   loading = false;
 
-
   // =====================================================
-  // SEARCH
+  // SEARCH & SORT
   // =====================================================
-
   searchText = '';
-
-
-  // =====================================================
-  // SORT
-  // =====================================================
-
   sortBy = 'popular';
-
 
   // =====================================================
   // FILTER
   // =====================================================
-
   currentFilter: TripFilter = {};
-
 
   // =====================================================
   // PAGINATION
   // =====================================================
-
   currentPage = 1;
-
   pageSize = 6;
-
   totalPages = 1;
-
-
-  // =====================================================
-  // INIT
-  // =====================================================
 
   ngOnInit(): void {
     this.getTrips();
   }
 
-
   // =====================================================
   // GET TRIPS
   // =====================================================
-
   getTrips(): void {
-
     this.loading = true;
-
     this.allTrips = [...TRIPS];
-
     this.updateTrips();
-
     this.loading = false;
   }
 
-
-  // =====================================================
-  // SEARCH
-  // =====================================================
-
   onSearchChange(): void {
-
     this.currentPage = 1;
-
     this.updateTrips();
   }
-
-
-  // =====================================================
-  // SORT
-  // =====================================================
 
   onSortChange(): void {
-
     this.currentPage = 1;
-
     this.updateTrips();
   }
-
-
-  // =====================================================
-  // FILTER
-  // =====================================================
 
   applyFilter(filter: TripFilter): void {
-
     this.currentFilter = filter;
-
     this.currentPage = 1;
-
     this.updateTrips();
   }
-
 
   // =====================================================
   // MAIN FILTER / SEARCH / SORT
   // =====================================================
-
   updateTrips(): void {
-
     let result = [...this.allTrips];
 
-
-    // ===================================================
-    // FILTER
-    // ===================================================
-
+    // 1. FILTERING
     result = result.filter(trip => {
-
-      // -------------------------------------------------
-      // CITY
-      // -------------------------------------------------
-
+      // City / Destination Match
       const matchesCity =
         !this.currentFilter.city?.length ||
-        this.currentFilter.city.includes(
-          trip.destination.name
+        this.currentFilter.city.some(
+          c => c.toLowerCase() === trip.destination.name.toLowerCase() ||
+               c.toLowerCase() === trip.destination.slug.toLowerCase()
         );
 
-
-      // -------------------------------------------------
-      // MIN PRICE
-      // -------------------------------------------------
-
+      // Price Range
       const matchesMinPrice =
-        this.currentFilter.minPrice == null ||
-        trip.price >= this.currentFilter.minPrice;
-
-
-      // -------------------------------------------------
-      // MAX PRICE
-      // -------------------------------------------------
+        this.currentFilter.minPrice == null || trip.price >= this.currentFilter.minPrice;
 
       const matchesMaxPrice =
-        this.currentFilter.maxPrice == null ||
-        trip.price <= this.currentFilter.maxPrice;
+        this.currentFilter.maxPrice == null || trip.price <= this.currentFilter.maxPrice;
 
+      // Duration Range & Unit
+      let matchesDuration = true;
+      if (this.currentFilter.durationUnit) {
+        matchesDuration = trip.duration.unit === this.currentFilter.durationUnit;
+      }
+      if (matchesDuration && this.currentFilter.durationMin != null) {
+        matchesDuration = trip.duration.value >= this.currentFilter.durationMin;
+      }
+      if (matchesDuration && this.currentFilter.durationMax != null) {
+        matchesDuration = trip.duration.value <= this.currentFilter.durationMax;
+      }
 
-      // -------------------------------------------------
-      // DURATION
-      // -------------------------------------------------
-
-      const matchesDurationMin =
-        this.currentFilter.durationMin == null ||
-        this.currentFilter.durationUnit !== trip.duration.unit ||
-        trip.duration.value >= this.currentFilter.durationMin;
-
-
-      const matchesDurationMax =
-        this.currentFilter.durationMax == null ||
-        this.currentFilter.durationUnit !== trip.duration.unit ||
-        trip.duration.value <= this.currentFilter.durationMax;
-
-
-      const matchesDurationUnit =
-        !this.currentFilter.durationUnit ||
-        trip.duration.unit === this.currentFilter.durationUnit;
-
-
-      // -------------------------------------------------
-      // RATING
-      // -------------------------------------------------
-
+      // Rating
       const matchesRating =
-        this.currentFilter.rating == null ||
-        trip.rating >= this.currentFilter.rating;
-
+        this.currentFilter.rating == null || trip.rating >= this.currentFilter.rating;
 
       return (
-
         matchesCity &&
-
         matchesMinPrice &&
-
         matchesMaxPrice &&
-
-        matchesDurationMin &&
-
-        matchesDurationMax &&
-
-        matchesDurationUnit &&
-
+        matchesDuration &&
         matchesRating
-
       );
-
     });
 
-
-    // ===================================================
-    // SEARCH
-    // ===================================================
-
+    // 2. SEARCH
     if (this.searchText.trim()) {
-
-      const keyword =
-        this.searchText
-          .toLowerCase()
-          .trim();
-
+      const keyword = this.searchText.toLowerCase().trim();
 
       result = result.filter(trip =>
-
-        trip.title
-          .toLowerCase()
-          .includes(keyword)
-
-        ||
-
-        trip.destination.name
-          .toLowerCase()
-          .includes(keyword)
-
-        ||
-
-        trip.destination.slug
-          .toLowerCase()
-          .includes(keyword)
-
-        ||
-
-        trip.shortDescription
-          .toLowerCase()
-          .includes(keyword)
-
+        trip.title.toLowerCase().includes(keyword) ||
+        trip.destination.name.toLowerCase().includes(keyword) ||
+        trip.shortDescription.toLowerCase().includes(keyword) ||
+        trip.type.some(t => t.toLowerCase().includes(keyword)) ||
+        (trip.highlights && trip.highlights.some(h => h.toLowerCase().includes(keyword)))
       );
     }
 
-
-    // ===================================================
-    // SORT
-    // ===================================================
-
+    // 3. SORT
     switch (this.sortBy) {
-
       case 'lowPrice':
-
-        result.sort(
-          (a, b) => a.price - b.price
-        );
-
+        result.sort((a, b) => a.price - b.price);
         break;
-
 
       case 'highPrice':
-
-        result.sort(
-          (a, b) => b.price - a.price
-        );
-
+        result.sort((a, b) => b.price - a.price);
         break;
-
 
       case 'rating':
-
-        result.sort(
-          (a, b) => b.rating - a.rating
-        );
-
+        result.sort((a, b) => (b.rating || 0) - (a.rating || 0));
         break;
-
 
       case 'popular':
-
       default:
-
-        // Keep original order
-
+        // الترتيب الافتراضي بالمعرّف أو الشعبية
+        result.sort((a, b) => (b.reviews || 0) - (a.reviews || 0));
         break;
     }
 
-
-    // ===================================================
-    // DESCENDING
-    // ===================================================
-
     if (this.currentFilter.descending) {
-
       result.reverse();
-
     }
 
-
-    // ===================================================
-    // SAVE RESULT
-    // =====================================================
-
     this.trips = result;
-
-
-    // =====================================================
-    // PAGINATION
-    // =====================================================
-
     this.updatePagination();
-
   }
-
 
   // =====================================================
   // PAGINATION
   // =====================================================
-
   updatePagination(): void {
-
-    this.totalPages = Math.max(
-      1,
-      Math.ceil(
-        this.trips.length / this.pageSize
-      )
-    );
-
-
-    // حماية لو الصفحة الحالية أصبحت أكبر من عدد الصفحات
+    this.totalPages = Math.max(1, Math.ceil(this.trips.length / this.pageSize));
 
     if (this.currentPage > this.totalPages) {
-
       this.currentPage = this.totalPages;
-
     }
 
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
 
-    const start =
-      (this.currentPage - 1) *
-      this.pageSize;
-
-
-    const end =
-      start +
-      this.pageSize;
-
-
-    this.paginatedTrips =
-      this.trips.slice(
-        start,
-        end
-      );
-
+    this.paginatedTrips = this.trips.slice(start, end);
   }
-
-
-  // =====================================================
-  // PAGE CHANGE
-  // =====================================================
 
   onPageChanged(page: number): void {
-
+    if (page < 1 || page > this.totalPages || page === this.currentPage) return;
     this.currentPage = page;
-
     this.updatePagination();
 
+    window.scrollTo({
+      top: 350,
+      behavior: 'smooth'
+    });
   }
-
 }
